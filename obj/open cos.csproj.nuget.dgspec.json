@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\open cos.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\open cos.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\open cos.csproj",
+        "projectName": "open cos",
+        "projectPath": "C:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\open cos.csproj",
+        "packagesPath": "C:\\Users\\az18200\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\az18200\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Raylib-cs": {
+              "target": "Package",
+              "version": "[4.2.0-rc.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
