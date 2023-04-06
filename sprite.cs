@@ -126,7 +126,6 @@ namespace main {
         }
 
         public void print_texture_colors() {
-
             System.Console.WriteLine("texture colors");
             foreach (Texture2D tw in textures_w) {
                 Image ix = Raylib.LoadImageFromTexture(tw);
@@ -160,7 +159,6 @@ namespace main {
                 }
             }
         }
-
 
     }   
 }

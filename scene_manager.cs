@@ -117,9 +117,9 @@ namespace main {
         public void update(float dt, float dt_factor, List<Player> players) {
             active_scene.update_1(dt, dt_factor, players);
             if (active_scene.units.Count > 0 && active_scene.dead_units_index.Count >= active_scene.units.Count && !active_scene.scene_monsters_done)
-                specialSceneEventsItems(active_scene.units[0]);
+                special_scene_events_item(active_scene.units[0]);
             if (active_scene == s11 || active_scene == s24 || active_scene == s27) {
-                specialSceneEventMap(players);
+                special_scene_events_map(players);
             }
             active_scene.update_2(dt, dt_factor);
 
@@ -128,7 +128,7 @@ namespace main {
             }
         }
         
-        public void specialSceneEventsItems(Unit u) {
+        public void special_scene_events_item(Unit u) {
             if (active_scene == s4) { // scene 4 3right, drop shield
                 active_scene.items.Add(new Item("shield",Start.data.items_data_dict["shield"], u.pos_x+5, u.pos_y+15));
             }
@@ -158,7 +158,7 @@ namespace main {
             }
         }
 
-        public void specialSceneEventMap(List<Player> players) {
+        public void special_scene_events_map(List<Player> players) {
             if (active_scene == s11) { // break door
                 if (!active_scene.scene_objectives_done) {
                     foreach (Bullet b in active_scene.player_bullets) {
@@ -1204,7 +1204,7 @@ namespace main {
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u1.weapon_weakness = "silver dagger";
 
-                Monster_AI u1_ai = new Monster_AI(4,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(3,true,"E",0);
 
                 s18.units.Add(u1);
                 s18.ais.Add(u1_ai);

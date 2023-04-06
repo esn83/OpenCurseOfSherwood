@@ -3,7 +3,7 @@ namespace main {
     public class Monster_AI {
         public Random rnd = new Random();
 
-        public int move_pattern; // 0 = move up/down | 1 = move diagonally | 2 = move up/down then forward | 4 = player homing
+        public int move_pattern; // 0 = move up/down | 1 = move diagonally | 2 = move up/down then forward | 3 = player homing
         public bool allow_move_back;
         public string move_direction_e_w;
         public string  move_direction_n_s;
@@ -73,7 +73,7 @@ namespace main {
                     }
                 }
 
-                else if (move_pattern == 4) { // player homing
+                else if (move_pattern == 3) { // player homing
                     move_delay_count = 0;
                     move_delay = 0.2f ;
                     if (u.pos_x < p.unit.pos_x) {move_direction_e_w = "E";}
