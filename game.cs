@@ -41,8 +41,6 @@ namespace main {
                                                (List<KeyboardKey>) p[2],
                                                (int) p[3]);
                 players.Add(new_player);
-                System.Console.WriteLine("player color");
-                System.Console.WriteLine(p[1]);
             }
             
             // topbar
@@ -101,13 +99,21 @@ namespace main {
             // monk.active_weapon = monk.weapons[0];
             // monk.items.Add(new Item("crystal ball",Start.data.crystal_ball_data,0,0));
             // monk.items.Add(new Item("fangs",Start.data.fangs_data,0,0));
+            monk.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],0,0));
             players[0].unit = monk;
         }
 
         public void run() {
-            Raylib.InitWindow((int) choises[2],(int) choises[3], "Open Curse of Sherwood");
+            Raylib.InitWindow((int) choises[2],(int) choises[3], "Open Curse of Sherwood : Game");
             Raylib.SetTargetFPS( (int) choises[4] ); // set target FPS
-            Raylib.SetWindowPosition(500,200); // window position
+            if ((bool) choises[1] == false) {
+                Raylib.SetWindowPosition(500,200); // window position
+            }
+            else {
+                Raylib.SetWindowSize(Raylib.GetMonitorWidth(Raylib.GetCurrentMonitor()),
+                                     Raylib.GetMonitorHeight(Raylib.GetCurrentMonitor()));
+                Raylib.SetWindowPosition(0,0);
+            }
             Raylib.InitAudioDevice(); // sound, must be called before loading sounds
             init();
             while (!Raylib.WindowShouldClose())
@@ -129,25 +135,9 @@ namespace main {
         }
 
         void events() {
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)) {
-                Start.playing = false;
-                Raylib.SetWindowTitle("Menu");
-
-                if ((bool) choises[1] == false) {
-                    Raylib.SetWindowSize((int)(640*0.75f)+350,(int)(999*0.75f)+20);
-                }
-                else {
-                    Raylib.SetWindowSize(Raylib.GetMonitorWidth(Raylib.GetCurrentMonitor()),
-                                         Raylib.GetMonitorHeight(Raylib.GetCurrentMonitor()));
-                    Raylib.SetWindowPosition(0,0);
-                }
-            }
-
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_X)) {
                 System.Console.WriteLine("the X key!");
                 players[0].lives += 1;
-                //scene_manager.active_scene.units[0].sprite.print_image_colors();
-                //System.Console.WriteLine(players[0].unit.items.Count);
             }
 
             foreach (Player p in players) {p.events(dt_factor, scene_manager.active_scene);}
@@ -278,7 +268,6 @@ namespace main {
                                     if (u.weapon_weakness != null && u.weapon_weakness.Equals(b.name)) {u.hitpoints -= (int) Math.Ceiling((float)u.hitpoints_max/2);} // take ½ unit hitpoints rounded up for weapon weakness
                                     else {u.hitpoints -= b.damage;}
                                 }
-                                System.Console.WriteLine(u.hitpoints);
                                 remove_p_bullets.Add(b);
                             }
                         }
@@ -323,6 +312,7 @@ namespace main {
                                 if (npc_to_player_items.Count > 0) {
                                     foreach (Item i in npc_to_player_items) {
                                         p.unit.items.Add(i);
+                                        general_item_sound.play_sound();
                                         u.items.Remove(i);
                                     }
                                 }
@@ -422,7 +412,7 @@ namespace main {
                                 new Color(251,251,139,255));
                 
                 if (p.unit.items.Count > 0) {
-                    int x = 124;
+                    int x = 121;
                     int y = 66;
                     int count = 0;
                     foreach (Item i in p.unit.items) {
@@ -444,20 +434,20 @@ namespace main {
                     if (w.name.Split(" ").Count() > 1) { // draw weapon name, split weapon name in two of there is a space in its name
                         Raylib.DrawText(w.name.Split(" ")[0], // draw weapon name part1
                                         (int) w.pos_x + 20,
-                                        (int) w.pos_y - 8,
-                                        12,
+                                        (int) w.pos_y - 6,
+                                        10,
                                         new Color(106,207,111,255));
                         Raylib.DrawText(w.name.Split(" ")[1], // draw weapon name part2
                                         (int) w.pos_x + 20,
-                                        (int) w.pos_y + 1,
-                                        12,
+                                        (int) w.pos_y + 3,
+                                        10,
                                         new Color(106,207,111,255));
                     }
                     else {
                         Raylib.DrawText(w.name, // draw weapon name
                                         (int) w.pos_x + 20,
-                                        (int) w.pos_y - 3,
-                                        12,
+                                        (int) w.pos_y - 2,
+                                        10,
                                         new Color(106,207,111,255));
                     }
                 }

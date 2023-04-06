@@ -9,7 +9,7 @@ namespace main {
         public Scene s1;public Scene s2;public Scene s3;public Scene s4;public Scene s5;public Scene s6;public Scene s7;public Scene s8;public Scene s9;
         public Scene s10;public Scene s11;public Scene s12;public Scene s13;public Scene s14;public Scene s15;public Scene s16;public Scene s17;
         public Scene s18;public Scene s19;public Scene s20;public Scene s21;public Scene s22;public Scene s23;public Scene s24;public Scene s25;
-        public Scene s26;
+        public Scene s26;public Scene s27;public Scene s28;public Scene s29;public Scene s30;public Scene s31;
 
         // constructor
         public SceneManager()
@@ -40,6 +40,9 @@ namespace main {
             else if (active_scene == s23) {active_scene = init_scene_24();}
             else if (active_scene == s24) {active_scene = init_scene_25();}
             else if (active_scene == s25) {active_scene = init_scene_26();}
+            // bottom +3up
+            else if (active_scene == s29) {active_scene = init_scene_28();}
+            else if (active_scene == s31) {active_scene = init_scene_29();}
             active_scene.player_bullets = new List<Bullet>(){};
             active_scene.monster_bullets = new List<Bullet>(){};
         }
@@ -66,6 +69,9 @@ namespace main {
             else if (active_scene == s24) {active_scene = init_scene_23();}
             else if (active_scene == s25) {active_scene = init_scene_24();}
             else if (active_scene == s26) {active_scene = init_scene_25();}
+            // bottom +3up
+            else if (active_scene == s28) {active_scene = init_scene_29();}
+            else if (active_scene == s29) {active_scene = init_scene_31();}
             active_scene.player_bullets = new List<Bullet>(){};
             active_scene.monster_bullets = new List<Bullet>(){};
         }
@@ -80,6 +86,11 @@ namespace main {
             else if (active_scene == s16) {active_scene = init_scene_19();}
             // bottom +1up
             else if (active_scene == s20) {active_scene = init_scene_14();}
+            // bottom +2up
+            else if (active_scene == s27) {active_scene = init_scene_22();}
+            // bottom +3up
+            else if (active_scene == s28) {active_scene = init_scene_27();}
+            else if (active_scene == s30) {active_scene = init_scene_29();}
             active_scene.player_bullets = new List<Bullet>(){};
             active_scene.monster_bullets = new List<Bullet>(){};
         }
@@ -94,6 +105,11 @@ namespace main {
             else if (active_scene == s19) {active_scene = init_scene_16();}
             // bottom +1up
             else if (active_scene == s14) {active_scene = init_scene_20();}
+            // bottom +2up
+            else if (active_scene == s22) {active_scene = init_scene_27();}
+            // bottom +3up
+            else if (active_scene == s27) {active_scene = init_scene_28();}
+            else if (active_scene == s29) {active_scene = init_scene_30();}
             active_scene.player_bullets = new List<Bullet>(){};
             active_scene.monster_bullets = new List<Bullet>(){};
         }
@@ -102,8 +118,8 @@ namespace main {
             active_scene.update_1(dt, dt_factor, players);
             if (active_scene.units.Count > 0 && active_scene.dead_units_index.Count >= active_scene.units.Count && !active_scene.scene_monsters_done)
                 specialSceneEventsItems(active_scene.units[0]);
-            if (active_scene == s11 || active_scene == s24) {
-                specialSceneEventMap();
+            if (active_scene == s11 || active_scene == s24 || active_scene == s27) {
+                specialSceneEventMap(players);
             }
             active_scene.update_2(dt, dt_factor);
 
@@ -131,12 +147,18 @@ namespace main {
             if (active_scene == s21) { // scene 21 20right, drop ice wand
                 active_scene.weapons.Add(new Weapon("ice wand",Start.data.weapons_data_dict["ice wand"],u.pos_x+5,u.pos_y+15));
             }
+            if (active_scene == s23) { // scene 23 22right, drop crossbow
+                active_scene.weapons.Add(new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],u.pos_x+5,u.pos_y+15));
+            }
             if (active_scene == s26) { // scene 26 25right, drop bag of gold
-                active_scene.items.Add(new Item("bag gold",Start.data.bag_gold_data,u.pos_x+5,u.pos_y+15));
+                active_scene.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],u.pos_x+5,u.pos_y+15));
+            }
+            if (active_scene == s27) { // scene 27 22yp, drop key
+                active_scene.items.Add(new Item("key",Start.data.items_data_dict["key"],u.pos_x+5,u.pos_y+15));
             }
         }
 
-        public void specialSceneEventMap() {
+        public void specialSceneEventMap(List<Player> players) {
             if (active_scene == s11) { // break door
                 if (!active_scene.scene_objectives_done) {
                     foreach (Bullet b in active_scene.player_bullets) {
@@ -175,18 +197,37 @@ namespace main {
                     active_scene.player_bullets.Remove(b);
                 }
             }
+            if (active_scene == s27) { // open gate with key
+                if (!active_scene.scene_objectives_done) {
+                    Rectangle rect = new Rectangle(177,129,30,10); // locked gate
+                    foreach (Player p in players){
+                        bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, rect);
+                        if(col) {
+                            foreach (Item i in p.unit.items) {
+                                if (i.name.Equals("key")) {
+                                    new Audio(Start.data.monster_bullet_sounds, 0.0f).play_sound();
+                                    active_scene.scene_img_paths = Start.data.scene_27_2;
+                                    active_scene.load_scene_images();
+                                    s27.door_up = new Rectangle(177,90,30,5); // opened gate
+                                    active_scene.scene_objectives_done = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
         }
 
         public Scene init_scene_1() { // scene 1 start
             if (s1 == null) {
                 s1 = new Scene(Start.data.scene_1);
                 s1.weapons.Add(new Weapon("sword",Start.data.weapons_data_dict["sword"],140,175));
-
-                // s1.items.Add(new Item("fangs", Start.data.items_data_dict["fangs"],120,175));
-                // s1.items.Add(new Item("shield", Start.data.items_data_dict["shield"],120,165));
-                // s1.items.Add(new Item("bag gold", Start.data.items_data_dict["bag gold"],120,155));
-                // s1.items.Add(new Item("cross", Start.data.items_data_dict["cross"],120,145));
             }
+            // s1.items.Add(new Item("key",Start.data.items_data_dict["key"],80,150));
+            // s1.items.Add(new Item("map",Start.data.items_data_dict["map"],80,170));
+            // s1.items.Add(new Item("fangs",Start.data.items_data_dict["fangs"],80,130));
+            // s1.items.Add(new Item("shield",Start.data.items_data_dict["shield"],100,150));
             return s1;
         }
 
@@ -388,9 +429,9 @@ namespace main {
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                u1.items.Add(new Item("shield", Start.data.shield_data));
-                u2.items.Add(new Item("shield", Start.data.shield_data));
-                u3.items.Add(new Item("shield", Start.data.shield_data));
+                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
 
                 Monster_AI u1_ai = new Monster_AI(0,false,"",1.5f);
                 Monster_AI u2_ai = new Monster_AI(0,false,"",1.5f);
@@ -520,7 +561,7 @@ namespace main {
             }
         }
 
-            public Scene init_scene_7() { // scene 7 6right
+        public Scene init_scene_7() { // scene 7 6right
             if (s7 == null) {
                 s7 = new Scene(Start.data.scene_7);
                 spawn_units();}
@@ -831,7 +872,7 @@ namespace main {
                 spawn_units();}
             else if (!s13.scene_monsters_done) {
                 spawn_units();}
-            s13.items.Add(new Item("cross",Start.data.cross_data,236,155));
+            s13.items.Add(new Item("cross",Start.data.items_data_dict["cross"],236,155));
 
             void spawn_units() {
                 s13.units = new List<Unit>(){};
@@ -847,7 +888,7 @@ namespace main {
                                                 0,
                                                 0,
                                                 "W");
-                brigand_sprite_death.change_color(Start.data.death_images_small_color, Start.data.brigand_color);
+                brigand_sprite_death.change_color(Start.data.death_images_large_color, Start.data.brigand_color);
                 
                 Unit u1 = new Unit("Brigand",
                                     250,
@@ -1117,7 +1158,7 @@ namespace main {
                 u1.trade_takes.Add("fangs");
                 u1.trade_takes.Add("crystal ball");
                 u1.trade_gives.Add("f-elixir");
-                u1.items.Add(new Item("f-elixir",Start.data.f_elixir_data,0,0));
+                u1.items.Add(new Item("f-elixir",Start.data.items_data_dict["f-elixir"],0,0));
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(1,true,"E",0);
@@ -1289,10 +1330,10 @@ namespace main {
                 
                 Unit u1 = new Unit("Ice Wizard",
                                     260,
-                                    170,
+                                    150,
                                     2,
                                     4,
-                                    new List<int>(){256,160,14,15},
+                                    new List<int>(){256,140,14,15},
                                     ice_wizard_sprite,
                                     ice_wizard_sprite_death);
                 u1.active_weapon = new Weapon("ice wand",Start.data.weapons_data_dict["ice wand"],0,0);
@@ -1461,9 +1502,9 @@ namespace main {
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                u1.items.Add(new Item("shield", Start.data.shield_data));
-                u2.items.Add(new Item("shield", Start.data.shield_data));
-                u3.items.Add(new Item("shield", Start.data.shield_data));
+                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
 
                 Monster_AI u1_ai = new Monster_AI(0,false,"",1.5f);
                 Monster_AI u2_ai = new Monster_AI(0,false,"",1.5f);
@@ -1720,6 +1761,183 @@ namespace main {
 
                 s26.units.Add(u1);
                 s26.ais.Add(u1_ai);
+            }
+        }
+
+
+        public Scene init_scene_27() { // scene 27 22up
+            if (s27 == null) {
+                s27 = new Scene(Start.data.scene_27);
+                spawn_units();}
+            else if (!s27.scene_monsters_done) {
+                spawn_units();}
+            return s27;
+
+            void spawn_units() {
+                s27.units = new List<Unit>(){};
+                s27.ais = new List<Monster_AI>(){};
+
+                Sprite troll_sprite = new Sprite(Start.data.troll_images,
+                                                0.1f,
+                                                0,
+                                                0,
+                                                "W");
+                Sprite troll_sprite_death = new Sprite(Start.data.death_images_large,
+                                                0.2f,
+                                                0,
+                                                0,
+                                                "W");
+                troll_sprite_death.change_color(Start.data.death_images_large_color, Start.data.troll_color);
+                
+                Unit u1 = new Unit("Troll",
+                                    160,
+                                    140,
+                                    2,
+                                    6,
+                                    new List<int>(){156,130,14,15},
+                                    troll_sprite,
+                                    troll_sprite_death);
+                u1.active_weapon = new Weapon("rock",Start.data.weapons_data_dict["rock"],0,0);
+                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+
+                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+
+                s27.units.Add(u1);
+                s27.ais.Add(u1_ai);
+            }
+        }
+
+        public Scene init_scene_28() { // scene 28 27up
+            if (s28 == null) {
+                s28 = new Scene(Start.data.scene_28);
+            }
+            s28.door_down = new Rectangle(177,232,30,5);
+            return s28;
+        }
+
+        public Scene init_scene_29() { // scene 29 28left
+            if (s29 == null) {
+                s29 = new Scene(Start.data.scene_29);}
+            s29.door_up = new Rectangle(205,145,20,1); // hermit hut door outside
+            return s29;
+        }
+
+        public Scene init_scene_30() { // scene 30 29up
+            if (s30 == null) {
+                s30 = new Scene(Start.data.scene_30);
+                spawn_units();}
+            s30.disable_down = true;
+            s30.door_down = new Rectangle(187,220,20,1); // hermit hut door inside
+            return s30;
+
+            void spawn_units() {
+                s30.units = new List<Unit>(){};
+                s30.ais = new List<Monster_AI>(){};
+
+                Sprite hermit_sprite = new Sprite(Start.data.hermit_images,
+                                                0.1f,
+                                                0,
+                                                0,
+                                                "E");
+                Sprite hermit_sprite_death = new Sprite(Start.data.death_images_large,
+                                                0.2f,
+                                                0,
+                                                0,
+                                                "E");
+                hermit_sprite_death.change_color(Start.data.death_images_large_color, Start.data.hermit_color);
+
+                Unit u1 = new Unit("Good Hermit",
+                                    130,
+                                    140,
+                                    2,
+                                    3,
+                                    new List<int>(){126,130,14,15},
+                                    hermit_sprite,
+                                    hermit_sprite_death);
+                
+                u1.is_npc = true;
+                u1.trade_takes.Add("bag gold");
+                u1.trade_gives.Add("map");
+                u1.items.Add(new Item("map",Start.data.items_data_dict["map"],0,0));
+                u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+
+                Monster_AI u1_ai = new Monster_AI(1,true,"E",0);
+
+                s30.units.Add(u1);
+                s30.ais.Add(u1_ai);
+            }
+        }
+
+        public Scene init_scene_31() { // scene 31 29left
+            if (s31 == null) {
+                s31 = new Scene(Start.data.scene_31);
+                spawn_units();}
+            else if (!s31.scene_monsters_done) {
+                spawn_units();}
+            s31.disable_up = true;
+            return s31;
+
+            void spawn_units() {
+                s31.units = new List<Unit>(){};
+                s31.ais = new List<Monster_AI>(){};
+
+                Sprite skeleton_1_sprite = new Sprite(Start.data.skeleton_images,
+                                                0.2f,
+                                                0,
+                                                0,
+                                                "W");
+                Sprite skeleton_2_sprite = new Sprite(Start.data.skeleton_images,
+                                                0.2f,
+                                                0,
+                                                0,
+                                                "E");
+                Sprite skeleton_1_sprite_death = new Sprite(Start.data.death_images_large,
+                                                0.2f,
+                                                0,
+                                                0,
+                                                "W");
+                Sprite skeleton_2_sprite_death = new Sprite(Start.data.death_images_large,
+                                                0.2f,
+                                                0,
+                                                0,
+                                                "E");
+                skeleton_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
+                skeleton_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
+                
+                Unit u1 = new Unit("Skeleton",
+                                    130,
+                                    150,
+                                    2,
+                                    4,
+                                    new List<int>(){126,140,14,15},
+                                    skeleton_1_sprite,
+                                    skeleton_1_sprite_death);
+                u1.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
+                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+                u1.weapon_weakness = "club";
+
+                Unit u2 = new Unit("Skeleton",
+                                    120,
+                                    170,
+                                    2,
+                                    4,
+                                    new List<int>(){116,160,14,15},
+                                    skeleton_2_sprite,
+                                    skeleton_2_sprite_death);
+                u2.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
+                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+                u2.weapon_weakness = "club";
+
+                Monster_AI u1_ai = new Monster_AI(1,true,"W",0.2f);
+                Monster_AI u2_ai = new Monster_AI(1,true,"E",0.2f);
+
+                s31.units.Add(u1);
+                s31.units.Add(u2);
+                s31.ais.Add(u1_ai);
+                s31.ais.Add(u2_ai);
             }
         }
 

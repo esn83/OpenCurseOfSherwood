@@ -110,7 +110,7 @@ namespace main {
         public Color bat_color = new Color(163,167,167,255);
         public Color troll_color = new Color(183,251,191,255);
         public Color archer_color = new Color(239,233,231,255);
-        public Color brigand_color = new Color(239,233,231,255);
+        public Color brigand_color = new Color(252,249,252,255);
         public Color skeleton_color = new Color(251,251,139,255);
         public Color evil_witch_color = new Color(252,249,252,255);
         public Color bee_color = new Color(251,251,139,255);
@@ -135,13 +135,6 @@ namespace main {
                                                           "1", //damage
                                                           "3"}; // bullet speed
 
-        public List<string> crossbow_data = new List<string> {"assets/images/weapon_crossbow_icon_1.png", // icon img
-                                                              "assets/images/weapon_crossbow_bullet_1.png", // bullet img
-                                                              "assets/sounds/weapon_crossbow_bullet_1.mp3", // shoot sound
-                                                              "0.11", // sound delay
-                                                              "1", //damage
-                                                              "3"}; // bullet speed
-
         public List<string> club_data = new List<string> {"assets/images/weapon_club_icon_1.png", // icon img
                                                           "assets/images/weapon_club_bullet_1.png", // bullet img
                                                           "assets/sounds/weapon_club_bullet_1.mp3", // shoot sound
@@ -155,13 +148,6 @@ namespace main {
                                                                    "0.11", // sound delay
                                                                    "1", //damage
                                                                    "3"}; // bullet speed
-
-        public List<string> fire_breath_data = new List<string> {"assets/images/weapon_fire_breath_icon_1.png", // icon img
-                                                                 "assets/images/weapon_fire_breath_bullet_1.png", // bullet img
-                                                                 "assets/sounds/weapon_fire_breath_bullet_1.mp3", // shoot sound
-                                                                 "0.11", // sound delay
-                                                                 "1", //damage
-                                                                 "3"}; // bullet speed
 
         public List<string> pollen_data = new List<string> {"assets/images/weapon_pollen_icon_1.png", // icon img
                                                             "assets/images/weapon_pollen_bullet_1.png", // bullet img
@@ -177,6 +163,20 @@ namespace main {
                                                               "1", //damage
                                                               "3"}; // bullet speed
 
+        public List<string> crossbow_data = new List<string> {"assets/images/weapon_crossbow_icon_1.png", // icon img
+                                                              "assets/images/weapon_crossbow_bullet_1.png", // bullet img
+                                                              "assets/sounds/weapon_crossbow_bullet_1.mp3", // shoot sound
+                                                              "0.11", // sound delay
+                                                              "1", //damage
+                                                              "3"}; // bullet speed
+
+        public List<string> fire_breath_data = new List<string> {"assets/images/weapon_fire_breath_icon_1.png", // icon img
+                                                                 "assets/images/weapon_fire_breath_bullet_1.png", // bullet img
+                                                                 "assets/sounds/weapon_fire_breath_bullet_1.mp3", // shoot sound
+                                                                 "0.11", // sound delay
+                                                                 "1", //damage
+                                                                 "3"}; // bullet speed
+
         // items
         public IDictionary<string, List<string>> items_data_dict = new Dictionary<string, List<string>>{};
 
@@ -186,6 +186,8 @@ namespace main {
         public List<string> fangs_data = new List<string> {"assets/images/item_fangs_1.png"};
         public List<string> f_elixir_data = new List<string> {"assets/images/item_f-elixir_1.png"};
         public List<string> bag_gold_data = new List<string> {"assets/images/item_bag_gold_1.png"};
+        public List<string> key_data = new List<string> {"assets/images/item_key_1.png"};
+        public List<string> map_data = new List<string> {"assets/images/item_map_1.png"};
 
         // npcs
         public List<string> good_witch_images = new List<string> {"assets/images/good_witch_left_1.png",
@@ -193,7 +195,13 @@ namespace main {
                                                                   "assets/images/good_witch_left_3.png",
                                                                   "assets/images/good_witch_left_2.png"};
 
+        public List<string> hermit_images = new List<string> {"assets/images/hermit_left_1.png",
+                                                              "assets/images/hermit_left_2.png",
+                                                              "assets/images/hermit_left_3.png",
+                                                              "assets/images/hermit_left_2.png"};
+
         public Color good_witch_color = new Color(252,249,252,255);
+        public Color hermit_color = new Color(252,249,252,255);
 
         // scenes
         public List<string> scene_1 = new List<string>() {"assets/images/map/map_1_start.png"};
@@ -233,6 +241,14 @@ namespace main {
                                                              "assets/images/map/map_24_23right_river_frozen_extra_1.png"};
         public List<string> scene_25 = new List<string>() {"assets/images/map/map_25_24right.png"};
         public List<string> scene_26 = new List<string>() {"assets/images/map/map_26_25right.png"};
+        public List<string> scene_27 = new List<string>() {"assets/images/map/map_27_22up.png"};
+        public List<string> scene_27_2 = new List<string>() {"assets/images/map/map_27_22up_gate_open.png"};
+        public List<string> scene_28 = new List<string>() {"assets/images/map/map_28_27up.png"};
+        public List<string> scene_29 = new List<string>() {"assets/images/map/map_29_28left.png",
+                                                           "assets/images/map/map_29_28left_extra_1.png"};
+        public List<string> scene_30 = new List<string>() {"assets/images/map/map_30_29up.png",
+                                                           "assets/images/map/map_30_29up_extra_1.png"};
+        public List<string> scene_31 = new List<string>() {"assets/images/map/map_31_29left.png"};
 
         // topbar
         public string topbar = "assets/images/map_topbar.png";
@@ -248,11 +264,11 @@ namespace main {
         {
             weapons_data_dict.Add("sword", sword_data);
             weapons_data_dict.Add("rock", rock_data);
-            weapons_data_dict.Add("crossbow", crossbow_data);
             weapons_data_dict.Add("club", club_data);
             weapons_data_dict.Add("silver dagger", silver_dagger_data);
             weapons_data_dict.Add("pollen", pollen_data);
             weapons_data_dict.Add("ice wand", ice_wand_data);
+            weapons_data_dict.Add("crossbow", crossbow_data);
             weapons_data_dict.Add("fire breath", fire_breath_data);
 
             items_data_dict.Add("shield", shield_data);
@@ -261,6 +277,8 @@ namespace main {
             items_data_dict.Add("fangs", fangs_data);
             items_data_dict.Add("f-elixir",f_elixir_data);
             items_data_dict.Add("bag gold", bag_gold_data);
+            items_data_dict.Add("key", key_data);
+            items_data_dict.Add("map", map_data);
         }
     }
 }

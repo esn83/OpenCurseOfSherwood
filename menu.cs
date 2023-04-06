@@ -40,7 +40,7 @@ namespace main {
         }
 
         public void run() {
-            Raylib.InitWindow(menu_screen_w, menu_screen_h, "Menu");
+            Raylib.InitWindow(menu_screen_w, menu_screen_h, "Open Curse of Sherwood : Menu");
             Raylib.SetTargetFPS( (int) choises[4] ); // set target FPS
             Raylib.SetWindowPosition(500,200); // window position
             Raylib.InitAudioDevice(); // sound, must be called before loading sounds
