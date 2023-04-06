@@ -99,7 +99,7 @@ namespace main {
             // monk.active_weapon = monk.weapons[0];
             // monk.items.Add(new Item("crystal ball",Start.data.crystal_ball_data,0,0));
             // monk.items.Add(new Item("fangs",Start.data.fangs_data,0,0));
-            monk.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],0,0));
+            // monk.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],0,0));
             players[0].unit = monk;
         }
 
