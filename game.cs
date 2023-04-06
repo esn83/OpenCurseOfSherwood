@@ -114,7 +114,6 @@ namespace main {
                                      Raylib.GetMonitorHeight(Raylib.GetCurrentMonitor()));
                 Raylib.SetWindowPosition(0,0);
             }
-            Raylib.InitAudioDevice(); // sound, must be called before loading sounds
             init();
             while (!Raylib.WindowShouldClose())
             {
@@ -125,7 +124,6 @@ namespace main {
                 update();
                 draw();
             }
-            Raylib.CloseAudioDevice();
             Raylib.CloseWindow();
         }
 

@@ -259,6 +259,29 @@ namespace main {
         public List<string> rise_sounds = new List<string> {"assets/sounds/swamp_rise_1.mp3"};
         public Color bg = new Color(25,29,25,255); // asset images background color, replace with Color(0,0,0,0) in code
 
+        // guide poem
+        public List<string> guide = new List<string>(){
+            "For fire protection you must amass",
+            "Werewolves fangs and a Scrying glass",
+            "Then travel through the misty wood",
+            "To take them to the Witch of Good",
+            "",
+            "From the man of solitary means",
+            "A parchment guide is what you need",
+            "Without it you may go astray",
+            "And in the forest lose your way",
+            "",
+            "To buy the means to safety walk",
+            "A firey monster you must stalk",
+            "He holds the price with precious metal",
+            "Convey to the hermit without much fettle",
+            "",
+            "A silver cross must be found",
+            "Before you feel safe and sound",
+            "On the pentagon it must be dropped",
+            "And the portal of evil will be stopped",
+        };
+
         // constructor
         public Data()
         {
@@ -279,6 +302,7 @@ namespace main {
             items_data_dict.Add("bag gold", bag_gold_data);
             items_data_dict.Add("key", key_data);
             items_data_dict.Add("map", map_data);
+
         }
     }
 }

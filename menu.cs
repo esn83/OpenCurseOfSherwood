@@ -15,6 +15,7 @@ namespace main {
         private int fps;
 
         private Texture2D cover;
+        private Color txt_color;
 
         public List<Object> choises;
 
@@ -33,6 +34,7 @@ namespace main {
             game_screen_h = 0;
             fps = 0;
             cover_img_path = cover_img_path_p;
+            txt_color = new Color(215,140,40,255);
 
             choises = new List<Object>(){};
 
@@ -43,7 +45,6 @@ namespace main {
             Raylib.InitWindow(menu_screen_w, menu_screen_h, "Open Curse of Sherwood : Menu");
             Raylib.SetTargetFPS( (int) choises[4] ); // set target FPS
             Raylib.SetWindowPosition(500,200); // window position
-            Raylib.InitAudioDevice(); // sound, must be called before loading sounds
             resize_cover();
             while (!Raylib.WindowShouldClose())
             {
@@ -52,8 +53,7 @@ namespace main {
                 events();
                 update();
                 draw();
-            }
-            Raylib.CloseAudioDevice();
+            }        
             Raylib.CloseWindow();
         }
 
@@ -67,8 +67,15 @@ namespace main {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(new Color(50,50,50,255));
             Raylib.DrawTexture(cover,menu_screen_w-cover.width-5,5,Color.WHITE);
-            Raylib.DrawText("MENU!", 12, 12, 20, Color.PINK);
-            Raylib.DrawText("Press SPACE to play!", 12, 40, 20, Color.PINK);
+            Raylib.DrawText("MENU!", 12, 12, 20, txt_color);
+            Raylib.DrawText("Press SPACE to play!", 12, 40, 20, txt_color);
+
+            int guide_y = 110;
+            foreach (string s in Start.data.guide) {
+                Raylib.DrawText(s, 12, guide_y, 15, txt_color);
+                guide_y += 20;
+            }
+
             Raylib.EndDrawing();
         }
 
