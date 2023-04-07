@@ -16,6 +16,7 @@ namespace main {
 
         private Texture2D cover;
         private Color txt_color;
+        Font font;
 
         public List<Object> choises;
 
@@ -34,7 +35,7 @@ namespace main {
             game_screen_h = 0;
             fps = 0;
             cover_img_path = cover_img_path_p;
-            txt_color = new Color(215,140,40,255);
+            txt_color = new Color(240,200,5,255);
 
             choises = new List<Object>(){};
 
@@ -46,6 +47,7 @@ namespace main {
             Raylib.SetTargetFPS( (int) choises[4] ); // set target FPS
             Raylib.SetWindowPosition(500,200); // window position
             resize_cover();
+            font = Raylib.LoadFont("assets/fonts/alagard.ttf");
             while (!Raylib.WindowShouldClose())
             {
                 if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)) {Start.playing = true;}
@@ -53,7 +55,8 @@ namespace main {
                 events();
                 update();
                 draw();
-            }        
+            }
+            Raylib.UnloadFont(font);
             Raylib.CloseWindow();
         }
 
@@ -72,8 +75,8 @@ namespace main {
 
             int guide_y = 110;
             foreach (string s in Start.data.guide) {
-                Raylib.DrawText(s, 12, guide_y, 15, txt_color);
-                guide_y += 20;
+                Raylib.DrawTextEx(font,s,new System.Numerics.Vector2(12,guide_y),font.baseSize*0.6f,0,txt_color);
+                guide_y += 22;
             }
 
             Raylib.EndDrawing();

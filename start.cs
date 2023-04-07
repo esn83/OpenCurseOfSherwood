@@ -14,7 +14,7 @@ namespace main {
             running = true;
             playing = false;
             data = new Data();
-            menu = new Menu(700,600,data.cover_image);
+            menu = new Menu(800,600,data.cover_image);
             game = new Game(menu.choises);
         }
 

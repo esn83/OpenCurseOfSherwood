@@ -14,11 +14,16 @@ namespace main {
         public SceneManager scene_manager;
         public Texture2D topbar;
         public Audio general_item_sound;
+
+        private Color txt_color;
+        Font font;
         
         public Game(List<Object> menuChoises_p) {
                     choises = menuChoises_p;
                     dt = 0;
                     dt_factor = 0;
+
+                    txt_color = new Color(240,200,5,255);
 
                     camera = new Camera(Raylib.GetScreenWidth(),
                              Raylib.GetScreenHeight(),
@@ -114,6 +119,7 @@ namespace main {
                                      Raylib.GetMonitorHeight(Raylib.GetCurrentMonitor()));
                 Raylib.SetWindowPosition(0,0);
             }
+            font = Raylib.LoadFont("assets/fonts/alagard.ttf");
             init();
             while (!Raylib.WindowShouldClose())
             {
@@ -124,6 +130,7 @@ namespace main {
                 update();
                 draw();
             }
+            Raylib.UnloadFont(font);
             Raylib.CloseWindow();
         }
 
@@ -453,12 +460,12 @@ namespace main {
 
             Raylib.EndMode2D();
             
-            Raylib.DrawText("FPS : " + Raylib.GetFPS().ToString(), 10, 10, 12, Color.PINK);
+            Raylib.DrawTextEx(font,"FPS : "+Raylib.GetFPS().ToString(),new System.Numerics.Vector2(10,10),font.baseSize*0.4f,0,txt_color);
             //Raylib.DrawFPS(10, 10);
-            Raylib.DrawText("move : arrow keys", 10, 25, 12, Color.PINK);
-            Raylib.DrawText("shoot : RCTRL", 10, 40, 12, Color.PINK);
-            Raylib.DrawText("next weapon : RSHIFT", 10, 55, 12, Color.PINK);
-            Raylib.DrawText("menu : SPACE", 10, 70, 12, Color.PINK);
+            Raylib.DrawTextEx(font,"move : arrow keys",new System.Numerics.Vector2(10,25),font.baseSize*0.4f,0,txt_color);
+            Raylib.DrawTextEx(font,"shoot : RCTRL",new System.Numerics.Vector2(10,40),font.baseSize*0.4f,0,txt_color);
+            Raylib.DrawTextEx(font,"next weapon : RSHIFT",new System.Numerics.Vector2(10,55),font.baseSize*0.4f,0,txt_color);
+            Raylib.DrawTextEx(font,"menu : SPACE",new System.Numerics.Vector2(10,70),font.baseSize*0.4f,0,txt_color);
 
             Raylib.EndDrawing();
 
