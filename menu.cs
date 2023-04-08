@@ -68,7 +68,7 @@ namespace main {
 
         void draw() {
             Raylib.BeginDrawing();
-            Raylib.ClearBackground(new Color(50,50,50,255));
+            Raylib.ClearBackground(new Color(25,29,25,255));
             Raylib.DrawTexture(cover,menu_screen_w-cover.width-5,5,Color.WHITE);
             Raylib.DrawText("MENU!", 12, 12, 20, txt_color);
             Raylib.DrawText("Press SPACE to play!", 12, 40, 20, txt_color);

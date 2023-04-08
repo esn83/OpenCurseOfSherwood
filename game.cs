@@ -379,7 +379,7 @@ namespace main {
         void draw() {
 
             Raylib.BeginDrawing();
-            Raylib.ClearBackground(new Color(35,35,35,255));
+            Raylib.ClearBackground(new Color(25,29,25,255));
             Raylib.BeginMode2D(camera.camera);
             Raylib.DrawTexture(topbar,65,42,Color.WHITE);
 
