@@ -16,7 +16,11 @@ namespace main {
         public Audio general_item_sound;
 
         private Color txt_color;
-        Font font;
+        private Font font;
+
+        private bool popup_is_showing = false;
+        private Texture2D popup_texture;
+        private string popup_text;
         
         public Game(List<Object> menuChoises_p) {
                     choises = menuChoises_p;
@@ -105,6 +109,7 @@ namespace main {
             // monk.items.Add(new Item("crystal ball",Start.data.crystal_ball_data,0,0));
             // monk.items.Add(new Item("fangs",Start.data.fangs_data,0,0));
             // monk.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],0,0));
+            //monk.items.Add(new Item("map",Start.data.items_data_dict["map"],0,0));
             players[0].unit = monk;
         }
 
@@ -140,12 +145,14 @@ namespace main {
         }
 
         void events() {
+            foreach (Player p in players) {
+                p.events(dt_factor, scene_manager.active_scene);
+            }
+
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_X)) {
                 System.Console.WriteLine("the X key!");
                 players[0].lives += 1;
             }
-
-            foreach (Player p in players) {p.events(dt_factor, scene_manager.active_scene);}
         }
 
         void update() {
@@ -456,6 +463,10 @@ namespace main {
                                         new Color(106,207,111,255));
                     }
                 }
+
+                if (p.popup) {show_popup();}
+                else if (popup_is_showing) {popup_is_showing = false;}
+
             }
 
             Raylib.EndMode2D();
@@ -470,5 +481,20 @@ namespace main {
             Raylib.EndDrawing();
 
         }
+
+        public void show_popup() {
+            if (popup_is_showing == false) {
+                Image img = Raylib.LoadImage(Start.data.swamp_map);
+                //Raylib.ImageResize(ref img, (int) choises[2]/2, (int) choises[3]/2); // divide width, height because camera zoom is 2.0f
+                popup_texture = Raylib.LoadTextureFromImage(img);
+                popup_text = "Press " + players[0].controls[6].ToString() + " to close map.";
+                popup_is_showing = true;
+            }
+            else {
+                Raylib.DrawTexture(popup_texture, 100, 30, Color.WHITE);
+                Raylib.DrawTextEx(font,popup_text,new System.Numerics.Vector2(100,20),font.baseSize*0.3f,0,txt_color);
+            }
+        }
+
     }
 }

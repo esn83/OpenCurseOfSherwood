@@ -258,6 +258,7 @@ namespace main {
         public List<string> sink_sounds = new List<string> {"assets/sounds/swamp_sink_1.mp3"};
         public List<string> rise_sounds = new List<string> {"assets/sounds/swamp_rise_1.mp3"};
         public Color bg = new Color(25,29,25,255); // asset images background color, replace with Color(0,0,0,0) in code
+        public string swamp_map = "assets/images/swamp_map_1.png";
 
         // guide poem
         public List<string> guide = new List<string>(){

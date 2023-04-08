@@ -16,7 +16,7 @@ namespace main {
 
         private Texture2D cover;
         private Color txt_color;
-        Font font;
+        private Font font;
 
         public List<Object> choises;
 
@@ -93,7 +93,6 @@ namespace main {
         
         // temp menu items until menu screen with choises is implemented
         public void temp_menu() {
-
             players = new List<Object> {new List<Object> {
                                                         "Player 1",
                                                         new Color(255,255,255,255),
@@ -103,11 +102,11 @@ namespace main {
                                                                                KeyboardKey.KEY_DOWN, // down
                                                                                KeyboardKey.KEY_RIGHT_CONTROL, // fire
                                                                                KeyboardKey.KEY_RIGHT_SHIFT, // next weapon
+                                                                               KeyboardKey.KEY_F1, // map
                                                         },
                                                         3 // lives
                                         }
             };
-
             fullscreen = false;
             //fullscreen = true;
             game_screen_w = 800;

@@ -11,6 +11,7 @@ namespace main {
         public List<KeyboardKey> controls; // west, north, east, south, fire, next weapon
         public Random rnd = new Random();
         public Unit? unit;
+        public bool popup = false;
         
         // constructor
         public Player(string name_p,
@@ -48,6 +49,14 @@ namespace main {
             }
 
             if (Raylib.IsKeyPressed(controls[5])) {unit.next_weapon();}
+
+            if (Raylib.IsKeyPressed(controls[6])) {
+                foreach (Item i in unit.items) {
+                    if (i.name.Equals("map")) {
+                        popup = !popup;
+                    }
+                }
+            }
 
         }
 
