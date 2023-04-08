@@ -18,9 +18,9 @@ namespace main {
         private Color txt_color;
         private Font font;
 
-        private bool popup_is_showing = false;
-        private Texture2D popup_texture;
-        private string popup_text;
+        private bool popup_1_is_showing = false;
+        private Texture2D popup_1_texture;
+        private string popup_1_text;
         
         public Game(List<Object> menuChoises_p) {
                     choises = menuChoises_p;
@@ -464,8 +464,8 @@ namespace main {
                     }
                 }
 
-                if (p.popup) {show_popup();}
-                else if (popup_is_showing) {popup_is_showing = false;}
+                if (p.popup_1) {show_popup_1();}
+                else if (popup_1_is_showing) {popup_1_is_showing = false;}
 
             }
 
@@ -482,17 +482,16 @@ namespace main {
 
         }
 
-        public void show_popup() {
-            if (popup_is_showing == false) {
+        public void show_popup_1() { // swamp map
+            if (popup_1_is_showing == false) {
                 Image img = Raylib.LoadImage(Start.data.swamp_map);
-                //Raylib.ImageResize(ref img, (int) choises[2]/2, (int) choises[3]/2); // divide width, height because camera zoom is 2.0f
-                popup_texture = Raylib.LoadTextureFromImage(img);
-                popup_text = "Press " + players[0].controls[6].ToString() + " to close map.";
-                popup_is_showing = true;
+                popup_1_texture = Raylib.LoadTextureFromImage(img);
+                popup_1_text = "Press " + players[0].controls[6].ToString() + " to close map";
+                popup_1_is_showing = true;
             }
             else {
-                Raylib.DrawTexture(popup_texture, 100, 30, Color.WHITE);
-                Raylib.DrawTextEx(font,popup_text,new System.Numerics.Vector2(100,20),font.baseSize*0.3f,0,txt_color);
+                Raylib.DrawTexture(popup_1_texture, 100, 30, Color.WHITE);
+                Raylib.DrawTextEx(font,popup_1_text,new System.Numerics.Vector2(100,20),font.baseSize*0.3f,0,txt_color);
             }
         }
 
