@@ -8,7 +8,7 @@ namespace main {
         public Color color;
         public int lives;
         public int score = 0;
-        public List<KeyboardKey> controls; // west, north, east, south, fire, next weapon
+        public List<KeyboardKey> controls;
         public Random rnd = new Random();
         public Unit? unit;
         public bool popup_1 = false;
@@ -25,7 +25,10 @@ namespace main {
         }
 
         public void events(float dt_factor, Scene active_scene) {
-            if (Raylib.IsKeyDown(controls[0]) || Raylib.IsKeyDown(controls[1]) || Raylib.IsKeyDown(controls[2]) || Raylib.IsKeyDown(controls[3])) {
+            if (Raylib.IsKeyDown(controls[0]) ||
+                Raylib.IsKeyDown(controls[1]) ||
+                Raylib.IsKeyDown(controls[2]) || 
+                Raylib.IsKeyDown(controls[3])) {
                 if (unit != null) {
                     if (Raylib.IsKeyDown(controls[0])) {unit.move_left(dt_factor, active_scene);}
                     if (Raylib.IsKeyDown(controls[1])) {unit.move_up(dt_factor, active_scene);}
@@ -41,7 +44,12 @@ namespace main {
                 }
                 else {
                     if (lives > 0) {
-                        if (unit.respawn_at(unit.pos_x, unit.pos_y) == true) {
+                        if (active_scene.respawn_point_x != 0 && active_scene.respawn_point_y != 0) {
+                            if (unit.respawn_at(active_scene.respawn_point_x, active_scene.respawn_point_y) == true) {
+                                lives -= 1;
+                            }
+                        }
+                        else if (unit.respawn_at(unit.pos_x, unit.pos_y) == true) {
                             lives -= 1;
                         }
                     }
@@ -57,7 +65,6 @@ namespace main {
                     }
                 }
             }
-
         }
 
         public void update(float dt, float dt_factor, Scene active_scene) {

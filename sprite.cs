@@ -40,25 +40,22 @@ namespace main {
         public void update(float dt) {
             frame_delay_count += dt;
 
-            if (direction.Equals("W")) {direction_w_or_e = direction;}
-            if (direction.Equals("E")) {direction_w_or_e = direction;}
-
-            if (direction_w_or_e.Equals("W")) {
+            if (direction.Equals("W")) {
+                direction_w_or_e = direction;
                 textures_active = textures_w;
-            }
-            else {
+                }
+            if (direction.Equals("E")) {
+                direction_w_or_e = direction;
                 textures_active = textures_e;
-            }
+                }
         }
 
         public void draw() {
             Raylib.DrawTexture(textures_active[current_frame], pos_x, pos_y, Color.WHITE);
         }
 
-        // functions
-
         public void next_frame() {
-            if ( frame_delay_count > frame_delay) {
+            if (frame_delay_count > frame_delay) {
                 if (current_frame + 1 >= textures_active.Count) {
                     current_frame = 0;
                 }

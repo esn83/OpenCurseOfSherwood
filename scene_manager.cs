@@ -9,7 +9,9 @@ namespace main {
         public Scene s1;public Scene s2;public Scene s3;public Scene s4;public Scene s5;public Scene s6;public Scene s7;public Scene s8;public Scene s9;
         public Scene s10;public Scene s11;public Scene s12;public Scene s13;public Scene s14;public Scene s15;public Scene s16;public Scene s17;
         public Scene s18;public Scene s19;public Scene s20;public Scene s21;public Scene s22;public Scene s23;public Scene s24;public Scene s25;
-        public Scene s26;public Scene s27;public Scene s28;public Scene s29;public Scene s30;public Scene s31;
+        public Scene s26;public Scene s27;public Scene s28;public Scene s29;public Scene s30;public Scene s31; public Scene s32;public Scene s33;
+        public Scene s34;public Scene s35;public Scene s36;public Scene s37;public Scene s38;public Scene s39;public Scene s40;public Scene s41;
+        public Scene s42;public Scene s43;
 
         // constructor
         public SceneManager()
@@ -43,6 +45,14 @@ namespace main {
             // bottom +3up
             else if (active_scene == s29) {active_scene = init_scene_28();}
             else if (active_scene == s31) {active_scene = init_scene_29();}
+            // swamp
+            else if (active_scene == s34) {active_scene = init_scene_33();}
+            // above swamp
+            else if (active_scene == s36) {active_scene = init_scene_37();}
+            else if (active_scene == s37) {active_scene = init_scene_38();}
+            else if (active_scene == s39) {active_scene = init_scene_40();}
+            else if (active_scene == s40) {active_scene = init_scene_41();}
+            else if (active_scene == s41) {active_scene = init_scene_42();}
             active_scene.player_bullets = new List<Bullet>(){};
             active_scene.monster_bullets = new List<Bullet>(){};
         }
@@ -72,25 +82,14 @@ namespace main {
             // bottom +3up
             else if (active_scene == s28) {active_scene = init_scene_29();}
             else if (active_scene == s29) {active_scene = init_scene_31();}
-            active_scene.player_bullets = new List<Bullet>(){};
-            active_scene.monster_bullets = new List<Bullet>(){};
-        }
-
-        public void next_scene_down() {
-            // bottom right side map
-            if      (active_scene == s8) {active_scene = init_scene_7();}
-            else if (active_scene == s6) {active_scene = init_scene_9();}
-            else if (active_scene == s12) {active_scene = init_scene_13();}
-            // bottom left side map
-            else if (active_scene == s17) {active_scene = init_scene_16();}
-            else if (active_scene == s16) {active_scene = init_scene_19();}
-            // bottom +1up
-            else if (active_scene == s20) {active_scene = init_scene_14();}
-            // bottom +2up
-            else if (active_scene == s27) {active_scene = init_scene_22();}
-            // bottom +3up
-            else if (active_scene == s28) {active_scene = init_scene_27();}
-            else if (active_scene == s30) {active_scene = init_scene_29();}
+            // swamp
+            else if (active_scene == s33) {active_scene = init_scene_34();}
+            // above swamp
+            else if (active_scene == s37) {active_scene = init_scene_36();}
+            else if (active_scene == s38) {active_scene = init_scene_37();}
+            else if (active_scene == s40) {active_scene = init_scene_39();}
+            else if (active_scene == s41) {active_scene = init_scene_40();}
+            else if (active_scene == s42) {active_scene = init_scene_41();}
             active_scene.player_bullets = new List<Bullet>(){};
             active_scene.monster_bullets = new List<Bullet>(){};
         }
@@ -110,6 +109,41 @@ namespace main {
             // bottom +3up
             else if (active_scene == s27) {active_scene = init_scene_28();}
             else if (active_scene == s29) {active_scene = init_scene_30();}
+            // swamp
+            else if (active_scene == s31) {active_scene = init_scene_32();}
+            else if (active_scene == s32) {active_scene = init_scene_33();}
+            else if (active_scene == s34) {active_scene = init_scene_35();}
+            else if (active_scene == s35) {active_scene = init_scene_36();}
+            // above swamp
+            else if (active_scene == s39) {active_scene = init_scene_38();}
+            else if (active_scene == s41) {active_scene = init_scene_43();}
+            active_scene.player_bullets = new List<Bullet>(){};
+            active_scene.monster_bullets = new List<Bullet>(){};
+        }
+
+        public void next_scene_down() {
+            // bottom right side map
+            if      (active_scene == s8) {active_scene = init_scene_7();}
+            else if (active_scene == s6) {active_scene = init_scene_9();}
+            else if (active_scene == s12) {active_scene = init_scene_13();}
+            // bottom left side map
+            else if (active_scene == s17) {active_scene = init_scene_16();}
+            else if (active_scene == s16) {active_scene = init_scene_19();}
+            // bottom +1up
+            else if (active_scene == s20) {active_scene = init_scene_14();}
+            // bottom +2up
+            else if (active_scene == s27) {active_scene = init_scene_22();}
+            // bottom +3up
+            else if (active_scene == s28) {active_scene = init_scene_27();}
+            else if (active_scene == s30) {active_scene = init_scene_29();}
+            // swamp
+            else if (active_scene == s32) {active_scene = init_scene_31();}
+            else if (active_scene == s33) {active_scene = init_scene_32();}
+            else if (active_scene == s35) {active_scene = init_scene_34();}
+            else if (active_scene == s36) {active_scene = init_scene_35();}
+            // above swamp
+            else if (active_scene == s38) {active_scene = init_scene_39();}
+            else if (active_scene == s43) {active_scene = init_scene_41();}
             active_scene.player_bullets = new List<Bullet>(){};
             active_scene.monster_bullets = new List<Bullet>(){};
         }
@@ -135,8 +169,8 @@ namespace main {
             if (active_scene == s5) { // scene 5 4right, drop club
                 active_scene.weapons.Add(new Weapon("club",Start.data.weapons_data_dict["club"],u.pos_x+5,u.pos_y+15));
             }
-            if (active_scene == s8) { // scene 8 7up, drop crystal ball
-                active_scene.items.Add(new Item("crystal ball",Start.data.items_data_dict["crystal ball"], u.pos_x+5, u.pos_y+15));
+            if (active_scene == s8) { // scene 8 7up, drop scrying_glass
+                active_scene.items.Add(new Item("scrying glass",Start.data.items_data_dict["scrying glass"], u.pos_x+5, u.pos_y+15));
             }
             if (active_scene == s13) { // scene 13 12down, drop silver dagger
                 active_scene.weapons.Add(new Weapon("silver dagger",Start.data.weapons_data_dict["silver dagger"],u.pos_x+5,u.pos_y+15));
@@ -567,7 +601,7 @@ namespace main {
                 spawn_units();}
             else if (!s7.scene_monsters_done) {
                 spawn_units();}
-            s7.door_up = new Rectangle(258,150,20,1); // evil witch hut door outside
+            s7.door_up = new Rectangle(256,150,15,1); // evil witch hut door outside
             return s7;            
 
             void spawn_units() {
@@ -642,7 +676,7 @@ namespace main {
             s8.disable_left = true;
             s8.disable_right = true;
             s8.disable_down = true;
-            s8.door_down = new Rectangle(187,220,20,1); // evil witch hut door inside
+            s8.door_down = new Rectangle(184,220,15,1); // evil witch hut door inside
             return s8;
 
             void spawn_units() {
@@ -785,7 +819,7 @@ namespace main {
                 spawn_units();}
             else if (!s12.scene_monsters_done) {
                 spawn_units();}
-            s12.door_left = new Rectangle(105,160,5,10); // broken door
+            s12.door_left = new Rectangle(95,155,1,10); // broken door
             return s12;
             
             void spawn_units() {
@@ -1055,7 +1089,7 @@ namespace main {
                 spawn_units();}
             else if (!s16.scene_monsters_done) {
                 spawn_units();}
-            s16.door_up = new Rectangle(140,150,20,1); // good witch hut door outside
+            s16.door_up = new Rectangle(143,150,15,1); // good witch hut door outside
             return s16;
 
             void spawn_units() {
@@ -1126,7 +1160,7 @@ namespace main {
                 s17 = new Scene(Start.data.scene_17);
                 spawn_units();}
             s17.disable_down = true;
-            s17.door_down = new Rectangle(187,220,20,1); // good witch hut door inside
+            s17.door_down = new Rectangle(184,220,15,1); // good witch hut door inside
             return s17;
 
             void spawn_units() {
@@ -1156,7 +1190,7 @@ namespace main {
                 
                 u1.is_npc = true;
                 u1.trade_takes.Add("fangs");
-                u1.trade_takes.Add("crystal ball");
+                u1.trade_takes.Add("scrying glass");
                 u1.trade_gives.Add("f-elixir");
                 u1.items.Add(new Item("f-elixir",Start.data.items_data_dict["f-elixir"],0,0));
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
@@ -1593,6 +1627,11 @@ namespace main {
                 u4.terrain_collision_colors.Add("{R:182 G:250 B:250 A:255}");
                 u4.terrain_collision_colors.Add("{R:252 G:249 B:252 A:255}");
 
+                u1.can_pass_through_obstacles = true;
+                u2.can_pass_through_obstacles = true;
+                u3.can_pass_through_obstacles = true;
+                u4.can_pass_through_obstacles = true;
+
                 u1.death_sounds = bee_death_sound;
                 u2.death_sounds = bee_death_sound;
                 u3.death_sounds = bee_death_sound;
@@ -1689,6 +1728,12 @@ namespace main {
                                 bee_4_sprite,
                                 bee_4_sprite_death);
                 
+
+                u1.can_pass_through_obstacles = true;
+                u2.can_pass_through_obstacles = true;
+                u3.can_pass_through_obstacles = true;
+                u4.can_pass_through_obstacles = true;
+
                 u1.death_sounds = bee_death_sound;
                 u2.death_sounds = bee_death_sound;
                 u3.death_sounds = bee_death_sound;
@@ -1828,7 +1873,7 @@ namespace main {
                 s30 = new Scene(Start.data.scene_30);
                 spawn_units();}
             s30.disable_down = true;
-            s30.door_down = new Rectangle(187,220,20,1); // hermit hut door inside
+            s30.door_down = new Rectangle(184,220,15,1); // hermit hut door inside
             return s30;
 
             void spawn_units() {
@@ -1872,10 +1917,13 @@ namespace main {
         public Scene init_scene_31() { // scene 31 29left
             if (s31 == null) {
                 s31 = new Scene(Start.data.scene_31);
-                spawn_units();}
+                spawn_units();
+                }
             else if (!s31.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                }
             s31.disable_up = true;
+            s31.door_up = new Rectangle(240,100,15,1);
             return s31;
 
             void spawn_units() {
@@ -1938,6 +1986,888 @@ namespace main {
                 s31.units.Add(u2);
                 s31.ais.Add(u1_ai);
                 s31.ais.Add(u2_ai);
+            }
+        }
+
+        public Scene init_scene_32() { // scene 32 31up swamp
+            if (s32 == null) {
+                s32 = new Scene(Start.data.scene_32);
+                spawn_units();}
+            else if (!s32.scene_monsters_done) {
+                spawn_units();}
+            s32.disable_up = true;
+            s32.disable_down = true;
+            s32.disable_left = true;
+            s32.disable_right = true;
+
+            s32.door_down = new Rectangle(220,225,15,1);
+            s32.door_up = new Rectangle(125,105,15,1);
+
+            s32.swamp_areas.Add(new Rectangle(63,88,35,148));
+            s32.swamp_areas.Add(new Rectangle(245,210,76,26));
+            s32.swamp_areas.Add(new Rectangle(63,210,151,26));
+            s32.swamp_areas.Add(new Rectangle(300,88,21,148));
+            s32.swamp_areas.Add(new Rectangle(63,88,55,26));
+            s32.swamp_areas.Add(new Rectangle(140,145,45,35));
+            s32.swamp_areas.Add(new Rectangle(215,170,2,40));
+            s32.swamp_areas.Add(new Rectangle(150,95,2,25));
+            s32.swamp_areas.Add(new Rectangle(208,136,43,2));
+
+            s32.respawn_point_x = 220;
+            s32.respawn_point_y = 200;
+            return s32;
+
+            void spawn_units() {
+                s32.units = new List<Unit>(){};
+                s32.ais = new List<Monster_AI>(){};
+
+                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
+                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
+                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+
+                Unit u1 = new Unit("Fire Spirit",
+                                230,
+                                170,
+                                2,
+                                1,
+                                new List<int>(){230,170,15,10},
+                                fire_spirit_1_sprite,
+                                null);
+                                            
+                Unit u2 = new Unit("Fire Spirit",
+                                210,
+                                170,
+                                2,
+                                1,
+                                new List<int>(){210,170,15,10},
+                                fire_spirit_2_sprite,
+                                null);
+
+                Unit u3 = new Unit("Fire Spirit",
+                                230,
+                                150,
+                                2,
+                                1,
+                                new List<int>(){230,150,15,10},
+                                fire_spirit_3_sprite,
+                                null);
+
+                Unit u4 = new Unit("Fire Spirit",
+                                210,
+                                150,
+                                2,
+                                1,
+                                new List<int>(){210,150,15,10},
+                                fire_spirit_4_sprite,
+                                null);
+                
+                u1.is_immortal = true;
+                u2.is_immortal = true;
+                u3.is_immortal = true;
+                u4.is_immortal = true;
+
+                u1.can_pass_through_obstacles = true;
+                u2.can_pass_through_obstacles = true;
+                u3.can_pass_through_obstacles = true;
+                u4.can_pass_through_obstacles = true;
+
+                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+
+                s32.units.Add(u1);
+                s32.units.Add(u2);
+                s32.units.Add(u3);
+                s32.units.Add(u4);
+                s32.ais.Add(u1_ai);
+                s32.ais.Add(u2_ai);
+                s32.ais.Add(u3_ai);
+                s32.ais.Add(u4_ai);
+            }
+        }
+
+        public Scene init_scene_33() { // scene 33 32up swamp
+            if (s33 == null) {
+                s33 = new Scene(Start.data.scene_33);
+                spawn_units();}
+            else if (!s33.scene_monsters_done) {
+                spawn_units();}
+            s33.disable_up = true;
+            s33.disable_down = true;
+            s33.disable_left = true;
+            s33.disable_right = true;
+
+            s33.door_down = new Rectangle(155,225,15,1);
+            s33.door_left = new Rectangle(70,140,1,15);
+
+            s33.swamp_areas.Add(new Rectangle(63,88,258,25));
+            s33.swamp_areas.Add(new Rectangle(63,113,57,20));
+            s33.swamp_areas.Add(new Rectangle(270,88,51,148));
+            s33.swamp_areas.Add(new Rectangle(63,165,80,71));
+            s33.swamp_areas.Add(new Rectangle(188,210,133,26));
+            s33.swamp_areas.Add(new Rectangle(175,140,45,2));
+
+            s33.respawn_point_x = 155;
+            s33.respawn_point_y = 200;
+            return s33;
+
+            void spawn_units() {
+                s33.units = new List<Unit>(){};
+                s33.ais = new List<Monster_AI>(){};
+
+                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
+                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
+                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+
+                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
+                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
+                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+
+                bat_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
+                bat_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
+                bat_3_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
+                bat_4_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
+
+                Audio bat_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
+
+                Unit u1 = new Unit("Bat",
+                                230,
+                                170,
+                                2,
+                                1,
+                                new List<int>(){230,170,15,10},
+                                bat_1_sprite,
+                                bat_1_sprite_death);
+                                            
+                Unit u2 = new Unit("Bat",
+                                210,
+                                170,
+                                2,
+                                1,
+                                new List<int>(){210,170,15,10},
+                                bat_2_sprite,
+                                bat_2_sprite_death);
+
+                Unit u3 = new Unit("Bat",
+                                230,
+                                150,
+                                2,
+                                1,
+                                new List<int>(){230,150,15,10},
+                                bat_3_sprite,
+                                bat_3_sprite_death);
+
+                Unit u4 = new Unit("Bat",
+                                210,
+                                150,
+                                2,
+                                1,
+                                new List<int>(){210,150,15,10},
+                                bat_4_sprite,
+                                bat_4_sprite_death);
+                
+                u1.death_sounds = bat_death_sound;
+                u2.death_sounds = bat_death_sound;
+                u3.death_sounds = bat_death_sound;
+                u4.death_sounds = bat_death_sound;
+                
+                u1.can_pass_through_obstacles = true;
+                u2.can_pass_through_obstacles = true;
+                u3.can_pass_through_obstacles = true;
+                u4.can_pass_through_obstacles = true;
+
+                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+
+                s33.units.Add(u1);
+                s33.units.Add(u2);
+                s33.units.Add(u3);
+                s33.units.Add(u4);
+                s33.ais.Add(u1_ai);
+                s33.ais.Add(u2_ai);
+                s33.ais.Add(u3_ai);
+                s33.ais.Add(u4_ai);
+            }
+        }
+
+        public Scene init_scene_34() { // scene 34 33left swamp
+            if (s34 == null) {
+                s34 = new Scene(Start.data.scene_34);
+                spawn_units();}
+            else if (!s34.scene_monsters_done) {
+                spawn_units();}
+            s34.disable_up = true;
+            s34.disable_down = true;
+            s34.disable_left = true;
+            s34.disable_right = true;
+
+            s34.door_right = new Rectangle(315,140,1,15);
+            s34.door_up = new Rectangle(135,105,15,1);
+
+            s34.swamp_areas.Add(new Rectangle(63,88,32,148));
+            s34.swamp_areas.Add(new Rectangle(168,88,153,40));
+            s34.swamp_areas.Add(new Rectangle(63,215,258,21));
+            s34.swamp_areas.Add(new Rectangle(280,165,41,71));
+            s34.swamp_areas.Add(new Rectangle(155,130,7,2));
+            s34.swamp_areas.Add(new Rectangle(240,130,2,50));
+            s34.swamp_areas.Add(new Rectangle(175,178,50,2));
+            s34.swamp_areas.Add(new Rectangle(160,205,40,10));
+
+            s34.respawn_point_x = 295;
+            s34.respawn_point_y = 130;
+            return s34;
+
+            void spawn_units() {}
+        }
+
+        public Scene init_scene_35() { // scene 35 34up swamp
+            if (s35 == null) {
+                s35 = new Scene(Start.data.scene_35);
+                spawn_units();}
+            else if (!s35.scene_monsters_done) {
+                spawn_units();}
+            s35.disable_up = true;
+            s35.disable_down = true;
+            s35.disable_left = true;
+            s35.disable_right = true;
+
+            s35.door_down = new Rectangle(135,225,15,1);
+            s35.door_up = new Rectangle(125,105,15,1);
+
+            s35.swamp_areas.Add(new Rectangle(135,185,55,2));
+            s35.swamp_areas.Add(new Rectangle(185,215,136,21));
+            s35.swamp_areas.Add(new Rectangle(290,88,31,148));
+            s35.swamp_areas.Add(new Rectangle(63,88,47,148));
+            s35.swamp_areas.Add(new Rectangle(235,132,20,48));
+            s35.swamp_areas.Add(new Rectangle(148,115,32,20));
+
+            s35.respawn_point_x = 135;
+            s35.respawn_point_y = 200;
+            return s35;
+
+            void spawn_units() {}
+        }
+
+        public Scene init_scene_36() { // scene 36 37up
+            if (s36 == null) {
+                s36 = new Scene(Start.data.scene_36);
+                spawn_units();}
+            else if (!s36.scene_monsters_done) {
+                spawn_units();}
+            s36.disable_down = true;
+            s36.door_down = new Rectangle(125,225,15,1);
+            return s36;
+
+            void spawn_units() {
+                s36.units = new List<Unit>(){};
+                s36.ais = new List<Monster_AI>(){};
+
+                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
+                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
+                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+
+                Unit u1 = new Unit("Fire Spirit",
+                                230,
+                                170,
+                                2,
+                                1,
+                                new List<int>(){230,170,15,10},
+                                fire_spirit_1_sprite,
+                                null);
+                                            
+                Unit u2 = new Unit("Fire Spirit",
+                                210,
+                                170,
+                                2,
+                                1,
+                                new List<int>(){210,170,15,10},
+                                fire_spirit_2_sprite,
+                                null);
+
+                Unit u3 = new Unit("Fire Spirit",
+                                230,
+                                150,
+                                2,
+                                1,
+                                new List<int>(){230,150,15,10},
+                                fire_spirit_3_sprite,
+                                null);
+
+                Unit u4 = new Unit("Fire Spirit",
+                                210,
+                                150,
+                                2,
+                                1,
+                                new List<int>(){210,150,15,10},
+                                fire_spirit_4_sprite,
+                                null);
+                
+                u1.is_immortal = true;
+                u2.is_immortal = true;
+                u3.is_immortal = true;
+                u4.is_immortal = true;
+
+                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+
+                s36.units.Add(u1);
+                s36.units.Add(u2);
+                s36.units.Add(u3);
+                s36.units.Add(u4);
+                s36.ais.Add(u1_ai);
+                s36.ais.Add(u2_ai);
+                s36.ais.Add(u3_ai);
+                s36.ais.Add(u4_ai);
+            }
+        }
+
+        public Scene init_scene_37() { // scene 37 36right
+            if (s37 == null) {
+                s37 = new Scene(Start.data.scene_37);
+                spawn_units();}
+            else if (!s37.scene_monsters_done) {
+                spawn_units();}
+            return s37;
+
+            void spawn_units() {
+                s37.units = new List<Unit>(){};
+                s37.ais = new List<Monster_AI>(){};
+                
+                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+
+                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+
+                archer_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
+                archer_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
+                archer_3_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
+
+                Audio archer_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
+
+                Unit u1 = new Unit("Archer",
+                                300,
+                                170,
+                                2,
+                                2,
+                                new List<int>(){296,160,15,10},
+                                archer_1_sprite,
+                                archer_1_sprite_death);
+                                            
+                Unit u2 = new Unit("Archer",
+                                290,
+                                150,
+                                2,
+                                2,
+                                new List<int>(){286,140,15,10},
+                                archer_2_sprite,
+                                archer_2_sprite_death);
+
+                Unit u3 = new Unit("Archer",
+                                280,
+                                120,
+                                2,
+                                2,
+                                new List<int>(){276,110,15,10},
+                                archer_3_sprite,
+                                archer_3_sprite_death);
+                
+                u1.death_sounds = archer_death_sound;
+                u2.death_sounds = archer_death_sound;
+                u3.death_sounds = archer_death_sound;
+
+                u1.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
+                u2.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
+                u3.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
+
+                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+
+                u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+                u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+                u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+
+                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+
+                Monster_AI u1_ai = new Monster_AI(0,false,"",1.5f);
+                Monster_AI u2_ai = new Monster_AI(0,false,"",1.5f);
+                Monster_AI u3_ai = new Monster_AI(0,false,"",1.5f);
+
+                s37.units.Add(u1);
+                s37.units.Add(u2);
+                s37.units.Add(u3);
+                s37.ais.Add(u1_ai);
+                s37.ais.Add(u2_ai);
+                s37.ais.Add(u3_ai);
+            }
+        }
+
+        public Scene init_scene_38() { // scene 38 37right
+            if (s38 == null) {
+                s38 = new Scene(Start.data.scene_38);
+                spawn_units();}
+            else if (!s38.scene_monsters_done) {
+                spawn_units();}
+            return s38;
+
+            void spawn_units() {
+                s38.units = new List<Unit>(){};
+                s38.ais = new List<Monster_AI>(){};
+
+                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
+                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
+                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+
+                Unit u1 = new Unit("Fire Spirit",
+                                230,
+                                170,
+                                2,
+                                1,
+                                new List<int>(){230,170,15,10},
+                                fire_spirit_1_sprite,
+                                null);
+                                            
+                Unit u2 = new Unit("Fire Spirit",
+                                210,
+                                170,
+                                2,
+                                1,
+                                new List<int>(){210,170,15,10},
+                                fire_spirit_2_sprite,
+                                null);
+
+                Unit u3 = new Unit("Fire Spirit",
+                                230,
+                                150,
+                                2,
+                                1,
+                                new List<int>(){230,150,15,10},
+                                fire_spirit_3_sprite,
+                                null);
+
+                Unit u4 = new Unit("Fire Spirit",
+                                210,
+                                150,
+                                2,
+                                1,
+                                new List<int>(){210,150,15,10},
+                                fire_spirit_4_sprite,
+                                null);
+                
+                u1.is_immortal = true;
+                u2.is_immortal = true;
+                u3.is_immortal = true;
+                u4.is_immortal = true;
+
+                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+
+                s38.units.Add(u1);
+                s38.units.Add(u2);
+                s38.units.Add(u3);
+                s38.units.Add(u4);
+                s38.ais.Add(u1_ai);
+                s38.ais.Add(u2_ai);
+                s38.ais.Add(u3_ai);
+                s38.ais.Add(u4_ai);
+            }
+        }
+
+        public Scene init_scene_39() { // scene 39 38down
+            if (s39 == null) {
+                s39 = new Scene(Start.data.scene_39);
+                spawn_units();}
+            else if (!s39.scene_monsters_done) {
+                spawn_units();}
+            return s39;
+
+            void spawn_units() {
+                s39.units = new List<Unit>(){};
+                s39.ais = new List<Monster_AI>(){};
+
+                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
+                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
+                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+
+                Unit u1 = new Unit("Fire Spirit",
+                                230,
+                                170,
+                                2,
+                                1,
+                                new List<int>(){230,170,15,10},
+                                fire_spirit_1_sprite,
+                                null);
+                                            
+                Unit u2 = new Unit("Fire Spirit",
+                                210,
+                                170,
+                                2,
+                                1,
+                                new List<int>(){210,170,15,10},
+                                fire_spirit_2_sprite,
+                                null);
+
+                Unit u3 = new Unit("Fire Spirit",
+                                230,
+                                150,
+                                2,
+                                1,
+                                new List<int>(){230,150,15,10},
+                                fire_spirit_3_sprite,
+                                null);
+
+                Unit u4 = new Unit("Fire Spirit",
+                                210,
+                                150,
+                                2,
+                                1,
+                                new List<int>(){210,150,15,10},
+                                fire_spirit_4_sprite,
+                                null);
+                
+                u1.is_immortal = true;
+                u2.is_immortal = true;
+                u3.is_immortal = true;
+                u4.is_immortal = true;
+
+                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+
+                s39.units.Add(u1);
+                s39.units.Add(u2);
+                s39.units.Add(u3);
+                s39.units.Add(u4);
+                s39.ais.Add(u1_ai);
+                s39.ais.Add(u2_ai);
+                s39.ais.Add(u3_ai);
+                s39.ais.Add(u4_ai);
+            }
+        }
+
+        public Scene init_scene_40() { // scene 40 39right
+            if (s40 == null) {
+                s40 = new Scene(Start.data.scene_40);
+                spawn_units();}
+            else if (!s40.scene_monsters_done) {
+                spawn_units();}
+            return s40;
+
+            void spawn_units() {
+                s40.units = new List<Unit>(){};
+                s40.ais = new List<Monster_AI>(){};
+                
+                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+
+                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+
+                archer_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
+                archer_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
+                archer_3_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
+
+                Audio archer_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
+
+                Unit u1 = new Unit("Archer",
+                                300,
+                                170,
+                                2,
+                                2,
+                                new List<int>(){296,160,15,10},
+                                archer_1_sprite,
+                                archer_1_sprite_death);
+                                            
+                Unit u2 = new Unit("Archer",
+                                290,
+                                150,
+                                2,
+                                2,
+                                new List<int>(){286,140,15,10},
+                                archer_2_sprite,
+                                archer_2_sprite_death);
+
+                Unit u3 = new Unit("Archer",
+                                280,
+                                120,
+                                2,
+                                2,
+                                new List<int>(){276,110,15,10},
+                                archer_3_sprite,
+                                archer_3_sprite_death);
+                
+                u1.death_sounds = archer_death_sound;
+                u2.death_sounds = archer_death_sound;
+                u3.death_sounds = archer_death_sound;
+
+                u1.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
+                u2.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
+                u3.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
+
+                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+
+                u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+                u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+                u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+
+                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+
+                Monster_AI u1_ai = new Monster_AI(0,false,"",1.5f);
+                Monster_AI u2_ai = new Monster_AI(0,false,"",1.5f);
+                Monster_AI u3_ai = new Monster_AI(0,false,"",1.5f);
+
+                s40.units.Add(u1);
+                s40.units.Add(u2);
+                s40.units.Add(u3);
+                s40.ais.Add(u1_ai);
+                s40.ais.Add(u2_ai);
+                s40.ais.Add(u3_ai);
+            }
+        }
+
+        public Scene init_scene_41() { // scene 41 40right
+            if (s41 == null) {
+                s41 = new Scene(Start.data.scene_41);
+                spawn_units();}
+            else if (!s41.scene_monsters_done) {
+                spawn_units();}
+            s41.door_up = new Rectangle(185,115,15,1);
+            return s41;
+
+            void spawn_units() {
+                s41.units = new List<Unit>(){};
+                s41.ais = new List<Monster_AI>(){};
+                
+                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+
+                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+
+                archer_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
+                archer_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
+                archer_3_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
+
+                Audio archer_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
+
+                Unit u1 = new Unit("Archer",
+                                270,
+                                125,
+                                2,
+                                2,
+                                new List<int>(){266,115,15,10},
+                                archer_1_sprite,
+                                archer_1_sprite_death);
+                                            
+                Unit u2 = new Unit("Archer",
+                                275,
+                                130,
+                                2,
+                                2,
+                                new List<int>(){271,120,15,10},
+                                archer_2_sprite,
+                                archer_2_sprite_death);
+
+                Unit u3 = new Unit("Archer",
+                                265,
+                                120,
+                                2,
+                                2,
+                                new List<int>(){261,110,15,10},
+                                archer_3_sprite,
+                                archer_3_sprite_death);
+                
+                u1.death_sounds = archer_death_sound;
+                u2.death_sounds = archer_death_sound;
+                u3.death_sounds = archer_death_sound;
+
+                u1.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
+                u2.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
+                u3.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
+
+                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+
+                u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+                u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+                u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+
+                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+
+                Monster_AI u1_ai = new Monster_AI(0,false,"",1.5f);
+                Monster_AI u2_ai = new Monster_AI(0,false,"",1.5f);
+                Monster_AI u3_ai = new Monster_AI(0,false,"",1.5f);
+
+                s41.units.Add(u1);
+                s41.units.Add(u2);
+                s41.units.Add(u3);
+                s41.ais.Add(u1_ai);
+                s41.ais.Add(u2_ai);
+                s41.ais.Add(u3_ai);
+            }
+        }
+
+        public Scene init_scene_42() { // scene 42 41right
+            if (s42 == null) {
+                s42 = new Scene(Start.data.scene_42);
+                spawn_units();}
+            else if (!s42.scene_monsters_done) {
+                spawn_units();}
+            return s42;
+
+            void spawn_units() {
+                s42.units = new List<Unit>(){};
+                s42.ais = new List<Monster_AI>(){};
+
+                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
+                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
+                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+
+                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
+                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
+                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+
+                bat_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
+                bat_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
+                bat_3_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
+                bat_4_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
+
+                Audio bat_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
+
+                Unit u1 = new Unit("Bat",
+                                230,
+                                170,
+                                2,
+                                2,
+                                new List<int>(){230,170,15,10},
+                                bat_1_sprite,
+                                bat_1_sprite_death);
+                                            
+                Unit u2 = new Unit("Bat",
+                                210,
+                                170,
+                                2,
+                                2,
+                                new List<int>(){210,170,15,10},
+                                bat_2_sprite,
+                                bat_2_sprite_death);
+
+                Unit u3 = new Unit("Bat",
+                                230,
+                                150,
+                                2,
+                                2,
+                                new List<int>(){230,150,15,10},
+                                bat_3_sprite,
+                                bat_3_sprite_death);
+
+                Unit u4 = new Unit("Bat",
+                                210,
+                                150,
+                                2,
+                                2,
+                                new List<int>(){210,150,15,10},
+                                bat_4_sprite,
+                                bat_4_sprite_death);
+                
+                u1.death_sounds = bat_death_sound;
+                u2.death_sounds = bat_death_sound;
+                u3.death_sounds = bat_death_sound;
+                u4.death_sounds = bat_death_sound;
+
+                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+
+                s42.units.Add(u1);
+                s42.units.Add(u2);
+                s42.units.Add(u3);
+                s42.units.Add(u4);
+                s42.ais.Add(u1_ai);
+                s42.ais.Add(u2_ai);
+                s42.ais.Add(u3_ai);
+                s42.ais.Add(u4_ai);
+            }
+        }
+
+        public Scene init_scene_43() { // scene 43 41up
+            if (s43 == null) {
+                s43 = new Scene(Start.data.scene_43);
+                spawn_units();}
+            else if (!s43.scene_monsters_done) {
+                spawn_units();}
+            s43.disable_down = true;
+            s43.disable_left = true;
+            s43.disable_right = true;
+            s43.door_down = new Rectangle(185,225,15,1);
+            return s43;
+
+            void spawn_units() {
+                s43.units = new List<Unit>(){};
+                s43.ais = new List<Monster_AI>(){};
+
+                Sprite dragon_sprite = new Sprite(Start.data.dragon_images,
+                                                0.1f,
+                                                0,
+                                                0,
+                                                "W");
+                Sprite dragon_sprite_death = new Sprite(Start.data.death_images_large,
+                                                0.2f,
+                                                0,
+                                                0,
+                                                "W");
+                dragon_sprite_death.change_color(Start.data.death_images_large_color, Start.data.dragon_color);
+                
+                Unit u1 = new Unit("Dragon",
+                                    260,
+                                    130,
+                                    2,
+                                    50,
+                                    new List<int>(){256,120,14,15},
+                                    dragon_sprite,
+                                    dragon_sprite_death);
+                u1.active_weapon = new Weapon("fire breath",Start.data.weapons_data_dict["fire breath"],0,0);
+                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
+                u1.weapon_weakness = "ice wand";
+
+                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+
+                s43.units.Add(u1);
+                s43.ais.Add(u1_ai);
             }
         }
 

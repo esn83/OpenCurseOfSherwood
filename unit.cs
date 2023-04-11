@@ -9,16 +9,21 @@ namespace main {
         public int speed;
         public int hitpoints;
         public int hitpoints_max;
+        public bool is_immortal = false;
         public bool is_dead = false;
         public string? weapon_weakness;
         public Rectangle hitbox;
+        public bool can_pass_through_obstacles = false;
         public int hitbox_offset_x;
         public int hitbox_offset_y;        
         public Sprite sprite_active;
         public Sprite sprite_walk;
-        public Sprite sprite_death;
+        public Sprite? sprite_death;
+        public Sprite? sprite_sink;
         public Audio? walk_sounds;
         public Audio? death_sounds;
+        public Audio? sink_sounds;
+        public bool is_sinking = false;
         public bool is_walking = false;
         public List<Weapon> weapons = new List<Weapon>(){};
         public Weapon? active_weapon;
@@ -110,22 +115,24 @@ namespace main {
 
         public bool check_collision(float dt_factor, Scene active_scene) {
             bool terrain_collision = false;
-            // check if hitbox would have other colors in it than black which means that it is colliding with terrain (or items)
-            Rectangle r1 = new Rectangle(hitbox.x, hitbox.y, hitbox.width, hitbox.height);
-            if (sprite_active.direction.Equals("W")) {r1.x -= (int) ((float) speed * dt_factor);}
-            if (sprite_active.direction.Equals("N")) {r1.y -= (int) ((float) speed * dt_factor);}
-            if (sprite_active.direction.Equals("E")) {r1.x += (int) ((float) speed * dt_factor);}
-            if (sprite_active.direction.Equals("S")) {r1.y += (int) ((float) speed * dt_factor);}
-            Image ix = Raylib.ImageFromImage(Raylib.LoadImageFromTexture(active_scene.scene), r1);
-            for (int i=0 ; i<ix.height ; i++) {
-                for (int j=0 ; j<ix.width ; j++) {
-                    Color cx = Raylib.GetImageColor(ix,j,i);
-                    string cx_str = cx.ToString();
-                    if (terrain_collision_colors.Contains(cx_str)) {continue;}
-                    //if (cx_str.Equals("{R:0 G:0 B:0 A:0}")) {continue;}
-                    else {terrain_collision = true; break;}
+            if (!can_pass_through_obstacles) {
+                // check if hitbox would have other colors in it than black which means that it is colliding with terrain (or items)
+                Rectangle r1 = new Rectangle(hitbox.x, hitbox.y, hitbox.width, hitbox.height);
+                if (sprite_active.direction.Equals("W")) {r1.x -= (int) ((float) speed * dt_factor);}
+                if (sprite_active.direction.Equals("N")) {r1.y -= (int) ((float) speed * dt_factor);}
+                if (sprite_active.direction.Equals("E")) {r1.x += (int) ((float) speed * dt_factor);}
+                if (sprite_active.direction.Equals("S")) {r1.y += (int) ((float) speed * dt_factor);}
+                Image ix = Raylib.ImageFromImage(Raylib.LoadImageFromTexture(active_scene.scene), r1);
+                for (int i=0 ; i<ix.height ; i++) {
+                    for (int j=0 ; j<ix.width ; j++) {
+                        Color cx = Raylib.GetImageColor(ix,j,i);
+                        string cx_str = cx.ToString();
+                        if (terrain_collision_colors.Contains(cx_str)) {continue;}
+                        //if (cx_str.Equals("{R:0 G:0 B:0 A:0}")) {continue;}
+                        else {terrain_collision = true; break;}
+                    }
+                    if (terrain_collision) {break;}
                 }
-                if (terrain_collision) {break;}
             }
             // / check if hitbox would have other colors in it than black which means that it is colliding with terrain (or items)
             
@@ -191,8 +198,10 @@ namespace main {
                 pos_y = y;
                 hitpoints = hitpoints_max;
                 is_dead = false;
+                is_sinking = false;
                 sprite_active = sprite_walk;
                 sprite_death.current_frame = 0; // reset death animaition
+                sprite_sink.current_frame = 0; // reset sink animaition
                 return true;
             }
             else {return false;}
@@ -214,6 +223,21 @@ namespace main {
             }
             // / death
 
+            // sinking
+            if (is_sinking) {
+                stop();
+                is_dead = true;
+                sprite_sink.pos_x = sprite_active.pos_x;
+                sprite_sink.pos_y = sprite_active.pos_y;
+                sprite_sink.direction = sprite_active.direction_w_or_e;
+                sprite_active = sprite_sink;
+                if (sink_sounds != null && sprite_active.current_frame == 0) {sink_sounds.play_sound();} // play the sink sound once
+                if (sprite_active.current_frame < sprite_active.textures_active.Count-1) { // play sink anim once
+                    sprite_active.next_frame();
+                }
+            }
+            // / sinking
+
             sprite_active.pos_x = pos_x;
             sprite_active.pos_y = pos_y;
             sprite_active.update(dt);
@@ -223,6 +247,7 @@ namespace main {
 
             if (walk_sounds != null) {walk_sounds.update(dt);}
             if (death_sounds != null) {death_sounds.update(dt);}
+            if (sink_sounds != null) {sink_sounds.update(dt);}
 
             foreach (Weapon w in weapons) {
                 w.update(dt);

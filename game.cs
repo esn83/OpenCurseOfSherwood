@@ -27,7 +27,8 @@ namespace main {
                     dt = 0;
                     dt_factor = 0;
 
-                    txt_color = new Color(240,200,5,255);
+                    //txt_color = new Color(240,200,5,255); // yellow
+                    txt_color = new Color(210,125,237,255); // purple
 
                     camera = new Camera(Raylib.GetScreenWidth(),
                              Raylib.GetScreenHeight(),
@@ -73,11 +74,11 @@ namespace main {
                                                   "W");
             monk_sprite_death.change_color(new Color(252,249,252,255), players[0].color);
 
-            // Sprite monk_sprite_sink = new Sprite(Start.data.monk_images_sink,
-            //                                      0.35f,
-            //                                      0,0,
-            //                                      "W");
-            // monk_sprite_sink.change_color(new Color(252,249,252,255), players[0].color);
+            Sprite monk_sprite_sink = new Sprite(Start.data.monk_images_sink,
+                                                 0.35f,
+                                                 0,0,
+                                                 "W");
+            monk_sprite_sink.change_color(new Color(252,249,252,255), players[0].color);
 
             // List<string> monk_images_rise = Start.data.monk_images_sink;
             // monk_images_rise.Reverse();
@@ -89,27 +90,33 @@ namespace main {
 
             Unit monk = new Unit("Monk",
                                 130,
-                                140,
+                                130,
                                 2,
                                 1,
-                                new List<int>(){126,130,14,15},
+                                new List<int>(){126,
+                                                120,
+                                                14,
+                                                15},
                                 monk_sprite,
                                 monk_sprite_death);
-            // monk.sprite_sink = monk_sprite_sink;
+            monk.sprite_sink = monk_sprite_sink;
             // monk.sprite_rise = monk_sprite_rise;
             monk.walk_sounds = new Audio(Start.data.monk_walk_sounds, 0.35f);
-            monk.death_sounds = new Audio(Start.data.monk_death_sounds, 0.0f);
-            // monk.sink_sounds =  new Audio(Start.data.sink_sounds, 0.0f);
+            monk.death_sounds = new Audio(Start.data.monk_death_sounds, 0.5f);
+            monk.sink_sounds =  new Audio(Start.data.sink_sounds, 1.5f);
             // monk.rise_sounds =  new Audio(Start.data.rise_sounds, 0.0f);
             // monk.weapons.Add(new Weapon("sword", Start.data.weapons_data_dict["sword"], 202, 67));
             // monk.weapons.Add(new Weapon("club", Start.data.weapons_data_dict["club"], 202, 67));
             // monk.weapons.Add(new Weapon("silver dagger", Start.data.weapons_data_dict["silver dagger"], 202, 67));
             // monk.weapons.Add(new Weapon("ice wand", Start.data.weapons_data_dict["ice wand"], 202, 67));
             // monk.active_weapon = monk.weapons[0];
-            // monk.items.Add(new Item("crystal ball",Start.data.crystal_ball_data,0,0));
+            // monk.items.Add(new Item("scrying glass",Start.data.scrying_glass_data,0,0));
             // monk.items.Add(new Item("fangs",Start.data.fangs_data,0,0));
             // monk.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],0,0));
-            //monk.items.Add(new Item("map",Start.data.items_data_dict["map"],0,0));
+            // monk.items.Add(new Item("f-elixir",Start.data.items_data_dict["f-elixir"],0,0));
+            // monk.items.Add(new Item("map",Start.data.items_data_dict["map"],0,0));
+            // monk.items.Add(new Item("cross",Start.data.items_data_dict["cross"],0,0));
+            // monk.items.Add(new Item("shield",Start.data.items_data_dict["shield"],0,0));
             players[0].unit = monk;
         }
 
@@ -159,19 +166,23 @@ namespace main {
             camera.update();
 
             // update scene
-            if (!scene_manager.active_scene.disable_right && players[0].unit.pos_x + players[0].unit.sprite_active.textures_active[0].width >= scene_manager.active_scene.scene_limit_x_right-5) {
+            if (!scene_manager.active_scene.disable_right &&
+                players[0].unit.pos_x + players[0].unit.sprite_active.textures_active[0].width >= scene_manager.active_scene.scene_limit_x_right - 5) {
                 scene_manager.next_scene_right();
                 players[0].unit.pos_x = scene_manager.active_scene.scene_limit_x_left + 10;
             }
-            else if (!scene_manager.active_scene.disable_left && players[0].unit.pos_x <= scene_manager.active_scene.scene_limit_x_left+5) {
+            else if (!scene_manager.active_scene.disable_left &&
+                    players[0].unit.pos_x <= scene_manager.active_scene.scene_limit_x_left + 5) {
                 scene_manager.next_scene_left();
                 players[0].unit.pos_x = scene_manager.active_scene.scene_limit_x_right - players[0].unit.sprite_active.textures_active[0].width - 10;
             }
-            if (!scene_manager.active_scene.disable_down && players[0].unit.pos_y + players[0].unit.sprite_active.textures_active[0].height >= scene_manager.active_scene.scene_limit_y_down-5) {
+            else if (!scene_manager.active_scene.disable_down &&
+                players[0].unit.pos_y + players[0].unit.sprite_active.textures_active[0].height >= scene_manager.active_scene.scene_limit_y_down - 5) {
                 scene_manager.next_scene_down();
                 players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_up + 10;
             }
-            if (!scene_manager.active_scene.disable_up && players[0].unit.pos_y <= scene_manager.active_scene.scene_limit_y_up+5) {
+            else if (!scene_manager.active_scene.disable_up &&
+                players[0].unit.pos_y <= scene_manager.active_scene.scene_limit_y_up + 5) {
                 scene_manager.next_scene_up();
                 players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_down - players[0].unit.sprite_active.textures_active[0].height - 10;
             }
@@ -179,12 +190,12 @@ namespace main {
             if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_up)) {
                 scene_manager.next_scene_up();
                 players[0].unit.pos_x = (int) scene_manager.active_scene.door_down.x;
-                players[0].unit.pos_y = (int) scene_manager.active_scene.door_down.y - players[0].unit.sprite_active.textures_active[0].height;
+                players[0].unit.pos_y = (int) scene_manager.active_scene.door_down.y - players[0].unit.sprite_active.textures_active[0].height + 5;
             }
             else if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_down)) {
                 scene_manager.next_scene_down();
                 players[0].unit.pos_x = (int) scene_manager.active_scene.door_up.x;
-                players[0].unit.pos_y = (int) scene_manager.active_scene.door_up.y + (int) scene_manager.active_scene.door_up.height;
+                players[0].unit.pos_y = (int) scene_manager.active_scene.door_up.y + (int) - 8;
             }
             else if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_left)) {
                 scene_manager.next_scene_left();
@@ -276,11 +287,13 @@ namespace main {
                                         }
                                     }
                                 }
-                                if (!deflect) {
+                                if (!deflect && !u.is_immortal) {
                                     if (u.weapon_weakness != null && u.weapon_weakness.Equals(b.name)) {u.hitpoints -= (int) Math.Ceiling((float)u.hitpoints_max/2);} // take ½ unit hitpoints rounded up for weapon weakness
                                     else {u.hitpoints -= b.damage;}
                                 }
-                                remove_p_bullets.Add(b);
+                                if (!u.is_immortal) {
+                                    remove_p_bullets.Add(b);
+                                }
                             }
                         }
                     }
@@ -294,7 +307,14 @@ namespace main {
                 foreach (Unit u in scene_manager.active_scene.units) {
                     if (!u.is_dead && !u.is_npc) {
                         bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, u.hitbox);
-                        if (col) {p.unit.hitpoints = 0;}
+                        if (u.name.Equals("Fire Spirit")) { // f-elixir protects against Fire Spirits
+                            foreach (Item i in p.unit.items) {
+                                if (i.name.Equals("f-elixir")) {
+                                    col = false;
+                                }
+                            }
+                        }
+                        if (col && !p.unit.is_sinking) {p.unit.hitpoints = 0;}
                     }
 
                     else if (!u.is_dead && u.is_npc) { // npc trade items
@@ -373,6 +393,16 @@ namespace main {
                 }
                 // / check for monster bullet collision with player
 
+                // check for player collision with swamp
+                foreach (Rectangle swamp in scene_manager.active_scene.swamp_areas) {
+                    bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, swamp);
+                    if (col) {
+                        p.unit.is_sinking = true;
+                        break;
+                    }
+                }
+                // / check for player collision with swamp
+
             }
         }
 
@@ -407,10 +437,13 @@ namespace main {
                 Raylib.DrawTexture(i.icon, (int) i.pos_x, (int) i.pos_y, Color.WHITE);
             }
 
-            //Raylib.DrawRectangle((int) scene_manager.active_scene.door_down.x, (int) scene_manager.active_scene.door_down.y, (int) scene_manager.active_scene.door_down.width, (int) scene_manager.active_scene.door_down.height, Color.WHITE);
-            //Raylib.DrawRectangle((int) scene_manager.active_scene.door_up.x, (int) scene_manager.active_scene.door_up.y, (int) scene_manager.active_scene.door_up.width, (int) scene_manager.active_scene.door_up.height, Color.WHITE);
-            //Raylib.DrawRectangle((int) scene_manager.active_scene.door_left.x, (int) scene_manager.active_scene.door_left.y, (int) scene_manager.active_scene.door_left.width, (int) scene_manager.active_scene.door_left.height, Color.WHITE);
-            //Raylib.DrawRectangle((int) scene_manager.active_scene.door_right.x, (int) scene_manager.active_scene.door_right.y, (int) scene_manager.active_scene.door_right.width, (int) scene_manager.active_scene.door_right.height, Color.WHITE);
+            // Raylib.DrawRectangle((int) scene_manager.active_scene.door_down.x, (int) scene_manager.active_scene.door_down.y, (int) scene_manager.active_scene.door_down.width, (int) scene_manager.active_scene.door_down.height, Color.WHITE);
+            // Raylib.DrawRectangle((int) scene_manager.active_scene.door_up.x, (int) scene_manager.active_scene.door_up.y, (int) scene_manager.active_scene.door_up.width, (int) scene_manager.active_scene.door_up.height, Color.WHITE);
+            // Raylib.DrawRectangle((int) scene_manager.active_scene.door_left.x, (int) scene_manager.active_scene.door_left.y, (int) scene_manager.active_scene.door_left.width, (int) scene_manager.active_scene.door_left.height, Color.WHITE);
+            // Raylib.DrawRectangle((int) scene_manager.active_scene.door_right.x, (int) scene_manager.active_scene.door_right.y, (int) scene_manager.active_scene.door_right.width, (int) scene_manager.active_scene.door_right.height, Color.WHITE);
+            // foreach (Rectangle r in scene_manager.active_scene.swamp_areas) {
+            //     Raylib.DrawRectangle((int) r.x, (int) r.y, (int) r.width, (int) r.height, new Color(0,0,0,100));
+            // }
             // / draw scene
 
             foreach (Player p in players) {
@@ -476,7 +509,8 @@ namespace main {
             Raylib.DrawTextEx(font,"move : arrow keys",new System.Numerics.Vector2(10,25),font.baseSize*0.4f,0,txt_color);
             Raylib.DrawTextEx(font,"shoot : RCTRL",new System.Numerics.Vector2(10,40),font.baseSize*0.4f,0,txt_color);
             Raylib.DrawTextEx(font,"next weapon : RSHIFT",new System.Numerics.Vector2(10,55),font.baseSize*0.4f,0,txt_color);
-            Raylib.DrawTextEx(font,"menu : SPACE",new System.Numerics.Vector2(10,70),font.baseSize*0.4f,0,txt_color);
+            Raylib.DrawTextEx(font,"map : F1",new System.Numerics.Vector2(10,70),font.baseSize*0.4f,0,txt_color);
+            Raylib.DrawTextEx(font,"menu : SPACE",new System.Numerics.Vector2(10,85),font.baseSize*0.4f,0,txt_color);
 
             Raylib.EndDrawing();
 

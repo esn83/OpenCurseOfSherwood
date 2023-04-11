@@ -7,12 +7,14 @@ namespace main {
         public List<Unit> units = new List<Unit>(){};
         public List<int> dead_units_index = new List<int>(){};
         public List<Weapon> weapons = new List<Weapon>(){};
+        public List<Item> items = new List<Item>(){};
         public List<Bullet> player_bullets = new List<Bullet>(){};
         public List<Bullet> monster_bullets = new List<Bullet>(){};
-        public List<Item> items = new List<Item>(){};
         public Texture2D scene;
         public List<Texture2D> scene_extras = new List<Texture2D>(){};
         public List<Monster_AI>  ais = new List<Monster_AI>(){};
+        public int respawn_point_x = 0;
+        public int respawn_point_y = 0;
         public Rectangle door_up = new Rectangle(0,0,0,0);
         public Rectangle door_down = new Rectangle(0,0,0,0);
         public Rectangle door_left = new Rectangle(0,0,0,0);
@@ -23,6 +25,7 @@ namespace main {
         public bool disable_down = false;
         public bool scene_objectives_done = false;
         public bool scene_monsters_done = false;
+        public List<Rectangle> swamp_areas = new List<Rectangle>(){};
         
         public int scene_limit_x_left = 63;
         public int scene_limit_x_right = 321;
