@@ -4,6 +4,6 @@ A work-in-progress open-source remake of the classic C64 game "The Curse of Sher
 
 The game is written in VSCode editor with C# as language and is using the Raylib game framework.
 
-![image](https://user-images.githubusercontent.com/72857208/230709906-9fa6d454-cf89-440f-8cb2-6bc55ca59976.png)
+![image](https://user-images.githubusercontent.com/72857208/231353591-fd998577-1035-4faa-9596-f04f841b4231.png)
 
-![image](https://user-images.githubusercontent.com/72857208/230709966-96e0b027-b159-4ca4-934e-17e44ff6f43e.png)
+![image](https://user-images.githubusercontent.com/72857208/231353656-f656ef7d-22ba-4ce8-b5c1-00fca6c1690e.png)
