@@ -2855,14 +2855,13 @@ namespace main {
                                     260,
                                     130,
                                     2,
-                                    50,
+                                    5,
                                     new List<int>(){256,120,14,15},
                                     dragon_sprite,
                                     dragon_sprite_death);
                 u1.active_weapon = new Weapon("fire breath",Start.data.weapons_data_dict["fire breath"],0,0);
                 u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
-                u1.weapon_weakness = "ice wand";
 
                 Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
 

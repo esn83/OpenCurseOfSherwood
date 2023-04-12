@@ -272,10 +272,8 @@ namespace main {
                                                            "assets/images/map/map_43_41up_extra_1.png",
                                                            "assets/images/map/map_43_41up_extra_2.png"};
 
-        // topbar
-        public string topbar = "assets/images/topbar_1.png";
-
         // general
+        public string topbar = "assets/images/topbar_1.png";
         public string general_item_sound = "assets/sounds/item_general_sound_1.mp3";
         public List<string> sink_sounds = new List<string> {"assets/sounds/swamp_sink_1.mp3",
                                                             "assets/sounds/swamp_sink_2.mp3",
@@ -289,6 +287,7 @@ namespace main {
         public List<string> rise_sounds = new List<string> {"assets/sounds/swamp_rise_1.mp3"};
         public Color bg = new Color(25,29,25,255); // asset images background color, replace with Color(0,0,0,0) in code
         public string swamp_map = "assets/images/swamp_map_2.png";
+        public string end_screen = "assets/images/end_screen_1.png";
 
         // guide poem
         public List<string> guide = new List<string>(){

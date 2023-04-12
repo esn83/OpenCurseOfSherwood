@@ -10,6 +10,7 @@ namespace main {
         public Camera camera;
 
         public Random rnd = new Random();
+        public bool game_won = false;
         public List<Player> players = new List<Player>(){};
         public SceneManager scene_manager;
         public Texture2D topbar;
@@ -403,6 +404,24 @@ namespace main {
                 }
                 // / check for player collision with swamp
 
+                // check if player has won the game
+                if (scene_manager.active_scene == scene_manager.s43) { // last scene
+                    if (scene_manager.active_scene.scene_monsters_done) {
+                        bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, new Rectangle(190,175,2,2)); // centre of star
+                        if(col) {
+                            foreach (Item item in p.unit.items) {
+                                if (item.name.Equals("cross")) {
+                                    game_won = true;
+                                    Scene end = new Scene(new List<string>(){Start.data.end_screen});
+                                    scene_manager.active_scene = end;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                // / check if player has won the game
+
             }
         }
 
@@ -411,95 +430,104 @@ namespace main {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(new Color(25,29,25,255));
             Raylib.BeginMode2D(camera.camera);
-            Raylib.DrawTexture(topbar,65,42,Color.WHITE);
 
-            // draw scene
-            Raylib.DrawTexture(scene_manager.active_scene.scene,0,0,Color.WHITE);
+            if (!game_won) {
+                // draw topbar
+                Raylib.DrawTexture(topbar,65,42,Color.WHITE);
 
-            foreach (Texture2D extra in scene_manager.active_scene.scene_extras) {
-                Raylib.DrawTexture(extra,0,0,Color.WHITE);
-            }
+                // draw scene
+                Raylib.DrawTexture(scene_manager.active_scene.scene,0,0,Color.WHITE);
 
-            foreach (Unit u in scene_manager.active_scene.units) {
-                u.sprite_active.draw();
-                //Raylib.DrawRectangle((int) u.hitbox.x, (int) u.hitbox.y, (int) u.hitbox.width, (int) u.hitbox.height, Color.BLUE);
-            }
-            foreach(Bullet b in scene_manager.active_scene.player_bullets) {
-                b.sprite.draw();
-            }
-            foreach(Bullet b in scene_manager.active_scene.monster_bullets) {
-                b.sprite.draw();
-            }
-            foreach (Weapon w in scene_manager.active_scene.weapons) {
-                Raylib.DrawTexture(w.icon, (int) w.pos_x, (int) w.pos_y, Color.WHITE);
-            }
-            foreach (Item i in scene_manager.active_scene.items) {
-                Raylib.DrawTexture(i.icon, (int) i.pos_x, (int) i.pos_y, Color.WHITE);
-            }
-
-            // Raylib.DrawRectangle((int) scene_manager.active_scene.door_down.x, (int) scene_manager.active_scene.door_down.y, (int) scene_manager.active_scene.door_down.width, (int) scene_manager.active_scene.door_down.height, Color.WHITE);
-            // Raylib.DrawRectangle((int) scene_manager.active_scene.door_up.x, (int) scene_manager.active_scene.door_up.y, (int) scene_manager.active_scene.door_up.width, (int) scene_manager.active_scene.door_up.height, Color.WHITE);
-            // Raylib.DrawRectangle((int) scene_manager.active_scene.door_left.x, (int) scene_manager.active_scene.door_left.y, (int) scene_manager.active_scene.door_left.width, (int) scene_manager.active_scene.door_left.height, Color.WHITE);
-            // Raylib.DrawRectangle((int) scene_manager.active_scene.door_right.x, (int) scene_manager.active_scene.door_right.y, (int) scene_manager.active_scene.door_right.width, (int) scene_manager.active_scene.door_right.height, Color.WHITE);
-            // foreach (Rectangle r in scene_manager.active_scene.swamp_areas) {
-            //     Raylib.DrawRectangle((int) r.x, (int) r.y, (int) r.width, (int) r.height, new Color(0,0,0,100));
-            // }
-            // / draw scene
-
-            foreach (Player p in players) {
-                p.unit.sprite_active.draw();
-                //Raylib.DrawRectangle((int) p.unit.hitbox.x, (int) p.unit.hitbox.y, (int) p.unit.hitbox.width, (int) p.unit.hitbox.height, Color.BLUE);
-                
-                Raylib.DrawText(p.lives.ToString(), // draw lives
-                                289,
-                                62,
-                                18,
-                                new Color(251,251,139,255));
-                
-                if (p.unit.items.Count > 0) {
-                    int x = 121;
-                    int y = 66;
-                    int count = 0;
-                    foreach (Item i in p.unit.items) {
-                        Raylib.DrawTexture(i.icon,
-                                           x + count * 25,
-                                           y,
-                                           Color.WHITE);
-                        count += 1;
-                    }
-                }
-                
-                if (p.unit.active_weapon != null) {
-                    Weapon w = p.unit.active_weapon;
-                    Raylib.DrawTexture(w.icon,
-                                      (int) w.pos_x,
-                                      (int) w.pos_y,
-                                      Color.WHITE);
-                                    
-                    if (w.name.Split(" ").Count() > 1) { // draw weapon name, split weapon name in two of there is a space in its name
-                        Raylib.DrawText(w.name.Split(" ")[0], // draw weapon name part1
-                                        (int) w.pos_x + 20,
-                                        (int) w.pos_y - 6,
-                                        10,
-                                        new Color(106,207,111,255));
-                        Raylib.DrawText(w.name.Split(" ")[1], // draw weapon name part2
-                                        (int) w.pos_x + 20,
-                                        (int) w.pos_y + 3,
-                                        10,
-                                        new Color(106,207,111,255));
-                    }
-                    else {
-                        Raylib.DrawText(w.name, // draw weapon name
-                                        (int) w.pos_x + 20,
-                                        (int) w.pos_y - 2,
-                                        10,
-                                        new Color(106,207,111,255));
-                    }
+                foreach (Texture2D extra in scene_manager.active_scene.scene_extras) {
+                    Raylib.DrawTexture(extra,0,0,Color.WHITE);
                 }
 
-                if (p.popup_1) {show_popup_1();}
-                else if (popup_1_is_showing) {popup_1_is_showing = false;}
+                foreach (Unit u in scene_manager.active_scene.units) {
+                    u.sprite_active.draw();
+                    //Raylib.DrawRectangle((int) u.hitbox.x, (int) u.hitbox.y, (int) u.hitbox.width, (int) u.hitbox.height, Color.BLUE);
+                }
+                foreach(Bullet b in scene_manager.active_scene.player_bullets) {
+                    b.sprite.draw();
+                }
+                foreach(Bullet b in scene_manager.active_scene.monster_bullets) {
+                    b.sprite.draw();
+                }
+                foreach (Weapon w in scene_manager.active_scene.weapons) {
+                    Raylib.DrawTexture(w.icon, (int) w.pos_x, (int) w.pos_y, Color.WHITE);
+                }
+                foreach (Item i in scene_manager.active_scene.items) {
+                    Raylib.DrawTexture(i.icon, (int) i.pos_x, (int) i.pos_y, Color.WHITE);
+                }
 
+                // Raylib.DrawRectangle((int) scene_manager.active_scene.door_down.x, (int) scene_manager.active_scene.door_down.y, (int) scene_manager.active_scene.door_down.width, (int) scene_manager.active_scene.door_down.height, Color.WHITE);
+                // Raylib.DrawRectangle((int) scene_manager.active_scene.door_up.x, (int) scene_manager.active_scene.door_up.y, (int) scene_manager.active_scene.door_up.width, (int) scene_manager.active_scene.door_up.height, Color.WHITE);
+                // Raylib.DrawRectangle((int) scene_manager.active_scene.door_left.x, (int) scene_manager.active_scene.door_left.y, (int) scene_manager.active_scene.door_left.width, (int) scene_manager.active_scene.door_left.height, Color.WHITE);
+                // Raylib.DrawRectangle((int) scene_manager.active_scene.door_right.x, (int) scene_manager.active_scene.door_right.y, (int) scene_manager.active_scene.door_right.width, (int) scene_manager.active_scene.door_right.height, Color.WHITE);
+                // foreach (Rectangle r in scene_manager.active_scene.swamp_areas) {
+                //     Raylib.DrawRectangle((int) r.x, (int) r.y, (int) r.width, (int) r.height, new Color(0,0,0,100));
+                // }
+                // / draw scene
+
+                foreach (Player p in players) {
+                    p.unit.sprite_active.draw();
+                    //Raylib.DrawRectangle((int) p.unit.hitbox.x, (int) p.unit.hitbox.y, (int) p.unit.hitbox.width, (int) p.unit.hitbox.height, Color.BLUE);
+                    
+                    Raylib.DrawText(p.lives.ToString(), // draw lives
+                                    289,
+                                    62,
+                                    18,
+                                    new Color(251,251,139,255));
+                    
+                    if (p.unit.items.Count > 0) { // draw items
+                        int x = 121;
+                        int y = 66;
+                        int count = 0;
+                        foreach (Item i in p.unit.items) {
+                            Raylib.DrawTexture(i.icon,
+                                            x + count * 25,
+                                            y,
+                                            Color.WHITE);
+                            count += 1;
+                        }
+                    }
+                    
+                    if (p.unit.active_weapon != null) { // draw active weapon
+                        Weapon w = p.unit.active_weapon;
+                        Raylib.DrawTexture(w.icon,
+                                        (int) w.pos_x,
+                                        (int) w.pos_y,
+                                        Color.WHITE);
+                                        
+                        if (w.name.Split(" ").Count() > 1) { // draw weapon name, split weapon name in two of there is a space in its name
+                            Raylib.DrawText(w.name.Split(" ")[0], // draw weapon name part1
+                                            (int) w.pos_x + 20,
+                                            (int) w.pos_y - 6,
+                                            10,
+                                            new Color(106,207,111,255));
+                            Raylib.DrawText(w.name.Split(" ")[1], // draw weapon name part2
+                                            (int) w.pos_x + 20,
+                                            (int) w.pos_y + 3,
+                                            10,
+                                            new Color(106,207,111,255));
+                        }
+                        else {
+                            Raylib.DrawText(w.name, // draw weapon name
+                                            (int) w.pos_x + 20,
+                                            (int) w.pos_y - 2,
+                                            10,
+                                            new Color(106,207,111,255));
+                        }
+                    }
+
+                    if (p.popup_1) {show_popup_1();}
+                    else if (popup_1_is_showing) {popup_1_is_showing = false;}
+                }
+
+            }
+            else { // show end screen
+                Raylib.DrawTexture(scene_manager.active_scene.scene,0,0,Color.WHITE);
+                string score = players[0].score.ToString();
+                Raylib.DrawText(score,200,160,10,new Color(106,207,111,255));
             }
 
             Raylib.EndMode2D();
