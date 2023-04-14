@@ -76,10 +76,18 @@ namespace main {
                 else if (move_pattern == 3) { // player homing
                     move_delay_count = 0;
                     move_delay = 0.2f ;
-                    if (u.pos_x < p.unit.pos_x) {move_direction_e_w = "E";}
-                    else {move_direction_e_w = "W";}
-                    if (u.pos_y < p.unit.pos_y) {move_direction_n_s = "S";}
-                    else {move_direction_n_s = "N";}
+                    if (!p.unit.is_dead) { // if player is not dead home in on player
+                        if (u.pos_x < p.unit.pos_x) {move_direction_e_w = "E";}
+                        else {move_direction_e_w = "W";}
+                        if (u.pos_y < p.unit.pos_y) {move_direction_n_s = "S";}
+                        else {move_direction_n_s = "N";}
+                    }
+                    else { // if player is dead move away from body so he can respawn
+                        if (u.pos_x > p.unit.pos_x) {move_direction_e_w = "E";}
+                        else {move_direction_e_w = "W";}
+                        if (u.pos_y > p.unit.pos_y) {move_direction_n_s = "S";}
+                        else {move_direction_n_s = "N";}
+                    }
                 }
             }
             // / move

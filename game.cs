@@ -444,7 +444,7 @@ namespace main {
 
                 foreach (Unit u in scene_manager.active_scene.units) {
                     u.sprite_active.draw();
-                    //Raylib.DrawRectangle((int) u.hitbox.x, (int) u.hitbox.y, (int) u.hitbox.width, (int) u.hitbox.height, Color.BLUE);
+                    //Raylib.DrawRectangleRec(u.hitbox, Color.BLUE);
                 }
                 foreach(Bullet b in scene_manager.active_scene.player_bullets) {
                     b.sprite.draw();
@@ -459,18 +459,19 @@ namespace main {
                     Raylib.DrawTexture(i.icon, (int) i.pos_x, (int) i.pos_y, Color.WHITE);
                 }
 
-                // Raylib.DrawRectangle((int) scene_manager.active_scene.door_down.x, (int) scene_manager.active_scene.door_down.y, (int) scene_manager.active_scene.door_down.width, (int) scene_manager.active_scene.door_down.height, Color.WHITE);
-                // Raylib.DrawRectangle((int) scene_manager.active_scene.door_up.x, (int) scene_manager.active_scene.door_up.y, (int) scene_manager.active_scene.door_up.width, (int) scene_manager.active_scene.door_up.height, Color.WHITE);
-                // Raylib.DrawRectangle((int) scene_manager.active_scene.door_left.x, (int) scene_manager.active_scene.door_left.y, (int) scene_manager.active_scene.door_left.width, (int) scene_manager.active_scene.door_left.height, Color.WHITE);
-                // Raylib.DrawRectangle((int) scene_manager.active_scene.door_right.x, (int) scene_manager.active_scene.door_right.y, (int) scene_manager.active_scene.door_right.width, (int) scene_manager.active_scene.door_right.height, Color.WHITE);
+                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_down, Color.WHITE);
+                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_up, Color.WHITE);
+                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_left, Color.WHITE);
+                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_right, Color.WHITE);
                 // foreach (Rectangle r in scene_manager.active_scene.swamp_areas) {
-                //     Raylib.DrawRectangle((int) r.x, (int) r.y, (int) r.width, (int) r.height, new Color(0,0,0,100));
+                //     Raylib.DrawRectangleRec(r, new Color(0,0,0,100));
                 // }
+
                 // / draw scene
 
                 foreach (Player p in players) {
                     p.unit.sprite_active.draw();
-                    //Raylib.DrawRectangle((int) p.unit.hitbox.x, (int) p.unit.hitbox.y, (int) p.unit.hitbox.width, (int) p.unit.hitbox.height, Color.BLUE);
+                    //Raylib.DrawRectangleRec(p.unit.hitbox, Color.BLUE);
                     
                     Raylib.DrawText(p.lives.ToString(), // draw lives
                                     289,

@@ -128,11 +128,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\open cos.csproj",
+      "projectUniqueName": "C:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\open cos.csproj",
       "projectName": "open cos",
-      "projectPath": "c:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\open cos.csproj",
+      "projectPath": "C:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\open cos.csproj",
       "packagesPath": "C:\\Users\\az18200\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\obj\\",
+      "outputPath": "C:\\Users\\az18200\\OneDrive - Kredsløb\\Dokumenter\\Kode\\C#\\open cos\\open cos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\az18200\\AppData\\Roaming\\NuGet\\NuGet.Config",
