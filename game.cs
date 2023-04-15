@@ -153,8 +153,15 @@ namespace main {
         }
 
         void events() {
-            foreach (Player p in players) {
-                p.events(dt_factor, scene_manager.active_scene);
+            if (!game_won) {
+                foreach (Player p in players) {
+                    p.events(dt_factor, scene_manager.active_scene);
+                }
+            }
+            else {
+                foreach (Player p in players) {
+                    p.unit.stop();
+                }
             }
 
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_X)) {
@@ -164,6 +171,7 @@ namespace main {
         }
 
         void update() {
+            
             camera.update();
 
             // update scene

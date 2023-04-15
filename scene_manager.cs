@@ -1872,6 +1872,8 @@ namespace main {
             if (s30 == null) {
                 s30 = new Scene(Start.data.scene_30);
                 spawn_units();}
+            s30.disable_left = true;
+            s30.disable_right = true;
             s30.disable_down = true;
             s30.door_down = new Rectangle(184,220,15,1); // hermit hut door inside
             return s30;
