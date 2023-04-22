@@ -2,9 +2,12 @@
 
 A work-in-progress open-source remake of the classic C64 game "The Curse of Sherwood" by Mastertronic.
 
-The game is written in VSCode editor with C# as language and is using the Raylib game framework.
+The game is written in VSCode editor with C# as language and is using the Raylib-cs game framework.
 
-You can run the game by opening the code in VScode or possibly Visual Studio and running it from there with F5.
+VSCode    : https://code.visualstudio.com/
+Raylib-cs : https://github.com/ChrisDill/Raylib-cs
+
+You can run the game by opening the code in VSCode, installing Raylib-cs and running it from there with F5.
 
 Alternatively you can copy the 'assets' folder into the 'bin\Debug\net7.0' folder and run 'open cos.exe'.
 
