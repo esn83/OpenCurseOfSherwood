@@ -40,3 +40,24 @@ C:\Users\az18200\OneDrive - Kredsløb\Erik\C#\C#2\open cos\open cos\obj\Debug\ne
 C:\Users\az18200\OneDrive - Kredsløb\Erik\C#\C#2\open cos\open cos\obj\Debug\net7.0\open cos.pdb
 C:\Users\az18200\OneDrive - Kredsløb\Erik\C#\C#2\open cos\open cos\obj\Debug\net7.0\open cos.genruntimeconfig.cache
 C:\Users\az18200\OneDrive - Kredsløb\Erik\C#\C#2\open cos\open cos\obj\Debug\net7.0\ref\open cos.dll
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\open cos.exe
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\open cos.deps.json
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\open cos.runtimeconfig.json
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\open cos.dll
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\open cos.pdb
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\Raylib-cs.dll
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\runtimes\linux-x64\native\libraylib.so
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\runtimes\osx-x64\native\libraylib.dylib
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\runtimes\win-x64\native\raylib.dll
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\runtimes\win-x86\native\raylib.dll
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.csproj.AssemblyReference.cache
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.AssemblyInfoInputs.cache
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.AssemblyInfo.cs
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.csproj.CoreCompileInputs.cache
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.csproj.CopyComplete
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.dll
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\refint\open cos.dll
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.pdb
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.genruntimeconfig.cache
+C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\ref\open cos.dll

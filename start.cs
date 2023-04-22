@@ -19,7 +19,8 @@ namespace main {
         }
 
         public void run() {
-
+            
+            Raylib.SetTraceLogLevel(TraceLogLevel.LOG_WARNING);
             Raylib.InitAudioDevice(); // sound, must be called before loading sounds
             
             while (running) {
@@ -36,6 +37,7 @@ namespace main {
                     game.run();
                 }
             }
+            
             Raylib.CloseAudioDevice();
         }
 
