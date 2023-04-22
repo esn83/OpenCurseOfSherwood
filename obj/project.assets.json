@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net7.0": {
-      "Raylib-cs/4.2.0-rc.1": {
+      "Raylib-cs/4.5.0": {
         "type": "package",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
@@ -21,6 +21,10 @@
           "runtimes/linux-x64/native/libraylib.so": {
             "assetType": "native",
             "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/libraylib.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
           },
           "runtimes/osx-x64/native/libraylib.dylib": {
             "assetType": "native",
@@ -48,10 +52,10 @@
     }
   },
   "libraries": {
-    "Raylib-cs/4.2.0-rc.1": {
-      "sha512": "Bu1L5IkMtDKwqVbMUMNpj2cKLimNKYb6HSTcGR1fuAS5zWRmqYY2CvrBAc3Z3Z8O2SooU0nUtYRuYoKu+dpZbQ==",
+    "Raylib-cs/4.5.0": {
+      "sha512": "VBM71a+X7v1GiobKRmKUKpgB5XLn1ZD+pJT0MuPsgEO2wfJehvPDWLrfrc65rvI3WuwSbs9Jikv5jOglhRLXug==",
       "type": "package",
-      "path": "raylib-cs/4.2.0-rc.1",
+      "path": "raylib-cs/4.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -60,10 +64,11 @@
         "lib/net5.0/Raylib-cs.xml",
         "lib/net6.0/Raylib-cs.dll",
         "lib/net6.0/Raylib-cs.xml",
-        "raylib-cs.4.2.0-rc.1.nupkg.sha512",
+        "raylib-cs.4.5.0.nupkg.sha512",
         "raylib-cs.nuspec",
         "raylib-cs_64x64.png",
         "runtimes/linux-x64/native/libraylib.so",
+        "runtimes/osx-arm64/native/libraylib.dylib",
         "runtimes/osx-x64/native/libraylib.dylib",
         "runtimes/win-x64/native/raylib.dll",
         "runtimes/win-x86/native/raylib.dll"
@@ -119,7 +124,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Raylib-cs >= 4.2.0-rc.1"
+      "Raylib-cs >= 4.5.0"
     ]
   },
   "packageFolders": {
@@ -163,7 +168,7 @@
         "dependencies": {
           "Raylib-cs": {
             "target": "Package",
-            "version": "[4.2.0-rc.1, )"
+            "version": "[4.5.0, )"
           }
         },
         "imports": [

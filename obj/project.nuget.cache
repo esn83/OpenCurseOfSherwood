@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5qwO/O8sdla6zXl70Pwt5EEZmTpS27PASB3X3FUzTiO87k300moUPnsMgTxdVaP0GHBVw6yzzZycSy2Z/4WQRw==",
+  "dgSpecHash": "Ej2W/aCDbCEqPdwJtpyh2y5MLSaJRmRqufe/VZQ/oIKt21w0CNN0jtwWWxzy1W8LlTn9C8Xv2bEjxi7kaHcVOg==",
   "success": true,
   "projectFilePath": "C:\\Users\\az18200\\kode\\C#\\open cos\\open cos\\open cos.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\az18200\\.nuget\\packages\\raylib-cs\\4.2.0-rc.1\\raylib-cs.4.2.0-rc.1.nupkg.sha512",
+    "C:\\Users\\az18200\\.nuget\\packages\\raylib-cs\\4.5.0\\raylib-cs.4.5.0.nupkg.sha512",
     "C:\\Users\\az18200\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
   ],
   "logs": []
