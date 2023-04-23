@@ -10,6 +10,7 @@ VSCode       : https://code.visualstudio.com/
 
 Raylib-cs    : https://github.com/ChrisDill/Raylib-cs
 
+
 You can run the game by either:
 
 1. download and install .NET sdk
@@ -17,6 +18,7 @@ You can run the game by either:
    copy the 'assets' folder into the "bin\Debug\net7.0" folder
    
    run 'open cos.exe'
+
 
 2. download and install VSCode
    
@@ -29,6 +31,7 @@ You can run the game by either:
    if it says "Required assets to build and debug are missing (...). Add them?" press yes. You may need to restart VSCode to get this message.
    
    run the code with F5
+
 
 ![image](https://user-images.githubusercontent.com/72857208/231353591-fd998577-1035-4faa-9596-f04f841b4231.png)
 
