@@ -13,7 +13,7 @@ Raylib-cs    : https://github.com/ChrisDill/Raylib-cs
 You can run the game by either:
 
 1. download and install .NET sdk
-2. 
+   
    copy the 'assets' folder into the "bin\Debug\net7.0" folder
    
    run 'open cos.exe'
