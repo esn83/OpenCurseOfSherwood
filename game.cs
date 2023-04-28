@@ -100,9 +100,9 @@ namespace main {
                                 monk_sprite_death);
             monk.sprite_sink = monk_sprite_sink;
             // monk.sprite_rise = monk_sprite_rise;
-            // monk.walk_sounds = new Audio(Start.data.monk_walk_sounds, 0.35f);
-            // monk.death_sounds = new Audio(Start.data.monk_death_sounds, 0.5f);
-            // monk.sink_sounds =  new Audio(Start.data.sink_sounds, 1.5f);
+            monk.walk_sounds = new Audio(Start.data.monk_walk_sounds, 0.35f);
+            monk.death_sounds = new Audio(Start.data.monk_death_sounds, 0.5f);
+            monk.sink_sounds =  new Audio(Start.data.sink_sounds, 1.5f);
             // monk.rise_sounds =  new Audio(Start.data.rise_sounds, 0.0f);
             // monk.weapons.Add(new Weapon("sword", Start.data.weapons_data_dict["sword"], 202, 67));
             // monk.weapons.Add(new Weapon("club", Start.data.weapons_data_dict["club"], 202, 67));
