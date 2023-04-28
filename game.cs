@@ -32,7 +32,8 @@ namespace main {
             dt = 0;
 
             //txt_color = new Color(240,200,5,255); // yellow
-            txt_color = new Color(210,125,237,255); // purple
+            //txt_color = new Color(210,125,237,255); // purple
+            txt_color = new Color(100,100,100,255); // gray
 
             camera = new Camera(Raylib.GetScreenWidth(),
                         Raylib.GetScreenHeight(),
