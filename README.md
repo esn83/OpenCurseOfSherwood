@@ -34,4 +34,4 @@ You can run the game by either:
 
 ![image](https://user-images.githubusercontent.com/72857208/231353591-fd998577-1035-4faa-9596-f04f841b4231.png)
 
-![image](https://user-images.githubusercontent.com/72857208/235148688-dc2abb75-5637-414c-84be-bf90632c29cb.png)
+![image](https://user-images.githubusercontent.com/72857208/235152693-f009e7f5-d47f-4de5-8d24-e82fb1c7724c.png)
