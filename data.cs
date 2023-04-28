@@ -288,6 +288,7 @@ namespace main {
         public Color bg = new Color(25,29,25,255); // asset images background color, replace with Color(0,0,0,0) in code
         public string swamp_map = "assets/images/swamp_map_2.png";
         public string end_screen = "assets/images/end_screen_1.png";
+        public float default_unit_speed = 1;
 
         // guide poem
         public List<string> guide = new List<string>(){

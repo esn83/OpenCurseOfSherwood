@@ -9,31 +9,36 @@ namespace main {
         public int lives;
         public int score = 0;
         public List<KeyboardKey> controls;
-        public Random rnd = new Random();
+        public Random rnd;
         public Unit? unit;
         public bool popup_1 = false;
         
         // constructor
-        public Player(string name_p,
-                      Color color_p,
-                      List<KeyboardKey> controls_p,
-                      int lives_p) {
+        public Player
+        (
+            string name_p,
+            Color color_p,
+            List<KeyboardKey> controls_p,
+            int lives_p
+        )
+        {
             name = name_p;
             color = color_p;
             controls = controls_p;
+            rnd = new Random();
             lives = lives_p;
         }
 
-        public void events(float dt_factor, Scene active_scene) {
+        public void events(Scene active_scene) {
             if (Raylib.IsKeyDown(controls[0]) ||
                 Raylib.IsKeyDown(controls[1]) ||
                 Raylib.IsKeyDown(controls[2]) || 
                 Raylib.IsKeyDown(controls[3])) {
                 if (unit != null) {
-                    if (Raylib.IsKeyDown(controls[0])) {unit.move_left(dt_factor, active_scene);}
-                    if (Raylib.IsKeyDown(controls[1])) {unit.move_up(dt_factor, active_scene);}
-                    if (Raylib.IsKeyDown(controls[2])) {unit.move_right(dt_factor, active_scene);}
-                    if (Raylib.IsKeyDown(controls[3])) {unit.move_down(dt_factor, active_scene);}
+                    if (Raylib.IsKeyDown(controls[0])) {unit.move_left(active_scene);}
+                    if (Raylib.IsKeyDown(controls[1])) {unit.move_up(active_scene);}
+                    if (Raylib.IsKeyDown(controls[2])) {unit.move_right(active_scene);}
+                    if (Raylib.IsKeyDown(controls[3])) {unit.move_down(active_scene);}
                 }
             }
             else {unit.stop();}
@@ -67,8 +72,8 @@ namespace main {
             }
         }
 
-        public void update(float dt, float dt_factor, Scene active_scene) {
-            unit.update(dt, dt_factor, active_scene.player_bullets);
+        public void update(float dt, Scene active_scene) {
+            unit.update(dt, active_scene.player_bullets);
         }
 
         public void draw() {}

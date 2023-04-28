@@ -148,14 +148,14 @@ namespace main {
             active_scene.monster_bullets = new List<Bullet>(){};
         }
 
-        public void update(float dt, float dt_factor, List<Player> players) {
-            active_scene.update_1(dt, dt_factor, players);
+        public void update(float dt, List<Player> players) {
+            active_scene.update_1(dt, players);
             if (active_scene.units.Count > 0 && active_scene.dead_units_index.Count >= active_scene.units.Count && !active_scene.scene_monsters_done)
                 special_scene_events_item(active_scene.units[0]);
             if (active_scene == s11 || active_scene == s24 || active_scene == s27) {
                 special_scene_events_map(players);
             }
-            active_scene.update_2(dt, dt_factor);
+            active_scene.update_2(dt);
 
             if (active_scene.units.Count == 0) {
                 active_scene.scene_monsters_done = true;
@@ -297,36 +297,32 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){230,170,15,10},
                                 bat_1_sprite,
                                 bat_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){210,170,15,10},
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){230,150,15,10},
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){210,150,15,10},
                                 bat_4_sprite,
                                 bat_4_sprite_death);
                 
@@ -378,13 +374,12 @@ namespace main {
                 Unit u1 = new Unit("Troll",
                                     260,
                                     170,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     6,
-                                    new List<int>(){256,160,14,15},
                                     troll_sprite,
                                     troll_sprite_death);
                 u1.active_weapon = new Weapon("rock",Start.data.weapons_data_dict["rock"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
@@ -423,27 +418,24 @@ namespace main {
                 Unit u1 = new Unit("Archer",
                                 300,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){296,160,15,10},
                                 archer_1_sprite,
                                 archer_1_sprite_death);
                                             
                 Unit u2 = new Unit("Archer",
                                 290,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){286,140,15,10},
                                 archer_2_sprite,
                                 archer_2_sprite_death);
 
                 Unit u3 = new Unit("Archer",
                                 280,
                                 120,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){276,110,15,10},
                                 archer_3_sprite,
                                 archer_3_sprite_death);
                 
@@ -455,17 +447,17 @@ namespace main {
                 u2.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
                 u3.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
 
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
 
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
-                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
-                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
+                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
+                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
 
                 Monster_AI u1_ai = new Monster_AI(0,false,"",1.5f);
                 Monster_AI u2_ai = new Monster_AI(0,false,"",1.5f);
@@ -507,13 +499,12 @@ namespace main {
                 Unit u1 = new Unit("Brigand",
                                     250,
                                     150,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){246,140,14,15},
                                     brigand_sprite,
                                     brigand_sprite_death);
                 u1.active_weapon = new Weapon("club",Start.data.weapons_data_dict["club"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
@@ -562,26 +553,24 @@ namespace main {
                 Unit u1 = new Unit("Skeleton",
                                     250,
                                     150,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){246,140,14,15},
                                     skeleton_1_sprite,
                                     skeleton_1_sprite_death);
                 u1.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u1.weapon_weakness = "club";
 
                 Unit u2 = new Unit("Skeleton",
                                     220,
                                     170,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){216,160,14,15},
                                     skeleton_2_sprite,
                                     skeleton_2_sprite_death);
                 u2.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.weapon_weakness = "club";
 
@@ -634,26 +623,24 @@ namespace main {
                 Unit u1 = new Unit("Skeleton",
                                     200,
                                     150,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){196,140,14,15},
                                     skeleton_1_sprite,
                                     skeleton_1_sprite_death);
                 u1.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u1.weapon_weakness = "club";
 
                 Unit u2 = new Unit("Skeleton",
                                     220,
                                     170,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){216,160,14,15},
                                     skeleton_2_sprite,
                                     skeleton_2_sprite_death);
                 u2.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.weapon_weakness = "club";
 
@@ -696,15 +683,14 @@ namespace main {
                 witch_sprite_death.change_color(Start.data.death_images_large_color, Start.data.evil_witch_color);
 
                 Unit u1 = new Unit("Evil Witch",
-                                    100,
-                                    120,
-                                    2,
-                                    20,
-                                    new List<int>(){96,110,14,15},
+                                    110,
+                                    130,
+                                    Start.data.default_unit_speed,
+                                    50,
                                     witch_sprite,
                                     witch_sprite_death);
                 u1.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u1.weapon_weakness = "club";
 
@@ -747,36 +733,32 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,170,15,10},
                                 bat_1_sprite,
                                 bat_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,170,15,10},
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,150,15,10},
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,150,15,10},
                                 bat_4_sprite,
                                 bat_4_sprite_death);
                 
@@ -846,36 +828,32 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){230,170,15,10},
                                 bat_1_sprite,
                                 bat_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){210,170,15,10},
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){230,150,15,10},
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){210,150,15,10},
                                 bat_4_sprite,
                                 bat_4_sprite_death);
                 
@@ -927,13 +905,12 @@ namespace main {
                 Unit u1 = new Unit("Brigand",
                                     250,
                                     150,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){246,150,14,15},
                                     brigand_sprite,
                                     brigand_sprite_death);
                 u1.active_weapon = new Weapon("silver dagger",Start.data.weapons_data_dict["silver dagger"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
@@ -971,13 +948,12 @@ namespace main {
                 Unit u1 = new Unit("Troll",
                                     120,
                                     170,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     6,
-                                    new List<int>(){116,160,14,15},
                                     troll_sprite,
                                     troll_sprite_death);
                 u1.active_weapon = new Weapon("rock",Start.data.weapons_data_dict["rock"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(1,true,"E",0);
@@ -1019,36 +995,32 @@ namespace main {
                 Unit u1 = new Unit("Bee",
                                 70,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){70,150,14,13},
                                 bee_1_sprite,
                                 bee_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bee",
                                 70,
                                 160,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){70,160,14,13},
                                 bee_2_sprite,
                                 bee_2_sprite_death);
 
                 Unit u3 = new Unit("Bee",
                                 70,
                                 155,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){70,155,14,13},
                                 bee_3_sprite,
                                 bee_3_sprite_death);
 
                 Unit u4 = new Unit("Bee",
                                 70,
                                 165,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){70,165,14,13},
                                 bee_4_sprite,
                                 bee_4_sprite_death);
                 
@@ -1062,10 +1034,10 @@ namespace main {
                 u3.active_weapon = new Weapon("pollen",Start.data.weapons_data_dict["pollen"],0,0);
                 u4.active_weapon = new Weapon("pollen",Start.data.weapons_data_dict["pollen"],0,0);
 
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u3.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u4.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u3.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u4.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(2,false,"",1f);
                 Monster_AI u2_ai = new Monster_AI(2,false,"",1f);
@@ -1121,27 +1093,25 @@ namespace main {
                 
                 Unit u1 = new Unit("Skeleton",
                                     150,
-                                    160,
-                                    2,
+                                    175,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){146,150,14,15},
                                     skeleton_1_sprite,
                                     skeleton_1_sprite_death);
                 u1.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u1.weapon_weakness = "club";
 
                 Unit u2 = new Unit("Skeleton",
                                     120,
-                                    170,
-                                    2,
+                                    180,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){116,160,14,15},
                                     skeleton_2_sprite,
                                     skeleton_2_sprite_death);
                 u2.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.weapon_weakness = "club";
 
@@ -1180,11 +1150,10 @@ namespace main {
                 witch_sprite_death.change_color(Start.data.death_images_large_color, Start.data.good_witch_color);
 
                 Unit u1 = new Unit("Good Witch",
-                                    100,
-                                    120,
-                                    2,
+                                    110,
+                                    130,
+                                    Start.data.default_unit_speed,
                                     3,
-                                    new List<int>(){96,110,14,15},
                                     witch_sprite,
                                     witch_sprite_death);
                 
@@ -1230,9 +1199,8 @@ namespace main {
                 Unit u1 = new Unit("Wolf",
                                     150,
                                     160,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     50,
-                                    new List<int>(){146,150,14,15},
                                     wolf_1_sprite,
                                     wolf_1_sprite_death);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
@@ -1277,36 +1245,32 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){230,170,15,10},
                                 bat_1_sprite,
                                 bat_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){210,170,15,10},
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){230,150,15,10},
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){210,150,15,10},
                                 bat_4_sprite,
                                 bat_4_sprite_death);
                 
@@ -1365,13 +1329,12 @@ namespace main {
                 Unit u1 = new Unit("Ice Wizard",
                                     260,
                                     150,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){256,140,14,15},
                                     ice_wizard_sprite,
                                     ice_wizard_sprite_death);
                 u1.active_weapon = new Weapon("ice wand",Start.data.weapons_data_dict["ice wand"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
@@ -1413,36 +1376,32 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){230,170,15,10},
                                 bat_1_sprite,
                                 bat_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){210,170,15,10},
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){230,150,15,10},
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){210,150,15,10},
                                 bat_4_sprite,
                                 bat_4_sprite_death);
                 
@@ -1496,27 +1455,24 @@ namespace main {
                 Unit u1 = new Unit("Archer",
                                 300,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){296,160,15,10},
                                 archer_1_sprite,
                                 archer_1_sprite_death);
                                             
                 Unit u2 = new Unit("Archer",
                                 290,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){286,140,15,10},
                                 archer_2_sprite,
                                 archer_2_sprite_death);
 
                 Unit u3 = new Unit("Archer",
                                 280,
                                 120,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){276,110,15,10},
                                 archer_3_sprite,
                                 archer_3_sprite_death);
                 
@@ -1528,17 +1484,17 @@ namespace main {
                 u2.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
                 u3.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
 
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
 
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
-                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
-                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
+                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
+                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
 
                 Monster_AI u1_ai = new Monster_AI(0,false,"",1.5f);
                 Monster_AI u2_ai = new Monster_AI(0,false,"",1.5f);
@@ -1585,36 +1541,32 @@ namespace main {
                 Unit u1 = new Unit("Bee",
                                 290,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){290,150,14,13},
                                 bee_1_sprite,
                                 bee_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bee",
                                 290,
                                 160,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){290,160,14,13},
                                 bee_2_sprite,
                                 bee_2_sprite_death);
 
                 Unit u3 = new Unit("Bee",
                                 290,
                                 155,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){290,155,14,13},
                                 bee_3_sprite,
                                 bee_3_sprite_death);
 
                 Unit u4 = new Unit("Bee",
                                 290,
                                 165,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){290,165,14,13},
                                 bee_4_sprite,
                                 bee_4_sprite_death);
 
@@ -1642,10 +1594,10 @@ namespace main {
                 u3.active_weapon = new Weapon("pollen",Start.data.weapons_data_dict["pollen"],0,0);
                 u4.active_weapon = new Weapon("pollen",Start.data.weapons_data_dict["pollen"],0,0);
 
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u3.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u4.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u3.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u4.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(2,false,"",1f);
                 Monster_AI u2_ai = new Monster_AI(2,false,"",1f);
@@ -1695,36 +1647,32 @@ namespace main {
                 Unit u1 = new Unit("Bee",
                                 290,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){290,150,14,13},
                                 bee_1_sprite,
                                 bee_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bee",
                                 290,
                                 160,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){290,160,14,13},
                                 bee_2_sprite,
                                 bee_2_sprite_death);
 
                 Unit u3 = new Unit("Bee",
                                 290,
                                 155,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){290,155,14,13},
                                 bee_3_sprite,
                                 bee_3_sprite_death);
 
                 Unit u4 = new Unit("Bee",
                                 290,
                                 165,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){290,165,14,13},
                                 bee_4_sprite,
                                 bee_4_sprite_death);
                 
@@ -1744,10 +1692,10 @@ namespace main {
                 u3.active_weapon = new Weapon("pollen",Start.data.weapons_data_dict["pollen"],0,0);
                 u4.active_weapon = new Weapon("pollen",Start.data.weapons_data_dict["pollen"],0,0);
 
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u3.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u4.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u3.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u4.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(2,false,"",1f);
                 Monster_AI u2_ai = new Monster_AI(2,false,"",1f);
@@ -1792,13 +1740,12 @@ namespace main {
                 Unit u1 = new Unit("Dragon",
                                     260,
                                     170,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     50,
-                                    new List<int>(){256,160,14,15},
                                     dragon_sprite,
                                     dragon_sprite_death);
                 u1.active_weapon = new Weapon("fire breath",Start.data.weapons_data_dict["fire breath"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u1.weapon_weakness = "ice wand";
 
@@ -1837,13 +1784,12 @@ namespace main {
                 Unit u1 = new Unit("Troll",
                                     160,
                                     140,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     6,
-                                    new List<int>(){156,130,14,15},
                                     troll_sprite,
                                     troll_sprite_death);
                 u1.active_weapon = new Weapon("rock",Start.data.weapons_data_dict["rock"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
@@ -1897,9 +1843,8 @@ namespace main {
                 Unit u1 = new Unit("Good Hermit",
                                     130,
                                     140,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     3,
-                                    new List<int>(){126,130,14,15},
                                     hermit_sprite,
                                     hermit_sprite_death);
                 
@@ -1958,26 +1903,24 @@ namespace main {
                 Unit u1 = new Unit("Skeleton",
                                     130,
                                     150,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){126,140,14,15},
                                     skeleton_1_sprite,
                                     skeleton_1_sprite_death);
                 u1.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u1.weapon_weakness = "club";
 
                 Unit u2 = new Unit("Skeleton",
                                     120,
                                     170,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     4,
-                                    new List<int>(){116,160,14,15},
                                     skeleton_2_sprite,
                                     skeleton_2_sprite_death);
                 u2.active_weapon = new Weapon("sword",Start.data.weapons_data_dict["sword"],0,0);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.weapon_weakness = "club";
 
@@ -2006,11 +1949,11 @@ namespace main {
             s32.door_up = new Rectangle(125,105,15,1);
 
             s32.swamp_areas.Add(new Rectangle(63,88,35,148));
-            s32.swamp_areas.Add(new Rectangle(245,210,76,26));
+            s32.swamp_areas.Add(new Rectangle(260,210,61,26));
             s32.swamp_areas.Add(new Rectangle(63,210,151,26));
             s32.swamp_areas.Add(new Rectangle(300,88,21,148));
-            s32.swamp_areas.Add(new Rectangle(63,88,55,26));
-            s32.swamp_areas.Add(new Rectangle(140,145,45,35));
+            s32.swamp_areas.Add(new Rectangle(63,88,55,16));
+            s32.swamp_areas.Add(new Rectangle(140,145,25,25));
             s32.swamp_areas.Add(new Rectangle(215,170,2,40));
             s32.swamp_areas.Add(new Rectangle(150,95,2,25));
             s32.swamp_areas.Add(new Rectangle(208,136,43,2));
@@ -2031,36 +1974,32 @@ namespace main {
                 Unit u1 = new Unit("Fire Spirit",
                                 230,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,170,15,10},
                                 fire_spirit_1_sprite,
                                 null);
                                             
                 Unit u2 = new Unit("Fire Spirit",
                                 210,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,170,15,10},
                                 fire_spirit_2_sprite,
                                 null);
 
                 Unit u3 = new Unit("Fire Spirit",
                                 230,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,150,15,10},
                                 fire_spirit_3_sprite,
                                 null);
 
                 Unit u4 = new Unit("Fire Spirit",
                                 210,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,150,15,10},
                                 fire_spirit_4_sprite,
                                 null);
                 
@@ -2105,11 +2044,11 @@ namespace main {
             s33.door_left = new Rectangle(70,140,1,15);
 
             s33.swamp_areas.Add(new Rectangle(63,88,258,25));
-            s33.swamp_areas.Add(new Rectangle(63,113,57,20));
+            s33.swamp_areas.Add(new Rectangle(63,113,37,20));
             s33.swamp_areas.Add(new Rectangle(270,88,51,148));
             s33.swamp_areas.Add(new Rectangle(63,165,80,71));
-            s33.swamp_areas.Add(new Rectangle(188,210,133,26));
-            s33.swamp_areas.Add(new Rectangle(175,140,45,2));
+            s33.swamp_areas.Add(new Rectangle(188,215,133,21));
+            s33.swamp_areas.Add(new Rectangle(175,145,45,2));
 
             s33.respawn_point_x = 155;
             s33.respawn_point_y = 200;
@@ -2139,36 +2078,32 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,170,15,10},
                                 bat_1_sprite,
                                 bat_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,170,15,10},
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,150,15,10},
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,150,15,10},
                                 bat_4_sprite,
                                 bat_4_sprite_death);
                 
@@ -2219,7 +2154,6 @@ namespace main {
             s34.swamp_areas.Add(new Rectangle(155,130,7,2));
             s34.swamp_areas.Add(new Rectangle(240,130,2,50));
             s34.swamp_areas.Add(new Rectangle(175,178,50,2));
-            s34.swamp_areas.Add(new Rectangle(160,205,40,10));
 
             s34.respawn_point_x = 295;
             s34.respawn_point_y = 130;
@@ -2243,11 +2177,11 @@ namespace main {
             s35.door_up = new Rectangle(125,105,15,1);
 
             s35.swamp_areas.Add(new Rectangle(135,185,55,2));
-            s35.swamp_areas.Add(new Rectangle(185,215,136,21));
+            s35.swamp_areas.Add(new Rectangle(195,215,126,21));
             s35.swamp_areas.Add(new Rectangle(290,88,31,148));
             s35.swamp_areas.Add(new Rectangle(63,88,47,148));
             s35.swamp_areas.Add(new Rectangle(235,132,20,48));
-            s35.swamp_areas.Add(new Rectangle(148,115,32,20));
+            s35.swamp_areas.Add(new Rectangle(148,115,32,10));
 
             s35.respawn_point_x = 135;
             s35.respawn_point_y = 200;
@@ -2278,36 +2212,32 @@ namespace main {
                 Unit u1 = new Unit("Fire Spirit",
                                 230,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,170,15,10},
                                 fire_spirit_1_sprite,
                                 null);
                                             
                 Unit u2 = new Unit("Fire Spirit",
                                 210,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,170,15,10},
                                 fire_spirit_2_sprite,
                                 null);
 
                 Unit u3 = new Unit("Fire Spirit",
                                 230,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,150,15,10},
                                 fire_spirit_3_sprite,
                                 null);
 
                 Unit u4 = new Unit("Fire Spirit",
                                 210,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,150,15,10},
                                 fire_spirit_4_sprite,
                                 null);
                 
@@ -2361,27 +2291,24 @@ namespace main {
                 Unit u1 = new Unit("Archer",
                                 300,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){296,160,15,10},
                                 archer_1_sprite,
                                 archer_1_sprite_death);
                                             
                 Unit u2 = new Unit("Archer",
                                 290,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){286,140,15,10},
                                 archer_2_sprite,
                                 archer_2_sprite_death);
 
                 Unit u3 = new Unit("Archer",
                                 280,
                                 120,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){276,110,15,10},
                                 archer_3_sprite,
                                 archer_3_sprite_death);
                 
@@ -2393,17 +2320,17 @@ namespace main {
                 u2.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
                 u3.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
 
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
 
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
-                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
-                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
+                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
+                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
 
                 Monster_AI u1_ai = new Monster_AI(0,false,"",1.5f);
                 Monster_AI u2_ai = new Monster_AI(0,false,"",1.5f);
@@ -2438,36 +2365,32 @@ namespace main {
                 Unit u1 = new Unit("Fire Spirit",
                                 230,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,170,15,10},
                                 fire_spirit_1_sprite,
                                 null);
                                             
                 Unit u2 = new Unit("Fire Spirit",
                                 210,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,170,15,10},
                                 fire_spirit_2_sprite,
                                 null);
 
                 Unit u3 = new Unit("Fire Spirit",
                                 230,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,150,15,10},
                                 fire_spirit_3_sprite,
                                 null);
 
                 Unit u4 = new Unit("Fire Spirit",
                                 210,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,150,15,10},
                                 fire_spirit_4_sprite,
                                 null);
                 
@@ -2512,36 +2435,32 @@ namespace main {
                 Unit u1 = new Unit("Fire Spirit",
                                 230,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,170,15,10},
                                 fire_spirit_1_sprite,
                                 null);
                                             
                 Unit u2 = new Unit("Fire Spirit",
                                 210,
                                 170,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,170,15,10},
                                 fire_spirit_2_sprite,
                                 null);
 
                 Unit u3 = new Unit("Fire Spirit",
                                 230,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){230,150,15,10},
                                 fire_spirit_3_sprite,
                                 null);
 
                 Unit u4 = new Unit("Fire Spirit",
                                 210,
                                 150,
-                                2,
+                                Start.data.default_unit_speed,
                                 1,
-                                new List<int>(){210,150,15,10},
                                 fire_spirit_4_sprite,
                                 null);
                 
@@ -2593,29 +2512,26 @@ namespace main {
                 Audio archer_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Archer",
-                                300,
+                                280,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){296,160,15,10},
                                 archer_1_sprite,
                                 archer_1_sprite_death);
                                             
                 Unit u2 = new Unit("Archer",
-                                290,
-                                150,
+                                275,
+                                160,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){286,140,15,10},
                                 archer_2_sprite,
                                 archer_2_sprite_death);
 
                 Unit u3 = new Unit("Archer",
-                                280,
-                                120,
+                                270,
+                                150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){276,110,15,10},
                                 archer_3_sprite,
                                 archer_3_sprite_death);
                 
@@ -2627,17 +2543,17 @@ namespace main {
                 u2.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
                 u3.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
 
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
 
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
-                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
-                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
+                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
+                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
 
                 Monster_AI u1_ai = new Monster_AI(0,false,"",1.5f);
                 Monster_AI u2_ai = new Monster_AI(0,false,"",1.5f);
@@ -2680,29 +2596,26 @@ namespace main {
                 Audio archer_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Archer",
-                                270,
-                                125,
+                                280,
+                                170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){266,115,15,10},
                                 archer_1_sprite,
                                 archer_1_sprite_death);
                                             
                 Unit u2 = new Unit("Archer",
                                 275,
-                                130,
+                                160,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){271,120,15,10},
                                 archer_2_sprite,
                                 archer_2_sprite_death);
 
                 Unit u3 = new Unit("Archer",
-                                265,
-                                120,
+                                270,
+                                150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){261,110,15,10},
                                 archer_3_sprite,
                                 archer_3_sprite_death);
                 
@@ -2714,17 +2627,17 @@ namespace main {
                 u2.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
                 u3.active_weapon = new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],0,0);
 
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
-                u2.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u2.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
 
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
-                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
-                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"]));
+                u1.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
+                u2.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
+                u3.items.Add(new Item("shield", Start.data.items_data_dict["shield"],0,0));
 
                 Monster_AI u1_ai = new Monster_AI(0,false,"",1.5f);
                 Monster_AI u2_ai = new Monster_AI(0,false,"",1.5f);
@@ -2771,36 +2684,32 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){230,170,15,10},
                                 bat_1_sprite,
                                 bat_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){210,170,15,10},
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){230,150,15,10},
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                Start.data.default_unit_speed,
                                 2,
-                                2,
-                                new List<int>(){210,150,15,10},
                                 bat_4_sprite,
                                 bat_4_sprite_death);
                 
@@ -2856,13 +2765,12 @@ namespace main {
                 Unit u1 = new Unit("Dragon",
                                     260,
                                     130,
-                                    2,
+                                    Start.data.default_unit_speed,
                                     5,
-                                    new List<int>(){256,120,14,15},
                                     dragon_sprite,
                                     dragon_sprite_death);
                 u1.active_weapon = new Weapon("fire breath",Start.data.weapons_data_dict["fire breath"],0,0);
-                u1.active_weapon.bullet_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
+                u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
                 Monster_AI u1_ai = new Monster_AI(1,true,"W",0);

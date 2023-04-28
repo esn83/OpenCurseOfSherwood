@@ -6,7 +6,6 @@ namespace main {
 
         public List<Object> choises;
         public float dt;
-        public float dt_factor;
         public Camera camera;
 
         public Random rnd = new Random();
@@ -23,22 +22,25 @@ namespace main {
         private Texture2D popup_1_texture;
         private string popup_1_text;
         
-        public Game(List<Object> menuChoises_p) {
-                    choises = menuChoises_p;
-                    dt = 0;
-                    dt_factor = 0;
+        // constructor
+        public Game
+        (
+            List<Object> menuChoises_p
+        )
+        {
+            choises = menuChoises_p;
+            dt = 0;
 
-                    //txt_color = new Color(240,200,5,255); // yellow
-                    txt_color = new Color(210,125,237,255); // purple
+            //txt_color = new Color(240,200,5,255); // yellow
+            txt_color = new Color(210,125,237,255); // purple
 
-                    camera = new Camera(Raylib.GetScreenWidth(),
-                             Raylib.GetScreenHeight(),
-                             0,//Raylib.GetScreenWidth()/2.0f,
-                             0,//Raylib.GetScreenHeight()/2.0f,
-                             0,//Raylib.GetScreenWidth()/2.0f,
-                             0//Raylib.GetScreenHeight()/2.0f
-                             );
-
+            camera = new Camera(Raylib.GetScreenWidth(),
+                        Raylib.GetScreenHeight(),
+                        0,//Raylib.GetScreenWidth()/2.0f,
+                        0,//Raylib.GetScreenHeight()/2.0f,
+                        0,//Raylib.GetScreenWidth()/2.0f,
+                        0//Raylib.GetScreenHeight()/2.0f
+                        );
         }
 
         void init() {
@@ -90,27 +92,23 @@ namespace main {
             // monk_sprite_rise.change_color(new Color(252,249,252,255), players[0].color);
 
             Unit monk = new Unit("Monk",
-                                130,
-                                130,
-                                2,
+                                130,//scene_manager.active_scene.respawn_point_x,
+                                130,//scene_manager.active_scene.respawn_point_y,
                                 1,
-                                new List<int>(){126,
-                                                120,
-                                                14,
-                                                15},
+                                1,
                                 monk_sprite,
                                 monk_sprite_death);
             monk.sprite_sink = monk_sprite_sink;
             // monk.sprite_rise = monk_sprite_rise;
-            monk.walk_sounds = new Audio(Start.data.monk_walk_sounds, 0.35f);
-            monk.death_sounds = new Audio(Start.data.monk_death_sounds, 0.5f);
-            monk.sink_sounds =  new Audio(Start.data.sink_sounds, 1.5f);
+            // monk.walk_sounds = new Audio(Start.data.monk_walk_sounds, 0.35f);
+            // monk.death_sounds = new Audio(Start.data.monk_death_sounds, 0.5f);
+            // monk.sink_sounds =  new Audio(Start.data.sink_sounds, 1.5f);
             // monk.rise_sounds =  new Audio(Start.data.rise_sounds, 0.0f);
             // monk.weapons.Add(new Weapon("sword", Start.data.weapons_data_dict["sword"], 202, 67));
             // monk.weapons.Add(new Weapon("club", Start.data.weapons_data_dict["club"], 202, 67));
             // monk.weapons.Add(new Weapon("silver dagger", Start.data.weapons_data_dict["silver dagger"], 202, 67));
             // monk.weapons.Add(new Weapon("ice wand", Start.data.weapons_data_dict["ice wand"], 202, 67));
-            // monk.active_weapon = monk.weapons[0];
+            // monk.active_weapon = monk.weapons[1];
             // monk.items.Add(new Item("scrying glass",Start.data.scrying_glass_data,0,0));
             // monk.items.Add(new Item("fangs",Start.data.fangs_data,0,0));
             // monk.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],0,0));
@@ -122,8 +120,7 @@ namespace main {
         }
 
         public void run() {
-            Raylib.InitWindow((int) choises[2],(int) choises[3], "Open Curse of Sherwood : Game");
-            Raylib.SetTargetFPS( (int) choises[4] ); // set target FPS
+            Raylib.SetWindowTitle("Open Curse of Sherwood : Game");
             if ((bool) choises[1] == false) {
                 Raylib.SetWindowPosition(500,200); // window position
             }
@@ -134,28 +131,26 @@ namespace main {
             }
             font = Raylib.LoadFont("assets/fonts/alagard.ttf");
             init();
-            while (!Raylib.WindowShouldClose())
+            while (!Raylib.WindowShouldClose() && Start.playing)
             {
-                if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)) {Start.playing = false;}
-                if (!Start.playing) {break;}
                 time();
                 events();
                 update();
                 draw();
             }
             Raylib.UnloadFont(font);
-            Raylib.CloseWindow();
         }
 
         void time() {
             dt = Raylib.GetFrameTime(); // Raylib.GetFrameTime() : Get time in seconds for last frame drawn (delta time) ~0.01667s @ 60FPS
-            dt_factor = Raylib.GetFrameTime() / 0.01667f; // assume 60 FPS default | 1s/60f/s = 0,01667 s/frame | 0,01667 /  0,01667 => dt=1 pr/frame @ 60FPS or dt=2 pr/frame @ 30FPS and so forth meaning that dt is a factor that can be multiplied to fx. movement that updates each frame. Use to make app FPS independent.
         }
 
         void events() {
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)) {Start.playing = false;}
+
             if (!game_won) {
                 foreach (Player p in players) {
-                    p.events(dt_factor, scene_manager.active_scene);
+                    p.events(scene_manager.active_scene);
                 }
             }
             else {
@@ -175,6 +170,7 @@ namespace main {
             camera.update();
 
             // update scene
+                // scene edges
             if (!scene_manager.active_scene.disable_right &&
                 players[0].unit.pos_x + players[0].unit.sprite_active.textures_active[0].width >= scene_manager.active_scene.scene_limit_x_right - 5) {
                 scene_manager.next_scene_right();
@@ -195,33 +191,36 @@ namespace main {
                 scene_manager.next_scene_up();
                 players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_down - players[0].unit.sprite_active.textures_active[0].height - 10;
             }
+                // / scene edges
 
+                // doors
             if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_up)) {
                 scene_manager.next_scene_up();
-                players[0].unit.pos_x = (int) scene_manager.active_scene.door_down.x;
-                players[0].unit.pos_y = (int) scene_manager.active_scene.door_down.y - players[0].unit.sprite_active.textures_active[0].height + 5;
+                players[0].unit.pos_x = scene_manager.active_scene.door_down.x;
+                players[0].unit.pos_y = scene_manager.active_scene.door_down.y - players[0].unit.sprite_active.textures_active[0].height + 5;
             }
             else if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_down)) {
                 scene_manager.next_scene_down();
-                players[0].unit.pos_x = (int) scene_manager.active_scene.door_up.x;
-                players[0].unit.pos_y = (int) scene_manager.active_scene.door_up.y + (int) - 8;
+                players[0].unit.pos_x = scene_manager.active_scene.door_up.x;
+                players[0].unit.pos_y = scene_manager.active_scene.door_up.y - 5;
             }
             else if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_left)) {
                 scene_manager.next_scene_left();
-                players[0].unit.pos_x = (int) scene_manager.active_scene.door_right.x - (int) scene_manager.active_scene.door_right.width - players[0].unit.sprite_active.textures_active[0].width;
-                players[0].unit.pos_y = (int) scene_manager.active_scene.door_right.y - players[0].unit.sprite_active.textures_active[0].height/2;
+                players[0].unit.pos_x = scene_manager.active_scene.door_right.x - scene_manager.active_scene.door_right.width - players[0].unit.sprite_active.textures_active[0].width;
+                players[0].unit.pos_y = scene_manager.active_scene.door_right.y - players[0].unit.sprite_active.textures_active[0].height/3;
             }
             else if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_right)) {
                 scene_manager.next_scene_right();
-                players[0].unit.pos_x = (int) scene_manager.active_scene.door_left.x + (int) scene_manager.active_scene.door_right.width + 1;
-                players[0].unit.pos_y = (int) scene_manager.active_scene.door_left.y - players[0].unit.sprite_active.textures_active[0].height/2;
+                players[0].unit.pos_x = scene_manager.active_scene.door_left.x + scene_manager.active_scene.door_right.width + 1;
+                players[0].unit.pos_y = scene_manager.active_scene.door_left.y - players[0].unit.sprite_active.textures_active[0].height/3;
             }
+                // / doors
 
-            scene_manager.update(dt, dt_factor, players);
+            scene_manager.update(dt, players);
             // / update scene
 
             foreach (Player p in players) {
-                p.update(dt, dt_factor, scene_manager.active_scene);
+                p.update(dt, scene_manager.active_scene);
 
                 // check if player collides with a weapon on the ground
                 List<Weapon> remove_ground = new List<Weapon>(){};
@@ -281,7 +280,7 @@ namespace main {
                                         int chance = rnd.Next(3); // 1/3 chance of deflect
                                         if (chance == 0) {
                                             deflect = true;
-                                            u.my_bullets.Add(b);
+                                            u.bullets.Add(b);
                                             scene_manager.active_scene.monster_bullets.Add(b);
                                             b.speed += 1;
                                             if (b.direction.Equals("W")) {
@@ -369,14 +368,14 @@ namespace main {
                 List<Bullet> remove_m_bullets = new List<Bullet>(){};
                 foreach(Bullet b in scene_manager.active_scene.monster_bullets) {
                     bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, b.hitbox);
-                    if (col) {
+                    if (col && !p.unit.is_dead) {
                         bool deflect = false;
                         foreach (Item item in p.unit.items) {
                             if (item.name.Equals("shield")) { // deflect bullet
                                 int chance = rnd.Next(3); // 1/3 chance of deflect
                                 if (chance == 0) {
                                     deflect = true;
-                                    p.unit.my_bullets.Add(b);
+                                    p.unit.bullets.Add(b);
                                     scene_manager.active_scene.player_bullets.Add(b);
                                     b.speed += 1;
                                     if (b.direction.Equals("W")) {
@@ -479,7 +478,7 @@ namespace main {
 
                 foreach (Player p in players) {
                     p.unit.sprite_active.draw();
-                    //Raylib.DrawRectangleRec(p.unit.hitbox, Color.BLUE);
+                    // Raylib.DrawRectangleRec(p.unit.hitbox, Color.BLUE);
                     
                     Raylib.DrawText(p.lives.ToString(), // draw lives
                                     289,

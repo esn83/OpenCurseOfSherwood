@@ -26,18 +26,19 @@ namespace main {
         public bool scene_objectives_done = false;
         public bool scene_monsters_done = false;
         public List<Rectangle> swamp_areas = new List<Rectangle>(){};
-        
         public int scene_limit_x_left = 63;
         public int scene_limit_x_right = 321;
         public int scene_limit_y_up = 88;
         public int scene_limit_y_down = 236;
 
         // constructor
-        public Scene(List<string> scene_img_paths_p
-                    )
+        public Scene
+        (
+            List<string> scene_img_paths_p
+        )
         {
-        scene_img_paths = scene_img_paths_p;
-        init();
+            scene_img_paths = scene_img_paths_p;
+            init();
         }
 
         public void init() {
@@ -59,7 +60,7 @@ namespace main {
             }
         }
 
-        public void update_1(float dt, float dt_factor, List<Player> players) {
+        public void update_1(float dt, List<Player> players) {
 
             foreach( Player p in players) {
                 for (int i=0 ; i < units.Count ; i++) {
@@ -68,8 +69,8 @@ namespace main {
             }
             if (units.Count > 0) {
                 for (int i=0 ; i<units.Count ; i++) {
-                    units[i].update(dt, dt_factor, player_bullets);
-                    units[i].update(dt, dt_factor, monster_bullets);
+                    units[i].update(dt, player_bullets);
+                    units[i].update(dt, monster_bullets);
                     if (units[i].is_dead) {
                         if (units[i].sprite_active.current_frame >= units[i].sprite_active.textures_active.Count-1) {
                             dead_units_index.Add(i);
@@ -80,10 +81,10 @@ namespace main {
 
             for (int i=0 ; i<units.Count ; i++) {
                 if (ais[i].do_shoot) {units[i].shoot(monster_bullets);}
-                if (ais[i].move_direction_n_s.Equals("N")) {units[i].move_up(dt_factor, this);}
-                if (ais[i].move_direction_n_s.Equals("S")) {units[i].move_down(dt_factor, this);}
-                if (ais[i].move_direction_e_w.Equals("W")) {units[i].move_left(dt_factor, this);}
-                if (ais[i].move_direction_e_w.Equals("E")) {units[i].move_right(dt_factor, this);}
+                if (ais[i].move_direction_n_s.Equals("N")) {units[i].move_up(this);}
+                if (ais[i].move_direction_n_s.Equals("S")) {units[i].move_down(this);}
+                if (ais[i].move_direction_e_w.Equals("W")) {units[i].move_left(this);}
+                if (ais[i].move_direction_e_w.Equals("E")) {units[i].move_right(this);}
             }
 
             foreach (Weapon w in weapons) {
@@ -91,7 +92,7 @@ namespace main {
             }
         }
 
-        public void update_2(float dt, float dt_factor) {
+        public void update_2(float dt) {
             // remove dead units
             if (dead_units_index.Count > 0) {
                 dead_units_index.Sort();
@@ -107,27 +108,19 @@ namespace main {
             // remove old monster bullets
             List<Bullet> remove_bullets_m = new List<Bullet>(){};
             foreach (Bullet b in monster_bullets) {
-                b.update(dt, dt_factor);
-                if (b.pos_x + b.width > scene_limit_x_right || b.pos_x < scene_limit_x_left) {
-                    remove_bullets_m.Add(b);
-                }
+                b.update(dt);
+                if (b.pos_x + b.width > scene_limit_x_right || b.pos_x < scene_limit_x_left) {remove_bullets_m.Add(b);}
             }
-            foreach (Bullet rb in remove_bullets_m) {
-                monster_bullets.Remove(rb);
-            }
+            foreach (Bullet rb in remove_bullets_m) {monster_bullets.Remove(rb);}
             // / remove old monster bullets
 
             // remove old player bullets
             List<Bullet> remove_bullets_p = new List<Bullet>(){};
             foreach (Bullet b in player_bullets) {
-                b.update(dt, dt_factor);
-                if (b.pos_x + b.width > scene_limit_x_right || b.pos_x < scene_limit_x_left) {
-                    remove_bullets_p.Add(b);
-                }
+                b.update(dt);
+                if (b.pos_x + b.width > scene_limit_x_right || b.pos_x < scene_limit_x_left) {remove_bullets_p.Add(b);}
             }
-            foreach (Bullet rb in remove_bullets_p) {
-                player_bullets.Remove(rb);
-            }
+            foreach (Bullet rb in remove_bullets_p) {player_bullets.Remove(rb);}
             // / remove old player bullets
         }
 

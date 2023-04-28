@@ -4,18 +4,18 @@ namespace main {
 
     public class Unit {
         public string name;
-        public int pos_x;
-        public int pos_y;
-        public int speed;
+        public float pos_x;
+        public float pos_y;
+        public float speed;
         public int hitpoints;
         public int hitpoints_max;
         public bool is_immortal = false;
         public bool is_dead = false;
         public string? weapon_weakness;
         public Rectangle hitbox;
+        public float hitbox_offset_x;
+        public float hitbox_offset_y;
         public bool can_pass_through_obstacles = false;
-        public int hitbox_offset_x;
-        public int hitbox_offset_y;        
         public Sprite sprite_active;
         public Sprite sprite_walk;
         public Sprite? sprite_death;
@@ -28,7 +28,7 @@ namespace main {
         public List<Weapon> weapons = new List<Weapon>(){};
         public Weapon? active_weapon;
         public int max_bullets = 3;
-        public List<Bullet> my_bullets = new List<Bullet>(){};
+        public List<Bullet> bullets = new List<Bullet>(){};
         public List<Item> items = new List<Item>(){};
         public bool is_npc = false;
         public List<string> trade_takes = new List<string>(){};
@@ -36,14 +36,16 @@ namespace main {
         public List<string> terrain_collision_colors = new List<string>(){"{R:0 G:0 B:0 A:0}"};
         
         // constructor
-        public Unit(string name_p,
-                    int pos_x_p,
-                    int pos_y_p,
-                    int speed_p,
-                    int hitpoints_p,
-                    List<int> hitbox_stats_p,
-                    Sprite sprite_p,
-                    Sprite sprite_death_p)
+        public Unit
+        (
+            string name_p,
+            float pos_x_p,
+            float pos_y_p,
+            float speed_p,
+            int hitpoints_p,
+            Sprite sprite_p,
+            Sprite sprite_death_p
+        )
         {
             name = name_p;
             pos_x = pos_x_p;
@@ -51,12 +53,16 @@ namespace main {
             speed = speed_p;
             hitpoints = hitpoints_p;
             hitpoints_max = hitpoints_p;
-            hitbox = new Rectangle(hitbox_stats_p[0],hitbox_stats_p[1],hitbox_stats_p[2],hitbox_stats_p[3]);
-            hitbox_offset_x = pos_x-hitbox_stats_p[0];
-            hitbox_offset_y = pos_y-hitbox_stats_p[1];
             sprite_walk = sprite_p;
             sprite_active = sprite_p;
             sprite_death = sprite_death_p;
+            hitbox_offset_x = ((sprite_active.textures_active[0].width - sprite_active.textures_active[0].width * 0.6f) / 2);
+            hitbox_offset_y = ((sprite_active.textures_active[0].height - sprite_active.textures_active[0].height * 0.5f) / 2);
+            float hb_x = pos_x + hitbox_offset_x;
+            float hb_y = pos_y + hitbox_offset_y;
+            float hb_w = sprite_active.textures_active[0].width * 0.6f;
+            float hb_h = sprite_active.textures_active[0].height * 0.5f;
+            hitbox = new Rectangle(hb_x, hb_y, hb_w, hb_h);
             if (weapons.Count > 0) {
                 active_weapon = weapons[0];
             }
@@ -74,54 +80,54 @@ namespace main {
             }
         }
 
-        public void move_left(float dt_factor, Scene active_scene) {
+        public void move_left(Scene active_scene) {
             if (!is_dead) {
                 sprite_active.direction = "W";
-                if (!check_collision(dt_factor, active_scene)) {
+                if (!check_collision(active_scene)) {
                     is_walking = true;
-                    pos_x -= (int) ((float) speed * dt_factor);
+                    pos_x -= speed;
                 }
             }
         }
-        public void move_up(float dt_factor, Scene active_scene) {
+        public void move_up(Scene active_scene) {
             if (!is_dead) {
                 sprite_active.direction = "N";
-                if (!check_collision(dt_factor, active_scene)) {
+                if (!check_collision(active_scene)) {
                     is_walking = true;
-                    pos_y -= (int) ((float) speed * dt_factor);
+                    pos_y -= speed;
                 }
             }
         }
-        public void move_right(float dt_factor, Scene active_scene) {
+        public void move_right(Scene active_scene) {
             if (!is_dead) {
                 sprite_active.direction = "E";
-                if (!check_collision(dt_factor, active_scene)) {
+                if (!check_collision(active_scene)) {
                     is_walking = true;
-                    pos_x += (int) ((float) speed * dt_factor);
+                    pos_x += speed;
                 }
             }
         }
-        public void move_down(float dt_factor, Scene active_scene) {
+        public void move_down(Scene active_scene) {
             if (!is_dead) {
                 sprite_active.direction = "S";
-                if (!check_collision(dt_factor, active_scene)) {
+                if (!check_collision(active_scene)) {
                     is_walking = true;
-                    pos_y += (int) ((float) speed * dt_factor);
+                    pos_y += speed;
                 }
             }
         }
 
         public void stop() {is_walking=false;}
 
-        public bool check_collision(float dt_factor, Scene active_scene) {
+        public bool check_collision(Scene active_scene) {
             bool terrain_collision = false;
             if (!can_pass_through_obstacles) {
                 // check if hitbox would have other colors in it than black which means that it is colliding with terrain (or items)
                 Rectangle r1 = new Rectangle(hitbox.x, hitbox.y, hitbox.width, hitbox.height);
-                if (sprite_active.direction.Equals("W")) {r1.x -= (int) ((float) speed * dt_factor);}
-                if (sprite_active.direction.Equals("N")) {r1.y -= (int) ((float) speed * dt_factor);}
-                if (sprite_active.direction.Equals("E")) {r1.x += (int) ((float) speed * dt_factor);}
-                if (sprite_active.direction.Equals("S")) {r1.y += (int) ((float) speed * dt_factor);}
+                if (sprite_active.direction.Equals("W")) {r1.x -= speed;}
+                if (sprite_active.direction.Equals("N")) {r1.y -= speed;}
+                if (sprite_active.direction.Equals("E")) {r1.x += speed;}
+                if (sprite_active.direction.Equals("S")) {r1.y += speed;}
                 Image ix = Raylib.ImageFromImage(Raylib.LoadImageFromTexture(active_scene.scene), r1);
                 for (int i=0 ; i<ix.height ; i++) {
                     for (int j=0 ; j<ix.width ; j++) {
@@ -137,22 +143,22 @@ namespace main {
             // / check if hitbox would have other colors in it than black which means that it is colliding with terrain (or items)
             
             // check if hitbox would exceed scene limits
-            if (sprite_active.direction.Equals("W") && sprite_active.pos_x - (float) speed * dt_factor <= active_scene.scene_limit_x_left) {terrain_collision = true;}
-            if (sprite_active.direction.Equals("E") && sprite_active.pos_x + (float) speed * dt_factor + sprite_active.textures_active[0].width > active_scene.scene_limit_x_right) {terrain_collision = true;}
-            if (sprite_active.direction.Equals("N") && sprite_active.pos_y - (float) speed * dt_factor < active_scene.scene_limit_y_up) {terrain_collision = true;}
-            if (sprite_active.direction.Equals("S") && sprite_active.pos_y + (float) speed * dt_factor + sprite_active.textures_active[0].height > active_scene.scene_limit_y_down) {terrain_collision = true;}
+            if (sprite_active.direction.Equals("W") && sprite_active.pos_x - speed <= active_scene.scene_limit_x_left) {terrain_collision = true;}
+            if (sprite_active.direction.Equals("E") && sprite_active.pos_x + speed + sprite_active.textures_active[0].width > active_scene.scene_limit_x_right) {terrain_collision = true;}
+            if (sprite_active.direction.Equals("N") && sprite_active.pos_y - speed < active_scene.scene_limit_y_up) {terrain_collision = true;}
+            if (sprite_active.direction.Equals("S") && sprite_active.pos_y + speed + sprite_active.textures_active[0].height > active_scene.scene_limit_y_down) {terrain_collision = true;}
             // /check if hitbox would exceed scene limits
 
             return terrain_collision;
         }
 
-        public void shoot(List<Bullet> bullets) {
+        public void shoot(List<Bullet> scene_bullets) {
             if (active_weapon != null && !is_dead) {
 
                 bool max_bullets_reached = false;
                 int active_bullet_count = 0;
-                foreach (Bullet my_b in my_bullets) {
-                    if (bullets.Contains(my_b)) {
+                foreach (Bullet b in bullets) {
+                    if (scene_bullets.Contains(b)) {
                         active_bullet_count += 1;
                         if (active_bullet_count >= max_bullets) {
                             max_bullets_reached = true;
@@ -162,37 +168,14 @@ namespace main {
                 }
 
                 if (!max_bullets_reached) {
-                    active_weapon.bullet_sound.play_sound();
-                    List<string> bullet_img_list = new List<string>(){active_weapon.data_paths[1]};
-                    
-                    string bullet_direction = "W";
-                    if (sprite_active.textures_active == sprite_active.textures_e) {bullet_direction = "E";}
-                    
-                    Sprite bullet_sprite = new Sprite(
-                    bullet_img_list,
-                    0.08f,
-                    pos_x,
-                    pos_y+10,
-                    bullet_direction);
-
-                    Bullet bullet = new Bullet (
-                        active_weapon.name,
-                        bullet_direction,
-                        pos_x,
-                        pos_y+10,
-                        active_weapon.bullet_speed,
-                        active_weapon.damage,
-                        new List<int>(){pos_x,pos_y+10,active_weapon.bullet.width,active_weapon.bullet.height},
-                        bullet_sprite
-                    );
-                    bullets.Add(bullet);
-                    my_bullets.Add(bullet);
+                    Bullet b = active_weapon.shoot(pos_x,pos_y,sprite_active.direction_w_or_e);
+                    scene_bullets.Add(b);
+                    bullets.Add(b);
                 }
-
             }
         }
 
-        public bool respawn_at(int x, int y) {
+        public bool respawn_at(float x, float y) {
             if (sprite_active.current_frame >= sprite_active.textures_active.Count-1) { // wait for death animation to be done
                 pos_x = x;
                 pos_y = y;
@@ -207,7 +190,7 @@ namespace main {
             else {return false;}
         }
 
-        public void update(float dt, float dt_factor, List<Bullet> bullets) {
+        public void update(float dt, List<Bullet> scene_bullets) {
             // death
             if (hitpoints <= 0) {
                 stop();
@@ -258,17 +241,13 @@ namespace main {
                 sprite_active.next_frame();
             }
 
-            // remove old bullets
+            // remove old scene_bullets
             List<Bullet> remove_bullets = new List<Bullet>(){};
-            foreach (Bullet my_b in my_bullets) {
-                if (!bullets.Contains(my_b)) {
-                    remove_bullets.Add(my_b);
-                }
+            foreach (Bullet b in bullets) {
+                if (!scene_bullets.Contains(b)) {remove_bullets.Add(b);}
             }
-            foreach (Bullet rb in remove_bullets) {
-                my_bullets.Remove(rb);
-            }
-            // / remove old bullets
+            foreach (Bullet rb in remove_bullets) {bullets.Remove(rb);}
+            // / remove old scene_bullets
         }
 
     }

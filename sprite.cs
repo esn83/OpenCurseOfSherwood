@@ -11,23 +11,25 @@ namespace main {
         public string direction; // west, north, east, south
         public float frame_delay;
         public float frame_delay_count = 0;
-        public int pos_x;
-        public int pos_y;
+        public float pos_x;
+        public float pos_y;
         public string direction_w_or_e = "W";
 
         // constructor
-        public Sprite(List<string> image_paths_p,
-                      float frame_dealy_p,
-                      int pos_x_p,
-                      int pos_y_p,
-                      string direction_p)
+        public Sprite
+        (
+            List<string> image_paths_p,
+            float frame_dealy_p,
+            float pos_x_p,
+            float pos_y_p,
+            string direction_p
+        )
         {
             image_paths = image_paths_p;
             frame_delay = frame_dealy_p;
             pos_x = pos_x_p;
             pos_y = pos_y_p;
             direction = direction_p;
-
             init(); 
         }
 
@@ -51,7 +53,7 @@ namespace main {
         }
 
         public void draw() {
-            Raylib.DrawTexture(textures_active[current_frame], pos_x, pos_y, Color.WHITE);
+            Raylib.DrawTexture(textures_active[current_frame], (int) pos_x, (int) pos_y, Color.WHITE);
         }
 
         public void next_frame() {

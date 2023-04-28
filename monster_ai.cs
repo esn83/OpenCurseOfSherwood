@@ -1,8 +1,7 @@
 namespace main {
     
     public class Monster_AI {
-        public Random rnd = new Random();
-
+        public Random rnd;
         public int move_pattern; // 0 = move up/down | 1 = move diagonally | 2 = move up/down then forward | 3 = player homing
         public bool allow_move_back;
         public string move_direction_e_w;
@@ -11,19 +10,21 @@ namespace main {
         public List<string> move_direction_n_s_list = new List<string>(){"N","S"};
         public float move_delay;
         public float move_delay_count = 0;
-
         public float min_shoot_delay;
         public float shoot_delay;
         public float shoot_delay_count = 0;
         public bool do_shoot = false;
 
-        // Constructor
-        public Monster_AI (int move_pattern_p,
-                           bool allow_move_back_p,
-                           string move_direction_e_w_p,
-                           float min_shoot_delay_p
-                           )
+        // constructor
+        public Monster_AI
+        (
+            int move_pattern_p,
+            bool allow_move_back_p,
+            string move_direction_e_w_p,
+            float min_shoot_delay_p
+        )
         {
+            rnd = new Random();
             move_pattern = move_pattern_p;
             allow_move_back = allow_move_back_p;
             move_direction_e_w = move_direction_e_w_p;

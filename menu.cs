@@ -7,21 +7,18 @@ namespace main {
         private int menu_screen_w;
         private int menu_screen_h;
         string cover_img_path;
-        
         private List<Object> players;
         private bool fullscreen;
         private int game_screen_w;
         private int game_screen_h;
-        private int fps;
-
         private Texture2D cover;
         private Color txt_color;
         private Font font;
-
         public List<Object> choises;
 
         // constructor
-        public Menu(
+        public Menu
+        (
             int menu_screen_w_p,
             int menu_screen_h_p,
             string cover_img_path_p
@@ -33,34 +30,29 @@ namespace main {
             menu_screen_h = menu_screen_h_p;
             game_screen_w = 0;
             game_screen_h = 0;
-            fps = 0;
             cover_img_path = cover_img_path_p;
             txt_color = new Color(240,200,5,255);
-
             choises = new List<Object>(){};
-
             temp_menu();
         }
 
         public void run() {
-            Raylib.InitWindow(menu_screen_w, menu_screen_h, "Open Curse of Sherwood : Menu");
-            Raylib.SetTargetFPS( (int) choises[4] ); // set target FPS
+            Raylib.SetWindowTitle("Open Curse of Sherwood : Menu");
             Raylib.SetWindowPosition(500,200); // window position
             resize_cover();
             font = Raylib.LoadFont("assets/fonts/alagard.ttf");
-            while (!Raylib.WindowShouldClose())
+            while (!Raylib.WindowShouldClose() && !Start.playing)
             {
-                if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)) {Start.playing = true;}
-                if (Start.playing) {break;}
                 events();
                 update();
                 draw();
             }
             Raylib.UnloadFont(font);
-            Raylib.CloseWindow();
         }
 
         void events() {
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)) {Start.playing = true;}
+
         }
 
         void update() {
@@ -111,9 +103,8 @@ namespace main {
             //fullscreen = true;
             game_screen_w = 800;
             game_screen_h = 600;
-            fps = 60;
 
-            choises = new List<Object> {players,fullscreen,game_screen_w,game_screen_h,fps};
+            choises = new List<Object> {players,fullscreen,game_screen_w,game_screen_h};
         }
         // / temp menu items until menu screen with choises is implemented
 

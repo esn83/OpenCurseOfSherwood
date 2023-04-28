@@ -7,15 +7,17 @@ namespace main {
         public string name;
         public List<string> data_paths;
         public Texture2D icon;
-        public int? pos_x;
-        public int? pos_y;
+        public float pos_x;
+        public float pos_y;
         public Rectangle icon_hitbox;
 
         // constructor
-        public Item(string name_p,
-                    List<string> data_paths_p,
-                    int? pos_x_p=0,
-                    int? pos_y_p=0)
+        public Item
+        (
+            string name_p,
+            List<string> data_paths_p,
+            float pos_x_p,
+            float pos_y_p)
         {
             name = name_p;
             data_paths = data_paths_p;
@@ -25,7 +27,7 @@ namespace main {
             Image icon_img = Raylib.LoadImage(data_paths[0]);
             Raylib.ImageColorReplace(ref icon_img, Start.data.bg, new Color(0,0,0,0)); // transparent background
             icon = Raylib.LoadTextureFromImage(icon_img);
-            icon_hitbox = new Rectangle((float) pos_x, (float) pos_y, icon.width, icon.height);
+            icon_hitbox = new Rectangle(pos_x, pos_y, icon.width, icon.height);
         }
 
     }

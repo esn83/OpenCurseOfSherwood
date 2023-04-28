@@ -10,7 +10,9 @@ namespace main {
         public Menu menu;
         public Game game;
 
-        public Start() {
+        // constructor
+        public Start()
+        {
             running = true;
             playing = false;
             data = new Data();
@@ -21,6 +23,8 @@ namespace main {
         public void run() {
             
             Raylib.SetTraceLogLevel(TraceLogLevel.LOG_WARNING);
+            Raylib.InitWindow((int) menu.choises[2],(int) menu.choises[3],"");
+            Raylib.SetTargetFPS(60); // set 60FPS
             Raylib.InitAudioDevice(); // sound, must be called before loading sounds
             
             while (running) {
@@ -30,7 +34,9 @@ namespace main {
                 running = false;
                 }
 
-                if (running && !playing) {menu.run();}
+                if (running && !playing) {
+                    menu.run();
+                }
 
                 else if (running && playing) {
                     game = new Game(menu.choises);
@@ -39,6 +45,7 @@ namespace main {
             }
             
             Raylib.CloseAudioDevice();
+            Raylib.CloseWindow();
         }
 
     }
