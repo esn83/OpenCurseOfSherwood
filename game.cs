@@ -104,18 +104,20 @@ namespace main {
             monk.death_sounds = new Audio(Start.data.monk_death_sounds, 0.5f);
             monk.sink_sounds =  new Audio(Start.data.sink_sounds, 1.5f);
             // monk.rise_sounds =  new Audio(Start.data.rise_sounds, 0.0f);
+            
             // monk.weapons.Add(new Weapon("sword", Start.data.weapons_data_dict["sword"], 202, 67));
             // monk.weapons.Add(new Weapon("club", Start.data.weapons_data_dict["club"], 202, 67));
             // monk.weapons.Add(new Weapon("silver dagger", Start.data.weapons_data_dict["silver dagger"], 202, 67));
             // monk.weapons.Add(new Weapon("ice wand", Start.data.weapons_data_dict["ice wand"], 202, 67));
-            // monk.active_weapon = monk.weapons[1];
+            // monk.active_weapon = monk.weapons[2];
+            // monk.items.Add(new Item("shield",Start.data.items_data_dict["shield"],0,0));
             // monk.items.Add(new Item("scrying glass",Start.data.scrying_glass_data,0,0));
+            // monk.items.Add(new Item("cross",Start.data.items_data_dict["cross"],0,0));
             // monk.items.Add(new Item("fangs",Start.data.fangs_data,0,0));
             // monk.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],0,0));
             // monk.items.Add(new Item("f-elixir",Start.data.items_data_dict["f-elixir"],0,0));
             // monk.items.Add(new Item("map",Start.data.items_data_dict["map"],0,0));
-            // monk.items.Add(new Item("cross",Start.data.items_data_dict["cross"],0,0));
-            // monk.items.Add(new Item("shield",Start.data.items_data_dict["shield"],0,0));
+            
             players[0].unit = monk;
         }
 
