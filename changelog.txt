@@ -4,7 +4,7 @@
   and they just add a lot of complexity to the game without bringing much to the table for a game this small.
   I'm especially having trouble with lost keyboard inputs with those loops and haven't found a solution yet.
 - fixed a bug where a dead player could reflect bullelts with shield.
-- all pos_x and pos_y are now float instead of int.
+- all pos_x, pos_y and speed are now float instead of int.
 - made swamp a bit more lenient.
 - added default unit move speed in data class. all units use this speed now. easier for tweaking speeds.
 - it's now the weapon class that shoots a bullet, not the unit class.
