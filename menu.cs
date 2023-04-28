@@ -92,7 +92,7 @@ namespace main {
                                                                                KeyboardKey.KEY_UP, // up
                                                                                KeyboardKey.KEY_RIGHT, // right
                                                                                KeyboardKey.KEY_DOWN, // down
-                                                                               KeyboardKey.KEY_RIGHT_CONTROL, // fire
+                                                                               KeyboardKey.KEY_LEFT_CONTROL, // fire
                                                                                KeyboardKey.KEY_RIGHT_SHIFT, // next weapon
                                                                                KeyboardKey.KEY_F1, // map
                                                         },

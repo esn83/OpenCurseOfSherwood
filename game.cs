@@ -546,7 +546,7 @@ namespace main {
             Raylib.DrawTextEx(font,"FPS : "+Raylib.GetFPS().ToString(),new System.Numerics.Vector2(10,10),font.baseSize*0.4f,0,txt_color);
             //Raylib.DrawFPS(10, 10);
             Raylib.DrawTextEx(font,"move : arrow keys",new System.Numerics.Vector2(10,25),font.baseSize*0.4f,0,txt_color);
-            Raylib.DrawTextEx(font,"shoot : RCTRL",new System.Numerics.Vector2(10,40),font.baseSize*0.4f,0,txt_color);
+            Raylib.DrawTextEx(font,"shoot : LCTRL",new System.Numerics.Vector2(10,40),font.baseSize*0.4f,0,txt_color);
             Raylib.DrawTextEx(font,"next weapon : RSHIFT",new System.Numerics.Vector2(10,55),font.baseSize*0.4f,0,txt_color);
             Raylib.DrawTextEx(font,"map : F1",new System.Numerics.Vector2(10,70),font.baseSize*0.4f,0,txt_color);
             Raylib.DrawTextEx(font,"menu : SPACE",new System.Numerics.Vector2(10,85),font.baseSize*0.4f,0,txt_color);
