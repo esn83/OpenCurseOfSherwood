@@ -1,4 +1,5 @@
 #5, 2023-04-28
+- added changelog.
 - game only runs at 60 fps now for simplicity. I've been experimenting with gaffers and dewitters game loops
   and they just add a lot of complexity to the game without bringing much to the table for a game this small.
   I'm especially having trouble with lost keyboard inputs with those loops and haven't found a solution yet.
