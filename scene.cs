@@ -12,7 +12,7 @@ namespace main {
         public List<Bullet> monster_bullets = new List<Bullet>(){};
         public Texture2D scene;
         public List<Texture2D> scene_extras = new List<Texture2D>(){};
-        public List<Monster_AI>  ais = new List<Monster_AI>(){};
+        public List<Monster_AI> ais = new List<Monster_AI>(){};
         public int respawn_point_x = 0;
         public int respawn_point_y = 0;
         public Rectangle door_up = new Rectangle(0,0,0,0);

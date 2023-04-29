@@ -422,7 +422,7 @@ namespace main {
                                 2,
                                 archer_1_sprite,
                                 archer_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Archer",
                                 290,
                                 150,
@@ -591,7 +591,7 @@ namespace main {
             else if (!s7.scene_monsters_done) {
                 spawn_units();}
             s7.door_up = new Rectangle(256,150,15,1); // evil witch hut door outside
-            return s7;            
+            return s7;
 
             void spawn_units() {
                 s7.units = new List<Unit>(){};
@@ -737,7 +737,7 @@ namespace main {
                                 1,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
@@ -832,7 +832,7 @@ namespace main {
                                 2,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
@@ -999,7 +999,7 @@ namespace main {
                                 1,
                                 bee_1_sprite,
                                 bee_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Bee",
                                 70,
                                 160,
@@ -1156,7 +1156,7 @@ namespace main {
                                     3,
                                     witch_sprite,
                                     witch_sprite_death);
-                
+
                 u1.is_npc = true;
                 u1.trade_takes.Add("fangs");
                 u1.trade_takes.Add("scrying glass");
@@ -1195,7 +1195,7 @@ namespace main {
                                                 0,
                                                 "E");
                 wolf_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.wolf_color);
-                
+
                 Unit u1 = new Unit("Wolf",
                                     150,
                                     160,
@@ -1220,7 +1220,7 @@ namespace main {
             else if (!s19.scene_monsters_done) {
                 spawn_units();}
             return s19;
-            
+
             void spawn_units() {
                 s19.units = new List<Unit>(){};
                 s19.ais = new List<Monster_AI>(){};
@@ -1249,7 +1249,7 @@ namespace main {
                                 2,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
@@ -1273,7 +1273,7 @@ namespace main {
                                 2,
                                 bat_4_sprite,
                                 bat_4_sprite_death);
-                
+
                 u1.death_sounds = bat_death_sound;
                 u2.death_sounds = bat_death_sound;
                 u3.death_sounds = bat_death_sound;
@@ -1325,7 +1325,7 @@ namespace main {
                                                 0,
                                                 "W");
                 ice_wizard_sprite_death.change_color(Start.data.death_images_large_color, Start.data.ice_wizard_color);
-                
+
                 Unit u1 = new Unit("Ice Wizard",
                                     260,
                                     150,
@@ -1380,7 +1380,7 @@ namespace main {
                                 2,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
@@ -1459,7 +1459,7 @@ namespace main {
                                 2,
                                 archer_1_sprite,
                                 archer_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Archer",
                                 290,
                                 150,
@@ -1545,7 +1545,7 @@ namespace main {
                                 1,
                                 bee_1_sprite,
                                 bee_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Bee",
                                 290,
                                 160,
@@ -1651,7 +1651,7 @@ namespace main {
                                 1,
                                 bee_1_sprite,
                                 bee_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Bee",
                                 290,
                                 160,
@@ -1675,7 +1675,7 @@ namespace main {
                                 1,
                                 bee_4_sprite,
                                 bee_4_sprite_death);
-                
+
 
                 u1.can_pass_through_obstacles = true;
                 u2.can_pass_through_obstacles = true;
@@ -1978,7 +1978,7 @@ namespace main {
                                 1,
                                 fire_spirit_1_sprite,
                                 null);
-                                            
+
                 Unit u2 = new Unit("Fire Spirit",
                                 210,
                                 170,
@@ -2002,7 +2002,7 @@ namespace main {
                                 1,
                                 fire_spirit_4_sprite,
                                 null);
-                
+
                 u1.is_immortal = true;
                 u2.is_immortal = true;
                 u3.is_immortal = true;
@@ -2082,7 +2082,7 @@ namespace main {
                                 1,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,

@@ -103,8 +103,8 @@ namespace main {
             // monk.sprite_rise = monk_sprite_rise;
             monk.walk_sounds = new Audio(Start.data.monk_walk_sounds, 0.35f);
             monk.death_sounds = new Audio(Start.data.monk_death_sounds, 0.5f);
-            monk.sink_sounds =  new Audio(Start.data.sink_sounds, 1.5f);
-            // monk.rise_sounds =  new Audio(Start.data.rise_sounds, 0.0f);
+            monk.sink_sounds = new Audio(Start.data.sink_sounds, 1.5f);
+            // monk.rise_sounds = new Audio(Start.data.rise_sounds, 0.0f);
             
             // monk.weapons.Add(new Weapon("sword", Start.data.weapons_data_dict["sword"], 202, 67));
             // monk.weapons.Add(new Weapon("club", Start.data.weapons_data_dict["club"], 202, 67));
@@ -231,7 +231,7 @@ namespace main {
                     bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, w.icon_hitbox);
                     if (col) {
                         w.pos_x = 202;
-                        w.pos_y = 67;                        
+                        w.pos_y = 67;
                         p.unit.weapons.Add(w);
                         p.unit.active_weapon = p.unit.weapons.LastOrDefault();
                         general_item_sound.play_sound();

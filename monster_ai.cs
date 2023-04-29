@@ -5,7 +5,7 @@ namespace main {
         public int move_pattern; // 0 = move up/down | 1 = move diagonally | 2 = move up/down then forward | 3 = player homing
         public bool allow_move_back;
         public string move_direction_e_w;
-        public string  move_direction_n_s;
+        public string move_direction_n_s;
         public List<string> move_direction_e_w_list = new List<string>(){"E","W"};
         public List<string> move_direction_n_s_list = new List<string>(){"N","S"};
         public float move_delay;
@@ -31,7 +31,7 @@ namespace main {
             min_shoot_delay = min_shoot_delay_p;
             move_direction_n_s = move_direction_n_s_list[rnd.Next(2)];
             move_delay = 0.1f + (float) (rnd.NextDouble() * 0.4f);
-            shoot_delay = 0.2f + (float) (rnd.NextDouble() * 1f);            
+            shoot_delay = 0.2f + (float) (rnd.NextDouble() * 1f);
         }
 
         public void update(float dt, Scene active_scene, Unit u, Player p) {
