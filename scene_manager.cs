@@ -360,7 +360,7 @@ namespace main {
                 s3.ais = new List<Monster_AI>(){};
 
                 Sprite troll_sprite = new Sprite(Start.data.troll_images,
-                                                0.1f,
+                                                0.2f,
                                                 0,
                                                 0,
                                                 "W");
@@ -934,7 +934,7 @@ namespace main {
                 s14.ais = new List<Monster_AI>(){};
 
                 Sprite troll_sprite = new Sprite(Start.data.troll_images,
-                                                0.1f,
+                                                0.2f,
                                                 0,
                                                 0,
                                                 "E");
@@ -1770,7 +1770,7 @@ namespace main {
                 s27.ais = new List<Monster_AI>(){};
 
                 Sprite troll_sprite = new Sprite(Start.data.troll_images,
-                                                0.1f,
+                                                0.2f,
                                                 0,
                                                 0,
                                                 "W");
