@@ -1,4 +1,4 @@
-#5, 2023-04-28
+#5 2023-04-28
 - added changelog.
 - game only runs at 60 fps now for simplicity. i've been experimenting with gaffers and dewitters game loops
   and they just add a lot of complexity to the game without bringing much to the table for a game this small.
@@ -10,7 +10,7 @@
 - it's now the weapon class that shoots a bullet, not the unit class.
 - hitboxes are now auto-generated from pos_x, pos_y and texture size.
 
-#6,
+#6 2023-05-04
 - east west north south and left right up down was mixed. it's all left right up down now.
 - sprite direction now comes from it's update. default direction is "L".
 - unit now gets direction from constructor and passes it to sprite with update.
