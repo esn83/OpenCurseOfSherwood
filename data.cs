@@ -113,71 +113,71 @@ namespace main {
 
         public Color death_images_small_color = new Color(163,167,167,255);
         public Color death_images_large_color = new Color(183,251,191,255);
-        public Color bat_color = new Color(163,167,167,255);
-        public Color troll_color = new Color(183,251,191,255);
-        public Color archer_color = new Color(239,233,231,255);
-        public Color brigand_color = new Color(252,249,252,255);
-        public Color skeleton_color = new Color(251,251,139,255);
-        public Color evil_witch_color = new Color(252,249,252,255);
-        public Color bee_color = new Color(251,251,139,255);
-        public Color wolf_color = new Color(127,83,7,255);
-        public Color ice_wizard_color = new Color(239,233,231,255);
-        public Color dragon_color = new Color(239,131,159,255);
+        public Color bat_color =                new Color(163,167,167,255);
+        public Color troll_color =              new Color(183,251,191,255);
+        public Color archer_color =             new Color(239,233,231,255);
+        public Color brigand_color =            new Color(252,249,252,255);
+        public Color skeleton_color =           new Color(251,251,139,255);
+        public Color evil_witch_color =         new Color(252,249,252,255);
+        public Color bee_color =                new Color(251,251,139,255);
+        public Color wolf_color =               new Color(127,83,7,255);
+        public Color ice_wizard_color =         new Color(239,233,231,255);
+        public Color dragon_color =             new Color(239,131,159,255);
 
         // weapons
         public IDictionary<string, List<string>> weapons_data_dict = new Dictionary<string, List<string>>{};
 
         public List<string> sword_data = new List<string> {"assets/images/weapon/weapon_sword_icon_1.png", // icon img
-                                                           "assets/images/weapon/weapon_sword_bullet_1.png", // bullet img
+                                                           "assets/images/weapon/weapon_sword_bullet_left_1.png", // bullet img
                                                            "assets/sounds/weapon_sword_bullet_1.mp3", // shoot sound
                                                            "0.11", // sound delay
                                                            "1", //damage
                                                            "3"}; // bullet speed
         
         public List<string> rock_data = new List<string> {"assets/images/weapon/weapon_rock_icon_1.png", // icon img
-                                                          "assets/images/weapon/weapon_rock_bullet_1.png", // bullet img
+                                                          "assets/images/weapon/weapon_rock_bullet_left_1.png", // bullet img
                                                           "assets/sounds/weapon_rock_bullet_1.mp3", // shoot sound
                                                           "0.11", // sound delay
                                                           "1", //damage
                                                           "3"}; // bullet speed
 
         public List<string> club_data = new List<string> {"assets/images/weapon/weapon_club_icon_1.png", // icon img
-                                                          "assets/images/weapon/weapon_club_bullet_1.png", // bullet img
+                                                          "assets/images/weapon/weapon_club_bullet_left_1.png", // bullet img
                                                           "assets/sounds/weapon_club_bullet_1.mp3", // shoot sound
                                                           "0.11", // sound delay
                                                           "1", //damage
                                                           "3"}; // bullet speed
 
         public List<string> silver_dagger_data = new List<string> {"assets/images/weapon/weapon_silver_dagger_icon_1.png", // icon img
-                                                                   "assets/images/weapon/weapon_silver_dagger_bullet_1.png", // bullet img
+                                                                   "assets/images/weapon/weapon_silver_dagger_bullet_left_1.png", // bullet img
                                                                    "assets/sounds/weapon_silver_dagger_bullet_1.mp3", // shoot sound
                                                                    "0.11", // sound delay
                                                                    "1", //damage
                                                                    "3"}; // bullet speed
 
         public List<string> pollen_data = new List<string> {"assets/images/weapon/weapon_pollen_icon_1.png", // icon img
-                                                            "assets/images/weapon/weapon_pollen_bullet_1.png", // bullet img
+                                                            "assets/images/weapon/weapon_pollen_bullet_left_1.png", // bullet img
                                                             "assets/sounds/weapon_pollen_bullet_1.mp3", // shoot sound
                                                             "0.11", // sound delay
                                                             "1", //damage
                                                             "3"}; // bullet speed
 
         public List<string> ice_wand_data = new List<string> {"assets/images/weapon/weapon_ice_wand_icon_1.png", // icon img
-                                                              "assets/images/weapon/weapon_ice_wand_bullet_1.png", // bullet img
+                                                              "assets/images/weapon/weapon_ice_wand_bullet_left_1.png", // bullet img
                                                               "assets/sounds/weapon_ice_wand_bullet_1.mp3", // shoot sound
                                                               "0.11", // sound delay
                                                               "1", //damage
                                                               "3"}; // bullet speed
 
         public List<string> crossbow_data = new List<string> {"assets/images/weapon/weapon_crossbow_icon_1.png", // icon img
-                                                              "assets/images/weapon/weapon_crossbow_bullet_1.png", // bullet img
+                                                              "assets/images/weapon/weapon_crossbow_bullet_left_1.png", // bullet img
                                                               "assets/sounds/weapon_crossbow_bullet_1.mp3", // shoot sound
                                                               "0.11", // sound delay
                                                               "1", //damage
                                                               "3"}; // bullet speed
 
         public List<string> fire_breath_data = new List<string> {"assets/images/weapon/weapon_fire_breath_icon_1.png", // icon img
-                                                                 "assets/images/weapon/weapon_fire_breath_bullet_1.png", // bullet img
+                                                                 "assets/images/weapon/weapon_fire_breath_bullet_left_1.png", // bullet img
                                                                  "assets/sounds/weapon_fire_breath_bullet_1.mp3", // shoot sound
                                                                  "0.11", // sound delay
                                                                  "1", //damage
@@ -210,67 +210,67 @@ namespace main {
         public Color hermit_color = new Color(252,249,252,255);
 
         // scenes
-        public List<string> scene_1 = new List<string>() {"assets/images/map/map_1_start.png"};
-        public List<string> scene_2 = new List<string>() {"assets/images/map/map_2_1right.png"};
-        public List<string> scene_3 = new List<string>() {"assets/images/map/map_3_2right.png"};
-        public List<string> scene_4 = new List<string>() {"assets/images/map/map_4_3right.png"};
-        public List<string> scene_5 = new List<string>() {"assets/images/map/map_5_4right.png"};
-        public List<string> scene_6 = new List<string>() {"assets/images/map/map_6_5right.png"};
-        public List<string> scene_7 = new List<string>() {"assets/images/map/map_7_6right.png",
-                                                          "assets/images/map/map_7_6right_extra_1.png"};
-        public List<string> scene_8 = new List<string>() {"assets/images/map/map_8_7up.png",
-                                                          "assets/images/map/map_8_7up_extra_1.png"};
-        public List<string> scene_9 = new List<string>() {"assets/images/map/map_9_6down.png"};
-        public List<string> scene_10 = new List<string>() {"assets/images/map/map_10_9right.png",
-                                                           "assets/images/map/map_10_9right_extra_1.png"};
-        public List<string> scene_11 = new List<string>() {"assets/images/map/map_11_10mushroom.png",
-                                                           "assets/images/map/map_11_10mushroom_extra_1.png"};
-        public List<string> scene_11_2 = new List<string>() {"assets/images/map/map_11_10mushroom_door_broken.png",
-                                                             "assets/images/map/map_11_10mushroom_extra_1.png"};
-        public List<string> scene_12 = new List<string>() {"assets/images/map/map_12_11right.png",
-                                                           "assets/images/map/map_12_11right_extra_1.png"};
-        public List<string> scene_13 = new List<string>() {"assets/images/map/map_13_12down.png"};
-        public List<string> scene_14 = new List<string>() {"assets/images/map/map_14_1left.png"};
-        public List<string> scene_15 = new List<string>() {"assets/images/map/map_15_14left.png"};
-        public List<string> scene_16 = new List<string>() {"assets/images/map/map_16_15left.png",
-                                                           "assets/images/map/map_16_15left_extra_1.png"};
-        public List<string> scene_17 = new List<string>() {"assets/images/map/map_17_16up.png",
-                                                           "assets/images/map/map_17_16up_extra_1.png"};
-        public List<string> scene_18 = new List<string>() {"assets/images/map/map_18_16left.png"};
-        public List<string> scene_19 = new List<string>() {"assets/images/map/map_19_16down.png"};
-        public List<string> scene_20 = new List<string>() {"assets/images/map/map_20_14up.png"};
-        public List<string> scene_21 = new List<string>() {"assets/images/map/map_21_20right.png"};
+        public List<string> scene_1 = new List<string>() {"assets/images/map/map_001_start.png"};
+        public List<string> scene_2 = new List<string>() {"assets/images/map/map_002_001right.png"};
+        public List<string> scene_3 = new List<string>() {"assets/images/map/map_003_002right.png"};
+        public List<string> scene_4 = new List<string>() {"assets/images/map/map_004_003right.png"};
+        public List<string> scene_5 = new List<string>() {"assets/images/map/map_005_004right.png"};
+        public List<string> scene_6 = new List<string>() {"assets/images/map/map_006_005right.png"};
+        public List<string> scene_7 = new List<string>() {"assets/images/map/map_007_006right.png",
+                                                          "assets/images/map/map_007_006right_extra_1.png"};
+        public List<string> scene_8 = new List<string>() {"assets/images/map/map_008_007up.png",
+                                                          "assets/images/map/map_008_007up_extra_1.png"};
+        public List<string> scene_9 = new List<string>() {"assets/images/map/map_009_006down.png"};
+        public List<string> scene_10 = new List<string>() {"assets/images/map/map_010_009right.png",
+                                                           "assets/images/map/map_010_009right_extra_1.png"};
+        public List<string> scene_11 = new List<string>() {"assets/images/map/map_011_010mushroom.png",
+                                                           "assets/images/map/map_011_010mushroom_extra_1.png"};
+        public List<string> scene_11_2 = new List<string>() {"assets/images/map/map_011_010mushroom_door_broken.png",
+                                                             "assets/images/map/map_011_010mushroom_extra_1.png"};
+        public List<string> scene_12 = new List<string>() {"assets/images/map/map_012_011right.png",
+                                                           "assets/images/map/map_012_011right_extra_1.png"};
+        public List<string> scene_13 = new List<string>() {"assets/images/map/map_013_012down.png"};
+        public List<string> scene_14 = new List<string>() {"assets/images/map/map_014_001left.png"};
+        public List<string> scene_15 = new List<string>() {"assets/images/map/map_015_014left.png"};
+        public List<string> scene_16 = new List<string>() {"assets/images/map/map_016_015left.png",
+                                                           "assets/images/map/map_016_015left_extra_1.png"};
+        public List<string> scene_17 = new List<string>() {"assets/images/map/map_017_016up.png",
+                                                           "assets/images/map/map_017_016up_extra_1.png"};
+        public List<string> scene_18 = new List<string>() {"assets/images/map/map_018_016left.png"};
+        public List<string> scene_19 = new List<string>() {"assets/images/map/map_019_016down.png"};
+        public List<string> scene_20 = new List<string>() {"assets/images/map/map_020_014up.png"};
+        public List<string> scene_21 = new List<string>() {"assets/images/map/map_021_020right.png"};
 
-        public List<string> scene_22 = new List<string>() {"assets/images/map/map_22_21right.png"};
-        public List<string> scene_23 = new List<string>() {"assets/images/map/map_23_22right.png"};
-        public List<string> scene_24 = new List<string>() {"assets/images/map/map_24_23right_river.png"};
-        public List<string> scene_24_2 = new List<string>() {"assets/images/map/map_24_23right_river_frozen.png",
-                                                             "assets/images/map/map_24_23right_river_frozen_extra_1.png"};
-        public List<string> scene_25 = new List<string>() {"assets/images/map/map_25_24right.png"};
-        public List<string> scene_26 = new List<string>() {"assets/images/map/map_26_25right.png"};
-        public List<string> scene_27 = new List<string>() {"assets/images/map/map_27_22up.png"};
-        public List<string> scene_27_2 = new List<string>() {"assets/images/map/map_27_22up_gate_open.png"};
-        public List<string> scene_28 = new List<string>() {"assets/images/map/map_28_27up.png"};
-        public List<string> scene_29 = new List<string>() {"assets/images/map/map_29_28left.png",
-                                                           "assets/images/map/map_29_28left_extra_1.png"};
-        public List<string> scene_30 = new List<string>() {"assets/images/map/map_30_29up.png",
-                                                           "assets/images/map/map_30_29up_extra_1.png"};
-        public List<string> scene_31 = new List<string>() {"assets/images/map/map_31_29left.png"};
+        public List<string> scene_22 = new List<string>() {"assets/images/map/map_022_021right.png"};
+        public List<string> scene_23 = new List<string>() {"assets/images/map/map_023_022right.png"};
+        public List<string> scene_24 = new List<string>() {"assets/images/map/map_024_023right_river.png"};
+        public List<string> scene_24_2 = new List<string>() {"assets/images/map/map_024_023right_river_frozen.png",
+                                                             "assets/images/map/map_024_023right_river_frozen_extra_1.png"};
+        public List<string> scene_25 = new List<string>() {"assets/images/map/map_025_024right.png"};
+        public List<string> scene_26 = new List<string>() {"assets/images/map/map_026_025right.png"};
+        public List<string> scene_27 = new List<string>() {"assets/images/map/map_027_022up.png"};
+        public List<string> scene_27_2 = new List<string>() {"assets/images/map/map_027_022up_gate_open.png"};
+        public List<string> scene_28 = new List<string>() {"assets/images/map/map_028_027up.png"};
+        public List<string> scene_29 = new List<string>() {"assets/images/map/map_029_028left.png",
+                                                           "assets/images/map/map_029_028left_extra_1.png"};
+        public List<string> scene_30 = new List<string>() {"assets/images/map/map_030_029up.png",
+                                                           "assets/images/map/map_030_029up_extra_1.png"};
+        public List<string> scene_31 = new List<string>() {"assets/images/map/map_031_029left.png"};
 
-        public List<string> scene_32 = new List<string>() {"assets/images/map/map_32_31up_swamp.png"};
-        public List<string> scene_33 = new List<string>() {"assets/images/map/map_33_32up_swamp.png"};
-        public List<string> scene_34 = new List<string>() {"assets/images/map/map_34_33left_swamp.png"};
-        public List<string> scene_35 = new List<string>() {"assets/images/map/map_35_34up_swamp.png"};
-        public List<string> scene_36 = new List<string>() {"assets/images/map/map_36_35up.png"};
-        public List<string> scene_37 = new List<string>() {"assets/images/map/map_37_36right.png"};
-        public List<string> scene_38 = new List<string>() {"assets/images/map/map_38_37right.png"};
-        public List<string> scene_39 = new List<string>() {"assets/images/map/map_39_38down.png"};
-        public List<string> scene_40 = new List<string>() {"assets/images/map/map_40_39right.png"};
-        public List<string> scene_41 = new List<string>() {"assets/images/map/map_41_40right.png"};
-        public List<string> scene_42 = new List<string>() {"assets/images/map/map_42_41right.png"};
-        public List<string> scene_43 = new List<string>() {"assets/images/map/map_43_41up.png",
-                                                           "assets/images/map/map_43_41up_extra_1.png",
-                                                           "assets/images/map/map_43_41up_extra_2.png"};
+        public List<string> scene_32 = new List<string>() {"assets/images/map/map_032_031up_swamp.png"};
+        public List<string> scene_33 = new List<string>() {"assets/images/map/map_033_032up_swamp.png"};
+        public List<string> scene_34 = new List<string>() {"assets/images/map/map_034_033left_swamp.png"};
+        public List<string> scene_35 = new List<string>() {"assets/images/map/map_035_034up_swamp.png"};
+        public List<string> scene_36 = new List<string>() {"assets/images/map/map_036_035up.png"};
+        public List<string> scene_37 = new List<string>() {"assets/images/map/map_037_036right.png"};
+        public List<string> scene_38 = new List<string>() {"assets/images/map/map_038_037right.png"};
+        public List<string> scene_39 = new List<string>() {"assets/images/map/map_039_038down.png"};
+        public List<string> scene_40 = new List<string>() {"assets/images/map/map_040_039right.png"};
+        public List<string> scene_41 = new List<string>() {"assets/images/map/map_041_040right.png"};
+        public List<string> scene_42 = new List<string>() {"assets/images/map/map_042_041right.png"};
+        public List<string> scene_43 = new List<string>() {"assets/images/map/map_043_041up.png",
+                                                           "assets/images/map/map_043_041up_extra_1.png",
+                                                           "assets/images/map/map_043_041up_extra_2.png"};
 
         // general
         public string topbar = "assets/images/topbar_1.png";

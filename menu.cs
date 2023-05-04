@@ -89,8 +89,8 @@ namespace main {
                                                         "Player 1",
                                                         new Color(255,255,255,255),
                                                         new List<KeyboardKey> {KeyboardKey.KEY_LEFT, // left
-                                                                               KeyboardKey.KEY_UP, // up
                                                                                KeyboardKey.KEY_RIGHT, // right
+                                                                               KeyboardKey.KEY_UP, // up
                                                                                KeyboardKey.KEY_DOWN, // down
                                                                                KeyboardKey.KEY_LEFT_CONTROL, // fire
                                                                                KeyboardKey.KEY_RIGHT_SHIFT, // next weapon

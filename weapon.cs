@@ -54,8 +54,7 @@ namespace main {
             bullet_img_list,
             0.08f,
             bpos_x,
-            bpos_y,
-            direction);
+            bpos_y);
 
             Bullet bullet = new Bullet (
                 name,

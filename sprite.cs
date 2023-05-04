@@ -3,53 +3,50 @@ using Raylib_cs;
 namespace main {
 
     public class Sprite {
-        public List<string> image_paths; // list of paths to images the sprite uses in the order of the animation
+        public List<string> image_paths_left; // list of paths to images the sprite uses in the order of the animation facing left. right is made by flipping these vertically.
+        public List<string> image_paths_up;
+        public List<string> image_paths_down;
         public int current_frame = 0;
-        public List<Texture2D> textures_w = new List<Texture2D>{};
-        public List<Texture2D> textures_e = new List<Texture2D>{};
-        public List<Texture2D> textures_active = new List<Texture2D>{};
-        public string direction; // west, north, east, south
+        public List<Texture2D> textures_l;
+        public List<Texture2D> textures_r;
+        public List<Texture2D> textures_u;
+        public List<Texture2D> textures_d;
+        public List<Texture2D> textures_active;
+        public string direction = "L"; // left, right, up, down
         public float frame_delay;
         public float frame_delay_count = 0;
         public float pos_x;
         public float pos_y;
-        public string direction_w_or_e = "W";
 
         // constructor
         public Sprite
         (
-            List<string> image_paths_p,
+            List<string> image_paths_left_p,
             float frame_dealy_p,
             float pos_x_p,
             float pos_y_p,
-            string direction_p
+            List<string> image_paths_up_p = null,
+            List<string> image_paths_down_p = null
         )
         {
-            image_paths = image_paths_p;
+            image_paths_left = image_paths_left_p;
             frame_delay = frame_dealy_p;
             pos_x = pos_x_p;
             pos_y = pos_y_p;
-            direction = direction_p;
+            if (image_paths_up_p != null) {image_paths_up = image_paths_up_p;}
+            if (image_paths_down_p != null) {image_paths_down = image_paths_down_p;}
             init(); 
         }
 
         public void init() {
             load_textures();
-            if (direction.Equals("W")) {textures_active = textures_w; direction_w_or_e = direction;}
-            else if (direction.Equals("E")) {textures_active = textures_e; direction_w_or_e = direction;}
+            set_active_textures_direction();
         }
 
-        public void update(float dt) {
+        public void update(float dt, string direction_p) {
             frame_delay_count += dt;
-
-            if (direction.Equals("W")) {
-                direction_w_or_e = direction;
-                textures_active = textures_w;
-                }
-            if (direction.Equals("E")) {
-                direction_w_or_e = direction;
-                textures_active = textures_e;
-                }
+            direction = direction_p;
+            set_active_textures_direction();
         }
 
         public void draw() {
@@ -68,46 +65,112 @@ namespace main {
             }
         }
 
+        public void set_active_textures_direction() {
+            if (direction.Equals("L")) {
+                if (textures_l != null && textures_l.Count > 0) {
+                    textures_active = textures_l;
+                }
+            }
+            if (direction.Equals("R")) {
+                if (textures_r != null && textures_r.Count > 0) {
+                    textures_active = textures_r;
+                }
+            }
+            if (direction.Equals("U")) {
+                if (textures_u != null && textures_u.Count > 0) {
+                    textures_active = textures_u;
+                }
+            }
+            if (direction.Equals("D")) {
+                if (textures_d != null && textures_d.Count > 0) {
+                    textures_active = textures_d;
+                }
+            }
+        }
+
         public void load_textures() {
-            textures_w = new List<Texture2D>{};
-            textures_e = new List<Texture2D>{};
+            List<Texture2D> textures_l_temp = new List<Texture2D>{};
+            List<Texture2D> textures_r_temp = new List<Texture2D>{};
+            List<Texture2D> textures_u_temp = new List<Texture2D>{};
+            List<Texture2D> textures_d_temp = new List<Texture2D>{};
             
-            foreach (string i in image_paths) {
+            foreach (string i in image_paths_left) {
                 Image ix = Raylib.LoadImage(i);
                 Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
-
-                Texture2D tx_w = Raylib.LoadTextureFromImage(ix);
-                textures_w.Add(tx_w);
-
+                Texture2D tx_l = Raylib.LoadTextureFromImage(ix);
+                textures_l_temp.Add(tx_l);
                 Raylib.ImageFlipHorizontal(ref ix);
-                Texture2D tx_e = Raylib.LoadTextureFromImage(ix);
-                textures_e.Add(tx_e);
+                Texture2D tx_r = Raylib.LoadTextureFromImage(ix);
+                textures_r_temp.Add(tx_r);
             }
+            textures_l = textures_l_temp;
+            textures_r = textures_r_temp;
+            if (image_paths_up != null) {
+                foreach (string i in image_paths_up) {
+                    Image ix = Raylib.LoadImage(i);
+                    Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
+                    Texture2D tx_u = Raylib.LoadTextureFromImage(ix);
+                    textures_u_temp.Add(tx_u);
+                }
+            }
+            textures_u = textures_u_temp;
+            if (image_paths_down != null) {
+                foreach (string i in image_paths_down) {
+                    Image ix = Raylib.LoadImage(i);
+                    Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
+                    Texture2D tx_d = Raylib.LoadTextureFromImage(ix);
+                    textures_d_temp.Add(tx_d);
+                }
+            }
+            textures_d = textures_d_temp;
         }
 
         public void change_color(Color old_col, Color new_col) {
-            List<Texture2D> textures_w_temp = new List<Texture2D>{};
-            List<Texture2D> textures_e_temp = new List<Texture2D>{};
+            List<Texture2D> textures_l_temp = new List<Texture2D>{};
+            List<Texture2D> textures_r_temp = new List<Texture2D>{};
+            List<Texture2D> textures_u_temp = new List<Texture2D>{};
+            List<Texture2D> textures_d_temp = new List<Texture2D>{};
 
-            foreach (string i in image_paths) {
+            foreach (string i in image_paths_left) {
                 Image ix = Raylib.LoadImage(i);
                 Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
-
                 Raylib.ImageColorReplace(ref ix, old_col, new_col);
-                Texture2D tx_w = Raylib.LoadTextureFromImage(ix);
-                textures_w_temp.Add(tx_w);
-
+                Texture2D tx_l = Raylib.LoadTextureFromImage(ix);
+                textures_l_temp.Add(tx_l);
                 Raylib.ImageFlipHorizontal(ref ix);
-                Texture2D tx_e = Raylib.LoadTextureFromImage(ix);
-                textures_e_temp.Add(tx_e);
+                Texture2D tx_r = Raylib.LoadTextureFromImage(ix);
+                textures_r_temp.Add(tx_r);
             }
-            textures_w = textures_w_temp;
-            textures_e = textures_e_temp;
+            textures_l = textures_l_temp;
+            textures_r = textures_r_temp;
+
+            if (image_paths_up != null) {
+                foreach (string i in image_paths_up) {
+                    Image ix = Raylib.LoadImage(i);
+                    Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
+                    Raylib.ImageColorReplace(ref ix, old_col, new_col);
+                    Texture2D tx_u = Raylib.LoadTextureFromImage(ix);
+                    textures_u_temp.Add(tx_u);
+                }
+                textures_u = textures_u_temp;
+            }
+            if (image_paths_down != null) {
+                foreach (string i in image_paths_down) {
+                    Image ix = Raylib.LoadImage(i);
+                    Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
+                    Raylib.ImageColorReplace(ref ix, old_col, new_col);
+                    Texture2D tx_d = Raylib.LoadTextureFromImage(ix);
+                    textures_d_temp.Add(tx_d);
+                }
+                textures_d = textures_d_temp;
+            }
         }
+
+        // extra
 
         public void print_image_colors() {
             System.Console.WriteLine("image colors");
-            foreach (string sx in image_paths) {
+            foreach (string sx in image_paths_left) {
                 Image ix = Raylib.LoadImage(sx);
                 List<string> colors = new List<string>(){};
                 for (int i=0 ; i<ix.height ; i++) {
@@ -126,7 +189,7 @@ namespace main {
 
         public void print_texture_colors() {
             System.Console.WriteLine("texture colors");
-            foreach (Texture2D tw in textures_w) {
+            foreach (Texture2D tw in textures_l) {
                 Image ix = Raylib.LoadImageFromTexture(tw);
                 List<string> colors = new List<string>(){};
                 for (int i=0 ; i<ix.height ; i++) {
@@ -142,7 +205,7 @@ namespace main {
                 }
             }
 
-            foreach (Texture2D te in textures_e) {
+            foreach (Texture2D te in textures_r) {
                 Image ix = Raylib.LoadImageFromTexture(te);
                 List<string> colors = new List<string>(){};
                 for (int i=0 ; i<ix.height ; i++) {

@@ -81,10 +81,10 @@ namespace main {
 
             for (int i=0 ; i<units.Count ; i++) {
                 if (ais[i].do_shoot) {units[i].shoot(monster_bullets);}
-                if (ais[i].move_direction_n_s.Equals("N")) {units[i].move_up(this);}
-                if (ais[i].move_direction_n_s.Equals("S")) {units[i].move_down(this);}
-                if (ais[i].move_direction_e_w.Equals("W")) {units[i].move_left(this);}
-                if (ais[i].move_direction_e_w.Equals("E")) {units[i].move_right(this);}
+                if (ais[i].move_direction_u_d.Equals("U")) {units[i].move_up(this);}
+                if (ais[i].move_direction_u_d.Equals("D")) {units[i].move_down(this);}
+                if (ais[i].move_direction_l_r.Equals("L")) {units[i].move_left(this);}
+                if (ais[i].move_direction_l_r.Equals("R")) {units[i].move_right(this);}
             }
 
             foreach (Weapon w in weapons) {

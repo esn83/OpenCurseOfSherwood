@@ -35,10 +35,10 @@ namespace main {
                 Raylib.IsKeyDown(controls[2]) || 
                 Raylib.IsKeyDown(controls[3])) {
                 if (unit != null) {
-                    if (Raylib.IsKeyDown(controls[0])) {unit.move_left(active_scene);}
-                    if (Raylib.IsKeyDown(controls[1])) {unit.move_up(active_scene);}
-                    if (Raylib.IsKeyDown(controls[2])) {unit.move_right(active_scene);}
+                    if (Raylib.IsKeyDown(controls[2])) {unit.move_up(active_scene);}
                     if (Raylib.IsKeyDown(controls[3])) {unit.move_down(active_scene);}
+                    if (Raylib.IsKeyDown(controls[0])) {unit.move_left(active_scene);}
+                    if (Raylib.IsKeyDown(controls[1])) {unit.move_right(active_scene);}
                 }
             }
             else {unit.stop();}

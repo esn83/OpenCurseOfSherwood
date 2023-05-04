@@ -277,15 +277,15 @@ namespace main {
                 s2.units = new List<Unit>(){};
                 s2.ais = new List<Monster_AI>(){};
 
-                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
-                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
 
-                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
-                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
 
                 bat_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
                 bat_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
@@ -297,6 +297,7 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_1_sprite,
@@ -305,6 +306,7 @@ namespace main {
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_2_sprite,
@@ -313,6 +315,7 @@ namespace main {
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_3_sprite,
@@ -321,6 +324,7 @@ namespace main {
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_4_sprite,
@@ -331,10 +335,10 @@ namespace main {
                 u3.death_sounds = bat_death_sound;
                 u4.death_sounds = bat_death_sound;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s2.units.Add(u1);
                 s2.units.Add(u2);
@@ -362,18 +366,17 @@ namespace main {
                 Sprite troll_sprite = new Sprite(Start.data.troll_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite troll_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 troll_sprite_death.change_color(Start.data.death_images_large_color, Start.data.troll_color);
                 
                 Unit u1 = new Unit("Troll",
                                     260,
                                     170,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     6,
                                     troll_sprite,
@@ -382,7 +385,7 @@ namespace main {
                 u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s3.units.Add(u1);
                 s3.ais.Add(u1_ai);
@@ -401,13 +404,13 @@ namespace main {
                 s4.units = new List<Unit>(){};
                 s4.ais = new List<Monster_AI>(){};
                 
-                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
-                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
-                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
+                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
+                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
 
-                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
-                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
-                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
+                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
+                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
 
                 archer_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
                 archer_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
@@ -418,6 +421,7 @@ namespace main {
                 Unit u1 = new Unit("Archer",
                                 300,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_1_sprite,
@@ -426,6 +430,7 @@ namespace main {
                 Unit u2 = new Unit("Archer",
                                 290,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_2_sprite,
@@ -434,6 +439,7 @@ namespace main {
                 Unit u3 = new Unit("Archer",
                                 280,
                                 120,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_3_sprite,
@@ -487,18 +493,17 @@ namespace main {
                 Sprite brigand_sprite = new Sprite(Start.data.brigand_images,
                                                 0.1f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite brigand_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 brigand_sprite_death.change_color(Start.data.death_images_large_color, Start.data.brigand_color);
                 
                 Unit u1 = new Unit("Brigand",
                                     250,
                                     150,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     4,
                                     brigand_sprite,
@@ -507,7 +512,7 @@ namespace main {
                 u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s5.units.Add(u1);
                 s5.ais.Add(u1_ai);
@@ -529,23 +534,19 @@ namespace main {
                 Sprite skeleton_1_sprite = new Sprite(Start.data.skeleton_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite skeleton_2_sprite = new Sprite(Start.data.skeleton_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 Sprite skeleton_1_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite skeleton_2_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
 
                 skeleton_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 skeleton_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
@@ -553,6 +554,7 @@ namespace main {
                 Unit u1 = new Unit("Skeleton",
                                     250,
                                     150,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     4,
                                     skeleton_1_sprite,
@@ -565,6 +567,7 @@ namespace main {
                 Unit u2 = new Unit("Skeleton",
                                     220,
                                     170,
+                                    "R",
                                     Start.data.default_unit_speed,
                                     4,
                                     skeleton_2_sprite,
@@ -574,8 +577,8 @@ namespace main {
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.weapon_weakness = "club";
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0.2f);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0.2f);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0.2f);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0.2f);
 
                 s6.units.Add(u1);
                 s6.units.Add(u2);
@@ -600,29 +603,26 @@ namespace main {
                 Sprite skeleton_1_sprite = new Sprite(Start.data.skeleton_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite skeleton_2_sprite = new Sprite(Start.data.skeleton_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 Sprite skeleton_1_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite skeleton_2_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 skeleton_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 skeleton_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 
                 Unit u1 = new Unit("Skeleton",
                                     200,
                                     150,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     4,
                                     skeleton_1_sprite,
@@ -635,6 +635,7 @@ namespace main {
                 Unit u2 = new Unit("Skeleton",
                                     220,
                                     170,
+                                    "R",
                                     Start.data.default_unit_speed,
                                     4,
                                     skeleton_2_sprite,
@@ -644,8 +645,8 @@ namespace main {
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.weapon_weakness = "club";
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0.2f);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0.2f);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0.2f);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0.2f);
 
                 s7.units.Add(u1);
                 s7.units.Add(u2);
@@ -673,18 +674,17 @@ namespace main {
                 Sprite witch_sprite = new Sprite(Start.data.evil_witch_images,
                                                 0.1f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 Sprite witch_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 witch_sprite_death.change_color(Start.data.death_images_large_color, Start.data.evil_witch_color);
 
                 Unit u1 = new Unit("Evil Witch",
                                     110,
                                     130,
+                                    "R",
                                     Start.data.default_unit_speed,
                                     50,
                                     witch_sprite,
@@ -694,7 +694,7 @@ namespace main {
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u1.weapon_weakness = "club";
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s8.units.Add(u1);
                 s8.ais.Add(u1_ai);
@@ -713,15 +713,15 @@ namespace main {
                 s9.units = new List<Unit>(){};
                 s9.ais = new List<Monster_AI>(){};
 
-                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
-                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
 
-                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
-                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
 
                 bat_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
                 bat_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
@@ -733,6 +733,7 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bat_1_sprite,
@@ -741,6 +742,7 @@ namespace main {
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 bat_2_sprite,
@@ -749,6 +751,7 @@ namespace main {
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bat_3_sprite,
@@ -757,6 +760,7 @@ namespace main {
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 bat_4_sprite,
@@ -767,10 +771,10 @@ namespace main {
                 u3.death_sounds = bat_death_sound;
                 u4.death_sounds = bat_death_sound;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s9.units.Add(u1);
                 s9.units.Add(u2);
@@ -808,15 +812,15 @@ namespace main {
                 s12.units = new List<Unit>(){};
                 s12.ais = new List<Monster_AI>(){};
 
-                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
-                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
 
-                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
-                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
 
                 bat_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
                 bat_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
@@ -828,6 +832,7 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_1_sprite,
@@ -836,6 +841,7 @@ namespace main {
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_2_sprite,
@@ -844,6 +850,7 @@ namespace main {
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_3_sprite,
@@ -852,6 +859,7 @@ namespace main {
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_4_sprite,
@@ -862,10 +870,10 @@ namespace main {
                 u3.death_sounds = bat_death_sound;
                 u4.death_sounds = bat_death_sound;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s12.units.Add(u1);
                 s12.units.Add(u2);
@@ -893,18 +901,17 @@ namespace main {
                 Sprite brigand_sprite = new Sprite(Start.data.brigand_images,
                                                 0.1f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite brigand_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 brigand_sprite_death.change_color(Start.data.death_images_large_color, Start.data.brigand_color);
                 
                 Unit u1 = new Unit("Brigand",
                                     250,
                                     150,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     4,
                                     brigand_sprite,
@@ -913,7 +920,7 @@ namespace main {
                 u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s13.units.Add(u1);
                 s13.ais.Add(u1_ai);
@@ -936,18 +943,17 @@ namespace main {
                 Sprite troll_sprite = new Sprite(Start.data.troll_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 Sprite troll_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 troll_sprite_death.change_color(Start.data.death_images_small_color, Start.data.troll_color);
 
                 Unit u1 = new Unit("Troll",
                                     120,
                                     170,
+                                    "R",
                                     Start.data.default_unit_speed,
                                     6,
                                     troll_sprite,
@@ -956,7 +962,7 @@ namespace main {
                 u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s14.units.Add(u1);
                 s14.ais.Add(u1_ai);
@@ -975,15 +981,15 @@ namespace main {
                 s15.units = new List<Unit>(){};
                 s15.ais = new List<Monster_AI>(){};
 
-                Sprite bee_1_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"E");
-                Sprite bee_2_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"E");
-                Sprite bee_3_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"E");
-                Sprite bee_4_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"E");
+                Sprite bee_1_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
+                Sprite bee_2_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
+                Sprite bee_3_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
+                Sprite bee_4_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
 
-                Sprite bee_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
-                Sprite bee_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
-                Sprite bee_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
-                Sprite bee_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+                Sprite bee_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bee_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bee_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bee_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
 
                 bee_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bee_color);
                 bee_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bee_color);
@@ -995,6 +1001,7 @@ namespace main {
                 Unit u1 = new Unit("Bee",
                                 70,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_1_sprite,
@@ -1003,6 +1010,7 @@ namespace main {
                 Unit u2 = new Unit("Bee",
                                 70,
                                 160,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_2_sprite,
@@ -1011,6 +1019,7 @@ namespace main {
                 Unit u3 = new Unit("Bee",
                                 70,
                                 155,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_3_sprite,
@@ -1019,6 +1028,7 @@ namespace main {
                 Unit u4 = new Unit("Bee",
                                 70,
                                 165,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_4_sprite,
@@ -1071,29 +1081,26 @@ namespace main {
                 Sprite skeleton_1_sprite = new Sprite(Start.data.skeleton_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite skeleton_2_sprite = new Sprite(Start.data.skeleton_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 Sprite skeleton_1_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite skeleton_2_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 skeleton_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 skeleton_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 
                 Unit u1 = new Unit("Skeleton",
                                     150,
                                     175,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     4,
                                     skeleton_1_sprite,
@@ -1106,6 +1113,7 @@ namespace main {
                 Unit u2 = new Unit("Skeleton",
                                     120,
                                     180,
+                                    "R",
                                     Start.data.default_unit_speed,
                                     4,
                                     skeleton_2_sprite,
@@ -1115,8 +1123,8 @@ namespace main {
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.weapon_weakness = "club";
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0.2f);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0.2f);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0.2f);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0.2f);
 
                 s16.units.Add(u1);
                 s16.units.Add(u2);
@@ -1140,18 +1148,17 @@ namespace main {
                 Sprite witch_sprite = new Sprite(Start.data.good_witch_images,
                                                 0.1f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 Sprite witch_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 witch_sprite_death.change_color(Start.data.death_images_large_color, Start.data.good_witch_color);
 
                 Unit u1 = new Unit("Good Witch",
                                     110,
                                     130,
+                                    "R",
                                     Start.data.default_unit_speed,
                                     3,
                                     witch_sprite,
@@ -1164,7 +1171,7 @@ namespace main {
                 u1.items.Add(new Item("f-elixir",Start.data.items_data_dict["f-elixir"],0,0));
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s17.units.Add(u1);
                 s17.ais.Add(u1_ai);
@@ -1186,19 +1193,18 @@ namespace main {
                 Sprite wolf_1_sprite = new Sprite(Start.data.wolf_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
 
                 Sprite wolf_1_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 wolf_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.wolf_color);
 
                 Unit u1 = new Unit("Wolf",
                                     150,
                                     160,
+                                    "R",
                                     Start.data.default_unit_speed,
                                     50,
                                     wolf_1_sprite,
@@ -1206,7 +1212,7 @@ namespace main {
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u1.weapon_weakness = "silver dagger";
 
-                Monster_AI u1_ai = new Monster_AI(3,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(3,true,u1.direction,0);
 
                 s18.units.Add(u1);
                 s18.ais.Add(u1_ai);
@@ -1225,15 +1231,15 @@ namespace main {
                 s19.units = new List<Unit>(){};
                 s19.ais = new List<Monster_AI>(){};
 
-                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
-                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
 
-                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
-                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
 
                 bat_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
                 bat_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
@@ -1245,6 +1251,7 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_1_sprite,
@@ -1253,6 +1260,7 @@ namespace main {
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_2_sprite,
@@ -1261,6 +1269,7 @@ namespace main {
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_3_sprite,
@@ -1269,6 +1278,7 @@ namespace main {
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_4_sprite,
@@ -1279,10 +1289,10 @@ namespace main {
                 u3.death_sounds = bat_death_sound;
                 u4.death_sounds = bat_death_sound;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s19.units.Add(u1);
                 s19.units.Add(u2);
@@ -1317,18 +1327,17 @@ namespace main {
                 Sprite ice_wizard_sprite = new Sprite(Start.data.ice_wizard_images,
                                                       0.1f,
                                                       0,
-                                                      0,
-                                                      "W");
+                                                      0);
                 Sprite ice_wizard_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 ice_wizard_sprite_death.change_color(Start.data.death_images_large_color, Start.data.ice_wizard_color);
 
                 Unit u1 = new Unit("Ice Wizard",
                                     260,
                                     150,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     4,
                                     ice_wizard_sprite,
@@ -1337,7 +1346,7 @@ namespace main {
                 u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s21.units.Add(u1);
                 s21.ais.Add(u1_ai);
@@ -1356,15 +1365,15 @@ namespace main {
                 s22.units = new List<Unit>(){};
                 s22.ais = new List<Monster_AI>(){};
 
-                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
-                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
 
-                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
-                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
 
                 bat_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
                 bat_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
@@ -1376,6 +1385,7 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_1_sprite,
@@ -1384,6 +1394,7 @@ namespace main {
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_2_sprite,
@@ -1392,6 +1403,7 @@ namespace main {
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_3_sprite,
@@ -1400,6 +1412,7 @@ namespace main {
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_4_sprite,
@@ -1410,10 +1423,10 @@ namespace main {
                 u3.death_sounds = bat_death_sound;
                 u4.death_sounds = bat_death_sound;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s22.units.Add(u1);
                 s22.units.Add(u2);
@@ -1438,13 +1451,13 @@ namespace main {
                 s23.units = new List<Unit>(){};
                 s23.ais = new List<Monster_AI>(){};
                 
-                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
-                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
-                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
+                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
+                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
 
-                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
-                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
-                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
+                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
+                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
 
                 archer_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
                 archer_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
@@ -1455,6 +1468,7 @@ namespace main {
                 Unit u1 = new Unit("Archer",
                                 300,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_1_sprite,
@@ -1463,6 +1477,7 @@ namespace main {
                 Unit u2 = new Unit("Archer",
                                 290,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_2_sprite,
@@ -1471,6 +1486,7 @@ namespace main {
                 Unit u3 = new Unit("Archer",
                                 280,
                                 120,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_3_sprite,
@@ -1521,15 +1537,15 @@ namespace main {
                 s24.units = new List<Unit>(){};
                 s24.ais = new List<Monster_AI>(){};
 
-                Sprite bee_1_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"W");
-                Sprite bee_2_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"W");
-                Sprite bee_3_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"W");
-                Sprite bee_4_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"W");
+                Sprite bee_1_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
+                Sprite bee_2_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
+                Sprite bee_3_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
+                Sprite bee_4_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
 
-                Sprite bee_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bee_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bee_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bee_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
+                Sprite bee_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bee_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bee_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bee_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
 
                 bee_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bee_color);
                 bee_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bee_color);
@@ -1541,6 +1557,7 @@ namespace main {
                 Unit u1 = new Unit("Bee",
                                 290,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_1_sprite,
@@ -1549,6 +1566,7 @@ namespace main {
                 Unit u2 = new Unit("Bee",
                                 290,
                                 160,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_2_sprite,
@@ -1557,6 +1575,7 @@ namespace main {
                 Unit u3 = new Unit("Bee",
                                 290,
                                 155,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_3_sprite,
@@ -1565,6 +1584,7 @@ namespace main {
                 Unit u4 = new Unit("Bee",
                                 290,
                                 165,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_4_sprite,
@@ -1627,15 +1647,15 @@ namespace main {
                 s25.units = new List<Unit>(){};
                 s25.ais = new List<Monster_AI>(){};
 
-                Sprite bee_1_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"W");
-                Sprite bee_2_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"W");
-                Sprite bee_3_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"W");
-                Sprite bee_4_sprite = new Sprite(Start.data.bee_images,0.2f,0,0,"W");
+                Sprite bee_1_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
+                Sprite bee_2_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
+                Sprite bee_3_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
+                Sprite bee_4_sprite = new Sprite(Start.data.bee_images,0.2f,0,0);
 
-                Sprite bee_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bee_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bee_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bee_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
+                Sprite bee_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bee_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bee_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bee_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
 
                 bee_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bee_color);
                 bee_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bee_color);
@@ -1647,6 +1667,7 @@ namespace main {
                 Unit u1 = new Unit("Bee",
                                 290,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_1_sprite,
@@ -1655,6 +1676,7 @@ namespace main {
                 Unit u2 = new Unit("Bee",
                                 290,
                                 160,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_2_sprite,
@@ -1663,6 +1685,7 @@ namespace main {
                 Unit u3 = new Unit("Bee",
                                 290,
                                 155,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_3_sprite,
@@ -1671,6 +1694,7 @@ namespace main {
                 Unit u4 = new Unit("Bee",
                                 290,
                                 165,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bee_4_sprite,
@@ -1728,18 +1752,17 @@ namespace main {
                 Sprite dragon_sprite = new Sprite(Start.data.dragon_images,
                                                 0.1f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite dragon_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 dragon_sprite_death.change_color(Start.data.death_images_large_color, Start.data.dragon_color);
                 
                 Unit u1 = new Unit("Dragon",
                                     260,
                                     170,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     50,
                                     dragon_sprite,
@@ -1749,13 +1772,12 @@ namespace main {
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u1.weapon_weakness = "ice wand";
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s26.units.Add(u1);
                 s26.ais.Add(u1_ai);
             }
         }
-
 
         public Scene init_scene_27() { // scene 27 22up
             if (s27 == null) {
@@ -1763,6 +1785,8 @@ namespace main {
                 spawn_units();}
             else if (!s27.scene_monsters_done) {
                 spawn_units();}
+            s27.disable_up = true;
+            s27.door_up = new Rectangle(178,110,30,5);
             return s27;
 
             void spawn_units() {
@@ -1772,18 +1796,17 @@ namespace main {
                 Sprite troll_sprite = new Sprite(Start.data.troll_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite troll_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 troll_sprite_death.change_color(Start.data.death_images_large_color, Start.data.troll_color);
                 
                 Unit u1 = new Unit("Troll",
                                     160,
                                     140,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     6,
                                     troll_sprite,
@@ -1792,7 +1815,7 @@ namespace main {
                 u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s27.units.Add(u1);
                 s27.ais.Add(u1_ai);
@@ -1803,7 +1826,8 @@ namespace main {
             if (s28 == null) {
                 s28 = new Scene(Start.data.scene_28);
             }
-            s28.door_down = new Rectangle(177,232,30,5);
+            s28.disable_down = true;
+            s28.door_down = new Rectangle(178,225,30,5);
             return s28;
         }
 
@@ -1831,18 +1855,17 @@ namespace main {
                 Sprite hermit_sprite = new Sprite(Start.data.hermit_images,
                                                 0.1f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 Sprite hermit_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 hermit_sprite_death.change_color(Start.data.death_images_large_color, Start.data.hermit_color);
 
                 Unit u1 = new Unit("Good Hermit",
                                     130,
                                     140,
+                                    "R",
                                     Start.data.default_unit_speed,
                                     3,
                                     hermit_sprite,
@@ -1854,7 +1877,7 @@ namespace main {
                 u1.items.Add(new Item("map",Start.data.items_data_dict["map"],0,0));
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s30.units.Add(u1);
                 s30.ais.Add(u1_ai);
@@ -1880,29 +1903,26 @@ namespace main {
                 Sprite skeleton_1_sprite = new Sprite(Start.data.skeleton_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite skeleton_2_sprite = new Sprite(Start.data.skeleton_images,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 Sprite skeleton_1_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite skeleton_2_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "E");
+                                                0);
                 skeleton_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 skeleton_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 
                 Unit u1 = new Unit("Skeleton",
                                     130,
                                     150,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     4,
                                     skeleton_1_sprite,
@@ -1915,6 +1935,7 @@ namespace main {
                 Unit u2 = new Unit("Skeleton",
                                     120,
                                     170,
+                                    "R",
                                     Start.data.default_unit_speed,
                                     4,
                                     skeleton_2_sprite,
@@ -1924,8 +1945,8 @@ namespace main {
                 u2.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
                 u2.weapon_weakness = "club";
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0.2f);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0.2f);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0.2f);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0.2f);
 
                 s31.units.Add(u1);
                 s31.units.Add(u2);
@@ -1959,21 +1980,22 @@ namespace main {
             s32.swamp_areas.Add(new Rectangle(208,136,43,2));
 
             s32.respawn_point_x = 220;
-            s32.respawn_point_y = 200;
+            s32.respawn_point_y = 195;
             return s32;
 
             void spawn_units() {
                 s32.units = new List<Unit>(){};
                 s32.ais = new List<Monster_AI>(){};
 
-                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
-                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
-                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
-                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
 
                 Unit u1 = new Unit("Fire Spirit",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_1_sprite,
@@ -1982,6 +2004,7 @@ namespace main {
                 Unit u2 = new Unit("Fire Spirit",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_2_sprite,
@@ -1990,6 +2013,7 @@ namespace main {
                 Unit u3 = new Unit("Fire Spirit",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_3_sprite,
@@ -1998,6 +2022,7 @@ namespace main {
                 Unit u4 = new Unit("Fire Spirit",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_4_sprite,
@@ -2013,10 +2038,10 @@ namespace main {
                 u3.can_pass_through_obstacles = true;
                 u4.can_pass_through_obstacles = true;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s32.units.Add(u1);
                 s32.units.Add(u2);
@@ -2051,22 +2076,22 @@ namespace main {
             s33.swamp_areas.Add(new Rectangle(175,145,45,2));
 
             s33.respawn_point_x = 155;
-            s33.respawn_point_y = 200;
+            s33.respawn_point_y = 195;
             return s33;
 
             void spawn_units() {
                 s33.units = new List<Unit>(){};
                 s33.ais = new List<Monster_AI>(){};
 
-                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
-                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
 
-                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
-                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
 
                 bat_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
                 bat_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
@@ -2078,6 +2103,7 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bat_1_sprite,
@@ -2086,6 +2112,7 @@ namespace main {
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 bat_2_sprite,
@@ -2094,6 +2121,7 @@ namespace main {
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 bat_3_sprite,
@@ -2102,6 +2130,7 @@ namespace main {
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 bat_4_sprite,
@@ -2117,10 +2146,10 @@ namespace main {
                 u3.can_pass_through_obstacles = true;
                 u4.can_pass_through_obstacles = true;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s33.units.Add(u1);
                 s33.units.Add(u2);
@@ -2184,7 +2213,7 @@ namespace main {
             s35.swamp_areas.Add(new Rectangle(148,115,32,10));
 
             s35.respawn_point_x = 135;
-            s35.respawn_point_y = 200;
+            s35.respawn_point_y = 195;
             return s35;
 
             void spawn_units() {}
@@ -2204,14 +2233,15 @@ namespace main {
                 s36.units = new List<Unit>(){};
                 s36.ais = new List<Monster_AI>(){};
 
-                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
-                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
-                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
-                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
 
                 Unit u1 = new Unit("Fire Spirit",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_1_sprite,
@@ -2220,6 +2250,7 @@ namespace main {
                 Unit u2 = new Unit("Fire Spirit",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_2_sprite,
@@ -2228,6 +2259,7 @@ namespace main {
                 Unit u3 = new Unit("Fire Spirit",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_3_sprite,
@@ -2236,6 +2268,7 @@ namespace main {
                 Unit u4 = new Unit("Fire Spirit",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_4_sprite,
@@ -2246,10 +2279,10 @@ namespace main {
                 u3.is_immortal = true;
                 u4.is_immortal = true;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s36.units.Add(u1);
                 s36.units.Add(u2);
@@ -2274,13 +2307,13 @@ namespace main {
                 s37.units = new List<Unit>(){};
                 s37.ais = new List<Monster_AI>(){};
                 
-                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
-                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
-                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
+                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
+                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
 
-                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
-                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
-                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
+                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
+                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
 
                 archer_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
                 archer_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
@@ -2291,6 +2324,7 @@ namespace main {
                 Unit u1 = new Unit("Archer",
                                 300,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_1_sprite,
@@ -2299,6 +2333,7 @@ namespace main {
                 Unit u2 = new Unit("Archer",
                                 290,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_2_sprite,
@@ -2307,6 +2342,7 @@ namespace main {
                 Unit u3 = new Unit("Archer",
                                 280,
                                 120,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_3_sprite,
@@ -2357,14 +2393,15 @@ namespace main {
                 s38.units = new List<Unit>(){};
                 s38.ais = new List<Monster_AI>(){};
 
-                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
-                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
-                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
-                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
 
                 Unit u1 = new Unit("Fire Spirit",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_1_sprite,
@@ -2373,6 +2410,7 @@ namespace main {
                 Unit u2 = new Unit("Fire Spirit",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_2_sprite,
@@ -2381,6 +2419,7 @@ namespace main {
                 Unit u3 = new Unit("Fire Spirit",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_3_sprite,
@@ -2389,6 +2428,7 @@ namespace main {
                 Unit u4 = new Unit("Fire Spirit",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_4_sprite,
@@ -2399,10 +2439,10 @@ namespace main {
                 u3.is_immortal = true;
                 u4.is_immortal = true;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s38.units.Add(u1);
                 s38.units.Add(u2);
@@ -2427,14 +2467,15 @@ namespace main {
                 s39.units = new List<Unit>(){};
                 s39.ais = new List<Monster_AI>(){};
 
-                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
-                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
-                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"W");
-                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0,"E");
+                Sprite fire_spirit_1_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_2_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_3_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
+                Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
 
                 Unit u1 = new Unit("Fire Spirit",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_1_sprite,
@@ -2443,6 +2484,7 @@ namespace main {
                 Unit u2 = new Unit("Fire Spirit",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_2_sprite,
@@ -2451,6 +2493,7 @@ namespace main {
                 Unit u3 = new Unit("Fire Spirit",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_3_sprite,
@@ -2459,6 +2502,7 @@ namespace main {
                 Unit u4 = new Unit("Fire Spirit",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 1,
                                 fire_spirit_4_sprite,
@@ -2469,10 +2513,10 @@ namespace main {
                 u3.is_immortal = true;
                 u4.is_immortal = true;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s39.units.Add(u1);
                 s39.units.Add(u2);
@@ -2497,13 +2541,13 @@ namespace main {
                 s40.units = new List<Unit>(){};
                 s40.ais = new List<Monster_AI>(){};
                 
-                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
-                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
-                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
+                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
+                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
 
-                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
-                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
-                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
+                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
+                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
 
                 archer_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
                 archer_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
@@ -2514,6 +2558,7 @@ namespace main {
                 Unit u1 = new Unit("Archer",
                                 280,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_1_sprite,
@@ -2522,6 +2567,7 @@ namespace main {
                 Unit u2 = new Unit("Archer",
                                 275,
                                 160,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_2_sprite,
@@ -2530,6 +2576,7 @@ namespace main {
                 Unit u3 = new Unit("Archer",
                                 270,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_3_sprite,
@@ -2581,13 +2628,13 @@ namespace main {
                 s41.units = new List<Unit>(){};
                 s41.ais = new List<Monster_AI>(){};
                 
-                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
-                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
-                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0,"W");
+                Sprite archer_1_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
+                Sprite archer_2_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
+                Sprite archer_3_sprite = new Sprite(Start.data.archer_images,0.2f,0,0);
 
-                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
-                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
-                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0,"W");
+                Sprite archer_1_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
+                Sprite archer_2_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
+                Sprite archer_3_sprite_death = new Sprite(Start.data.death_images_large,0.2f,0,0);
 
                 archer_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
                 archer_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.archer_color);
@@ -2598,6 +2645,7 @@ namespace main {
                 Unit u1 = new Unit("Archer",
                                 280,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_1_sprite,
@@ -2606,6 +2654,7 @@ namespace main {
                 Unit u2 = new Unit("Archer",
                                 275,
                                 160,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_2_sprite,
@@ -2614,6 +2663,7 @@ namespace main {
                 Unit u3 = new Unit("Archer",
                                 270,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 archer_3_sprite,
@@ -2664,15 +2714,15 @@ namespace main {
                 s42.units = new List<Unit>(){};
                 s42.ais = new List<Monster_AI>(){};
 
-                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
-                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"W");
-                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0,"E");
+                Sprite bat_1_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_2_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_3_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
+                Sprite bat_4_sprite = new Sprite(Start.data.bat_images,0.2f,0,0);
 
-                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
-                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"W");
-                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0,"E");
+                Sprite bat_1_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_2_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_3_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
+                Sprite bat_4_sprite_death = new Sprite(Start.data.death_images_small,0.2f,0,0);
 
                 bat_1_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
                 bat_2_sprite_death.change_color(Start.data.death_images_small_color, Start.data.bat_color);
@@ -2684,6 +2734,7 @@ namespace main {
                 Unit u1 = new Unit("Bat",
                                 230,
                                 170,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_1_sprite,
@@ -2692,6 +2743,7 @@ namespace main {
                 Unit u2 = new Unit("Bat",
                                 210,
                                 170,
+                                "R",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_2_sprite,
@@ -2700,6 +2752,7 @@ namespace main {
                 Unit u3 = new Unit("Bat",
                                 230,
                                 150,
+                                "L",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_3_sprite,
@@ -2708,6 +2761,7 @@ namespace main {
                 Unit u4 = new Unit("Bat",
                                 210,
                                 150,
+                                "R",
                                 Start.data.default_unit_speed,
                                 2,
                                 bat_4_sprite,
@@ -2718,10 +2772,10 @@ namespace main {
                 u3.death_sounds = bat_death_sound;
                 u4.death_sounds = bat_death_sound;
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u2_ai = new Monster_AI(1,true,"E",0);
-                Monster_AI u3_ai = new Monster_AI(1,true,"W",0);
-                Monster_AI u4_ai = new Monster_AI(1,true,"E",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+                Monster_AI u3_ai = new Monster_AI(1,true,u3.direction,0);
+                Monster_AI u4_ai = new Monster_AI(1,true,u4.direction,0);
 
                 s42.units.Add(u1);
                 s42.units.Add(u2);
@@ -2753,18 +2807,17 @@ namespace main {
                 Sprite dragon_sprite = new Sprite(Start.data.dragon_images,
                                                 0.1f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 Sprite dragon_sprite_death = new Sprite(Start.data.death_images_large,
                                                 0.2f,
                                                 0,
-                                                0,
-                                                "W");
+                                                0);
                 dragon_sprite_death.change_color(Start.data.death_images_large_color, Start.data.dragon_color);
                 
                 Unit u1 = new Unit("Dragon",
                                     260,
                                     130,
+                                    "L",
                                     Start.data.default_unit_speed,
                                     5,
                                     dragon_sprite,
@@ -2773,7 +2826,7 @@ namespace main {
                 u1.active_weapon.shoot_sound = new Audio(Start.data.monster_bullet_sounds, 0.0f);
                 u1.death_sounds = new Audio(Start.data.monster_death_sounds, 0.0f);
 
-                Monster_AI u1_ai = new Monster_AI(1,true,"W",0);
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
 
                 s43.units.Add(u1);
                 s43.ais.Add(u1_ai);

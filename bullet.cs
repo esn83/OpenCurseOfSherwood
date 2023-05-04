@@ -33,11 +33,11 @@ namespace main {
         }
 
         public void update(float dt) {
-            if (direction.Equals("W")) {pos_x -= speed;}
-            if (direction.Equals("E")) {pos_x += speed;}
+            if (direction.Equals("L")) {pos_x -= speed;}
+            if (direction.Equals("R")) {pos_x += speed;}
             sprite.pos_x = pos_x;
             sprite.pos_y = pos_y;
-            sprite.update(dt);
+            sprite.update(dt, direction);
             hitbox.x = pos_x;
             hitbox.y = pos_y;
         }

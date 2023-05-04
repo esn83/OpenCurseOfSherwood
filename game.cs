@@ -68,20 +68,17 @@ namespace main {
             // players character
             Sprite monk_sprite = new Sprite(Start.data.monk_images,
                                             0.08f,
-                                            0,0,
-                                            "W");
+                                            0,0);
             monk_sprite.change_color(new Color(252,249,252,255), players[0].color);
 
             Sprite monk_sprite_death = new Sprite(Start.data.monk_images_death,
                                                   0.2f,
-                                                  0,0,
-                                                  "W");
+                                                  0,0);
             monk_sprite_death.change_color(new Color(252,249,252,255), players[0].color);
 
             Sprite monk_sprite_sink = new Sprite(Start.data.monk_images_sink,
                                                  0.35f,
-                                                 0,0,
-                                                 "W");
+                                                 0,0);
             monk_sprite_sink.change_color(new Color(252,249,252,255), players[0].color);
 
             // List<string> monk_images_rise = Start.data.monk_images_sink;
@@ -89,12 +86,13 @@ namespace main {
             // Sprite monk_sprite_rise= new Sprite(monk_images_rise,
             //                                     0.35f,
             //                                     0,0,
-            //                                     "W");
+            //                                     "L");
             // monk_sprite_rise.change_color(new Color(252,249,252,255), players[0].color);
 
             Unit monk = new Unit("Monk",
                                 130,//scene_manager.active_scene.respawn_point_x,
                                 130,//scene_manager.active_scene.respawn_point_y,
+                                "L",
                                 1,
                                 1,
                                 monk_sprite,
@@ -110,7 +108,8 @@ namespace main {
             // monk.weapons.Add(new Weapon("club", Start.data.weapons_data_dict["club"], 202, 67));
             // monk.weapons.Add(new Weapon("silver dagger", Start.data.weapons_data_dict["silver dagger"], 202, 67));
             // monk.weapons.Add(new Weapon("ice wand", Start.data.weapons_data_dict["ice wand"], 202, 67));
-            // monk.active_weapon = monk.weapons[2];
+            // monk.weapons.Add(new Weapon("crossbow", Start.data.weapons_data_dict["crossbow"], 202, 67));
+            // monk.active_weapon = monk.weapons[0];
             // monk.items.Add(new Item("shield",Start.data.items_data_dict["shield"],0,0));
             // monk.items.Add(new Item("scrying glass",Start.data.scrying_glass_data,0,0));
             // monk.items.Add(new Item("cross",Start.data.items_data_dict["cross"],0,0));
@@ -175,48 +174,49 @@ namespace main {
             // update scene
                 // scene edges
             if (!scene_manager.active_scene.disable_right &&
-                players[0].unit.pos_x + players[0].unit.sprite_active.textures_active[0].width >= scene_manager.active_scene.scene_limit_x_right - 5) {
+                players[0].unit.terrain_hitbox.x + players[0].unit.terrain_hitbox.width +1 >= scene_manager.active_scene.scene_limit_x_right) { // +1 to bypass scene edge colission
                 scene_manager.next_scene_right();
-                players[0].unit.pos_x = scene_manager.active_scene.scene_limit_x_left + 10;
+                players[0].unit.pos_x = scene_manager.active_scene.scene_limit_x_left;
             }
             else if (!scene_manager.active_scene.disable_left &&
-                    players[0].unit.pos_x <= scene_manager.active_scene.scene_limit_x_left + 5) {
+                players[0].unit.terrain_hitbox.x -1 <= scene_manager.active_scene.scene_limit_x_left) { // -1 to bypass scene edge colission
                 scene_manager.next_scene_left();
-                players[0].unit.pos_x = scene_manager.active_scene.scene_limit_x_right - players[0].unit.sprite_active.textures_active[0].width - 10;
+                players[0].unit.pos_x = scene_manager.active_scene.scene_limit_x_right - players[0].unit.terrain_hitbox.width -5;
             }
             else if (!scene_manager.active_scene.disable_down &&
-                players[0].unit.pos_y + players[0].unit.sprite_active.textures_active[0].height >= scene_manager.active_scene.scene_limit_y_down - 5) {
+                players[0].unit.terrain_hitbox.y + players[0].unit.terrain_hitbox.height +1 >= scene_manager.active_scene.scene_limit_y_down) { // +1 to bypass scene edge colission
                 scene_manager.next_scene_down();
-                players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_up + 10;
+                players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_up - players[0].unit.terrain_hitbox.height + players[0].unit.terrain_hitbox_offset_y;
             }
             else if (!scene_manager.active_scene.disable_up &&
-                players[0].unit.pos_y <= scene_manager.active_scene.scene_limit_y_up + 5) {
+                players[0].unit.terrain_hitbox.y -1 <= scene_manager.active_scene.scene_limit_y_up) { // -1 to bypass scene edge colission
                 scene_manager.next_scene_up();
-                players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_down - players[0].unit.sprite_active.textures_active[0].height - 10;
+                players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_down - players[0].unit.terrain_hitbox.height - 2*players[0].unit.terrain_hitbox_offset_y;
             }
                 // / scene edges
 
                 // doors
-            if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_up)) {
+            if (Raylib.CheckCollisionRecs(players[0].unit.terrain_hitbox, scene_manager.active_scene.door_left)) {
+                scene_manager.next_scene_left();
+                players[0].unit.pos_x = scene_manager.active_scene.door_right.x - scene_manager.active_scene.door_right.width - players[0].unit.terrain_hitbox.width -5;
+                players[0].unit.pos_y = scene_manager.active_scene.door_right.y - players[0].unit.terrain_hitbox.height;
+            }
+            else if (Raylib.CheckCollisionRecs(players[0].unit.terrain_hitbox, scene_manager.active_scene.door_right)) {
+                scene_manager.next_scene_right();
+                players[0].unit.pos_x = scene_manager.active_scene.door_left.x + scene_manager.active_scene.door_right.width +1;
+                players[0].unit.pos_y = scene_manager.active_scene.door_left.y - players[0].unit.terrain_hitbox.height;
+            }
+            else if (Raylib.CheckCollisionRecs(players[0].unit.terrain_hitbox, scene_manager.active_scene.door_up)) {
                 scene_manager.next_scene_up();
                 players[0].unit.pos_x = scene_manager.active_scene.door_down.x;
-                players[0].unit.pos_y = scene_manager.active_scene.door_down.y - players[0].unit.sprite_active.textures_active[0].height + 5;
+                players[0].unit.pos_y = scene_manager.active_scene.door_down.y - players[0].unit.terrain_hitbox.height - players[0].unit.terrain_hitbox_offset_y;
             }
-            else if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_down)) {
+            else if (Raylib.CheckCollisionRecs(players[0].unit.terrain_hitbox, scene_manager.active_scene.door_down)) {
                 scene_manager.next_scene_down();
                 players[0].unit.pos_x = scene_manager.active_scene.door_up.x;
-                players[0].unit.pos_y = scene_manager.active_scene.door_up.y - 5;
+                players[0].unit.pos_y = scene_manager.active_scene.door_up.y - players[0].unit.terrain_hitbox.height +8;
             }
-            else if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_left)) {
-                scene_manager.next_scene_left();
-                players[0].unit.pos_x = scene_manager.active_scene.door_right.x - scene_manager.active_scene.door_right.width - players[0].unit.sprite_active.textures_active[0].width;
-                players[0].unit.pos_y = scene_manager.active_scene.door_right.y - players[0].unit.sprite_active.textures_active[0].height/3;
-            }
-            else if (Raylib.CheckCollisionRecs(players[0].unit.hitbox, scene_manager.active_scene.door_right)) {
-                scene_manager.next_scene_right();
-                players[0].unit.pos_x = scene_manager.active_scene.door_left.x + scene_manager.active_scene.door_right.width + 1;
-                players[0].unit.pos_y = scene_manager.active_scene.door_left.y - players[0].unit.sprite_active.textures_active[0].height/3;
-            }
+
                 // / doors
 
             scene_manager.update(dt, players);
@@ -228,7 +228,7 @@ namespace main {
                 // check if player collides with a weapon on the ground
                 List<Weapon> remove_ground = new List<Weapon>(){};
                 foreach(Weapon w in scene_manager.active_scene.weapons) {
-                    bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, w.icon_hitbox);
+                    bool col = Raylib.CheckCollisionRecs(p.unit.terrain_hitbox, w.icon_hitbox);
                     if (col) {
                         w.pos_x = 202;
                         w.pos_y = 67;
@@ -246,7 +246,7 @@ namespace main {
                 // check if player collides with an item on the ground
                 List<Item> remove_ground_2 = new List<Item>(){};
                 foreach(Item i in scene_manager.active_scene.items) {
-                    bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, i.icon_hitbox);
+                    bool col = Raylib.CheckCollisionRecs(p.unit.terrain_hitbox, i.icon_hitbox);
                     if (col) {
                         i.pos_x = 0;
                         i.pos_y = 0;
@@ -260,7 +260,7 @@ namespace main {
                 }
                 while (p.unit.items.Count > 3) { // drop item [0] if inventory has more than 3 items
                     Item i = p.unit.items[0];
-                    if (p.unit.sprite_active.direction_w_or_e.Equals("W")) {
+                    if (p.unit.direction_l_or_r.Equals("L")) {
                         scene_manager.active_scene.items.Add(new Item(i.name,Start.data.items_data_dict[i.name],p.unit.pos_x-12, p.unit.pos_y+20));
                     }
                     else {
@@ -286,13 +286,11 @@ namespace main {
                                             u.bullets.Add(b);
                                             scene_manager.active_scene.monster_bullets.Add(b);
                                             b.speed += 1;
-                                            if (b.direction.Equals("W")) {
-                                                b.direction = "E";
-                                                b.sprite.direction = "E";
+                                            if (b.direction.Equals("L")) {
+                                                b.direction = "R";
                                             }
                                             else {
-                                                b.direction = "W";
-                                                b.sprite.direction = "W";
+                                                b.direction = "L";
                                             }
                                             break;
                                         }
@@ -357,6 +355,9 @@ namespace main {
                                         p.unit.items.Add(i);
                                         general_item_sound.play_sound();
                                         u.items.Remove(i);
+                                        if (i.name.Equals("map")) {
+                                            p.popup_1 = true;
+                                        }
                                     }
                                 }
                             }
@@ -381,13 +382,11 @@ namespace main {
                                     p.unit.bullets.Add(b);
                                     scene_manager.active_scene.player_bullets.Add(b);
                                     b.speed += 1;
-                                    if (b.direction.Equals("W")) {
-                                        b.direction = "E";
-                                        b.sprite.direction = "E";
+                                    if (b.direction.Equals("L")) {
+                                        b.direction = "R";
                                     }
                                     else {
-                                        b.direction = "W";
-                                        b.sprite.direction = "W";
+                                        b.direction = "L";
                                     }
                                     break;
                                 }
@@ -406,7 +405,7 @@ namespace main {
 
                 // check for player collision with swamp
                 foreach (Rectangle swamp in scene_manager.active_scene.swamp_areas) {
-                    bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, swamp);
+                    bool col = Raylib.CheckCollisionRecs(p.unit.terrain_hitbox, swamp);
                     if (col) {
                         p.unit.is_sinking = true;
                         break;
@@ -480,9 +479,16 @@ namespace main {
                 // / draw scene
 
                 foreach (Player p in players) {
-                    p.unit.sprite_active.draw();
-                    // Raylib.DrawRectangleRec(p.unit.hitbox, Color.BLUE);
                     
+                    // Raylib.DrawRectangleRec(p.unit.hitbox, new Color(0,0,200,150));
+                    // Raylib.DrawRectangleRec(p.unit.terrain_hitbox, new Color(200,0,0,150));
+                    // Raylib.DrawText("unit dir           " + p.unit.direction,5,110,10,Color.GOLD);
+                    // Raylib.DrawText("unit dir lr        " + p.unit.direction_l_or_r,5,120,10,Color.GOLD);
+                    // Raylib.DrawText("active sprite dir " + p.unit.sprite_active.direction,5,130,10,Color.GOLD);
+                    // Raylib.DrawText("death sprite dir  " + p.unit.sprite_death.direction,5,140,10,Color.GOLD);
+                    
+                    p.unit.sprite_active.draw();
+
                     Raylib.DrawText(p.lives.ToString(), // draw lives
                                     289,
                                     62,
