@@ -2188,7 +2188,45 @@ namespace main {
             s34.respawn_point_y = 130;
             return s34;
 
-            void spawn_units() {}
+            void spawn_units() {
+                s34.units = new List<Unit>(){};
+                s34.ais = new List<Monster_AI>(){};
+
+                Sprite swamp_spirit_1_sprite = new Sprite(Start.data.swamp_spirit_images,0.8f,0,0);
+                Sprite swamp_spirit_2_sprite = new Sprite(Start.data.swamp_spirit_images,0.8f,0,0);
+
+                Unit u1 = new Unit("Swamp Spirit",
+                                230,
+                                170,
+                                "L",
+                                Start.data.default_unit_speed,
+                                1,
+                                swamp_spirit_1_sprite,
+                                null);
+
+                Unit u2 = new Unit("Swamp Spirit",
+                                210,
+                                150,
+                                "R",
+                                Start.data.default_unit_speed,
+                                1,
+                                swamp_spirit_2_sprite,
+                                null);
+
+                u1.is_immortal = true;
+                u2.is_immortal = true;
+
+                u1.can_pass_through_obstacles = true;
+                u2.can_pass_through_obstacles = true;
+
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+
+                s34.units.Add(u1);
+                s34.units.Add(u2);
+                s34.ais.Add(u1_ai);
+                s34.ais.Add(u2_ai);
+            }
         }
 
         public Scene init_scene_35() { // scene 35 34up swamp
@@ -2206,7 +2244,7 @@ namespace main {
             s35.door_up = new Rectangle(125,105,15,1);
 
             s35.swamp_areas.Add(new Rectangle(135,185,55,2));
-            s35.swamp_areas.Add(new Rectangle(195,215,126,21));
+            s35.swamp_areas.Add(new Rectangle(205,215,116,21));
             s35.swamp_areas.Add(new Rectangle(290,88,31,148));
             s35.swamp_areas.Add(new Rectangle(63,88,47,148));
             s35.swamp_areas.Add(new Rectangle(235,132,20,48));
@@ -2216,7 +2254,45 @@ namespace main {
             s35.respawn_point_y = 195;
             return s35;
 
-            void spawn_units() {}
+            void spawn_units() {
+                s35.units = new List<Unit>(){};
+                s35.ais = new List<Monster_AI>(){};
+
+                Sprite swamp_spirit_1_sprite = new Sprite(Start.data.swamp_spirit_images,0.8f,0,0);
+                Sprite swamp_spirit_2_sprite = new Sprite(Start.data.swamp_spirit_images,0.8f,0,0);
+
+                Unit u1 = new Unit("Swamp Spirit",
+                                230,
+                                170,
+                                "L",
+                                Start.data.default_unit_speed,
+                                1,
+                                swamp_spirit_1_sprite,
+                                null);
+
+                Unit u2 = new Unit("Swamp Spirit",
+                                210,
+                                150,
+                                "R",
+                                Start.data.default_unit_speed,
+                                1,
+                                swamp_spirit_2_sprite,
+                                null);
+
+                u1.is_immortal = true;
+                u2.is_immortal = true;
+
+                u1.can_pass_through_obstacles = true;
+                u2.can_pass_through_obstacles = true;
+
+                Monster_AI u1_ai = new Monster_AI(1,true,u1.direction,0);
+                Monster_AI u2_ai = new Monster_AI(1,true,u2.direction,0);
+
+                s35.units.Add(u1);
+                s35.units.Add(u2);
+                s35.ais.Add(u1_ai);
+                s35.ais.Add(u2_ai);
+            }
         }
 
         public Scene init_scene_36() { // scene 36 37up

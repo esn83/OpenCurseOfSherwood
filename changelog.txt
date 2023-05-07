@@ -19,4 +19,8 @@
 - sprites should now be able to handle up and down images if available. at the moment it must have a set of 'left' images to work.
 - a separate terrain hitbox added to unit to make movement more smooth while still having a hitbox for bullets almost as big as the sprite.
 - the swamp map now opens when aquired by the hermit.
-- moves all the code files except app_entry.cs into /code folder.
+- moved all the code files except app_entry.cs into /code folder.
+
+#7 2023-05-07
+- added swamp spirits
+- changed the last swamp area a bit to better fit the map

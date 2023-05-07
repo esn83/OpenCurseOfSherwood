@@ -472,9 +472,7 @@ namespace main {
                 // Raylib.DrawRectangleRec(scene_manager.active_scene.door_up, Color.WHITE);
                 // Raylib.DrawRectangleRec(scene_manager.active_scene.door_left, Color.WHITE);
                 // Raylib.DrawRectangleRec(scene_manager.active_scene.door_right, Color.WHITE);
-                // foreach (Rectangle r in scene_manager.active_scene.swamp_areas) {
-                //     Raylib.DrawRectangleRec(r, new Color(0,0,0,100));
-                // }
+                // foreach (Rectangle r in scene_manager.active_scene.swamp_areas) {Raylib.DrawRectangleRec(r, new Color(0,0,100,100));}
 
                 // / draw scene
 

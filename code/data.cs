@@ -110,6 +110,11 @@ namespace main {
                                                                    "assets/images/monster/fire_spirit_left_3.png",
                                                                    "assets/images/monster/fire_spirit_left_4.png"};
 
+        public List<string> swamp_spirit_images = new List<string> {"assets/images/monster/swamp_spirit_left_1.png",
+                                                                    "assets/images/monster/swamp_spirit_left_2.png",
+                                                                    "assets/images/monster/swamp_spirit_left_3.png",
+                                                                    "assets/images/monster/swamp_spirit_left_2.png"};
+
 
         public Color death_images_small_color = new Color(163,167,167,255);
         public Color death_images_large_color = new Color(183,251,191,255);
@@ -123,6 +128,8 @@ namespace main {
         public Color wolf_color =               new Color(127,83,7,255);
         public Color ice_wizard_color =         new Color(239,233,231,255);
         public Color dragon_color =             new Color(239,131,159,255);
+        public Color fire_spirit_color =        new Color(252,249,252,255);
+        public Color swamp_spirit_color =       new Color(252,249,252,255);
 
         // weapons
         public IDictionary<string, List<string>> weapons_data_dict = new Dictionary<string, List<string>>{};
@@ -284,8 +291,8 @@ namespace main {
                                                             "assets/sounds/swamp_sink_7.mp3",
                                                             "assets/sounds/swamp_sink_8.mp3",
                                                             "assets/sounds/swamp_sink_9.mp3"};
-        public List<string> rise_sounds = new List<string> {"assets/sounds/swamp_rise_1.mp3"};
-        public Color bg = new Color(25,29,25,255); // asset images background color, replace with Color(0,0,0,0) in code
+        //public List<string> rise_sounds = new List<string> {"assets/sounds/swamp_rise_1.mp3"};
+        public Color bg = new Color(25,29,25,255); // asset images background color, replace with Color(0,0,0,0) in code for transparency
         public string swamp_map = "assets/images/swamp_map_2.png";
         public string end_screen = "assets/images/end_screen_1.png";
         public float default_unit_speed = 1;
