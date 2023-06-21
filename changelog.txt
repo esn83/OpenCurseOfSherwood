@@ -26,6 +26,6 @@
 - changed the last swamp area a bit to better fit the map.
 
 #8 2023-06-21
-- trying out Sublime Text Editor and Git thus the 'Test' commit.
+- trying out sublime text editor and git thus the 'test' commit.
 - made f-elixir protect against the virus-looking swamp spirits as the swamp is painful enough as it is.
-- note : the X key grants extra lives if in need. I know I often am ;)
+- note : the x key grants extra lives if in need. i know i often am ;)
