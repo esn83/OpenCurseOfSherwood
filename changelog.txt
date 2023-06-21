@@ -22,9 +22,10 @@
 - moved all the code files except app_entry.cs into /code folder.
 
 #7 2023-05-07
-- added swamp spirits
-- changed the last swamp area a bit to better fit the map
+- added swamp spirits.
+- changed the last swamp area a bit to better fit the map.
 
 #8 2023-06-21
-- trying out Sublime Text Editor and Git thus the 'Test' commit
-- made f-elixir protect against the virus-looking swamp spirits as the swamp is painful enough as it is
+- trying out Sublime Text Editor and Git thus the 'Test' commit.
+- made f-elixir protect against the virus-looking swamp spirits as the swamp is painful enough as it is.
+- note : the X key grants extra lives if in need. I know I often am ;)
