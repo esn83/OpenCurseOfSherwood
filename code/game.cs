@@ -316,7 +316,7 @@ namespace main {
                 foreach (Unit u in scene_manager.active_scene.units) {
                     if (!u.is_dead && !u.is_npc) {
                         bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, u.hitbox);
-                        if (u.name.Equals("Fire Spirit")) { // f-elixir protects against Fire Spirits
+                        if (u.name.Equals("Fire Spirit") || u.name.Equals("Swamp Spirit")) { // f-elixir protects against Fire Spirits and Swamp Spirits
                             foreach (Item i in p.unit.items) {
                                 if (i.name.Equals("f-elixir")) {
                                     col = false;
