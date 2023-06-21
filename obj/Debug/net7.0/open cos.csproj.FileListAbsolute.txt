@@ -47,6 +47,7 @@ C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\open cos.dll
 C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\open cos.pdb
 C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\Raylib-cs.dll
 C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\runtimes\linux-x64\native\libraylib.so
+C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\runtimes\osx-arm64\native\libraylib.dylib
 C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\runtimes\osx-x64\native\libraylib.dylib
 C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\runtimes\win-x64\native\raylib.dll
 C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\runtimes\win-x86\native\raylib.dll
@@ -61,4 +62,3 @@ C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\refint\open cos.dll
 C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.pdb
 C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\open cos.genruntimeconfig.cache
 C:\Users\az18200\kode\C#\open cos\open cos\obj\Debug\net7.0\ref\open cos.dll
-C:\Users\az18200\kode\C#\open cos\open cos\bin\Debug\net7.0\runtimes\osx-arm64\native\libraylib.dylib
