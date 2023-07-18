@@ -29,6 +29,3 @@
 - trying out sublime text editor and git thus the 'test' commit.
 - made f-elixir protect against the virus-looking swamp spirits as the swamp is painful enough as it is.
 - note : the x key grants extra lives if in need. i know i often am ;)
-
-#9 2023-07-18
-- fixed a bug where the cross would spawn every time the scene was loaded.

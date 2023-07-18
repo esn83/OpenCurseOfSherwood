@@ -889,19 +889,11 @@ namespace main {
         public Scene init_scene_13() { // scene 13 12down
             if (s13 == null) {
                 s13 = new Scene(Start.data.scene_13);
-<<<<<<< HEAD
-                s13.items.Add(new Item("cross",Start.data.items_data_dict["cross"],236,155));
-                spawn_units();}
-            else if (!s13.scene_monsters_done) {
-                spawn_units();}
-            
-=======
                 spawn_units();}
             else if (!s13.scene_monsters_done) {
                 spawn_units();}
             s13.items.Add(new Item("cross",Start.data.items_data_dict["cross"],236,155));
 
->>>>>>> d721a31d061871588b7e6153868949e68f900df2
             void spawn_units() {
                 s13.units = new List<Unit>(){};
                 s13.ais = new List<Monster_AI>(){};
