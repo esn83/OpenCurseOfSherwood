@@ -1,0 +1,34 @@
+#5 2023-04-28
+- added changelog.
+- game only runs at 60 fps now for simplicity. i've been experimenting with gaffers and dewitters game loops
+  and they just add a lot of complexity to the game without bringing much to the table for a game this small.
+  i'm especially having trouble with lost keyboard inputs with those loops and haven't found a solution yet.
+- fixed a bug where a dead player could reflect bullets with shield.
+- all pos_x, pos_y and speed are now float instead of int.
+- made swamp a bit more lenient.
+- added default unit move speed in data class. all units use this speed now. easier for tweaking speeds.
+- it's now the weapon class that shoots a bullet, not the unit class.
+- hitboxes are now auto-generated from pos_x, pos_y and texture size.
+
+#6 2023-05-04
+- direction east west north south and left right up down were mixed. it's all left right up down now.
+- sprite direction now comes from it's update. default direction is "L".
+- unit now gets direction from constructor and passes it to sprite with update.
+- map images renamed from 1,2,3,... to 001,002,003,...
+- bullet image names was missing the _left_ indicator which is now added.
+- sprites should now be able to handle up and down images if available. at the moment it must have a set of 'left' images to work.
+- a separate terrain hitbox added to unit to make movement more smooth while still having a hitbox for bullets almost as big as the sprite.
+- the swamp map now opens when aquired by the hermit.
+- moved all the code files except app_entry.cs into /code folder.
+
+#7 2023-05-07
+- added swamp spirits.
+- changed the last swamp area a bit to better fit the map.
+
+#8 2023-06-21
+- trying out sublime text editor and git thus the 'test' commit.
+- made f-elixir protect against the virus-looking swamp spirits as the swamp is painful enough as it is.
+- note : the x key grants extra lives if in need. i know i often am ;)
+
+#9 2023-07-18
+- fixed a bug where the cross would spawn every time the scene was loaded.
