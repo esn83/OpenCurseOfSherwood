@@ -17,8 +17,7 @@ namespace main {
         public Rectangle icon_hitbox;
 
         // constructor
-        public Weapon
-        (
+        public Weapon (
             string name_p,
             List<string> data_paths_p,
             float pos_x_p,

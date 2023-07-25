@@ -19,8 +19,7 @@ namespace main {
         public float pos_y;
 
         // constructor
-        public Sprite
-        (
+        public Sprite (
             List<string> image_paths_left_p,
             float frame_dealy_p,
             float pos_x_p,

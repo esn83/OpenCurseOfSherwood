@@ -41,8 +41,7 @@ namespace main {
         public List<string> terrain_collision_colors = new List<string>(){"{R:0 G:0 B:0 A:0}"};
         
         // constructor
-        public Unit
-        (
+        public Unit (
             string name_p,
             float pos_x_p,
             float pos_y_p,

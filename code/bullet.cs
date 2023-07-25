@@ -14,13 +14,15 @@ namespace main {
         public Sprite sprite;
 
         // constructor
-        public Bullet(string name_p,
-                      string direction_p,
-                      float pos_x_p,
-                      float pos_y_p,
-                      float speed_p,
-                      int damage_p,
-                      Sprite sprite_p)
+        public Bullet (
+            string name_p,
+            string direction_p,
+            float pos_x_p,
+            float pos_y_p,
+            float speed_p,
+            int damage_p,
+            Sprite sprite_p
+        )
         {
             name = name_p;
             direction = direction_p;

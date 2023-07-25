@@ -11,8 +11,7 @@ namespace main {
         public float sound_delay_count = 0;
 
         // constructor
-        public Audio
-        (
+        public Audio (
             List<string>sound_list_str_p,
             float sound_length_p
         )

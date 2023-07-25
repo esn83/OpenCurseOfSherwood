@@ -23,8 +23,7 @@ namespace main {
         private string popup_1_text;
         
         // constructor
-        public Game
-        (
+        public Game (
             List<Object> menuChoises_p
         )
         {

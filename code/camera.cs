@@ -15,8 +15,7 @@ namespace main {
         public float target_y;
 
         // constructor
-        public Camera
-        (
+        public Camera (
             int screenWidth_p,
             int screenHeight_p,
             float offset_x_p,

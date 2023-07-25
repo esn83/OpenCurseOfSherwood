@@ -17,8 +17,7 @@ namespace main {
         public List<Object> choises;
 
         // constructor
-        public Menu
-        (
+        public Menu (
             int menu_screen_w_p,
             int menu_screen_h_p,
             string cover_img_path_p

@@ -16,8 +16,7 @@ namespace main {
         public bool do_shoot = false;
 
         // constructor
-        public Monster_AI
-        (
+        public Monster_AI (
             int move_pattern_p,
             bool allow_move_back_p,
             string move_direction_l_r_p,

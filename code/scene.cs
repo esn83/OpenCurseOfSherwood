@@ -32,8 +32,7 @@ namespace main {
         public int scene_limit_y_down = 236;
 
         // constructor
-        public Scene
-        (
+        public Scene (
             List<string> scene_img_paths_p
         )
         {

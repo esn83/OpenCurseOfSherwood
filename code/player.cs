@@ -14,8 +14,7 @@ namespace main {
         public bool popup_1 = false;
         
         // constructor
-        public Player
-        (
+        public Player (
             string name_p,
             Color color_p,
             List<KeyboardKey> controls_p,
