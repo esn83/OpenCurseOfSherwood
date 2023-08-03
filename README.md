@@ -3,9 +3,11 @@
 A work-in-progress open-source remake of the classic C64 game "The Curse of Sherwood" by Mastertronic.
 <br/>
 <br/>
-![image](https://user-images.githubusercontent.com/72857208/231353591-fd998577-1035-4faa-9596-f04f841b4231.png)
+![main_1](https://github.com/esn83/OpenCurseOfSherwood/assets/72857208/2fda34db-d184-4626-b527-1140b5800288)
 <br/>
-![image](https://user-images.githubusercontent.com/72857208/235152693-f009e7f5-d47f-4de5-8d24-e82fb1c7724c.png)
+![game_1](https://github.com/esn83/OpenCurseOfSherwood/assets/72857208/252db742-ce2f-4d70-9e3c-31bcfa53a5b3)
+<br/>
+![main_2](https://github.com/esn83/OpenCurseOfSherwood/assets/72857208/9456e95e-6b4e-425a-91b2-4f46575ee67f)
 <br/>
 <br/>
 The game is written in VSCode editor with C# language and is using the Raylib-cs game framework.
