@@ -33,7 +33,7 @@
 #9 2023-07-18
 - fixed a bug where the cross would spawn every time the scene was loaded.
 
-#10 2023-x-x
+#10 2023-08-03
 - changed the game to support different resolutions. in the menu.cs file at the bottom different game_screen_w and game_screen_h can be chosen. default is 800x600.
   the game will always scale according to game_screen_w maintaining 4:3 aspect ratio.
 - implemented score system. enemys give 50 points. killing npc's have a penalty of -100 points. time penalty of 1 point/sec to promote speed. at game end each extra life gives 50 bonus points.
