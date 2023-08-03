@@ -35,7 +35,7 @@ namespace main {
             camera.target = new Vector2( target_x , target_y );
             camera.offset = new Vector2( offset_x , offset_y );
             camera.rotation = 0.0f;
-            camera.zoom = 2.0f;
+            camera.zoom = 1.0f;
 
             scrollSpeed = 30;
         }

@@ -27,7 +27,7 @@ namespace main {
             name = name_p;
             direction = direction_p;
             pos_x = pos_x_p;
-            pos_y = pos_y_p + 10;
+            pos_y = pos_y_p + 10*Game.window_scale;
             speed = speed_p;
             damage = damage_p;
             sprite = sprite_p;

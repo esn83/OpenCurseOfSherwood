@@ -16,7 +16,7 @@ namespace main {
             running = true;
             playing = false;
             data = new Data();
-            menu = new Menu(800,600,data.cover_image);
+            menu = new Menu(data.cover_image); // window size changes in menu and game
             game = new Game(menu.choises);
         }
 

@@ -9,6 +9,7 @@ namespace main {
         public string direction;
         public string direction_l_or_r = "L";
         public float speed;
+        public int points = 50;
         public int hitpoints;
         public int hitpoints_max;
         public bool is_immortal = false;
@@ -137,25 +138,46 @@ namespace main {
 
         public bool check_collision(Scene active_scene) {
             bool terrain_collision = false;
-            if (!can_pass_through_obstacles) {
-                // check if hitbox would have other colors in it than black which means that it is colliding with terrain (or items)
-                Rectangle r1 = new Rectangle(terrain_hitbox.x, terrain_hitbox.y, terrain_hitbox.width, terrain_hitbox.height);
-                if (direction.Equals("L")) {r1.x -= speed;}
-                if (direction.Equals("R")) {r1.x += speed;}
-                if (direction.Equals("U")) {r1.y -= speed;}
-                if (direction.Equals("D")) {r1.y += speed;}
-                Image ix = Raylib.ImageFromImage(Raylib.LoadImageFromTexture(active_scene.scene), r1);
-                for (int i=0 ; i<ix.height ; i++) {
-                    for (int j=0 ; j<ix.width ; j++) {
-                        Color cx = Raylib.GetImageColor(ix,j,i);
-                        string cx_str = cx.ToString();
-                        if (terrain_collision_colors.Contains(cx_str)) {continue;}
-                        //if (cx_str.Equals("{R:0 G:0 B:0 A:0}")) {continue;}
-                        else {terrain_collision = true; break;}
-                    }
-                    if (terrain_collision) {break;}
-                }
-            }
+            // if (!can_pass_through_obstacles) {
+            //     // check if hitbox would have other colors in it than black which means that it is colliding with terrain (or items)
+            //     Rectangle r1 = new Rectangle(terrain_hitbox.x+65f*Game.window_scale,
+            //                                  terrain_hitbox.y+43f*Game.window_scale,
+            //                                  terrain_hitbox.width,
+            //                                  terrain_hitbox.height);
+            //     if (direction.Equals("L")) {r1.x -= speed;}
+            //     if (direction.Equals("R")) {r1.x += speed;}
+            //     if (direction.Equals("U")) {r1.y -= speed;}
+            //     if (direction.Equals("D")) {r1.y += speed;}
+            //     Image ix = Raylib.ImageFromImage(Raylib.LoadImageFromTexture(active_scene.scene), r1);
+
+            //     // draw the cut out image for debugging
+            //     //Texture2D tx = Raylib.LoadTextureFromImage(ix);
+            //     //Raylib.DrawTexture(tx, 100, 200 , Color.WHITE);
+
+            //     for (int j=0 ; j<ix.width ; j++) {
+            //         Color cx_top = Raylib.GetImageColor(ix, j, 0);
+            //         Color cx_down = Raylib.GetImageColor(ix, j, ix.height-1);
+            //         string cx_str_t = cx_top.ToString();
+            //         string cx_str_d = cx_down.ToString();
+            //         if (!terrain_collision_colors.Contains(cx_str_t) || !terrain_collision_colors.Contains(cx_str_d)) {
+            //             terrain_collision = true;
+            //             break;
+            //         }
+            //     }
+            //     if (!terrain_collision) {
+            //         for (int i=0 ; i<ix.height ; i++) {
+            //             Color cx_left = Raylib.GetImageColor(ix, 0, i);
+            //             Color cx_right = Raylib.GetImageColor(ix, ix.width-1, i);
+            //             string cx_str_l = cx_left.ToString();
+            //             string cx_str_r = cx_right.ToString();
+            //             if (!terrain_collision_colors.Contains(cx_str_l) || !terrain_collision_colors.Contains(cx_str_r)) {
+            //                 terrain_collision = true;
+            //                 break;
+            //             }
+            //         }
+            //     }
+            // }
+            //terrain_collision = false; // bypass terrain colission check
             // / check if hitbox would have other colors in it than black which means that it is colliding with terrain (or items)
 
             // check if hitbox would exceed scene limits to prevent monsters from leaving play area

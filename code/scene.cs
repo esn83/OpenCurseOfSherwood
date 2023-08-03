@@ -26,10 +26,10 @@ namespace main {
         public bool scene_objectives_done = false;
         public bool scene_monsters_done = false;
         public List<Rectangle> swamp_areas = new List<Rectangle>(){};
-        public int scene_limit_x_left = 63;
-        public int scene_limit_x_right = 321;
-        public int scene_limit_y_up = 88;
-        public int scene_limit_y_down = 236;
+        public int scene_limit_x_left = 0;
+        public int scene_limit_x_right = (int)(Game.game_screen_w);
+        public int scene_limit_y_up = (int)(46*Game.window_scale); // 46 is the asset height of the topbar
+        public int scene_limit_y_down = (int)(Game.game_screen_w*0.75f); // set 4:3 aspect ratio to height
 
         // constructor
         public Scene (
@@ -47,14 +47,10 @@ namespace main {
         public void load_scene_images() {
             for (int i=0 ; i<scene_img_paths.Count ; i++) {
                 if (i==0) { // main scene
-                    Image scene_img = Raylib.LoadImage(scene_img_paths[i]);
-                    Raylib.ImageColorReplace(ref scene_img, Start.data.bg, new Color(0,0,0,0)); // transparent background
-                    scene = Raylib.LoadTextureFromImage(scene_img);
+                    scene = Game.img_path_to_texture_scaled(scene_img_paths[i], Game.window_scale, false, Start.data.transparent);
                     }
                 else { // extra graphics that doesn't cause colission
-                    Image scene_img = Raylib.LoadImage(scene_img_paths[i]);
-                    Raylib.ImageColorReplace(ref scene_img, Start.data.bg, new Color(0,0,0,0)); // transparent background
-                    scene_extras.Add(Raylib.LoadTextureFromImage(scene_img));
+                    scene_extras.Add( Game.img_path_to_texture_scaled(scene_img_paths[i], Game.window_scale, false, Start.data.transparent) );
                 }
             }
         }

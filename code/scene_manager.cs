@@ -164,31 +164,31 @@ namespace main {
         
         public void special_scene_events_item(Unit u) {
             if (active_scene == s4) { // scene 4 3right, drop shield
-                active_scene.items.Add(new Item("shield",Start.data.items_data_dict["shield"], u.pos_x+5, u.pos_y+15));
+                active_scene.items.Add(new Item("shield",Start.data.items_data_dict["shield"], u.pos_x+5*Game.window_scale, u.pos_y+15*Game.window_scale));
             }
             if (active_scene == s5) { // scene 5 4right, drop club
-                active_scene.weapons.Add(new Weapon("club",Start.data.weapons_data_dict["club"],u.pos_x+5,u.pos_y+15));
+                active_scene.weapons.Add(new Weapon("club",Start.data.weapons_data_dict["club"],u.pos_x+5*Game.window_scale,u.pos_y+15*Game.window_scale));
             }
             if (active_scene == s8) { // scene 8 7up, drop scrying_glass
-                active_scene.items.Add(new Item("scrying glass",Start.data.items_data_dict["scrying glass"], u.pos_x+5, u.pos_y+15));
+                active_scene.items.Add(new Item("scrying glass",Start.data.items_data_dict["scrying glass"], u.pos_x+5*Game.window_scale, u.pos_y+15*Game.window_scale));
             }
             if (active_scene == s13) { // scene 13 12down, drop silver dagger
-                active_scene.weapons.Add(new Weapon("silver dagger",Start.data.weapons_data_dict["silver dagger"],u.pos_x+5,u.pos_y+15));
+                active_scene.weapons.Add(new Weapon("silver dagger",Start.data.weapons_data_dict["silver dagger"],u.pos_x+5*Game.window_scale,u.pos_y+15*Game.window_scale));
             }
             if (active_scene == s18) { // scene 18 16left, drop fangs
-                active_scene.items.Add(new Item("fangs",Start.data.items_data_dict["fangs"], u.pos_x+5, u.pos_y+15));
+                active_scene.items.Add(new Item("fangs",Start.data.items_data_dict["fangs"], u.pos_x+5*Game.window_scale, u.pos_y+15*Game.window_scale));
             }
             if (active_scene == s21) { // scene 21 20right, drop ice wand
-                active_scene.weapons.Add(new Weapon("ice wand",Start.data.weapons_data_dict["ice wand"],u.pos_x+5,u.pos_y+15));
+                active_scene.weapons.Add(new Weapon("ice wand",Start.data.weapons_data_dict["ice wand"],u.pos_x+5*Game.window_scale,u.pos_y+15*Game.window_scale));
             }
             if (active_scene == s23) { // scene 23 22right, drop crossbow
-                active_scene.weapons.Add(new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],u.pos_x+5,u.pos_y+15));
+                active_scene.weapons.Add(new Weapon("crossbow",Start.data.weapons_data_dict["crossbow"],u.pos_x+5*Game.window_scale,u.pos_y+15*Game.window_scale));
             }
             if (active_scene == s26) { // scene 26 25right, drop bag of gold
-                active_scene.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],u.pos_x+5,u.pos_y+15));
+                active_scene.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],u.pos_x+5*Game.window_scale,u.pos_y+15*Game.window_scale));
             }
             if (active_scene == s27) { // scene 27 22yp, drop key
-                active_scene.items.Add(new Item("key",Start.data.items_data_dict["key"],u.pos_x+5,u.pos_y+15));
+                active_scene.items.Add(new Item("key",Start.data.items_data_dict["key"],u.pos_x+5*Game.window_scale,u.pos_y+15*Game.window_scale));
             }
         }
 
@@ -197,13 +197,19 @@ namespace main {
                 if (!active_scene.scene_objectives_done) {
                     foreach (Bullet b in active_scene.player_bullets) {
                         if (b.name.Equals("club")) {
-                            Rectangle rect = new Rectangle(293,135,1,30);
+                            Rectangle rect = new Rectangle(230*Game.window_scale,
+                                                           100*Game.window_scale,
+                                                           1*Game.window_scale,
+                                                           20*Game.window_scale); // broken door hitbox
                             bool col = Raylib.CheckCollisionRecs(b.hitbox, rect);
                             if(col) {
                                 new Audio(Start.data.monster_bullet_sounds, 0.0f).play_sound();
                                 active_scene.scene_img_paths = Start.data.scene_11_2;
                                 active_scene.load_scene_images();
-                                s11.door_right = new Rectangle(280,160,1,5); // broken door
+                                s11.door_right = new Rectangle(230*Game.window_scale,
+                                                               110*Game.window_scale,
+                                                               1*Game.window_scale,
+                                                               5*Game.window_scale); // broken door
                                 active_scene.scene_objectives_done = true;
                             }
                         }
@@ -214,7 +220,10 @@ namespace main {
                 List<Bullet> remove_bullets = new List<Bullet>(){};
                 foreach (Bullet b in active_scene.player_bullets) {
                     if (b.name.Equals("ice wand")) {
-                        Rectangle rect = new Rectangle(195,130,5,50);
+                        Rectangle rect = new Rectangle(130*Game.window_scale,
+                                                       90*Game.window_scale,
+                                                       1*Game.window_scale,
+                                                       40*Game.window_scale); // frozen river hitbox
                         bool col = Raylib.CheckCollisionRecs(b.hitbox, rect);
                             if(col) {
                                 remove_bullets.Add(b);
@@ -233,7 +242,10 @@ namespace main {
             }
             if (active_scene == s27) { // open gate with key
                 if (!active_scene.scene_objectives_done) {
-                    Rectangle rect = new Rectangle(177,129,30,10); // locked gate
+                    Rectangle rect = new Rectangle(112*Game.window_scale,
+                                                   85*Game.window_scale,
+                                                   30*Game.window_scale,
+                                                   5*Game.window_scale); // locked gate hitbox
                     foreach (Player p in players){
                         bool col = Raylib.CheckCollisionRecs(p.unit.hitbox, rect);
                         if(col) {
@@ -242,7 +254,10 @@ namespace main {
                                     new Audio(Start.data.monster_bullet_sounds, 0.0f).play_sound();
                                     active_scene.scene_img_paths = Start.data.scene_27_2;
                                     active_scene.load_scene_images();
-                                    s27.door_up = new Rectangle(177,90,30,5); // opened gate
+                                    s27.door_up = new Rectangle(112*Game.window_scale,
+                                                                70*Game.window_scale,
+                                                                30*Game.window_scale,
+                                                                1*Game.window_scale); // opened gate
                                     active_scene.scene_objectives_done = true;
                                 }
                             }
@@ -256,12 +271,13 @@ namespace main {
         public Scene init_scene_1() { // scene 1 start
             if (s1 == null) {
                 s1 = new Scene(Start.data.scene_1);
-                s1.weapons.Add(new Weapon("sword",Start.data.weapons_data_dict["sword"],140,175));
+                s1.weapons.Add(new Weapon("sword",
+                                          Start.data.weapons_data_dict["sword"],
+                                          100*Game.window_scale,
+                                          140*Game.window_scale)
+                                          );
             }
-            // s1.items.Add(new Item("key",Start.data.items_data_dict["key"],80,150));
-            // s1.items.Add(new Item("map",Start.data.items_data_dict["map"],80,170));
-            // s1.items.Add(new Item("fangs",Start.data.items_data_dict["fangs"],80,130));
-            // s1.items.Add(new Item("shield",Start.data.items_data_dict["shield"],100,150));
+            // s1.items.Add(new Item("shield",Start.data.items_data_dict["shield"],100*Game.window_scale,200*Game.window_scale));
             return s1;
         }
 
@@ -295,37 +311,37 @@ namespace main {
                 Audio bat_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Bat",
-                                230,
-                                170,
+                                200*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bat",
-                                210,
-                                170,
+                                180*Game.window_scale,
+                                140*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
-                                230,
-                                150,
+                                180*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
-                                210,
-                                150,
+                                160*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_4_sprite,
                                 bat_4_sprite_death);
@@ -374,10 +390,10 @@ namespace main {
                 troll_sprite_death.change_color(Start.data.death_images_large_color, Start.data.troll_color);
                 
                 Unit u1 = new Unit("Troll",
-                                    260,
-                                    170,
+                                    180*Game.window_scale,
+                                    120*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     6,
                                     troll_sprite,
                                     troll_sprite_death);
@@ -419,28 +435,28 @@ namespace main {
                 Audio archer_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Archer",
-                                300,
-                                170,
+                                230*Game.window_scale,
+                                80*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_1_sprite,
                                 archer_1_sprite_death);
 
                 Unit u2 = new Unit("Archer",
-                                290,
-                                150,
+                                220*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_2_sprite,
                                 archer_2_sprite_death);
 
                 Unit u3 = new Unit("Archer",
-                                280,
-                                120,
+                                215*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_3_sprite,
                                 archer_3_sprite_death);
@@ -501,10 +517,10 @@ namespace main {
                 brigand_sprite_death.change_color(Start.data.death_images_large_color, Start.data.brigand_color);
                 
                 Unit u1 = new Unit("Brigand",
-                                    250,
-                                    150,
+                                    180*Game.window_scale,
+                                    120*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     brigand_sprite,
                                     brigand_sprite_death);
@@ -552,10 +568,10 @@ namespace main {
                 skeleton_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 
                 Unit u1 = new Unit("Skeleton",
-                                    250,
-                                    150,
+                                    190*Game.window_scale,
+                                    110*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     skeleton_1_sprite,
                                     skeleton_1_sprite_death);
@@ -565,10 +581,10 @@ namespace main {
                 u1.weapon_weakness = "club";
 
                 Unit u2 = new Unit("Skeleton",
-                                    220,
-                                    170,
+                                    170*Game.window_scale,
+                                    130*Game.window_scale,
                                     "R",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     skeleton_2_sprite,
                                     skeleton_2_sprite_death);
@@ -593,7 +609,10 @@ namespace main {
                 spawn_units();}
             else if (!s7.scene_monsters_done) {
                 spawn_units();}
-            s7.door_up = new Rectangle(256,150,15,1); // evil witch hut door outside
+            s7.door_up = new Rectangle(191*Game.window_scale,
+                                       110*Game.window_scale,
+                                       15*Game.window_scale,
+                                       1*Game.window_scale); // evil witch hut door outside
             return s7;
 
             void spawn_units() {
@@ -620,10 +639,10 @@ namespace main {
                 skeleton_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 
                 Unit u1 = new Unit("Skeleton",
-                                    200,
-                                    150,
+                                    170*Game.window_scale,
+                                    130*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     skeleton_1_sprite,
                                     skeleton_1_sprite_death);
@@ -633,10 +652,10 @@ namespace main {
                 u1.weapon_weakness = "club";
 
                 Unit u2 = new Unit("Skeleton",
-                                    220,
-                                    170,
+                                    150*Game.window_scale,
+                                    140*Game.window_scale,
                                     "R",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     skeleton_2_sprite,
                                     skeleton_2_sprite_death);
@@ -664,7 +683,10 @@ namespace main {
             s8.disable_left = true;
             s8.disable_right = true;
             s8.disable_down = true;
-            s8.door_down = new Rectangle(184,220,15,1); // evil witch hut door inside
+            s8.door_down = new Rectangle(120*Game.window_scale,
+                                         180*Game.window_scale,
+                                         15*Game.window_scale,
+                                         1*Game.window_scale); // evil witch hut door inside
             return s8;
 
             void spawn_units() {
@@ -682,10 +704,10 @@ namespace main {
                 witch_sprite_death.change_color(Start.data.death_images_large_color, Start.data.evil_witch_color);
 
                 Unit u1 = new Unit("Evil Witch",
-                                    110,
-                                    130,
+                                    60*Game.window_scale,
+                                    80*Game.window_scale,
                                     "R",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     50,
                                     witch_sprite,
                                     witch_sprite_death);
@@ -731,37 +753,37 @@ namespace main {
                 Audio bat_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Bat",
-                                230,
-                                170,
+                                200*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
 
                 Unit u2 = new Unit("Bat",
-                                210,
-                                170,
+                                180*Game.window_scale,
+                                130*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
-                                230,
-                                150,
+                                200*Game.window_scale,
+                                110*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
-                                210,
-                                150,
+                                180*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bat_4_sprite,
                                 bat_4_sprite_death);
@@ -789,13 +811,19 @@ namespace main {
 
         public Scene init_scene_10() { // scene 10 9right
             if (s10 == null) {s10 = new Scene(Start.data.scene_10);}
-            s10.door_right = new Rectangle(185,165,1,10); // mushrooms
+            s10.door_right = new Rectangle(120*Game.window_scale,
+                                           125*Game.window_scale,
+                                           1*Game.window_scale,
+                                           10*Game.window_scale); // mushrooms
             return s10;
         }
 
         public Scene init_scene_11() { // scene 11 10mushrooms
             if (s11 == null) {s11 = new Scene(Start.data.scene_11);}
-            s11.door_left = new Rectangle(185,165,1,10); // mushrooms
+            s11.door_left = new Rectangle(120*Game.window_scale,
+                                          125*Game.window_scale,
+                                          1*Game.window_scale,
+                                          10*Game.window_scale); // mushrooms
             return s11;
         }
 
@@ -805,7 +833,10 @@ namespace main {
                 spawn_units();}
             else if (!s12.scene_monsters_done) {
                 spawn_units();}
-            s12.door_left = new Rectangle(95,155,1,10); // broken door
+            s12.door_left = new Rectangle(20*Game.window_scale,
+                                          110*Game.window_scale,
+                                          1*Game.window_scale,
+                                          10*Game.window_scale); // broken door
             return s12;
             
             void spawn_units() {
@@ -830,38 +861,38 @@ namespace main {
                 Audio bat_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Bat",
-                                230,
-                                170,
+                                200*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
-                                2,
+                                Start.data.default_unit_speed*Game.window_scale,
+                                1,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
 
                 Unit u2 = new Unit("Bat",
-                                210,
-                                170,
+                                180*Game.window_scale,
+                                130*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
-                                2,
+                                Start.data.default_unit_speed*Game.window_scale,
+                                1,
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
-                                230,
-                                150,
+                                200*Game.window_scale,
+                                110*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
-                                2,
+                                Start.data.default_unit_speed*Game.window_scale,
+                                1,
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
-                                210,
-                                150,
+                                180*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
-                                2,
+                                Start.data.default_unit_speed*Game.window_scale,
+                                1,
                                 bat_4_sprite,
                                 bat_4_sprite_death);
                 
@@ -890,7 +921,11 @@ namespace main {
             if (s13 == null) {
                 s13 = new Scene(Start.data.scene_13);
                 spawn_units();
-                s13.items.Add(new Item("cross",Start.data.items_data_dict["cross"],236,155));}
+                s13.items.Add(new Item("cross",
+                                       Start.data.items_data_dict["cross"],
+                                       180*Game.window_scale,
+                                       130*Game.window_scale
+                                       ));}
             else if (!s13.scene_monsters_done) {
                 spawn_units();}
 
@@ -909,10 +944,10 @@ namespace main {
                 brigand_sprite_death.change_color(Start.data.death_images_large_color, Start.data.brigand_color);
                 
                 Unit u1 = new Unit("Brigand",
-                                    250,
-                                    150,
+                                    170*Game.window_scale,
+                                    110*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     brigand_sprite,
                                     brigand_sprite_death);
@@ -951,10 +986,10 @@ namespace main {
                 troll_sprite_death.change_color(Start.data.death_images_small_color, Start.data.troll_color);
 
                 Unit u1 = new Unit("Troll",
-                                    120,
-                                    170,
+                                    50*Game.window_scale,
+                                    100*Game.window_scale,
                                     "R",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     6,
                                     troll_sprite,
                                     troll_sprite_death);
@@ -999,37 +1034,37 @@ namespace main {
                 Audio bee_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Bee",
-                                70,
-                                150,
+                                10*Game.window_scale,
+                                100*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_1_sprite,
                                 bee_1_sprite_death);
 
                 Unit u2 = new Unit("Bee",
-                                70,
-                                160,
+                                10*Game.window_scale,
+                                110*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_2_sprite,
                                 bee_2_sprite_death);
 
                 Unit u3 = new Unit("Bee",
-                                70,
-                                155,
+                                10*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_3_sprite,
                                 bee_3_sprite_death);
 
                 Unit u4 = new Unit("Bee",
-                                70,
-                                165,
+                                10*Game.window_scale,
+                                90*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_4_sprite,
                                 bee_4_sprite_death);
@@ -1071,7 +1106,10 @@ namespace main {
                 spawn_units();}
             else if (!s16.scene_monsters_done) {
                 spawn_units();}
-            s16.door_up = new Rectangle(143,150,15,1); // good witch hut door outside
+            s16.door_up = new Rectangle(80*Game.window_scale,
+                                        100*Game.window_scale,
+                                        15*Game.window_scale,
+                                        1*Game.window_scale); // good witch hut door outside
             return s16;
 
             void spawn_units() {
@@ -1098,10 +1136,10 @@ namespace main {
                 skeleton_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 
                 Unit u1 = new Unit("Skeleton",
-                                    150,
-                                    175,
+                                    60*Game.window_scale,
+                                    140*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     skeleton_1_sprite,
                                     skeleton_1_sprite_death);
@@ -1111,10 +1149,10 @@ namespace main {
                 u1.weapon_weakness = "club";
 
                 Unit u2 = new Unit("Skeleton",
-                                    120,
-                                    180,
+                                    80*Game.window_scale,
+                                    130*Game.window_scale,
                                     "R",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     skeleton_2_sprite,
                                     skeleton_2_sprite_death);
@@ -1138,7 +1176,10 @@ namespace main {
                 s17 = new Scene(Start.data.scene_17);
                 spawn_units();}
             s17.disable_down = true;
-            s17.door_down = new Rectangle(184,220,15,1); // good witch hut door inside
+            s17.door_down = new Rectangle(120*Game.window_scale,
+                                          180*Game.window_scale,
+                                          15*Game.window_scale,
+                                          1*Game.window_scale); // good witch hut door inside
             return s17;
 
             void spawn_units() {
@@ -1156,14 +1197,15 @@ namespace main {
                 witch_sprite_death.change_color(Start.data.death_images_large_color, Start.data.good_witch_color);
 
                 Unit u1 = new Unit("Good Witch",
-                                    110,
-                                    130,
+                                    110*Game.window_scale,
+                                    90*Game.window_scale,
                                     "R",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     3,
                                     witch_sprite,
                                     witch_sprite_death);
 
+                u1.points = -50;
                 u1.is_npc = true;
                 u1.trade_takes.Add("fangs");
                 u1.trade_takes.Add("scrying glass");
@@ -1202,10 +1244,10 @@ namespace main {
                 wolf_1_sprite_death.change_color(Start.data.death_images_large_color, Start.data.wolf_color);
 
                 Unit u1 = new Unit("Wolf",
-                                    150,
-                                    160,
+                                    60*Game.window_scale,
+                                    80*Game.window_scale,
                                     "R",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     50,
                                     wolf_1_sprite,
                                     wolf_1_sprite_death);
@@ -1249,38 +1291,38 @@ namespace main {
                 Audio bat_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Bat",
-                                230,
-                                170,
+                                200*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
-                                2,
+                                Start.data.default_unit_speed*Game.window_scale,
+                                1,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
 
                 Unit u2 = new Unit("Bat",
-                                210,
-                                170,
+                                180*Game.window_scale,
+                                130*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
-                                2,
+                                Start.data.default_unit_speed*Game.window_scale,
+                                1,
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
-                                230,
-                                150,
+                                200*Game.window_scale,
+                                110*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
-                                2,
+                                Start.data.default_unit_speed*Game.window_scale,
+                                1,
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
-                                210,
-                                150,
+                                180*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
-                                2,
+                                Start.data.default_unit_speed*Game.window_scale,
+                                1,
                                 bat_4_sprite,
                                 bat_4_sprite_death);
 
@@ -1329,16 +1371,16 @@ namespace main {
                                                       0,
                                                       0);
                 Sprite ice_wizard_sprite_death = new Sprite(Start.data.death_images_large,
-                                                0.2f,
-                                                0,
-                                                0);
+                                                            0.2f,
+                                                            0,
+                                                            0);
                 ice_wizard_sprite_death.change_color(Start.data.death_images_large_color, Start.data.ice_wizard_color);
 
                 Unit u1 = new Unit("Ice Wizard",
-                                    260,
-                                    150,
+                                    190*Game.window_scale,
+                                    110*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     ice_wizard_sprite,
                                     ice_wizard_sprite_death);
@@ -1383,37 +1425,37 @@ namespace main {
                 Audio bat_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Bat",
-                                230,
-                                170,
+                                200*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
-
+                                            
                 Unit u2 = new Unit("Bat",
-                                210,
-                                170,
+                                180*Game.window_scale,
+                                140*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
-                                230,
-                                150,
+                                180*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
-                                210,
-                                150,
+                                160*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_4_sprite,
                                 bat_4_sprite_death);
@@ -1466,28 +1508,28 @@ namespace main {
                 Audio archer_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Archer",
-                                300,
-                                170,
+                                230*Game.window_scale,
+                                80*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_1_sprite,
                                 archer_1_sprite_death);
 
                 Unit u2 = new Unit("Archer",
-                                290,
-                                150,
+                                220*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_2_sprite,
                                 archer_2_sprite_death);
 
                 Unit u3 = new Unit("Archer",
-                                280,
-                                120,
+                                215*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_3_sprite,
                                 archer_3_sprite_death);
@@ -1555,37 +1597,37 @@ namespace main {
                 Audio bee_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Bee",
-                                290,
-                                150,
+                                230*Game.window_scale,
+                                110*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_1_sprite,
                                 bee_1_sprite_death);
 
                 Unit u2 = new Unit("Bee",
-                                290,
-                                160,
+                                230*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_2_sprite,
                                 bee_2_sprite_death);
 
                 Unit u3 = new Unit("Bee",
-                                290,
-                                155,
+                                230*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_3_sprite,
                                 bee_3_sprite_death);
 
                 Unit u4 = new Unit("Bee",
-                                290,
-                                165,
+                                230*Game.window_scale,
+                                90*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_4_sprite,
                                 bee_4_sprite_death);
@@ -1665,37 +1707,37 @@ namespace main {
                 Audio bee_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Bee",
-                                290,
-                                150,
+                                230*Game.window_scale,
+                                110*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_1_sprite,
                                 bee_1_sprite_death);
 
                 Unit u2 = new Unit("Bee",
-                                290,
-                                160,
+                                230*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_2_sprite,
                                 bee_2_sprite_death);
 
                 Unit u3 = new Unit("Bee",
-                                290,
-                                155,
+                                230*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_3_sprite,
                                 bee_3_sprite_death);
 
                 Unit u4 = new Unit("Bee",
-                                290,
-                                165,
+                                230*Game.window_scale,
+                                90*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bee_4_sprite,
                                 bee_4_sprite_death);
@@ -1760,10 +1802,10 @@ namespace main {
                 dragon_sprite_death.change_color(Start.data.death_images_large_color, Start.data.dragon_color);
                 
                 Unit u1 = new Unit("Dragon",
-                                    260,
-                                    170,
+                                    180*Game.window_scale,
+                                    110*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     50,
                                     dragon_sprite,
                                     dragon_sprite_death);
@@ -1786,7 +1828,6 @@ namespace main {
             else if (!s27.scene_monsters_done) {
                 spawn_units();}
             s27.disable_up = true;
-            s27.door_up = new Rectangle(178,110,30,5);
             return s27;
 
             void spawn_units() {
@@ -1804,10 +1845,10 @@ namespace main {
                 troll_sprite_death.change_color(Start.data.death_images_large_color, Start.data.troll_color);
                 
                 Unit u1 = new Unit("Troll",
-                                    160,
-                                    140,
+                                    60*Game.window_scale,
+                                    100*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     6,
                                     troll_sprite,
                                     troll_sprite_death);
@@ -1827,14 +1868,20 @@ namespace main {
                 s28 = new Scene(Start.data.scene_28);
             }
             s28.disable_down = true;
-            s28.door_down = new Rectangle(178,225,30,5);
+            s28.door_down = new Rectangle(117*Game.window_scale,
+                                          185*Game.window_scale,
+                                          20*Game.window_scale,
+                                          1*Game.window_scale);
             return s28;
         }
 
         public Scene init_scene_29() { // scene 29 28left
             if (s29 == null) {
                 s29 = new Scene(Start.data.scene_29);}
-            s29.door_up = new Rectangle(205,145,20,1); // hermit hut door outside
+            s29.door_up = new Rectangle(140*Game.window_scale,
+                                        100*Game.window_scale,
+                                        20*Game.window_scale,
+                                        1*Game.window_scale); // hermit hut door outside
             return s29;
         }
 
@@ -1845,7 +1892,10 @@ namespace main {
             s30.disable_left = true;
             s30.disable_right = true;
             s30.disable_down = true;
-            s30.door_down = new Rectangle(184,220,15,1); // hermit hut door inside
+            s30.door_down = new Rectangle(120*Game.window_scale,
+                                          180*Game.window_scale,
+                                          15*Game.window_scale,
+                                          1*Game.window_scale); // hermit hut door inside
             return s30;
 
             void spawn_units() {
@@ -1863,14 +1913,15 @@ namespace main {
                 hermit_sprite_death.change_color(Start.data.death_images_large_color, Start.data.hermit_color);
 
                 Unit u1 = new Unit("Good Hermit",
-                                    130,
-                                    140,
+                                    110*Game.window_scale,
+                                    90*Game.window_scale,
                                     "R",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     3,
                                     hermit_sprite,
                                     hermit_sprite_death);
                 
+                u1.points = -100;
                 u1.is_npc = true;
                 u1.trade_takes.Add("bag gold");
                 u1.trade_gives.Add("map");
@@ -1893,7 +1944,10 @@ namespace main {
                 spawn_units();
                 }
             s31.disable_up = true;
-            s31.door_up = new Rectangle(240,100,15,1);
+            s31.door_up = new Rectangle(175*Game.window_scale,
+                                        50*Game.window_scale,
+                                        15*Game.window_scale,
+                                        1*Game.window_scale);
             return s31;
 
             void spawn_units() {
@@ -1920,10 +1974,10 @@ namespace main {
                 skeleton_2_sprite_death.change_color(Start.data.death_images_large_color, Start.data.skeleton_color);
                 
                 Unit u1 = new Unit("Skeleton",
-                                    130,
-                                    150,
+                                    80*Game.window_scale,
+                                    130*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     skeleton_1_sprite,
                                     skeleton_1_sprite_death);
@@ -1933,10 +1987,10 @@ namespace main {
                 u1.weapon_weakness = "club";
 
                 Unit u2 = new Unit("Skeleton",
-                                    120,
-                                    170,
+                                    70*Game.window_scale,
+                                    120*Game.window_scale,
                                     "R",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     4,
                                     skeleton_2_sprite,
                                     skeleton_2_sprite_death);
@@ -1966,21 +2020,36 @@ namespace main {
             s32.disable_left = true;
             s32.disable_right = true;
 
-            s32.door_down = new Rectangle(220,225,15,1);
-            s32.door_up = new Rectangle(125,105,15,1);
+            s32.door_down = new Rectangle(160*Game.window_scale,
+                                          185*Game.window_scale,
+                                          15*Game.window_scale,
+                                          1*Game.window_scale);
+            s32.door_up = new Rectangle(60*Game.window_scale,
+                                        50*Game.window_scale,
+                                        15*Game.window_scale,
+                                        1*Game.window_scale);
 
-            s32.swamp_areas.Add(new Rectangle(63,88,35,148));
-            s32.swamp_areas.Add(new Rectangle(260,210,61,26));
-            s32.swamp_areas.Add(new Rectangle(63,210,151,26));
-            s32.swamp_areas.Add(new Rectangle(300,88,21,148));
-            s32.swamp_areas.Add(new Rectangle(63,88,55,16));
-            s32.swamp_areas.Add(new Rectangle(140,145,25,25));
-            s32.swamp_areas.Add(new Rectangle(215,170,2,40));
-            s32.swamp_areas.Add(new Rectangle(150,95,2,25));
-            s32.swamp_areas.Add(new Rectangle(208,136,43,2));
+            List<List<int>> swamps = new List<List<int>>() {
+                new List<int>(){63,88,35,148},
+                new List<int>(){260,210,61,26},
+                new List<int>(){63,210,151,26},
+                new List<int>(){300,88,21,148},
+                new List<int>(){63,88,55,16},
+                new List<int>(){140,145,25,25},
+                new List<int>(){215,170,2,40},
+                new List<int>(){150,95,2,25},
+                new List<int>(){208,136,43,2},
+            };
+            foreach (List<int> swamp in swamps) {
+                s32.swamp_areas.Add( new Rectangle((swamp[0]-67)*Game.window_scale,
+                                                   (swamp[1]-45)*Game.window_scale,
+                                                   swamp[2]*Game.window_scale,
+                                                   swamp[3]*Game.window_scale)
+                                    );
+            }
 
-            s32.respawn_point_x = 220;
-            s32.respawn_point_y = 195;
+            s32.respawn_point_x = (int)(155*Game.window_scale);
+            s32.respawn_point_y = (int)(155*Game.window_scale);
             return s32;
 
             void spawn_units() {
@@ -1993,37 +2062,37 @@ namespace main {
                 Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
 
                 Unit u1 = new Unit("Fire Spirit",
-                                230,
-                                170,
+                                130*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_1_sprite,
                                 null);
 
                 Unit u2 = new Unit("Fire Spirit",
-                                210,
-                                170,
+                                100*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_2_sprite,
                                 null);
 
                 Unit u3 = new Unit("Fire Spirit",
-                                230,
-                                150,
+                                130*Game.window_scale,
+                                90*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_3_sprite,
                                 null);
 
                 Unit u4 = new Unit("Fire Spirit",
-                                210,
-                                150,
+                                100*Game.window_scale,
+                                90*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_4_sprite,
                                 null);
@@ -2065,18 +2134,33 @@ namespace main {
             s33.disable_left = true;
             s33.disable_right = true;
 
-            s33.door_down = new Rectangle(155,225,15,1);
-            s33.door_left = new Rectangle(70,140,1,15);
+            s33.door_down = new Rectangle(90*Game.window_scale,
+                                          185*Game.window_scale,
+                                          15*Game.window_scale,
+                                          1*Game.window_scale);
+            s33.door_left = new Rectangle(5*Game.window_scale,
+                                          95*Game.window_scale,
+                                          1*Game.window_scale,
+                                          15*Game.window_scale);
 
-            s33.swamp_areas.Add(new Rectangle(63,88,258,25));
-            s33.swamp_areas.Add(new Rectangle(63,113,37,20));
-            s33.swamp_areas.Add(new Rectangle(270,88,51,148));
-            s33.swamp_areas.Add(new Rectangle(63,165,80,71));
-            s33.swamp_areas.Add(new Rectangle(188,215,133,21));
-            s33.swamp_areas.Add(new Rectangle(175,145,45,2));
+            List<List<int>> swamps = new List<List<int>>() {
+                new List<int>(){63,88,258,25},
+                new List<int>(){63,113,37,20},
+                new List<int>(){270,88,51,148},
+                new List<int>(){63,165,80,71},
+                new List<int>(){188,215,133,21},
+                new List<int>(){175,145,45,2},
+            };
+            foreach (List<int> swamp in swamps) {
+                s33.swamp_areas.Add( new Rectangle((swamp[0]-67)*Game.window_scale,
+                                                   (swamp[1]-45)*Game.window_scale,
+                                                   swamp[2]*Game.window_scale,
+                                                   swamp[3]*Game.window_scale)
+                                    );
+            }
 
-            s33.respawn_point_x = 155;
-            s33.respawn_point_y = 195;
+            s33.respawn_point_x = (int)(90*Game.window_scale);
+            s33.respawn_point_y = (int)(155*Game.window_scale);
             return s33;
 
             void spawn_units() {
@@ -2101,37 +2185,37 @@ namespace main {
                 Audio bat_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Bat",
-                                230,
-                                170,
+                                130*Game.window_scale,
+                                90*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
 
                 Unit u2 = new Unit("Bat",
-                                210,
-                                170,
+                                130*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
-                                230,
-                                150,
+                                100*Game.window_scale,
+                                90*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
-                                210,
-                                150,
+                                100*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 bat_4_sprite,
                                 bat_4_sprite_death);
@@ -2173,19 +2257,34 @@ namespace main {
             s34.disable_left = true;
             s34.disable_right = true;
 
-            s34.door_right = new Rectangle(315,140,1,15);
-            s34.door_up = new Rectangle(135,105,15,1);
+            s34.door_right = new Rectangle(250*Game.window_scale,
+                                           95*Game.window_scale,
+                                           1*Game.window_scale,
+                                           15*Game.window_scale);
+            s34.door_up = new Rectangle(70*Game.window_scale,
+                                        50*Game.window_scale,
+                                        15*Game.window_scale,
+                                        1*Game.window_scale);
 
-            s34.swamp_areas.Add(new Rectangle(63,88,32,148));
-            s34.swamp_areas.Add(new Rectangle(168,88,153,40));
-            s34.swamp_areas.Add(new Rectangle(63,215,258,21));
-            s34.swamp_areas.Add(new Rectangle(280,165,41,71));
-            s34.swamp_areas.Add(new Rectangle(155,130,7,2));
-            s34.swamp_areas.Add(new Rectangle(240,130,2,50));
-            s34.swamp_areas.Add(new Rectangle(175,178,50,2));
+            List<List<int>> swamps = new List<List<int>>() {
+                new List<int>(){63,88,32,148},
+                new List<int>(){168,88,153,40},
+                new List<int>(){63,215,258,21},
+                new List<int>(){280,165,41,71},
+                new List<int>(){155,130,7,2},
+                new List<int>(){240,130,2,50},
+                new List<int>(){175,178,50,2},
+            };
+            foreach (List<int> swamp in swamps) {
+                s34.swamp_areas.Add( new Rectangle((swamp[0]-67)*Game.window_scale,
+                                                   (swamp[1]-45)*Game.window_scale,
+                                                   swamp[2]*Game.window_scale,
+                                                   swamp[3]*Game.window_scale)
+                                    );
+            }
 
-            s34.respawn_point_x = 295;
-            s34.respawn_point_y = 130;
+            s34.respawn_point_x = (int)(230*Game.window_scale);
+            s34.respawn_point_y = (int)(85*Game.window_scale);
             return s34;
 
             void spawn_units() {
@@ -2196,19 +2295,19 @@ namespace main {
                 Sprite swamp_spirit_2_sprite = new Sprite(Start.data.swamp_spirit_images,0.8f,0,0);
 
                 Unit u1 = new Unit("Swamp Spirit",
-                                230,
-                                170,
+                                100*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 swamp_spirit_1_sprite,
                                 null);
 
                 Unit u2 = new Unit("Swamp Spirit",
-                                210,
-                                150,
+                                120*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 swamp_spirit_2_sprite,
                                 null);
@@ -2240,18 +2339,33 @@ namespace main {
             s35.disable_left = true;
             s35.disable_right = true;
 
-            s35.door_down = new Rectangle(135,225,15,1);
-            s35.door_up = new Rectangle(125,105,15,1);
+            s35.door_down = new Rectangle(95*Game.window_scale,
+                                          185*Game.window_scale,
+                                          15*Game.window_scale,
+                                          1*Game.window_scale);
+            s35.door_up = new Rectangle(55*Game.window_scale,
+                                        50*Game.window_scale,
+                                        15*Game.window_scale,
+                                        1*Game.window_scale);
 
-            s35.swamp_areas.Add(new Rectangle(135,185,55,2));
-            s35.swamp_areas.Add(new Rectangle(205,215,116,21));
-            s35.swamp_areas.Add(new Rectangle(290,88,31,148));
-            s35.swamp_areas.Add(new Rectangle(63,88,47,148));
-            s35.swamp_areas.Add(new Rectangle(235,132,20,48));
-            s35.swamp_areas.Add(new Rectangle(148,115,32,10));
+            List<List<int>> swamps = new List<List<int>>() {
+                new List<int>(){135,185,55,2},
+                new List<int>(){205,215,116,21},
+                new List<int>(){290,88,31,148},
+                new List<int>(){63,88,47,148},
+                new List<int>(){235,132,20,48},
+                new List<int>(){148,115,32,10},
+            };
+            foreach (List<int> swamp in swamps) {
+                s35.swamp_areas.Add( new Rectangle((swamp[0]-67)*Game.window_scale,
+                                                   (swamp[1]-45)*Game.window_scale,
+                                                   swamp[2]*Game.window_scale,
+                                                   swamp[3]*Game.window_scale)
+                                    );
+            }
 
-            s35.respawn_point_x = 135;
-            s35.respawn_point_y = 195;
+            s35.respawn_point_x = (int)(95*Game.window_scale);
+            s35.respawn_point_y = (int)(155*Game.window_scale);
             return s35;
 
             void spawn_units() {
@@ -2262,19 +2376,19 @@ namespace main {
                 Sprite swamp_spirit_2_sprite = new Sprite(Start.data.swamp_spirit_images,0.8f,0,0);
 
                 Unit u1 = new Unit("Swamp Spirit",
-                                230,
-                                170,
+                                100*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 swamp_spirit_1_sprite,
                                 null);
 
                 Unit u2 = new Unit("Swamp Spirit",
-                                210,
-                                150,
+                                120*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 swamp_spirit_2_sprite,
                                 null);
@@ -2302,7 +2416,10 @@ namespace main {
             else if (!s36.scene_monsters_done) {
                 spawn_units();}
             s36.disable_down = true;
-            s36.door_down = new Rectangle(125,225,15,1);
+            s36.door_down = new Rectangle(50*Game.window_scale,
+                                          185*Game.window_scale,
+                                          15*Game.window_scale,
+                                          1*Game.window_scale);
             return s36;
 
             void spawn_units() {
@@ -2315,37 +2432,37 @@ namespace main {
                 Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
 
                 Unit u1 = new Unit("Fire Spirit",
-                                230,
-                                170,
+                                200*Game.window_scale,
+                                110*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_1_sprite,
                                 null);
                                             
                 Unit u2 = new Unit("Fire Spirit",
-                                210,
-                                170,
+                                180*Game.window_scale,
+                                90*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_2_sprite,
                                 null);
 
                 Unit u3 = new Unit("Fire Spirit",
-                                230,
-                                150,
+                                180*Game.window_scale,
+                                140*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_3_sprite,
                                 null);
 
                 Unit u4 = new Unit("Fire Spirit",
-                                210,
-                                150,
+                                160*Game.window_scale,
+                                110*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_4_sprite,
                                 null);
@@ -2398,28 +2515,28 @@ namespace main {
                 Audio archer_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Archer",
-                                300,
-                                170,
+                                230*Game.window_scale,
+                                80*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_1_sprite,
                                 archer_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Archer",
-                                290,
-                                150,
+                                220*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_2_sprite,
                                 archer_2_sprite_death);
 
                 Unit u3 = new Unit("Archer",
-                                280,
-                                120,
+                                215*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_3_sprite,
                                 archer_3_sprite_death);
@@ -2475,37 +2592,37 @@ namespace main {
                 Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
 
                 Unit u1 = new Unit("Fire Spirit",
-                                230,
-                                170,
+                                130*Game.window_scale,
+                                140*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_1_sprite,
                                 null);
                                             
                 Unit u2 = new Unit("Fire Spirit",
-                                210,
-                                170,
+                                150*Game.window_scale,
+                                160*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_2_sprite,
                                 null);
 
                 Unit u3 = new Unit("Fire Spirit",
-                                230,
-                                150,
+                                130*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_3_sprite,
                                 null);
 
                 Unit u4 = new Unit("Fire Spirit",
-                                210,
-                                150,
+                                110*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_4_sprite,
                                 null);
@@ -2549,37 +2666,37 @@ namespace main {
                 Sprite fire_spirit_4_sprite = new Sprite(Start.data.fire_spirit_images,0.2f,0,0);
 
                 Unit u1 = new Unit("Fire Spirit",
-                                230,
-                                170,
+                                130*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_1_sprite,
                                 null);
                                             
                 Unit u2 = new Unit("Fire Spirit",
-                                210,
-                                170,
+                                150*Game.window_scale,
+                                140*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_2_sprite,
                                 null);
 
                 Unit u3 = new Unit("Fire Spirit",
-                                230,
-                                150,
+                                130*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_3_sprite,
                                 null);
 
                 Unit u4 = new Unit("Fire Spirit",
-                                210,
-                                150,
+                                110*Game.window_scale,
+                                100*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 1,
                                 fire_spirit_4_sprite,
                                 null);
@@ -2632,28 +2749,28 @@ namespace main {
                 Audio archer_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Archer",
-                                280,
-                                170,
+                                230*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_1_sprite,
                                 archer_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Archer",
-                                275,
-                                160,
+                                220*Game.window_scale,
+                                110*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_2_sprite,
                                 archer_2_sprite_death);
 
                 Unit u3 = new Unit("Archer",
-                                270,
-                                150,
+                                215*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_3_sprite,
                                 archer_3_sprite_death);
@@ -2697,7 +2814,10 @@ namespace main {
                 spawn_units();}
             else if (!s41.scene_monsters_done) {
                 spawn_units();}
-            s41.door_up = new Rectangle(185,115,15,1);
+            s41.door_up = new Rectangle(120*Game.window_scale,
+                                        70*Game.window_scale,
+                                        15*Game.window_scale,
+                                        1*Game.window_scale);
             return s41;
 
             void spawn_units() {
@@ -2719,28 +2839,28 @@ namespace main {
                 Audio archer_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Archer",
-                                280,
-                                170,
+                                230*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_1_sprite,
                                 archer_1_sprite_death);
-                                            
+
                 Unit u2 = new Unit("Archer",
-                                275,
-                                160,
+                                220*Game.window_scale,
+                                110*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_2_sprite,
                                 archer_2_sprite_death);
 
                 Unit u3 = new Unit("Archer",
-                                270,
-                                150,
+                                215*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 archer_3_sprite,
                                 archer_3_sprite_death);
@@ -2808,37 +2928,37 @@ namespace main {
                 Audio bat_death_sound = new Audio(Start.data.monster_death_sounds, 0.0f); 
 
                 Unit u1 = new Unit("Bat",
-                                230,
-                                170,
+                                200*Game.window_scale,
+                                120*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_1_sprite,
                                 bat_1_sprite_death);
                                             
                 Unit u2 = new Unit("Bat",
-                                210,
-                                170,
+                                180*Game.window_scale,
+                                140*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_2_sprite,
                                 bat_2_sprite_death);
 
                 Unit u3 = new Unit("Bat",
-                                230,
-                                150,
+                                180*Game.window_scale,
+                                100*Game.window_scale,
                                 "L",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_3_sprite,
                                 bat_3_sprite_death);
 
                 Unit u4 = new Unit("Bat",
-                                210,
-                                150,
+                                160*Game.window_scale,
+                                120*Game.window_scale,
                                 "R",
-                                Start.data.default_unit_speed,
+                                Start.data.default_unit_speed*Game.window_scale,
                                 2,
                                 bat_4_sprite,
                                 bat_4_sprite_death);
@@ -2873,7 +2993,10 @@ namespace main {
             s43.disable_down = true;
             s43.disable_left = true;
             s43.disable_right = true;
-            s43.door_down = new Rectangle(185,225,15,1);
+            s43.door_down = new Rectangle(120*Game.window_scale,
+                                          180*Game.window_scale,
+                                          15*Game.window_scale,
+                                          1*Game.window_scale);
             return s43;
 
             void spawn_units() {
@@ -2891,10 +3014,10 @@ namespace main {
                 dragon_sprite_death.change_color(Start.data.death_images_large_color, Start.data.dragon_color);
                 
                 Unit u1 = new Unit("Dragon",
-                                    260,
-                                    130,
+                                    180*Game.window_scale,
+                                    90*Game.window_scale,
                                     "L",
-                                    Start.data.default_unit_speed,
+                                    Start.data.default_unit_speed*Game.window_scale,
                                     5,
                                     dragon_sprite,
                                     dragon_sprite_death);

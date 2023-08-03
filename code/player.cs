@@ -8,6 +8,8 @@ namespace main {
         public Color color;
         public int lives;
         public int score = 0;
+        public float score_decay_time = 1; // sec, score decays with 1 point each 1 sec
+        public float score_decay_time_count = 0; // sec
         public List<KeyboardKey> controls;
         public Random rnd;
         public Unit? unit;
@@ -73,6 +75,11 @@ namespace main {
 
         public void update(float dt, Scene active_scene) {
             unit.update(dt, active_scene.player_bullets);
+            score_decay_time_count += dt;
+            if (score_decay_time_count >= score_decay_time) {
+                score_decay_time_count = 0;
+                if (score > 0) {score -= 1;}
+            }
         }
 
         public void draw() {}

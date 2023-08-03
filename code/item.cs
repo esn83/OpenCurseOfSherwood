@@ -23,9 +23,7 @@ namespace main {
             pos_x = pos_x_p;
             pos_y = pos_y_p;
 
-            Image icon_img = Raylib.LoadImage(data_paths[0]);
-            Raylib.ImageColorReplace(ref icon_img, Start.data.bg, new Color(0,0,0,0)); // transparent background
-            icon = Raylib.LoadTextureFromImage(icon_img);
+            icon = Game.img_path_to_texture_scaled(data_paths[0], Game.window_scale, false, Start.data.transparent);
             icon_hitbox = new Rectangle(pos_x, pos_y, icon.width, icon.height);
         }
 

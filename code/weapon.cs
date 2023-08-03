@@ -29,13 +29,8 @@ namespace main {
             pos_x = pos_x_p;
             pos_y = pos_y_p;
 
-            Image icon_img = Raylib.LoadImage(data_paths[0]);
-            Raylib.ImageColorReplace(ref icon_img, Start.data.bg, new Color(0,0,0,0));
-            icon = Raylib.LoadTextureFromImage(icon_img);
-
-            Image bullet_img = Raylib.LoadImage(data_paths[1]);
-            Raylib.ImageColorReplace(ref bullet_img, Start.data.bg, new Color(0,0,0,0));
-            bullet = Raylib.LoadTextureFromImage(bullet_img);
+            icon = Game.img_path_to_texture_scaled(data_paths[0], Game.window_scale, false, Start.data.transparent);
+            bullet = Game.img_path_to_texture_scaled(data_paths[1], Game.window_scale, false, Start.data.transparent);
 
             shoot_sound = new Audio(new List<string>(){data_paths[2]},
                                      float.Parse(data_paths[3],
@@ -60,7 +55,7 @@ namespace main {
                 direction,
                 bpos_x,
                 bpos_y,
-                bullet_speed,
+                bullet_speed*Game.window_scale,
                 damage,
                 bullet_sprite);
             

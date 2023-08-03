@@ -94,30 +94,24 @@ namespace main {
             List<Texture2D> textures_d_temp = new List<Texture2D>{};
             
             foreach (string i in image_paths_left) {
-                Image ix = Raylib.LoadImage(i);
-                Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
-                Texture2D tx_l = Raylib.LoadTextureFromImage(ix);
+
+                Texture2D tx_l = Game.img_path_to_texture_scaled(i, Game.window_scale, false, Start.data.transparent);
                 textures_l_temp.Add(tx_l);
-                Raylib.ImageFlipHorizontal(ref ix);
-                Texture2D tx_r = Raylib.LoadTextureFromImage(ix);
+                Texture2D tx_r = Game.img_path_to_texture_scaled(i, Game.window_scale, true, Start.data.transparent);
                 textures_r_temp.Add(tx_r);
             }
             textures_l = textures_l_temp;
             textures_r = textures_r_temp;
             if (image_paths_up != null) {
                 foreach (string i in image_paths_up) {
-                    Image ix = Raylib.LoadImage(i);
-                    Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
-                    Texture2D tx_u = Raylib.LoadTextureFromImage(ix);
+                    Texture2D tx_u = Game.img_path_to_texture_scaled(i, Game.window_scale, false, Start.data.transparent);
                     textures_u_temp.Add(tx_u);
                 }
             }
             textures_u = textures_u_temp;
             if (image_paths_down != null) {
                 foreach (string i in image_paths_down) {
-                    Image ix = Raylib.LoadImage(i);
-                    Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
-                    Texture2D tx_d = Raylib.LoadTextureFromImage(ix);
+                    Texture2D tx_d = Game.img_path_to_texture_scaled(i, Game.window_scale, false, Start.data.transparent);
                     textures_d_temp.Add(tx_d);
                 }
             }
@@ -131,10 +125,11 @@ namespace main {
             List<Texture2D> textures_d_temp = new List<Texture2D>{};
 
             foreach (string i in image_paths_left) {
-                Image ix = Raylib.LoadImage(i);
-                Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
+                
+                Texture2D tx_l = Game.img_path_to_texture_scaled(i, Game.window_scale, false, Start.data.transparent);
+                Image ix = Raylib.LoadImageFromTexture(tx_l);
                 Raylib.ImageColorReplace(ref ix, old_col, new_col);
-                Texture2D tx_l = Raylib.LoadTextureFromImage(ix);
+                tx_l = Raylib.LoadTextureFromImage(ix);
                 textures_l_temp.Add(tx_l);
                 Raylib.ImageFlipHorizontal(ref ix);
                 Texture2D tx_r = Raylib.LoadTextureFromImage(ix);
@@ -145,21 +140,22 @@ namespace main {
 
             if (image_paths_up != null) {
                 foreach (string i in image_paths_up) {
-                    Image ix = Raylib.LoadImage(i);
-                    Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
+                    Texture2D tx_u = Game.img_path_to_texture_scaled(i, Game.window_scale, false, Start.data.transparent);
+                    Image ix = Raylib.LoadImageFromTexture(tx_u);
                     Raylib.ImageColorReplace(ref ix, old_col, new_col);
-                    Texture2D tx_u = Raylib.LoadTextureFromImage(ix);
+                    tx_u = Raylib.LoadTextureFromImage(ix);
                     textures_u_temp.Add(tx_u);
                 }
                 textures_u = textures_u_temp;
             }
             if (image_paths_down != null) {
                 foreach (string i in image_paths_down) {
-                    Image ix = Raylib.LoadImage(i);
-                    Raylib.ImageColorReplace(ref ix, Start.data.bg, new Color(0,0,0,0));
+
+                    Texture2D tx_d = Game.img_path_to_texture_scaled(i, Game.window_scale, false, Start.data.transparent);
+                    Image ix = Raylib.LoadImageFromTexture(tx_d);
                     Raylib.ImageColorReplace(ref ix, old_col, new_col);
-                    Texture2D tx_d = Raylib.LoadTextureFromImage(ix);
-                    textures_d_temp.Add(tx_d);
+                    tx_d = Raylib.LoadTextureFromImage(ix);
+                    textures_u_temp.Add(tx_d);
                 }
                 textures_d = textures_d_temp;
             }

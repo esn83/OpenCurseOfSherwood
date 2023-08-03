@@ -115,7 +115,6 @@ namespace main {
                                                                     "assets/images/monster/swamp_spirit_left_3.png",
                                                                     "assets/images/monster/swamp_spirit_left_2.png"};
 
-
         public Color death_images_small_color = new Color(163,167,167,255);
         public Color death_images_large_color = new Color(183,251,191,255);
         public Color bat_color =                new Color(163,167,167,255);
@@ -293,9 +292,11 @@ namespace main {
                                                             "assets/sounds/swamp_sink_9.mp3"};
         //public List<string> rise_sounds = new List<string> {"assets/sounds/swamp_rise_1.mp3"};
         public Color bg = new Color(25,29,25,255); // asset images background color, replace with Color(0,0,0,0) in code for transparency
+        public Color transparent = new Color(0,0,0,0); // replace with this color for transparency in images
         public string swamp_map = "assets/images/swamp_map_2.png";
         public string end_screen = "assets/images/end_screen_1.png";
-        public float default_unit_speed = 1;
+        public float default_unit_speed = 0.8f;
+        public int native_screen_width = 254; // used to scale images to different screen resolutions
 
         // guide poem
         public List<string> guide = new List<string>(){
