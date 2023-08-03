@@ -38,4 +38,4 @@
   the game will always scale according to game_screen_w maintaining 4:3 aspect ratio.
 - implemented score system. enemys give 50 points. killing npc's have a penalty of -100 points. time penalty of 1 point/sec to promote speed. at game end each extra life gives 50 bonus points.
 - the support for higher resolutions has completely broken the terrain colission detection so it is disabled for now - don't cheat! :p
-- added F1 to menu screen for toggling view of poem guide and controls overview.
+- added f1 to menu screen for toggling view of poem guide and controls overview.
