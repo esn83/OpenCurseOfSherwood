@@ -445,7 +445,7 @@ namespace main {
                                         game_won = true;
                                         Scene end = new Scene(new List<string>(){Start.data.end_screen});
                                         scene_manager.active_scene = end;
-                                        p.score += 50*p.lives; // add 50 points for each life left
+                                        p.score += 100*p.lives; // add 100 points for each life left
                                         break;
                                     }
                                 }
@@ -580,26 +580,30 @@ namespace main {
 
         public void show_popup_1() { // swamp map
             if (popup_1_is_showing == false) {
-                popup_1_texture = Game.img_path_to_texture_scaled(Start.data.swamp_map, window_scale, false);
+                popup_1_texture = Game.img_path_to_texture_scaled(Start.data.swamp_map, window_scale, false, Start.data.transparent);
                 popup_1_text = "Press " + players[0].controls[6].ToString().Replace("KEY_","") + " to open/close map";
                 popup_1_is_showing = true;
             }
             else {
-                Raylib.DrawTexture(popup_1_texture, (int)(35*window_scale), (int)(40*window_scale), Color.WHITE);
-                Raylib.DrawRectangleRec(new Rectangle(35*window_scale,30*window_scale,popup_1_texture.width,10*window_scale), Start.data.bg);
+                Raylib.DrawRectangleRec(new Rectangle(35*window_scale,
+                                                      30*window_scale,
+                                                      popup_1_texture.width,
+                                                      10*window_scale+popup_1_texture.height),
+                                                      Start.data.bg);
+                Raylib.DrawTexture(popup_1_texture, (int)(35*window_scale), (int)(40*window_scale), Color.WHITE);                                                      
                 Raylib.DrawTextEx(font,popup_1_text,new System.Numerics.Vector2(35*window_scale,30*window_scale),font.baseSize*0.3f*window_scale,0,new Color(210,125,237,255));
             }
         }
 
         public static Texture2D img_path_to_texture_scaled(string img_path_p, float window_scale_p, bool flip_h_p, Color? transparency_color_p=null) {
             Image img = Raylib.LoadImage(img_path_p);
+            if (transparency_color_p != null) {
+                Raylib.ImageColorReplace(ref img, Start.data.asset_bg, (Color) transparency_color_p);
+            }
             if (flip_h_p) {Raylib.ImageFlipHorizontal(ref img);} // flip horizontal
             float new_width = (float)img.width * window_scale_p;
             float new_height = (float)img.height * window_scale_p;
             Raylib.ImageResizeNN(ref img, (int)new_width, (int)new_height);
-            if (transparency_color_p != null) {
-                Raylib.ImageColorReplace(ref img, Start.data.asset_bg, (Color) transparency_color_p);
-            }
             Texture2D tx = Raylib.LoadTextureFromImage(img);
             return tx;
         }

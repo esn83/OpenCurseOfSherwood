@@ -9,7 +9,7 @@ namespace main {
         public string direction;
         public string direction_l_or_r = "L";
         public float speed;
-        public int points = 50;
+        public int points = 100;
         public int hitpoints;
         public int hitpoints_max;
         public bool is_immortal = false;

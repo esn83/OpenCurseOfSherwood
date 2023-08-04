@@ -1224,7 +1224,7 @@ namespace main {
                                     witch_sprite,
                                     witch_sprite_death);
 
-                u1.points = -50;
+                u1.points = -200;
                 u1.is_npc = true;
                 u1.trade_takes.Add("fangs");
                 u1.trade_takes.Add("scrying glass");
@@ -1949,7 +1949,7 @@ namespace main {
                                     hermit_sprite,
                                     hermit_sprite_death);
                 
-                u1.points = -100;
+                u1.points = -200;
                 u1.is_npc = true;
                 u1.trade_takes.Add("bag gold");
                 u1.trade_gives.Add("map");
