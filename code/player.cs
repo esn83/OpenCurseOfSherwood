@@ -78,7 +78,7 @@ namespace main {
             score_decay_time_count += dt;
             if (score_decay_time_count >= score_decay_time) {
                 score_decay_time_count = 0;
-                if (score > 0) {score -= 1;}
+                if (score > 0 && !(unit.is_dead && lives == 0)) {score -= 1;}
             }
         }
 
