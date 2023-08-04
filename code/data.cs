@@ -291,7 +291,8 @@ namespace main {
                                                             "assets/sounds/swamp_sink_8.mp3",
                                                             "assets/sounds/swamp_sink_9.mp3"};
         //public List<string> rise_sounds = new List<string> {"assets/sounds/swamp_rise_1.mp3"};
-        public Color bg = new Color(25,29,25,255); // asset images background color, replace with Color(0,0,0,0) in code for transparency
+        public Color bg = new Color(15,15,15,255); // actual game bacground color
+        public Color asset_bg = new Color(25,29,25,255); // asset images background color, replace with Color(0,0,0,0) in code for transparency
         public Color transparent = new Color(0,0,0,0); // replace with this color for transparency in images
         public string swamp_map = "assets/images/swamp_map_2.png";
         public string end_screen = "assets/images/end_screen_1.png";

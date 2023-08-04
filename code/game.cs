@@ -11,7 +11,6 @@ namespace main {
         public int scene_x_pos; // scenes have black space that needs to be offset
         public int scene_y_pos; // scenes have black space that needs to be offset
         public float dt;
-        public Camera camera;
 
         public Random rnd = new Random();
         public bool game_won = false;
@@ -35,16 +34,14 @@ namespace main {
             choises = menuChoises_p;
             game_screen_w = Convert.ToSingle(choises[2]);
             game_screen_h = Convert.ToSingle(choises[3]);
-            window_scale = game_screen_w / (float)Start.data.native_screen_width;
-            scene_x_pos = (int)(-65f * window_scale); // scenes have black space that needs to be offset
-            scene_y_pos = (int)(-43f * window_scale); // scenes have black space that needs to be offset
+            window_scale = game_screen_w / ((float)Start.data.native_screen_width);
+            scene_x_pos = (int)(-63 * window_scale); // scenes have black space that needs to be offset
+            scene_y_pos = (int)(-42 * window_scale)+(int)(2.5*window_scale); // scenes have black space that needs to be offset
             dt = 0;
 
             //txt_color = new Color(240,200,5,255); // yellow
             //txt_color = new Color(210,125,237,255); // purple
             txt_color = new Color(100,100,100,255); // gray
-
-            camera = new Camera(Raylib.GetScreenWidth(),Raylib.GetScreenHeight(),0,0,0,0);
         }
 
         void init() {
@@ -171,8 +168,6 @@ namespace main {
         void update() {
             
             if (!game_won) {
-
-                camera.update();
 
                 // update scene
                     // scene edges
@@ -338,7 +333,12 @@ namespace main {
                                     }
                                 }
                             }
-                            if (col && !p.unit.is_sinking) {p.unit.hitpoints = 0;}
+                            if (col && !p.unit.is_sinking) {
+                                p.unit.hitpoints = 0;
+                                foreach (Unit u2 in scene_manager.active_scene.units) {
+                                    u2.points = 0; // if the player dies in a scene the enemies will not give points anymore
+                                }
+                            }
                         }
 
                         else if (!u.is_dead && u.is_npc) { // npc trade items
@@ -408,6 +408,11 @@ namespace main {
                             }
                             if (!deflect) {
                                 p.unit.hitpoints -= b.damage;
+                                if(p.unit.hitpoints <= 0) {
+                                    foreach (Unit u2 in scene_manager.active_scene.units) {
+                                        u2.points = 0; // if the player dies in a scene the enemies will not give points anymore
+                                    }
+                                }
                             }
                             remove_m_bullets.Add(b);
                         }
@@ -448,7 +453,6 @@ namespace main {
                         }
                     }
                     // / check if player has won the game
-
                 }
             }
         }
@@ -456,12 +460,11 @@ namespace main {
         void draw() {
 
             Raylib.BeginDrawing();
-            Raylib.ClearBackground(new Color(25,29,25,255));
-            Raylib.BeginMode2D(camera.camera);
+            Raylib.ClearBackground(Start.data.bg);
 
             if (!game_won) {
                 // draw topbar
-                Raylib.DrawTexture(topbar,0,0,Color.WHITE);
+                Raylib.DrawTexture(topbar,(int)(2*window_scale),(int)(2.5*window_scale),Color.WHITE);
 
                 // draw scene
                 Raylib.DrawTexture(scene_manager.active_scene.scene,scene_x_pos,scene_y_pos,Color.WHITE);
@@ -506,14 +509,14 @@ namespace main {
                     p.unit.sprite_active.draw();
 
                     Raylib.DrawText(p.score.ToString("00000"), // draw score fixed to 5 digits
-                                    (int)(11*window_scale),
-                                    (int)(22*window_scale),
+                                    (int)(14*window_scale),
+                                    (int)(25*window_scale),
                                     (int)(10*window_scale),
                                     new Color(106,207,111,255));
 
                     Raylib.DrawText(p.lives.ToString(), // draw lives
-                                    (int)(224*window_scale),
-                                    (int)(20*window_scale),
+                                    (int)(228*window_scale),
+                                    (int)(22*window_scale),
                                     (int)(14*window_scale),
                                     new Color(251,251,139,255));
                     
@@ -521,8 +524,8 @@ namespace main {
                         int count = 0;
                         foreach (Item i in p.unit.items) {
                             Raylib.DrawTexture(i.icon,
-                                               (int)(58*window_scale) + (int)(count*24*window_scale),
-                                               (int)(24*window_scale),
+                                               (int)(59*window_scale) + (int)(count*24*window_scale),
+                                               (int)(26*window_scale),
                                                Color.WHITE);
                             count += 1;
                         }
@@ -531,26 +534,26 @@ namespace main {
                     if (p.unit.active_weapon != null) { // draw active weapon
                         Weapon w = p.unit.active_weapon;
                         Raylib.DrawTexture(w.icon,
-                                           (int)(137*window_scale),
-                                           (int)(25*window_scale),
+                                           (int)(139*window_scale),
+                                           (int)(26*window_scale),
                                            Color.WHITE);
                                         
                         if (w.name.Split(" ").Count() > 1) { // draw weapon name, split weapon name in two of there is a space in its name
                             Raylib.DrawText(w.name.Split(" ")[0], // draw weapon name part1
-                                            (int)(158*window_scale),
-                                            (int)(19*window_scale),
+                                            (int)(160*window_scale),
+                                            (int)(21*window_scale),
                                             (int)(10*window_scale),
                                             new Color(106,207,111,255));
                             Raylib.DrawText(w.name.Split(" ")[1], // draw weapon name part2
-                                            (int)(158*window_scale),
-                                            (int)(27*window_scale),
+                                            (int)(160*window_scale),
+                                            (int)(29*window_scale),
                                             (int)(10*window_scale),
                                             new Color(106,207,111,255));
                         }
                         else {
                             Raylib.DrawText(w.name, // draw weapon name
-                                            (int)(158*window_scale),
-                                            (int)(23*window_scale),
+                                            (int)(160*window_scale),
+                                            (int)(24*window_scale),
                                             (int)(10*window_scale),
                                             new Color(106,207,111,255));
                         }
@@ -565,13 +568,11 @@ namespace main {
                 Raylib.DrawTexture(scene_manager.active_scene.scene,scene_x_pos,scene_y_pos,Color.WHITE);
                 string score = players[0].score.ToString("00000"); // score fixed to 5 digits
                 Raylib.DrawText(score,
-                                (int)(140*window_scale),
-                                (int)(118*window_scale),
+                                (int)(142*window_scale),
+                                (int)(120*window_scale),
                                 (int)(10*window_scale),
                                 new Color(106,207,111,255));
             }
-
-            Raylib.EndMode2D();
 
             Raylib.EndDrawing();
 
@@ -597,7 +598,7 @@ namespace main {
             float new_height = (float)img.height * window_scale_p;
             Raylib.ImageResizeNN(ref img, (int)new_width, (int)new_height);
             if (transparency_color_p != null) {
-                Raylib.ImageColorReplace(ref img, Start.data.bg, (Color) transparency_color_p);
+                Raylib.ImageColorReplace(ref img, Start.data.asset_bg, (Color) transparency_color_p);
             }
             Texture2D tx = Raylib.LoadTextureFromImage(img);
             return tx;

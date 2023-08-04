@@ -277,7 +277,13 @@ namespace main {
                                           140*Game.window_scale)
                                           );
             }
-            // s1.items.Add(new Item("shield",Start.data.items_data_dict["shield"],100*Game.window_scale,200*Game.window_scale));
+            // s1.items.Add(new Item("shield",Start.data.items_data_dict["shield"],100*Game.window_scale,100*Game.window_scale));
+            // s1.items.Add(new Item("scrying glass",Start.data.items_data_dict["scrying glass"],120*Game.window_scale,100*Game.window_scale));
+            // s1.items.Add(new Item("cross",Start.data.items_data_dict["cross"],140*Game.window_scale,100*Game.window_scale));
+            // s1.items.Add(new Item("fangs",Start.data.items_data_dict["fangs"],160*Game.window_scale,100*Game.window_scale));
+            // s1.items.Add(new Item("f-elixir",Start.data.items_data_dict["f-elixir"],100*Game.window_scale,120*Game.window_scale));
+            // s1.items.Add(new Item("bag gold",Start.data.items_data_dict["bag gold"],120*Game.window_scale,120*Game.window_scale));
+            // s1.items.Add(new Item("map",Start.data.items_data_dict["map"],140*Game.window_scale,120*Game.window_scale));
             return s1;
         }
 
@@ -286,7 +292,8 @@ namespace main {
                 s2 = new Scene(Start.data.scene_2);
                 spawn_units();}
             else if (!s2.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s2.units) {u.points = 0;}} // if you leave the scene and re-enter it the monsters in it gives no poitns (same as original and it prevents exploit where you can fx. kill 3 of 4 bats, exit scene, re-enter and there will be 4 bats again to kill for infinite points)
             return s2;
 
             void spawn_units() {
@@ -372,7 +379,8 @@ namespace main {
                 s3 = new Scene(Start.data.scene_3);
                 spawn_units();}
             else if (!s3.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s3.units) {u.points = 0;}}
             return s3;
 
             void spawn_units() {
@@ -413,7 +421,8 @@ namespace main {
                 Start.data.scene_4);
                 spawn_units();}
             else if (!s4.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s4.units) {u.points = 0;}}
             return s4;
 
             void spawn_units() {
@@ -499,7 +508,8 @@ namespace main {
                 s5 = new Scene(Start.data.scene_5);
                 spawn_units();}
             else if (!s5.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s5.units) {u.points = 0;}}
             return s5;
 
             void spawn_units() {
@@ -540,7 +550,8 @@ namespace main {
                 s6 = new Scene(Start.data.scene_6);
                 spawn_units();}
             else if (!s6.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s6.units) {u.points = 0;}}
             return s6;
 
             void spawn_units() {
@@ -608,7 +619,8 @@ namespace main {
                 s7 = new Scene(Start.data.scene_7);
                 spawn_units();}
             else if (!s7.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s7.units) {u.points = 0;}}
             s7.door_up = new Rectangle(191*Game.window_scale,
                                        110*Game.window_scale,
                                        15*Game.window_scale,
@@ -679,7 +691,8 @@ namespace main {
                 s8 = new Scene(Start.data.scene_8);
                 spawn_units();}
             else if (!s8.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s8.units) {u.points = 0;}}
             s8.disable_left = true;
             s8.disable_right = true;
             s8.disable_down = true;
@@ -728,7 +741,8 @@ namespace main {
                 s9 = new Scene(Start.data.scene_9);
                 spawn_units();}
             else if (!s9.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s9.units) {u.points = 0;}}
             return s9;
 
             void spawn_units() {
@@ -832,7 +846,8 @@ namespace main {
                 s12 = new Scene(Start.data.scene_12);
                 spawn_units();}
             else if (!s12.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s12.units) {u.points = 0;}}
             s12.door_left = new Rectangle(20*Game.window_scale,
                                           110*Game.window_scale,
                                           1*Game.window_scale,
@@ -927,7 +942,8 @@ namespace main {
                                        130*Game.window_scale
                                        ));}
             else if (!s13.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s13.units) {u.points = 0;}}
 
             void spawn_units() {
                 s13.units = new List<Unit>(){};
@@ -968,7 +984,8 @@ namespace main {
                 s14 = new Scene(Start.data.scene_14);
                 spawn_units();}
             else if (!s14.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s14.units) {u.points = 0;}}
             return s14;
 
             void spawn_units() {
@@ -1009,7 +1026,8 @@ namespace main {
                 s15 = new Scene(Start.data.scene_15);
                 spawn_units();}
             else if (!s15.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s15.units) {u.points = 0;}}
             return s15;
 
             void spawn_units() {
@@ -1105,7 +1123,8 @@ namespace main {
                 s16 = new Scene(Start.data.scene_16);
                 spawn_units();}
             else if (!s16.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s16.units) {u.points = 0;}}
             s16.door_up = new Rectangle(80*Game.window_scale,
                                         100*Game.window_scale,
                                         15*Game.window_scale,
@@ -1225,7 +1244,8 @@ namespace main {
                 s18 = new Scene(Start.data.scene_18);
                 spawn_units();}
             else if (!s18.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s18.units) {u.points = 0;}}
             return s18;
 
             void spawn_units() {
@@ -1266,7 +1286,8 @@ namespace main {
                 s19 = new Scene(Start.data.scene_19);
                 spawn_units();}
             else if (!s19.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s19.units) {u.points = 0;}}
             return s19;
 
             void spawn_units() {
@@ -1359,7 +1380,8 @@ namespace main {
                 s21 = new Scene(Start.data.scene_21);
                 spawn_units();}
             else if (!s21.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s21.units) {u.points = 0;}}
             return s21;
 
             void spawn_units() {
@@ -1400,7 +1422,8 @@ namespace main {
                 s22 = new Scene(Start.data.scene_22);
                 spawn_units();}
             else if (!s22.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s22.units) {u.points = 0;}}
             return s22;
 
             void spawn_units() {
@@ -1486,7 +1509,8 @@ namespace main {
                 Start.data.scene_23);
                 spawn_units();}
             else if (!s23.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s23.units) {u.points = 0;}}
             return s23;
 
             void spawn_units() {
@@ -1572,7 +1596,8 @@ namespace main {
                 s24 = new Scene(Start.data.scene_24);
                 spawn_units();}
             else if (!s24.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s24.units) {u.points = 0;}}
             return s24;
 
             void spawn_units() {
@@ -1682,7 +1707,8 @@ namespace main {
                 s25 = new Scene(Start.data.scene_25);
                 spawn_units();}
             else if (!s25.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s25.units) {u.points = 0;}}
             return s25;
 
             void spawn_units() {
@@ -1784,7 +1810,8 @@ namespace main {
                 s26 = new Scene(Start.data.scene_26);
                 spawn_units();}
             else if (!s26.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s26.units) {u.points = 0;}}
             return s26;
 
             void spawn_units() {
@@ -1826,7 +1853,8 @@ namespace main {
                 s27 = new Scene(Start.data.scene_27);
                 spawn_units();}
             else if (!s27.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s27.units) {u.points = 0;}}
             s27.disable_up = true;
             return s27;
 
@@ -1942,7 +1970,7 @@ namespace main {
                 }
             else if (!s31.scene_monsters_done) {
                 spawn_units();
-                }
+                foreach (Unit u in s31.units) {u.points = 0;}}
             s31.disable_up = true;
             s31.door_up = new Rectangle(175*Game.window_scale,
                                         50*Game.window_scale,
@@ -2014,7 +2042,8 @@ namespace main {
                 s32 = new Scene(Start.data.scene_32);
                 spawn_units();}
             else if (!s32.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s32.units) {u.points = 0;}}
             s32.disable_up = true;
             s32.disable_down = true;
             s32.disable_left = true;
@@ -2128,7 +2157,8 @@ namespace main {
                 s33 = new Scene(Start.data.scene_33);
                 spawn_units();}
             else if (!s33.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s33.units) {u.points = 0;}}
             s33.disable_up = true;
             s33.disable_down = true;
             s33.disable_left = true;
@@ -2251,7 +2281,8 @@ namespace main {
                 s34 = new Scene(Start.data.scene_34);
                 spawn_units();}
             else if (!s34.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s34.units) {u.points = 0;}}
             s34.disable_up = true;
             s34.disable_down = true;
             s34.disable_left = true;
@@ -2333,7 +2364,8 @@ namespace main {
                 s35 = new Scene(Start.data.scene_35);
                 spawn_units();}
             else if (!s35.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s35.units) {u.points = 0;}}
             s35.disable_up = true;
             s35.disable_down = true;
             s35.disable_left = true;
@@ -2414,7 +2446,8 @@ namespace main {
                 s36 = new Scene(Start.data.scene_36);
                 spawn_units();}
             else if (!s36.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s36.units) {u.points = 0;}}
             s36.disable_down = true;
             s36.door_down = new Rectangle(50*Game.window_scale,
                                           185*Game.window_scale,
@@ -2493,7 +2526,8 @@ namespace main {
                 s37 = new Scene(Start.data.scene_37);
                 spawn_units();}
             else if (!s37.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s37.units) {u.points = 0;}}
             return s37;
 
             void spawn_units() {
@@ -2579,7 +2613,8 @@ namespace main {
                 s38 = new Scene(Start.data.scene_38);
                 spawn_units();}
             else if (!s38.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s38.units) {u.points = 0;}}
             return s38;
 
             void spawn_units() {
@@ -2653,7 +2688,8 @@ namespace main {
                 s39 = new Scene(Start.data.scene_39);
                 spawn_units();}
             else if (!s39.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s39.units) {u.points = 0;}}
             return s39;
 
             void spawn_units() {
@@ -2727,7 +2763,8 @@ namespace main {
                 s40 = new Scene(Start.data.scene_40);
                 spawn_units();}
             else if (!s40.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s40.units) {u.points = 0;}}
             return s40;
 
             void spawn_units() {
@@ -2813,7 +2850,8 @@ namespace main {
                 s41 = new Scene(Start.data.scene_41);
                 spawn_units();}
             else if (!s41.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s41.units) {u.points = 0;}}
             s41.door_up = new Rectangle(120*Game.window_scale,
                                         70*Game.window_scale,
                                         15*Game.window_scale,
@@ -2903,7 +2941,8 @@ namespace main {
                 s42 = new Scene(Start.data.scene_42);
                 spawn_units();}
             else if (!s42.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s42.units) {u.points = 0;}}
             return s42;
 
             void spawn_units() {
@@ -2989,7 +3028,8 @@ namespace main {
                 s43 = new Scene(Start.data.scene_43);
                 spawn_units();}
             else if (!s43.scene_monsters_done) {
-                spawn_units();}
+                spawn_units();
+                foreach (Unit u in s43.units) {u.points = 0;}}
             s43.disable_down = true;
             s43.disable_left = true;
             s43.disable_right = true;

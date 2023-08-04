@@ -36,6 +36,13 @@
 #10 2023-08-03
 - changed the game to support different resolutions. in the menu.cs file at the bottom different game_screen_w and game_screen_h can be chosen. default is 800x600.
   the game will always scale according to game_screen_w maintaining 4:3 aspect ratio.
-- implemented score system. enemys give 50 points. killing npc's have a penalty of -100 points. time penalty of 1 point/sec to promote speed. at game end each extra life gives 50 bonus points.
+- implemented score system. enemies give 50 points. killing npc's have a penalty of -100 points. time penalty of 1 point/sec to promote speed. at game end each extra life gives 50 bonus points.
 - the support for higher resolutions has completely broken the terrain colission detection so it is disabled for now - don't cheat! :p
 - added f1 to menu screen for toggling view of poem guide and controls overview.
+
+#11 2023-08-04
+- changed the point system so that if you die in a scene the enemies will not give any points
+  and if you leave a scene and re-enter a scene the enemies will not give any points (this is true to the original).
+  this also prevents a pontential exploit where you could enter a scene with 4 bats, kill 3 of them, leave the scene, re-enter it and there will be 4 bats again to harvest for infinite points.
+- tweaked the graphics placements a bit. the scenes were cut off a few pixels before. now there is a slight black border around the game window.
+- made the background a bit darker.

@@ -23,7 +23,7 @@ namespace main {
         public void run() {
             
             Raylib.SetTraceLogLevel(TraceLogLevel.LOG_WARNING);
-            Raylib.InitWindow((int) menu.choises[2],(int) menu.choises[3],"");
+            Raylib.InitWindow((int) menu.choises[2]+(int)(5*Game.window_scale),(int) menu.choises[3]+(int)(5*Game.window_scale),""); // +5x/+5y for a small black edge around the window
             Raylib.SetTargetFPS(60); // set 60FPS
             Raylib.InitAudioDevice(); // sound, must be called before loading sounds
             
