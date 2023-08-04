@@ -46,3 +46,4 @@
   this also prevents a pontential exploit where you could enter a scene with 4 bats, kill 3 of them, leave the scene, re-enter it and there will be 4 bats again to harvest for infinite points.
 - tweaked the graphics placements a bit. the scenes were cut off a few pixels before. now there is a slight black border around the game window.
 - made the background a bit darker.
+- removed the camera class and the code relating to is as it isn't used anymore.
