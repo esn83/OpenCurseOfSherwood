@@ -48,3 +48,6 @@
 - tweaked the graphics placements a bit. the scenes were cut off a few pixels before. now there is a slight black border around the game window.
 - made the background a bit darker.
 - removed the camera class and the code relating to is as it isn't used anymore.
+
+#12 2023-08-08
+- fine tuned some positioning.

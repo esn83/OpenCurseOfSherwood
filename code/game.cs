@@ -107,7 +107,7 @@ namespace main {
             // monk.weapons.Add(new Weapon("silver dagger", Start.data.weapons_data_dict["silver dagger"], 0,0));
             // monk.weapons.Add(new Weapon("ice wand", Start.data.weapons_data_dict["ice wand"], 0,0));
             // monk.weapons.Add(new Weapon("crossbow", Start.data.weapons_data_dict["crossbow"], 0,0));
-            // monk.active_weapon = monk.weapons[1];
+            // monk.active_weapon = monk.weapons[0];
             // monk.items.Add(new Item("shield",Start.data.items_data_dict["shield"],0,0));
             // monk.items.Add(new Item("scrying glass",Start.data.scrying_glass_data,0,0));
             // monk.items.Add(new Item("cross",Start.data.items_data_dict["cross"],0,0));
@@ -525,7 +525,7 @@ namespace main {
                         foreach (Item i in p.unit.items) {
                             Raylib.DrawTexture(i.icon,
                                                (int)(59*window_scale) + (int)(count*24*window_scale),
-                                               (int)(26*window_scale),
+                                               (int)(26.5*window_scale),
                                                Color.WHITE);
                             count += 1;
                         }
@@ -535,7 +535,7 @@ namespace main {
                         Weapon w = p.unit.active_weapon;
                         Raylib.DrawTexture(w.icon,
                                            (int)(139*window_scale),
-                                           (int)(26*window_scale),
+                                           (int)(26.5*window_scale),
                                            Color.WHITE);
                                         
                         if (w.name.Split(" ").Count() > 1) { // draw weapon name, split weapon name in two of there is a space in its name
@@ -569,7 +569,7 @@ namespace main {
                 string score = players[0].score.ToString("00000"); // score fixed to 5 digits
                 Raylib.DrawText(score,
                                 (int)(142*window_scale),
-                                (int)(120*window_scale),
+                                (int)(121*window_scale),
                                 (int)(10*window_scale),
                                 new Color(106,207,111,255));
             }
