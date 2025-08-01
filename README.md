@@ -25,7 +25,7 @@ You can run the game by either:
 <br/>
 \- download and unpack zipped game code and then copy the 'assets' folder into the "bin\Debug\net9.0" folder
 <br/>
-\- run 'open cos.exe'
+\- run "open cos.exe"
 
 2.\
 \- download and install .NET sdk
