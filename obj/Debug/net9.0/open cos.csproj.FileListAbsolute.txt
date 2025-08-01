@@ -20,3 +20,47 @@ C:\Users\user\Downloads\OpenCurseOfSherwood-main\OpenCurseOfSherwood-main\obj\De
 C:\Users\user\Downloads\OpenCurseOfSherwood-main\OpenCurseOfSherwood-main\obj\Debug\net9.0\open cos.pdb
 C:\Users\user\Downloads\OpenCurseOfSherwood-main\OpenCurseOfSherwood-main\obj\Debug\net9.0\open cos.genruntimeconfig.cache
 C:\Users\user\Downloads\OpenCurseOfSherwood-main\OpenCurseOfSherwood-main\obj\Debug\net9.0\ref\open cos.dll
+z:\temp\open cos\bin\Debug\net9.0\open cos.exe
+Z:\temp\open cos\bin\Debug\net9.0\open cos.deps.json
+Z:\temp\open cos\bin\Debug\net9.0\open cos.runtimeconfig.json
+z:\temp\open cos\bin\Debug\net9.0\open cos.dll
+z:\temp\open cos\bin\Debug\net9.0\open cos.pdb
+z:\temp\open cos\bin\Debug\net9.0\Raylib-cs.dll
+z:\temp\open cos\bin\Debug\net9.0\runtimes\linux-x64\native\libraylib.so
+z:\temp\open cos\bin\Debug\net9.0\runtimes\osx-arm64\native\libraylib.dylib
+z:\temp\open cos\bin\Debug\net9.0\runtimes\osx-x64\native\libraylib.dylib
+z:\temp\open cos\bin\Debug\net9.0\runtimes\win-x64\native\raylib.dll
+z:\temp\open cos\bin\Debug\net9.0\runtimes\win-x86\native\raylib.dll
+z:\temp\open cos\obj\Debug\net9.0\open cos.csproj.AssemblyReference.cache
+z:\temp\open cos\obj\Debug\net9.0\open cos.GeneratedMSBuildEditorConfig.editorconfig
+z:\temp\open cos\obj\Debug\net9.0\open cos.AssemblyInfoInputs.cache
+z:\temp\open cos\obj\Debug\net9.0\open cos.AssemblyInfo.cs
+z:\temp\open cos\obj\Debug\net9.0\open cos.csproj.CoreCompileInputs.cache
+Z:\temp\open cos\obj\Debug\net9.0\open cos.csproj.Up2Date
+z:\temp\open cos\obj\Debug\net9.0\open cos.dll
+z:\temp\open cos\obj\Debug\net9.0\refint\open cos.dll
+z:\temp\open cos\obj\Debug\net9.0\open cos.pdb
+Z:\temp\open cos\obj\Debug\net9.0\open cos.genruntimeconfig.cache
+Z:\temp\open cos\obj\Debug\net9.0\ref\open cos.dll
+c:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\open cos.exe
+C:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\open cos.deps.json
+C:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\open cos.runtimeconfig.json
+c:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\open cos.dll
+c:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\open cos.pdb
+c:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\Raylib-cs.dll
+c:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\runtimes\linux-x64\native\libraylib.so
+c:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\runtimes\osx-arm64\native\libraylib.dylib
+c:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\runtimes\osx-x64\native\libraylib.dylib
+c:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\runtimes\win-x64\native\raylib.dll
+c:\Users\user\Desktop\ersn\open cos\bin\Debug\net9.0\runtimes\win-x86\native\raylib.dll
+c:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\open cos.csproj.AssemblyReference.cache
+c:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\open cos.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\open cos.AssemblyInfoInputs.cache
+c:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\open cos.AssemblyInfo.cs
+c:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\open cos.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\open cos.csproj.Up2Date
+c:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\open cos.dll
+c:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\refint\open cos.dll
+c:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\open cos.pdb
+C:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\open cos.genruntimeconfig.cache
+C:\Users\user\Desktop\ersn\open cos\obj\Debug\net9.0\ref\open cos.dll

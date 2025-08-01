@@ -182,12 +182,12 @@ namespace main {
                     players[0].unit.pos_x = scene_manager.active_scene.scene_limit_x_right - players[0].unit.terrain_hitbox.Width -5*window_scale;
                 }
                 else if (!scene_manager.active_scene.disable_down &&
-                    players[0].unit.terrain_hitbox.Y + players[0].unit.terrain_hitbox.Width +1*window_scale >= scene_manager.active_scene.scene_limit_y_down) { // +1 to bypass scene edge colission
+                    players[0].unit.terrain_hitbox.Y + players[0].unit.terrain_hitbox.Width +5*window_scale >= scene_manager.active_scene.scene_limit_y_down) { // +5 to bypass scene edge colission
                     scene_manager.next_scene_down();
                     players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_up - players[0].unit.terrain_hitbox.Width + players[0].unit.terrain_hitbox_offset_y;
                 }
                 else if (!scene_manager.active_scene.disable_up &&
-                    players[0].unit.terrain_hitbox.Y -1*window_scale <= scene_manager.active_scene.scene_limit_y_up) { // -1 to bypass scene edge colission
+                    players[0].unit.terrain_hitbox.Y -5*window_scale <= scene_manager.active_scene.scene_limit_y_up) { // -5 to bypass scene edge colission
                     scene_manager.next_scene_up();
                     players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_down - players[0].unit.terrain_hitbox.Width - 2*players[0].unit.terrain_hitbox_offset_y;
                 }

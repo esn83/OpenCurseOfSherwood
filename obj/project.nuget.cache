@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "QwYPxRnMTNQ=",
+  "dgSpecHash": "RSunjlgXIQQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Downloads\\OpenCurseOfSherwood-main\\OpenCurseOfSherwood-main\\open cos.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\ersn\\open cos\\open cos.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\user\\.nuget\\packages\\raylib-cs\\7.0.1\\raylib-cs.7.0.1.nupkg.sha512"
+    "C:\\Users\\user\\.nuget\\packages\\raylib-cs\\7.0.1\\raylib-cs.7.0.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\9.0.7\\microsoft.netcore.app.runtime.win-x64.9.0.7.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\9.0.7\\microsoft.windowsdesktop.app.runtime.win-x64.9.0.7.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\9.0.7\\microsoft.aspnetcore.app.runtime.win-x64.9.0.7.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\9.0.7\\microsoft.netcore.app.crossgen2.win-x64.9.0.7.nupkg.sha512"
   ],
   "logs": []
 }
