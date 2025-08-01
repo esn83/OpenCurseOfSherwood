@@ -37,7 +37,7 @@ namespace main {
                                      CultureInfo.InvariantCulture.NumberFormat));
             damage = Convert.ToInt16(data_paths[4]);
             bullet_speed = int.Parse(data_paths[5]);
-            icon_hitbox = new Rectangle(pos_x, pos_y, icon.width, icon.height);
+            icon_hitbox = new Rectangle(pos_x, pos_y, icon.Width, icon.Height);
         }
 
         public Bullet shoot(float bpos_x, float bpos_y, string direction) {

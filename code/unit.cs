@@ -64,20 +64,20 @@ namespace main {
             sprite_active = sprite_p;
             sprite_death = sprite_death_p;
 
-            hitbox_offset_x = ((sprite_active.textures_active[0].width - sprite_active.textures_active[0].width * 0.4f) / 2);
-            hitbox_offset_y = ((sprite_active.textures_active[0].height - sprite_active.textures_active[0].height * 0.8f) / 2f);
+            hitbox_offset_x = ((sprite_active.textures_active[0].Width - sprite_active.textures_active[0].Width * 0.4f) / 2);
+            hitbox_offset_y = ((sprite_active.textures_active[0].Height - sprite_active.textures_active[0].Height * 0.8f) / 2f);
             float hb_x = pos_x + hitbox_offset_x;
             float hb_y = pos_y + hitbox_offset_y;
-            float hb_w = sprite_active.textures_active[0].width * 0.4f;
-            float hb_h = sprite_active.textures_active[0].height * 0.8f;
+            float hb_w = sprite_active.textures_active[0].Width * 0.4f;
+            float hb_h = sprite_active.textures_active[0].Height * 0.8f;
             hitbox = new Rectangle(hb_x, hb_y, hb_w, hb_h);
 
-            terrain_hitbox_offset_x = ((sprite_active.textures_active[0].width - sprite_active.textures_active[0].width * 0.6f) / 2);
-            terrain_hitbox_offset_y = ((sprite_active.textures_active[0].height - sprite_active.textures_active[0].height * 0.4f) / 1.4f);
+            terrain_hitbox_offset_x = ((sprite_active.textures_active[0].Width - sprite_active.textures_active[0].Width * 0.6f) / 2);
+            terrain_hitbox_offset_y = ((sprite_active.textures_active[0].Height - sprite_active.textures_active[0].Height * 0.4f) / 1.4f);
             float thb_x = pos_x + hitbox_offset_x;
             float thb_y = pos_y + hitbox_offset_y;
-            float thb_w = sprite_active.textures_active[0].width * 0.6f;
-            float thb_h = sprite_active.textures_active[0].height * 0.5f;
+            float thb_w = sprite_active.textures_active[0].Width * 0.6f;
+            float thb_h = sprite_active.textures_active[0].Height * 0.5f;
             terrain_hitbox = new Rectangle(thb_x, thb_y, thb_w, thb_h);
 
             if (weapons.Count > 0) {
@@ -140,23 +140,23 @@ namespace main {
             bool terrain_collision = false;
             // if (!can_pass_through_obstacles) {
             //     // check if hitbox would have other colors in it than black which means that it is colliding with terrain (or items)
-            //     Rectangle r1 = new Rectangle(terrain_hitbox.x+65f*Game.window_scale,
-            //                                  terrain_hitbox.y+43f*Game.window_scale,
-            //                                  terrain_hitbox.width,
-            //                                  terrain_hitbox.height);
-            //     if (direction.Equals("L")) {r1.x -= speed;}
-            //     if (direction.Equals("R")) {r1.x += speed;}
-            //     if (direction.Equals("U")) {r1.y -= speed;}
-            //     if (direction.Equals("D")) {r1.y += speed;}
+            //     Rectangle r1 = new Rectangle(terrain_hitbox.X+65f*Game.window_scale,
+            //                                  terrain_hitbox.Y+43f*Game.window_scale,
+            //                                  terrain_hitbox.Width,
+            //                                  terrain_hitbox.Height);
+            //     if (direction.Equals("L")) {r1.X -= speed;}
+            //     if (direction.Equals("R")) {r1.X += speed;}
+            //     if (direction.Equals("U")) {r1.Y -= speed;}
+            //     if (direction.Equals("D")) {r1.Y += speed;}
             //     Image ix = Raylib.ImageFromImage(Raylib.LoadImageFromTexture(active_scene.scene), r1);
 
             //     // draw the cut out image for debugging
             //     //Texture2D tx = Raylib.LoadTextureFromImage(ix);
             //     //Raylib.DrawTexture(tx, 100, 200 , Color.WHITE);
 
-            //     for (int j=0 ; j<ix.width ; j++) {
+            //     for (int j=0 ; j<ix.Width ; j++) {
             //         Color cx_top = Raylib.GetImageColor(ix, j, 0);
-            //         Color cx_down = Raylib.GetImageColor(ix, j, ix.height-1);
+            //         Color cx_down = Raylib.GetImageColor(ix, j, ix.Height-1);
             //         string cx_str_t = cx_top.ToString();
             //         string cx_str_d = cx_down.ToString();
             //         if (!terrain_collision_colors.Contains(cx_str_t) || !terrain_collision_colors.Contains(cx_str_d)) {
@@ -165,9 +165,9 @@ namespace main {
             //         }
             //     }
             //     if (!terrain_collision) {
-            //         for (int i=0 ; i<ix.height ; i++) {
+            //         for (int i=0 ; i<ix.Height ; i++) {
             //             Color cx_left = Raylib.GetImageColor(ix, 0, i);
-            //             Color cx_right = Raylib.GetImageColor(ix, ix.width-1, i);
+            //             Color cx_right = Raylib.GetImageColor(ix, ix.Width-1, i);
             //             string cx_str_l = cx_left.ToString();
             //             string cx_str_r = cx_right.ToString();
             //             if (!terrain_collision_colors.Contains(cx_str_l) || !terrain_collision_colors.Contains(cx_str_r)) {
@@ -181,10 +181,10 @@ namespace main {
             // / check if hitbox would have other colors in it than black which means that it is colliding with terrain (or items)
 
             // check if hitbox would exceed scene limits to prevent monsters from leaving play area
-            if (direction.Equals("L") && terrain_hitbox.x - speed <= active_scene.scene_limit_x_left) {terrain_collision = true;}
-            if (direction.Equals("R") && terrain_hitbox.x + terrain_hitbox.width + speed >= active_scene.scene_limit_x_right) {terrain_collision = true;}
-            if (direction.Equals("U") && terrain_hitbox.y - speed <= active_scene.scene_limit_y_up) {terrain_collision = true;}
-            if (direction.Equals("D") && terrain_hitbox.y + terrain_hitbox.height + speed >= active_scene.scene_limit_y_down) {terrain_collision = true;}
+            if (direction.Equals("L") && terrain_hitbox.X - speed <= active_scene.scene_limit_x_left) {terrain_collision = true;}
+            if (direction.Equals("R") && terrain_hitbox.X + terrain_hitbox.Width + speed >= active_scene.scene_limit_x_right) {terrain_collision = true;}
+            if (direction.Equals("U") && terrain_hitbox.Y - speed <= active_scene.scene_limit_y_up) {terrain_collision = true;}
+            if (direction.Equals("D") && terrain_hitbox.Y + terrain_hitbox.Height + speed >= active_scene.scene_limit_y_down) {terrain_collision = true;}
             // /check if hitbox would exceed scene limits to prevent monsters from leaving play area
 
             return terrain_collision;
@@ -265,11 +265,11 @@ namespace main {
             sprite_active.pos_x = pos_x;
             sprite_active.pos_y = pos_y;
 
-            hitbox.x = pos_x + hitbox_offset_x;
-            hitbox.y = pos_y + hitbox_offset_y;
+            hitbox.X = pos_x + hitbox_offset_x;
+            hitbox.Y = pos_y + hitbox_offset_y;
 
-            terrain_hitbox.x = pos_x + terrain_hitbox_offset_x;
-            terrain_hitbox.y = pos_y + terrain_hitbox_offset_y;
+            terrain_hitbox.X = pos_x + terrain_hitbox_offset_x;
+            terrain_hitbox.Y = pos_y + terrain_hitbox_offset_y;
 
             if (walk_sounds != null) {walk_sounds.update(dt);}
             if (death_sounds != null) {death_sounds.update(dt);}

@@ -51,8 +51,8 @@ namespace main {
         }
 
         void events() {
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)) {Start.playing = true;}
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_F1)) {
+            if (Raylib.IsKeyPressed(KeyboardKey.Space)) {Start.playing = true;}
+            if (Raylib.IsKeyPressed(KeyboardKey.F1)) {
                 if      (state==0) {state=1;}
                 else if (state==1) {state=0;}
             }
@@ -65,7 +65,7 @@ namespace main {
         void draw() {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Start.data.bg);
-            Raylib.DrawTexture(cover,menu_screen_w-cover.width-5,5,Color.WHITE);
+            Raylib.DrawTexture(cover,menu_screen_w-cover.Width-5,5,Color.White);
             Raylib.DrawText("Press SPACE to play!", (int)(6*window_scale), (int)(10*window_scale), (int)(10*window_scale), txt_color);
             Raylib.DrawText("Controls : F1", (int)(6*window_scale), (int)(25*window_scale), (int)(6*window_scale), txt_color);
 
@@ -75,7 +75,7 @@ namespace main {
                     Raylib.DrawTextEx(font,
                                     s,
                                     new System.Numerics.Vector2((int)(6*window_scale),y_pos),
-                                    font.baseSize*0.17f*window_scale,
+                                    font.BaseSize*0.17f*window_scale,
                                     0,
                                     txt_color);
                     y_pos += (int)(7*window_scale);
@@ -97,7 +97,7 @@ namespace main {
                         Raylib.DrawTextEx(font,
                                             control_names[count] + key.ToString().Replace("KEY_",""),
                                             new System.Numerics.Vector2((int)(6*window_scale),y_pos),
-                                            font.baseSize*0.17f*window_scale,
+                                            font.BaseSize*0.17f*window_scale,
                                             0,
                                             txt_color);
                         y_pos += (int)(7*window_scale);
@@ -111,9 +111,9 @@ namespace main {
 
         public void resize_cover() {
             Image cover_img = Raylib.LoadImage(cover_img_path);
-            float cover_size_factor = ((float) (menu_screen_w*0.75f)-10) / (float) cover_img.height;
-            int cover_width = (int)((float)cover_img.width * cover_size_factor);
-            int cover_height = (int)((float)cover_img.height * cover_size_factor);
+            float cover_size_factor = ((float) (menu_screen_w*0.75f)-10) / (float) cover_img.Height;
+            int cover_width = (int)((float)cover_img.Width * cover_size_factor);
+            int cover_height = (int)((float)cover_img.Height * cover_size_factor);
             Raylib.ImageResize(ref cover_img,cover_width,cover_height);
             cover = Raylib.LoadTextureFromImage(cover_img);
         }
@@ -123,13 +123,13 @@ namespace main {
             players = new List<Object> {new List<Object> {
                                                         "Player 1",
                                                         new Color(255,255,255,255),
-                                                        new List<KeyboardKey> {KeyboardKey.KEY_LEFT, // left
-                                                                               KeyboardKey.KEY_RIGHT, // right
-                                                                               KeyboardKey.KEY_UP, // up
-                                                                               KeyboardKey.KEY_DOWN, // down
-                                                                               KeyboardKey.KEY_LEFT_CONTROL, // fire
-                                                                               KeyboardKey.KEY_RIGHT_SHIFT, // next weapon
-                                                                               KeyboardKey.KEY_F1, // map
+                                                        new List<KeyboardKey> {KeyboardKey.Left, // left
+                                                                               KeyboardKey.Right, // right
+                                                                               KeyboardKey.Up, // up
+                                                                               KeyboardKey.Down, // down
+                                                                               KeyboardKey.LeftControl, // fire
+                                                                               KeyboardKey.RightShift, // next weapon
+                                                                               KeyboardKey.F1, // map
                                                         },
                                                         3 // lives
                                         }

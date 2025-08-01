@@ -146,7 +146,7 @@ namespace main {
         }
 
         void events() {
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)) {Start.playing = false;}
+            if (Raylib.IsKeyPressed(KeyboardKey.Space)) {Start.playing = false;}
 
             if (!game_won) {
                 foreach (Player p in players) {
@@ -159,7 +159,7 @@ namespace main {
                 }
             }
 
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_X)) {
+            if (Raylib.IsKeyPressed(KeyboardKey.X)) {
                 System.Console.WriteLine("the X key!");
                 players[0].lives += 1;
             }
@@ -172,47 +172,47 @@ namespace main {
                 // update scene
                     // scene edges
                 if (!scene_manager.active_scene.disable_right &&
-                    players[0].unit.terrain_hitbox.x + players[0].unit.terrain_hitbox.width +1*window_scale >= scene_manager.active_scene.scene_limit_x_right) { // +1 to bypass scene edge colission
+                    players[0].unit.terrain_hitbox.X + players[0].unit.terrain_hitbox.Width +1*window_scale >= scene_manager.active_scene.scene_limit_x_right) { // +1 to bypass scene edge colission
                     scene_manager.next_scene_right();
                     players[0].unit.pos_x = scene_manager.active_scene.scene_limit_x_left +1*window_scale;
                 }
                 else if (!scene_manager.active_scene.disable_left &&
-                    players[0].unit.terrain_hitbox.x -1*window_scale <= scene_manager.active_scene.scene_limit_x_left) { // -1 to bypass scene edge colission
+                    players[0].unit.terrain_hitbox.X -1*window_scale <= scene_manager.active_scene.scene_limit_x_left) { // -1 to bypass scene edge colission
                     scene_manager.next_scene_left();
-                    players[0].unit.pos_x = scene_manager.active_scene.scene_limit_x_right - players[0].unit.terrain_hitbox.width -5*window_scale;
+                    players[0].unit.pos_x = scene_manager.active_scene.scene_limit_x_right - players[0].unit.terrain_hitbox.Width -5*window_scale;
                 }
                 else if (!scene_manager.active_scene.disable_down &&
-                    players[0].unit.terrain_hitbox.y + players[0].unit.terrain_hitbox.height +1*window_scale >= scene_manager.active_scene.scene_limit_y_down) { // +1 to bypass scene edge colission
+                    players[0].unit.terrain_hitbox.Y + players[0].unit.terrain_hitbox.Width +1*window_scale >= scene_manager.active_scene.scene_limit_y_down) { // +1 to bypass scene edge colission
                     scene_manager.next_scene_down();
-                    players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_up - players[0].unit.terrain_hitbox.height + players[0].unit.terrain_hitbox_offset_y;
+                    players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_up - players[0].unit.terrain_hitbox.Width + players[0].unit.terrain_hitbox_offset_y;
                 }
                 else if (!scene_manager.active_scene.disable_up &&
-                    players[0].unit.terrain_hitbox.y -1*window_scale <= scene_manager.active_scene.scene_limit_y_up) { // -1 to bypass scene edge colission
+                    players[0].unit.terrain_hitbox.Y -1*window_scale <= scene_manager.active_scene.scene_limit_y_up) { // -1 to bypass scene edge colission
                     scene_manager.next_scene_up();
-                    players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_down - players[0].unit.terrain_hitbox.height - 2*players[0].unit.terrain_hitbox_offset_y;
+                    players[0].unit.pos_y = scene_manager.active_scene.scene_limit_y_down - players[0].unit.terrain_hitbox.Width - 2*players[0].unit.terrain_hitbox_offset_y;
                 }
                     // / scene edges
 
                     // doors
                 if (Raylib.CheckCollisionRecs(players[0].unit.terrain_hitbox, scene_manager.active_scene.door_left)) {
                     scene_manager.next_scene_left();
-                    players[0].unit.pos_x = scene_manager.active_scene.door_right.x - scene_manager.active_scene.door_right.width - players[0].unit.terrain_hitbox.width -5*window_scale;
-                    players[0].unit.pos_y = scene_manager.active_scene.door_right.y - players[0].unit.terrain_hitbox.height;
+                    players[0].unit.pos_x = scene_manager.active_scene.door_right.X - scene_manager.active_scene.door_right.Width - players[0].unit.terrain_hitbox.Width -5*window_scale;
+                    players[0].unit.pos_y = scene_manager.active_scene.door_right.Y - players[0].unit.terrain_hitbox.Height;
                 }
                 else if (Raylib.CheckCollisionRecs(players[0].unit.terrain_hitbox, scene_manager.active_scene.door_right)) {
                     scene_manager.next_scene_right();
-                    players[0].unit.pos_x = scene_manager.active_scene.door_left.x + scene_manager.active_scene.door_right.width +1*window_scale;
-                    players[0].unit.pos_y = scene_manager.active_scene.door_left.y - players[0].unit.terrain_hitbox.height;
+                    players[0].unit.pos_x = scene_manager.active_scene.door_left.X + scene_manager.active_scene.door_right.Width +1*window_scale;
+                    players[0].unit.pos_y = scene_manager.active_scene.door_left.Y - players[0].unit.terrain_hitbox.Height;
                 }
                 else if (Raylib.CheckCollisionRecs(players[0].unit.terrain_hitbox, scene_manager.active_scene.door_up)) {
                     scene_manager.next_scene_up();
-                    players[0].unit.pos_x = scene_manager.active_scene.door_down.x;
-                    players[0].unit.pos_y = scene_manager.active_scene.door_down.y - players[0].unit.terrain_hitbox.height - players[0].unit.terrain_hitbox_offset_y;
+                    players[0].unit.pos_x = scene_manager.active_scene.door_down.X;
+                    players[0].unit.pos_y = scene_manager.active_scene.door_down.Y - players[0].unit.terrain_hitbox.Height - players[0].unit.terrain_hitbox_offset_y;
                 }
                 else if (Raylib.CheckCollisionRecs(players[0].unit.terrain_hitbox, scene_manager.active_scene.door_down)) {
                     scene_manager.next_scene_down();
-                    players[0].unit.pos_x = scene_manager.active_scene.door_up.x;
-                    players[0].unit.pos_y = scene_manager.active_scene.door_up.y - players[0].unit.terrain_hitbox.height +8*window_scale;
+                    players[0].unit.pos_x = scene_manager.active_scene.door_up.X;
+                    players[0].unit.pos_y = scene_manager.active_scene.door_up.Y - players[0].unit.terrain_hitbox.Height +8*window_scale;
                 }
                     // / doors
 
@@ -267,7 +267,7 @@ namespace main {
                         else {
                             scene_manager.active_scene.items.Add(new Item(i.name,
                                                                         Start.data.items_data_dict[i.name],
-                                                                        p.unit.pos_x+p.unit.terrain_hitbox.width+10*window_scale,
+                                                                        p.unit.pos_x+p.unit.terrain_hitbox.Width+10*window_scale,
                                                                         p.unit.pos_y+18*window_scale
                                                                         ));
                         }
@@ -464,13 +464,13 @@ namespace main {
 
             if (!game_won) {
                 // draw topbar
-                Raylib.DrawTexture(topbar,(int)(2*window_scale),(int)(2.5*window_scale),Color.WHITE);
+                Raylib.DrawTexture(topbar,(int)(2*window_scale),(int)(2.5*window_scale),Color.White);
 
                 // draw scene
-                Raylib.DrawTexture(scene_manager.active_scene.scene,scene_x_pos,scene_y_pos,Color.WHITE);
+                Raylib.DrawTexture(scene_manager.active_scene.scene,scene_x_pos,scene_y_pos,Color.White);
 
                 foreach (Texture2D extra in scene_manager.active_scene.scene_extras) {
-                    Raylib.DrawTexture(extra,scene_x_pos,scene_y_pos,Color.WHITE);
+                    Raylib.DrawTexture(extra,scene_x_pos,scene_y_pos,Color.White);
                 }
 
                 foreach (Unit u in scene_manager.active_scene.units) {
@@ -484,23 +484,23 @@ namespace main {
                     b.sprite.draw();
                 }
                 foreach (Weapon w in scene_manager.active_scene.weapons) {
-                    Raylib.DrawTexture(w.icon, (int) w.pos_x, (int) w.pos_y, Color.WHITE);
+                    Raylib.DrawTexture(w.icon, (int) w.pos_x, (int) w.pos_y, Color.White);
                 }
                 foreach (Item i in scene_manager.active_scene.items) {
-                    Raylib.DrawTexture(i.icon, (int) i.pos_x, (int) i.pos_y, Color.WHITE);
+                    Raylib.DrawTexture(i.icon, (int) i.pos_x, (int) i.pos_y, Color.White);
                 }
 
-                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_down, Color.WHITE);
-                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_up, Color.WHITE);
-                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_left, Color.WHITE);
-                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_right, Color.WHITE);
+                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_down, Color.White);
+                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_up, Color.White);
+                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_left, Color.White);
+                // Raylib.DrawRectangleRec(scene_manager.active_scene.door_right, Color.White);
                 // foreach (Rectangle r in scene_manager.active_scene.swamp_areas) {Raylib.DrawRectangleRec(r, new Color(0,0,100,100));}
 
                 // draw rectangle for debug (broken door hitbox, frozen river hitbox, locked door hitbox, end star hitbox, ...)
                 // Raylib.DrawRectangleRec(new Rectangle(126*Game.window_scale,
                 //                                       132*Game.window_scale,
                 //                                       2*Game.window_scale,
-                //                                       2*Game.window_scale), Color.WHITE);
+                //                                       2*Game.window_scale), Color.White);
 
                 // / draw scene
 
@@ -526,7 +526,7 @@ namespace main {
                             Raylib.DrawTexture(i.icon,
                                                (int)(59*window_scale) + (int)(count*24*window_scale),
                                                (int)(26.5*window_scale),
-                                               Color.WHITE);
+                                               Color.White);
                             count += 1;
                         }
                     }
@@ -536,7 +536,7 @@ namespace main {
                         Raylib.DrawTexture(w.icon,
                                            (int)(139*window_scale),
                                            (int)(26.5*window_scale),
-                                           Color.WHITE);
+                                           Color.White);
                                         
                         if (w.name.Split(" ").Count() > 1) { // draw weapon name, split weapon name in two of there is a space in its name
                             Raylib.DrawText(w.name.Split(" ")[0], // draw weapon name part1
@@ -565,7 +565,7 @@ namespace main {
 
             }
             else { // show end screen
-                Raylib.DrawTexture(scene_manager.active_scene.scene,scene_x_pos,scene_y_pos,Color.WHITE);
+                Raylib.DrawTexture(scene_manager.active_scene.scene,scene_x_pos,scene_y_pos,Color.White);
                 string score = players[0].score.ToString("00000"); // score fixed to 5 digits
                 Raylib.DrawText(score,
                                 (int)(142*window_scale),
@@ -587,11 +587,11 @@ namespace main {
             else {
                 Raylib.DrawRectangleRec(new Rectangle(35*window_scale,
                                                       30*window_scale,
-                                                      popup_1_texture.width,
-                                                      10*window_scale+popup_1_texture.height),
+                                                      popup_1_texture.Width,
+                                                      10*window_scale+popup_1_texture.Height),
                                                       Start.data.bg);
-                Raylib.DrawTexture(popup_1_texture, (int)(35*window_scale), (int)(40*window_scale), Color.WHITE);                                                      
-                Raylib.DrawTextEx(font,popup_1_text,new System.Numerics.Vector2(35*window_scale,30*window_scale),font.baseSize*0.3f*window_scale,0,new Color(210,125,237,255));
+                Raylib.DrawTexture(popup_1_texture, (int)(35*window_scale), (int)(40*window_scale), Color.White);                                                      
+                Raylib.DrawTextEx(font,popup_1_text,new System.Numerics.Vector2(35*window_scale,30*window_scale),font.BaseSize*0.3f*window_scale,0,new Color(210,125,237,255));
             }
         }
 
@@ -601,8 +601,8 @@ namespace main {
                 Raylib.ImageColorReplace(ref img, Start.data.asset_bg, (Color) transparency_color_p);
             }
             if (flip_h_p) {Raylib.ImageFlipHorizontal(ref img);} // flip horizontal
-            float new_width = (float)img.width * window_scale_p;
-            float new_height = (float)img.height * window_scale_p;
+            float new_width = (float)img.Width * window_scale_p;
+            float new_height = (float)img.Height * window_scale_p;
             Raylib.ImageResizeNN(ref img, (int)new_width, (int)new_height);
             Texture2D tx = Raylib.LoadTextureFromImage(img);
             return tx;

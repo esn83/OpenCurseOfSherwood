@@ -31,7 +31,7 @@ namespace main {
             speed = speed_p;
             damage = damage_p;
             sprite = sprite_p;
-            hitbox = new Rectangle(pos_x, pos_y, sprite.textures_active[0].width, sprite.textures_active[0].height);
+            hitbox = new Rectangle(pos_x, pos_y, sprite.textures_active[0].Width, sprite.textures_active[0].Height);
         }
 
         public void update(float dt) {
@@ -40,8 +40,8 @@ namespace main {
             sprite.pos_x = pos_x;
             sprite.pos_y = pos_y;
             sprite.update(dt, direction);
-            hitbox.x = pos_x;
-            hitbox.y = pos_y;
+            hitbox.X = pos_x;
+            hitbox.Y = pos_y;
         }
 
     }

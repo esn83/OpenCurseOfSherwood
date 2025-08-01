@@ -14,7 +14,7 @@ The game is written in VSCode editor with C# language and is using the Raylib-cs
 
 VSCode       : https://code.visualstudio.com/
 
-.NET SDK     : https://dotnet.microsoft.com/en-us/download/dotnet/7.0
+.NET SDK     : https://dotnet.microsoft.com/en-us/download/dotnet/9.0
 
 Raylib-cs    : https://github.com/ChrisDill/Raylib-cs
 

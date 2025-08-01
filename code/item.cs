@@ -24,7 +24,7 @@ namespace main {
             pos_y = pos_y_p;
 
             icon = Game.img_path_to_texture_scaled(data_paths[0], Game.window_scale, false, Start.data.transparent);
-            icon_hitbox = new Rectangle(pos_x, pos_y, icon.width, icon.height);
+            icon_hitbox = new Rectangle(pos_x, pos_y, icon.Width, icon.Height);
         }
 
     }

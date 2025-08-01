@@ -1,23 +1,20 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v7.0",
+    "name": ".NETCoreApp,Version=v9.0",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v7.0": {
+    ".NETCoreApp,Version=v9.0": {
       "open cos/1.0.0": {
         "dependencies": {
-          "Raylib-cs": "4.5.0"
+          "Raylib-cs": "7.0.1"
         },
         "runtime": {
           "open cos.dll": {}
         }
       },
-      "Raylib-cs/4.5.0": {
-        "dependencies": {
-          "System.Numerics.Vectors": "4.5.0"
-        },
+      "Raylib-cs/7.0.1": {
         "runtime": {
           "lib/net6.0/Raylib-cs.dll": {
             "assemblyVersion": "0.0.0.0",
@@ -43,16 +40,15 @@
           "runtimes/win-x64/native/raylib.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "4.5.0.0"
+            "fileVersion": "0.0.0.0"
           },
           "runtimes/win-x86/native/raylib.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "4.5.0.0"
+            "fileVersion": "0.0.0.0"
           }
         }
-      },
-      "System.Numerics.Vectors/4.5.0": {}
+      }
     }
   },
   "libraries": {
@@ -61,19 +57,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Raylib-cs/4.5.0": {
+    "Raylib-cs/7.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-VBM71a+X7v1GiobKRmKUKpgB5XLn1ZD+pJT0MuPsgEO2wfJehvPDWLrfrc65rvI3WuwSbs9Jikv5jOglhRLXug==",
-      "path": "raylib-cs/4.5.0",
-      "hashPath": "raylib-cs.4.5.0.nupkg.sha512"
-    },
-    "System.Numerics.Vectors/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
-      "path": "system.numerics.vectors/4.5.0",
-      "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
+      "sha512": "sha512-Ub764yPExCago40qjPpTQqtYhhA0/aIEderv5XjB5peOXFs7A4YLyyARsfBv0JzCt4C+QvuqH0CrjAJIzgzjKA==",
+      "path": "raylib-cs/7.0.1",
+      "hashPath": "raylib-cs.7.0.1.nupkg.sha512"
     }
   }
 }

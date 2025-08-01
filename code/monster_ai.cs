@@ -64,10 +64,10 @@ namespace main {
                         }
                     }
                     if (move_direction_l_r.Equals("L") && u.pos_x <= active_scene.scene_limit_x_left + 5) {
-                        u.pos_x = active_scene.scene_limit_x_right + u.sprite_active.textures_active[0].width;
+                        u.pos_x = active_scene.scene_limit_x_right + u.sprite_active.textures_active[0].Width;
                         u.pos_y = 160;
                     }
-                    if (move_direction_l_r.Equals("R") && u.pos_x + u.sprite_active.textures_active[0].width >= active_scene.scene_limit_x_right - 5) {
+                    if (move_direction_l_r.Equals("R") && u.pos_x + u.sprite_active.textures_active[0].Width >= active_scene.scene_limit_x_right - 5) {
                         u.pos_x = active_scene.scene_limit_x_left;
                         u.pos_y = 160;
                     }

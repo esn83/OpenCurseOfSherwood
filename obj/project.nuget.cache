@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "UJzDmvPgkIHfmlvIOJjed6pYJ+1ZxVEz4qyknEnLYRSu+9JarJJAfrRvBiiT6p953iNtLGN62x3RnpztGtwleA==",
+  "dgSpecHash": "QwYPxRnMTNQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\az18200\\kode\\C#\\Erik\\open cos\\open cos\\open cos.csproj",
+  "projectFilePath": "C:\\Users\\user\\Downloads\\OpenCurseOfSherwood-main\\OpenCurseOfSherwood-main\\open cos.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\az18200\\.nuget\\packages\\raylib-cs\\4.5.0\\raylib-cs.4.5.0.nupkg.sha512",
-    "C:\\Users\\az18200\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+    "C:\\Users\\user\\.nuget\\packages\\raylib-cs\\7.0.1\\raylib-cs.7.0.1.nupkg.sha512"
   ],
   "logs": []
 }

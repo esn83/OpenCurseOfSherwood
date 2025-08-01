@@ -49,7 +49,7 @@ namespace main {
         }
 
         public void draw() {
-            Raylib.DrawTexture(textures_active[current_frame], (int) pos_x, (int) pos_y, Color.WHITE);
+            Raylib.DrawTexture(textures_active[current_frame], (int) pos_x, (int) pos_y, Color.White);
         }
 
         public void next_frame() {
@@ -168,8 +168,8 @@ namespace main {
             foreach (string sx in image_paths_left) {
                 Image ix = Raylib.LoadImage(sx);
                 List<string> colors = new List<string>(){};
-                for (int i=0 ; i<ix.height ; i++) {
-                    for (int j=0 ; j<ix.width ; j++) {
+                for (int i=0 ; i<ix.Height ; i++) {
+                    for (int j=0 ; j<ix.Width ; j++) {
                         Color cx = Raylib.GetImageColor(ix,j,i);
                         string cx_str = cx.ToString();
                         if (colors.Contains(cx_str)) {continue;}
@@ -187,8 +187,8 @@ namespace main {
             foreach (Texture2D tw in textures_l) {
                 Image ix = Raylib.LoadImageFromTexture(tw);
                 List<string> colors = new List<string>(){};
-                for (int i=0 ; i<ix.height ; i++) {
-                    for (int j=0 ; j<ix.width ; j++) {
+                for (int i=0 ; i<ix.Height ; i++) {
+                    for (int j=0 ; j<ix.Width ; j++) {
                         Color cx = Raylib.GetImageColor(ix,j,i);
                         string cx_str = cx.ToString();
                         if (colors.Contains(cx_str)) {continue;}
@@ -203,8 +203,8 @@ namespace main {
             foreach (Texture2D te in textures_r) {
                 Image ix = Raylib.LoadImageFromTexture(te);
                 List<string> colors = new List<string>(){};
-                for (int i=0 ; i<ix.height ; i++) {
-                    for (int j=0 ; j<ix.width ; j++) {
+                for (int i=0 ; i<ix.Height ; i++) {
+                    for (int j=0 ; j<ix.Width ; j++) {
                         Color cx = Raylib.GetImageColor(ix,j,i);
                         string cx_str = cx.ToString();
                         if (colors.Contains(cx_str)) {continue;}

@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\az18200\\kode\\C#\\Erik\\open cos\\open cos\\open cos.csproj": {}
+    "C:\\Users\\user\\Downloads\\OpenCurseOfSherwood-main\\OpenCurseOfSherwood-main\\open cos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\az18200\\kode\\C#\\Erik\\open cos\\open cos\\open cos.csproj": {
+    "C:\\Users\\user\\Downloads\\OpenCurseOfSherwood-main\\OpenCurseOfSherwood-main\\open cos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\az18200\\kode\\C#\\Erik\\open cos\\open cos\\open cos.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Downloads\\OpenCurseOfSherwood-main\\OpenCurseOfSherwood-main\\open cos.csproj",
         "projectName": "open cos",
-        "projectPath": "C:\\Users\\az18200\\kode\\C#\\Erik\\open cos\\open cos\\open cos.csproj",
-        "packagesPath": "C:\\Users\\az18200\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\az18200\\kode\\C#\\Erik\\open cos\\open cos\\obj\\",
+        "projectPath": "C:\\Users\\user\\Downloads\\OpenCurseOfSherwood-main\\OpenCurseOfSherwood-main\\open cos.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Downloads\\OpenCurseOfSherwood-main\\OpenCurseOfSherwood-main\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\az18200\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net9.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -34,15 +34,21 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "Raylib-cs": {
               "target": "Package",
-              "version": "[4.5.0, )"
+              "version": "[7.0.1, )"
             }
           },
           "imports": [
@@ -61,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
