@@ -36,8 +36,11 @@ You can run the game by either:
 <br/>
 \- install Raylib-cs in VSCode
 <br/>
-\- download and unpack zipped game code and then open the game code folder in VSCode
+
+3.\
+\- download the official release (https://github.com/esn83/OpenCurseOfSherwood/releases/tag/1.0.0)
 <br/>
-\- if it says "Required assets to build and debug are missing (...). Add them?" press yes. You may need to restart VSCode to get this message.
+\- extract it anywhere
 <br/>
-\- run the code with F5
+\- run "open cos.exe"
+<br/>
